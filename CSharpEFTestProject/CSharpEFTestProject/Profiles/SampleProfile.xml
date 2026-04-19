@@ -1,0 +1,1992 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Catalog xmlns="http://langdale.com.au/2005/Message#"
+         xmlns:m="http://www.ucaiug.org/profile#"
+         hideInDiagrams="false"
+         ontologyURI="http://iec.ch/TC57/CIM100"
+         baseURI="http://www.ucaiug.org/profile#"
+         name="SampleProfile">
+   <ComplexType hideInDiagrams="false"
+                name="AssetInfo"
+                ea_guid="EAID_6D78A817_1BB4_4cb1_8478_11A40AF8F62F"
+                baseClass="http://iec.ch/TC57/CIM100#AssetInfo"
+                package="Assets"
+                packageURI="http://iec.ch/TC57/CIM100#Package_Assets"
+                minOccurs="0"
+                maxOccurs="unbounded">
+      <Comment>Set of attributes of an asset, representing typical datasheet information of a physical device that can be instantiated and shared in different data exchange contexts:</Comment>
+      <Comment>- as attributes of an asset instance (installed or in stock)</Comment>
+      <Comment>- as attributes of an asset model (product by a manufacturer)</Comment>
+      <Comment>- as attributes of a type asset (generic type of an asset as used in designs/extension planning).</Comment>
+      <SuperType name="IdentifiedObject"
+                 baseClass="http://iec.ch/TC57/CIM100#IdentifiedObject"
+                 baseClassIsShadowExtension="false"/>
+   </ComplexType>
+   <EnumeratedType hideInDiagrams="false"
+                   name="CrewStatusKind"
+                   ea_guid="EAID_0256250A_25A5_444f_A3E8_EF37291A12FB"
+                   baseClass="http://iec.ch/TC57/CIM100#CrewStatusKind"
+                   package="Common"
+                   packageURI="http://iec.ch/TC57/CIM100#Package_Common"
+                   minOccurs="0"
+                   maxOccurs="unbounded">
+      <Comment>Defines the current status of the Crew - assigned, arrived, etc.</Comment>
+      <Stereotype label="enumeration">http://langdale.com.au/2005/UML#enumeration</Stereotype>
+      <EnumeratedValue hideInDiagrams="false"
+                       name="arrived"
+                       ea_guid="EAID_8CC94FC5_1D69_4967_8619_2B2060A069BE"
+                       baseResource="http://iec.ch/TC57/CIM100#CrewStatusKind.arrived"
+                       code="">
+         <Comment>the crew is on site at the outage location</Comment>
+      </EnumeratedValue>
+      <EnumeratedValue hideInDiagrams="false"
+                       name="assigned"
+                       ea_guid="EAID_53E018DA_D710_4f09_BF9F_00002BD6B676"
+                       baseResource="http://iec.ch/TC57/CIM100#CrewStatusKind.assigned"
+                       code="">
+         <Comment>the crew has been assigned to work on a task</Comment>
+      </EnumeratedValue>
+      <EnumeratedValue hideInDiagrams="false"
+                       name="awaitingCrewAssignment"
+                       ea_guid="EAID_35D2334A_1728_4adb_9359_A7F3D7DA9C47"
+                       baseResource="http://iec.ch/TC57/CIM100#CrewStatusKind.awaitingCrewAssignment"
+                       code="">
+         <Comment>Indicates that the work is awaiting one or more crews to be assigned</Comment>
+      </EnumeratedValue>
+      <EnumeratedValue hideInDiagrams="false"
+                       name="enroute"
+                       ea_guid="EAID_A558BDCD_994E_4835_AB38_81DC1080F516"
+                       baseResource="http://iec.ch/TC57/CIM100#CrewStatusKind.enroute"
+                       code="">
+         <Comment>the crew has been dispatched to work on an outage</Comment>
+      </EnumeratedValue>
+      <EnumeratedValue hideInDiagrams="false"
+                       name="fieldComplete"
+                       ea_guid="EAID_DF4869BC_D3EB_4613_A89B_0282E5289E20"
+                       baseResource="http://iec.ch/TC57/CIM100#CrewStatusKind.fieldComplete"
+                       code="">
+         <Comment>the crew has corrected the outage in the field.  The equipment or other devices may not be energized at this time.</Comment>
+      </EnumeratedValue>
+   </EnumeratedType>
+   <CompoundType hideInDiagrams="false"
+                 name="ElectronicAddress"
+                 ea_guid="EAID_77039F8D_76F9_4d56_8B1B_23F26D4CF355"
+                 baseClass="http://iec.ch/TC57/CIM100#ElectronicAddress"
+                 package="Common"
+                 packageURI="http://iec.ch/TC57/CIM100#Package_Common"
+                 minOccurs="0"
+                 maxOccurs="unbounded">
+      <Comment>Electronic address information.</Comment>
+      <Stereotype label="Compound">http://langdale.com.au/2005/UML#compound</Stereotype>
+      <Simple hideInDiagrams="false"
+              cimDatatype="http://iec.ch/TC57/CIM100#String"
+              dataType="http://www.w3.org/2001/XMLSchema#string"
+              xstype="string"
+              name="email1"
+              ea_guid="EAID_DA76BEA2_70FF_49a9_8FE0_15F027685F54"
+              baseProperty="http://iec.ch/TC57/CIM100#ElectronicAddress.email1"
+              basePropertyClass="http://iec.ch/TC57/CIM100#ElectronicAddress"
+              minOccurs="0"
+              maxOccurs="1">
+         <Comment>Primary email address.</Comment>
+         <Stereotype label="Attribute">http://langdale.com.au/2005/UML#attribute</Stereotype>
+      </Simple>
+      <Simple hideInDiagrams="false"
+              cimDatatype="http://iec.ch/TC57/CIM100#String"
+              dataType="http://www.w3.org/2001/XMLSchema#string"
+              xstype="string"
+              name="email2"
+              ea_guid="EAID_A93BB320_542C_411e_A25F_7175F8506C96"
+              baseProperty="http://iec.ch/TC57/CIM100#ElectronicAddress.email2"
+              basePropertyClass="http://iec.ch/TC57/CIM100#ElectronicAddress"
+              minOccurs="0"
+              maxOccurs="1">
+         <Comment>Alternate email address.</Comment>
+         <Stereotype label="Attribute">http://langdale.com.au/2005/UML#attribute</Stereotype>
+      </Simple>
+      <Simple hideInDiagrams="false"
+              cimDatatype="http://iec.ch/TC57/CIM100#String"
+              dataType="http://www.w3.org/2001/XMLSchema#string"
+              xstype="string"
+              name="lan"
+              ea_guid="EAID_BA953C4D_C5E3_455c_9CFE_3071857ABE3C"
+              baseProperty="http://iec.ch/TC57/CIM100#ElectronicAddress.lan"
+              basePropertyClass="http://iec.ch/TC57/CIM100#ElectronicAddress"
+              minOccurs="0"
+              maxOccurs="1">
+         <Comment>Address on local area network.</Comment>
+         <Stereotype label="Attribute">http://langdale.com.au/2005/UML#attribute</Stereotype>
+      </Simple>
+      <Simple hideInDiagrams="false"
+              cimDatatype="http://iec.ch/TC57/CIM100#String"
+              dataType="http://www.w3.org/2001/XMLSchema#string"
+              xstype="string"
+              name="mac"
+              ea_guid="EAID_75AD5365_618B_43ab_B105_C665EA975D92"
+              baseProperty="http://iec.ch/TC57/CIM100#ElectronicAddress.mac"
+              basePropertyClass="http://iec.ch/TC57/CIM100#ElectronicAddress"
+              minOccurs="0"
+              maxOccurs="1">
+         <Comment>MAC (Media Access Control) address.</Comment>
+         <Stereotype label="Attribute">http://langdale.com.au/2005/UML#attribute</Stereotype>
+      </Simple>
+      <Simple hideInDiagrams="false"
+              cimDatatype="http://iec.ch/TC57/CIM100#String"
+              dataType="http://www.w3.org/2001/XMLSchema#string"
+              xstype="string"
+              name="password"
+              ea_guid="EAID_9A958851_98D3_49d3_851E_D8A30C44B656"
+              baseProperty="http://iec.ch/TC57/CIM100#ElectronicAddress.password"
+              basePropertyClass="http://iec.ch/TC57/CIM100#ElectronicAddress"
+              minOccurs="0"
+              maxOccurs="1">
+         <Comment>Password needed to log in.</Comment>
+         <Stereotype label="Attribute">http://langdale.com.au/2005/UML#attribute</Stereotype>
+      </Simple>
+      <Simple hideInDiagrams="false"
+              cimDatatype="http://iec.ch/TC57/CIM100#String"
+              dataType="http://www.w3.org/2001/XMLSchema#string"
+              xstype="string"
+              name="radio"
+              ea_guid="EAID_E8017C5C_0A76_4cf9_A9C2_77CB35B22A30"
+              baseProperty="http://iec.ch/TC57/CIM100#ElectronicAddress.radio"
+              basePropertyClass="http://iec.ch/TC57/CIM100#ElectronicAddress"
+              minOccurs="0"
+              maxOccurs="1">
+         <Comment>Radio address.</Comment>
+         <Stereotype label="Attribute">http://langdale.com.au/2005/UML#attribute</Stereotype>
+      </Simple>
+      <Simple hideInDiagrams="false"
+              cimDatatype="http://iec.ch/TC57/CIM100#String"
+              dataType="http://www.w3.org/2001/XMLSchema#string"
+              xstype="string"
+              name="userID"
+              ea_guid="EAID_50656270_0E10_4914_9FB1_8907617F90AC"
+              baseProperty="http://iec.ch/TC57/CIM100#ElectronicAddress.userID"
+              basePropertyClass="http://iec.ch/TC57/CIM100#ElectronicAddress"
+              minOccurs="0"
+              maxOccurs="1">
+         <Comment>User ID needed to log in, which can be for an individual person, an organisation, a location, etc.</Comment>
+         <Stereotype label="Attribute">http://langdale.com.au/2005/UML#attribute</Stereotype>
+      </Simple>
+      <Simple hideInDiagrams="false"
+              cimDatatype="http://iec.ch/TC57/CIM100#String"
+              dataType="http://www.w3.org/2001/XMLSchema#string"
+              xstype="string"
+              name="web"
+              ea_guid="EAID_19B00DDF_F9E2_4a65_816A_12BE13228934"
+              baseProperty="http://iec.ch/TC57/CIM100#ElectronicAddress.web"
+              basePropertyClass="http://iec.ch/TC57/CIM100#ElectronicAddress"
+              minOccurs="0"
+              maxOccurs="1">
+         <Comment>World wide web address.</Comment>
+         <Stereotype label="Attribute">http://langdale.com.au/2005/UML#attribute</Stereotype>
+      </Simple>
+   </CompoundType>
+   <ComplexType hideInDiagrams="false"
+                name="IdentifiedObject"
+                ea_guid="EAID_055C5806_E9D8_4a7a_9307_DAF7C31763C7"
+                baseClass="http://iec.ch/TC57/CIM100#IdentifiedObject"
+                package="Core"
+                packageURI="http://iec.ch/TC57/CIM100#Package_Core"
+                minOccurs="0"
+                maxOccurs="unbounded">
+      <Comment>This is a root class to provide common identification for all classes needing identification and naming attributes.</Comment>
+      <Simple hideInDiagrams="false"
+              cimDatatype="http://iec.ch/TC57/CIM100#String"
+              dataType="http://www.w3.org/2001/XMLSchema#string"
+              xstype="string"
+              name="mRID"
+              ea_guid="EAID_C775F80A_A23D_4f38_AB9D_49D1FA882337"
+              baseProperty="http://iec.ch/TC57/CIM100#IdentifiedObject.mRID"
+              basePropertyClass="http://iec.ch/TC57/CIM100#IdentifiedObject"
+              minOccurs="1"
+              maxOccurs="1">
+         <Comment>Master resource identifier issued by a model authority. The mRID is unique within an exchange context. Global uniqueness is easily achieved by using a UUID, as specified in RFC 4122, for the mRID. The use of UUID is strongly recommended.</Comment>
+         <Comment>For CIMXML data files in RDF syntax conforming to IEC 61970-552, the mRID is mapped to rdf:ID or rdf:about attributes that identify CIM object elements.</Comment>
+         <Stereotype label="Attribute">http://langdale.com.au/2005/UML#attribute</Stereotype>
+      </Simple>
+      <Simple hideInDiagrams="false"
+              cimDatatype="http://iec.ch/TC57/CIM100#String"
+              dataType="http://www.w3.org/2001/XMLSchema#string"
+              xstype="string"
+              name="name"
+              ea_guid="EAID_870F033B_EDA6_4a32_A5AD_47DCBBFE2997"
+              baseProperty="http://iec.ch/TC57/CIM100#IdentifiedObject.name"
+              basePropertyClass="http://iec.ch/TC57/CIM100#IdentifiedObject"
+              minOccurs="0"
+              maxOccurs="1">
+         <Comment>The name is any free human readable and possibly non unique text naming the object.</Comment>
+         <Stereotype label="Attribute">http://langdale.com.au/2005/UML#attribute</Stereotype>
+      </Simple>
+   </ComplexType>
+   <Root hideInDiagrams="false"
+         name="Organisation"
+         ea_guid="EAID_F8CDB36C_C67A_437e_B836_79674718904E"
+         baseClass="http://iec.ch/TC57/CIM100#Organisation"
+         package="Common"
+         packageURI="http://iec.ch/TC57/CIM100#Package_Common"
+         minOccurs="0"
+         maxOccurs="unbounded">
+      <Comment>Organisation that might have roles as utility, contractor, supplier, manufacturer, customer, etc.</Comment>
+      <Stereotype label="Concrete">http://langdale.com.au/2005/UML#concrete</Stereotype>
+      <SuperType name="IdentifiedObject"
+                 baseClass="http://iec.ch/TC57/CIM100#IdentifiedObject"
+                 baseClassIsShadowExtension="false"/>
+      <Compound baseClass="http://iec.ch/TC57/CIM100#ElectronicAddress"
+                type="ElectronicAddress"
+                hideInDiagrams="false"
+                name="electronicAddress"
+                ea_guid="EAID_420B480C_5DE3_4687_811D_95091C63FC97"
+                baseProperty="http://iec.ch/TC57/CIM100#Organisation.electronicAddress"
+                basePropertyClass="http://iec.ch/TC57/CIM100#Organisation"
+                minOccurs="0"
+                maxOccurs="1"
+                inverseBasePropertyClass="http://iec.ch/TC57/CIM100#Organisation">
+         <Comment>Electronic address.</Comment>
+         <Stereotype label="Compound">http://langdale.com.au/2005/UML#compound</Stereotype>
+         <Stereotype label="Attribute">http://langdale.com.au/2005/UML#attribute</Stereotype>
+      </Compound>
+      <Instance baseClass="http://iec.ch/TC57/CIM100#ParentOrganization"
+                type="ParentOrganization"
+                hideInDiagrams="false"
+                name="ParentOrganisation"
+                ea_guid="EAID_859EDB59_64A7_41fc_8B17_1A318CDA46C9-A"
+                baseProperty="http://iec.ch/TC57/CIM100#Organisation.ParentOrganisation"
+                basePropertyClass="http://iec.ch/TC57/CIM100#Organisation"
+                minOccurs="0"
+                maxOccurs="1"
+                inverseBasePropertyClass="http://iec.ch/TC57/CIM100#ParentOrganization"
+                inverseBaseProperty="http://iec.ch/TC57/CIM100#ParentOrganization.Organisation">
+         <Comment>Parent organisation of this organisation.</Comment>
+      </Instance>
+      <InverseInstance hideInDiagrams="false"
+                       baseClass="http://iec.ch/TC57/CIM100#Organisation"
+                       ea_guid="EAID_859EDB59_64A7_41fc_8B17_1A318CDA46C9-B"
+                       type="Organisation"
+                       name="Organisation"
+                       baseProperty="http://iec.ch/TC57/CIM100#ParentOrganization.Organisation"
+                       basePropertyClass="http://iec.ch/TC57/CIM100#ParentOrganization"
+                       minOccurs="0"
+                       maxOccurs="unbounded"
+                       inverseBasePropertyClass="http://iec.ch/TC57/CIM100#Organisation"
+                       inverseBaseProperty="http://iec.ch/TC57/CIM100#Organisation.ParentOrganisation">
+         <Comment>Organisation that is part of this parent organisation.</Comment>
+      </InverseInstance>
+      <Compound baseClass="http://iec.ch/TC57/CIM100#TelephoneNumber"
+                type="TelephoneNumber"
+                hideInDiagrams="false"
+                name="phone1"
+                ea_guid="EAID_C6A9116C_C752_4c65_B59B_9A77B6149795"
+                baseProperty="http://iec.ch/TC57/CIM100#Organisation.phone1"
+                basePropertyClass="http://iec.ch/TC57/CIM100#Organisation"
+                minOccurs="0"
+                maxOccurs="1"
+                inverseBasePropertyClass="http://iec.ch/TC57/CIM100#Organisation">
+         <Comment>Phone number.</Comment>
+         <Stereotype label="Compound">http://langdale.com.au/2005/UML#compound</Stereotype>
+         <Stereotype label="Attribute">http://langdale.com.au/2005/UML#attribute</Stereotype>
+      </Compound>
+      <Compound baseClass="http://iec.ch/TC57/CIM100#TelephoneNumber"
+                type="TelephoneNumber"
+                hideInDiagrams="false"
+                name="phone2"
+                ea_guid="EAID_1857252F_D8A8_45d0_AD06_817CBCA55A73"
+                baseProperty="http://iec.ch/TC57/CIM100#Organisation.phone2"
+                basePropertyClass="http://iec.ch/TC57/CIM100#Organisation"
+                minOccurs="0"
+                maxOccurs="1"
+                inverseBasePropertyClass="http://iec.ch/TC57/CIM100#Organisation">
+         <Comment>Additional phone number.</Comment>
+         <Stereotype label="Compound">http://langdale.com.au/2005/UML#compound</Stereotype>
+         <Stereotype label="Attribute">http://langdale.com.au/2005/UML#attribute</Stereotype>
+      </Compound>
+      <Compound baseClass="http://iec.ch/TC57/CIM100#StreetAddress"
+                type="StreetAddress"
+                hideInDiagrams="false"
+                name="postalAddress"
+                ea_guid="EAID_F59336DC_7E1F_4ef6_8534_6BDF3F957952"
+                baseProperty="http://iec.ch/TC57/CIM100#Organisation.postalAddress"
+                basePropertyClass="http://iec.ch/TC57/CIM100#Organisation"
+                minOccurs="0"
+                maxOccurs="1"
+                inverseBasePropertyClass="http://iec.ch/TC57/CIM100#Organisation">
+         <Comment>Postal address, potentially different than 'streetAddress' (e.g., another city).</Comment>
+         <Stereotype label="Compound">http://langdale.com.au/2005/UML#compound</Stereotype>
+         <Stereotype label="Attribute">http://langdale.com.au/2005/UML#attribute</Stereotype>
+      </Compound>
+      <Compound baseClass="http://iec.ch/TC57/CIM100#StreetAddress"
+                type="StreetAddress"
+                hideInDiagrams="false"
+                name="streetAddress"
+                ea_guid="EAID_6EDF9FBB_9D0C_4b28_96A8_6E023DBAFD26"
+                baseProperty="http://iec.ch/TC57/CIM100#Organisation.streetAddress"
+                basePropertyClass="http://iec.ch/TC57/CIM100#Organisation"
+                minOccurs="0"
+                maxOccurs="1"
+                inverseBasePropertyClass="http://iec.ch/TC57/CIM100#Organisation">
+         <Comment>Street address.</Comment>
+         <Stereotype label="Compound">http://langdale.com.au/2005/UML#compound</Stereotype>
+         <Stereotype label="Attribute">http://langdale.com.au/2005/UML#attribute</Stereotype>
+      </Compound>
+   </Root>
+   <Root hideInDiagrams="false"
+         name="OverheadWireInfo"
+         ea_guid="EAID_4DD1FC69_2D71_4337_A697_B952F97733EC"
+         baseClass="http://iec.ch/TC57/CIM100#OverheadWireInfo"
+         package="AssetInfo"
+         packageURI="http://iec.ch/TC57/CIM100#Package_AssetInfo"
+         minOccurs="0"
+         maxOccurs="unbounded">
+      <Comment>Overhead wire data.</Comment>
+      <Stereotype label="Concrete">http://langdale.com.au/2005/UML#concrete</Stereotype>
+      <SuperType name="WireInfo"
+                 baseClass="http://iec.ch/TC57/CIM100#WireInfo"
+                 baseClassIsShadowExtension="false"/>
+   </Root>
+   <Root hideInDiagrams="false"
+         name="ParentOrganization"
+         ea_guid="EAID_F30F7262_89B5_4112_8867_770A060AAD09"
+         baseClass="http://iec.ch/TC57/CIM100#ParentOrganization"
+         package="Common"
+         packageURI="http://iec.ch/TC57/CIM100#Package_Common"
+         minOccurs="0"
+         maxOccurs="unbounded">
+      <Stereotype label="Concrete">http://langdale.com.au/2005/UML#concrete</Stereotype>
+      <SuperType name="Organisation"
+                 baseClass="http://iec.ch/TC57/CIM100#Organisation"
+                 baseClassIsShadowExtension="false"/>
+   </Root>
+   <EnumeratedType hideInDiagrams="false"
+                   name="PhaseCode"
+                   ea_guid="EAID_3687AEED_A1B1_4557_899E_5985D184FCE9"
+                   baseClass="http://iec.ch/TC57/CIM100#PhaseCode"
+                   package="Core"
+                   packageURI="http://iec.ch/TC57/CIM100#Package_Core"
+                   minOccurs="0"
+                   maxOccurs="unbounded">
+      <Comment>An unordered enumeration of phase identifiers.  Allows designation of phases for both transmission and distribution equipment, circuits and loads.   The enumeration, by itself, does not describe how the phases are connected together or connected to ground.  Ground is not explicitly denoted as a phase.</Comment>
+      <Comment>Residential and small commercial loads are often served from single-phase, or split-phase, secondary circuits. For the example of s12N, phases 1 and 2 refer to hot wires that are 180 degrees out of phase, while N refers to the neutral wire. Through single-phase transformer connections, these secondary circuits may be served from one or two of the primary phases A, B, and C. For three-phase loads, use the A, B, C phase codes instead of s12N.</Comment>
+      <Comment>The integer values are from IEC 61968-9 to support revenue metering applications.</Comment>
+      <Stereotype label="enumeration">http://langdale.com.au/2005/UML#enumeration</Stereotype>
+      <EnumeratedValue hideInDiagrams="false"
+                       name="A"
+                       ea_guid="EAID_EA5174F8_A73C_4f4b_96AA_54EAFB16BC9F"
+                       baseResource="http://iec.ch/TC57/CIM100#PhaseCode.A"
+                       code="128">
+         <Comment>Phase A.</Comment>
+      </EnumeratedValue>
+      <EnumeratedValue hideInDiagrams="false"
+                       name="AB"
+                       ea_guid="EAID_77216F5E_3863_424c_91CD_4597AE97B61E"
+                       baseResource="http://iec.ch/TC57/CIM100#PhaseCode.AB"
+                       code="132">
+         <Comment>Phases A and B.</Comment>
+      </EnumeratedValue>
+      <EnumeratedValue hideInDiagrams="false"
+                       name="ABC"
+                       ea_guid="EAID_5A6F7D82_6A2C_4eb3_90BC_8F77AAD9D50F"
+                       baseResource="http://iec.ch/TC57/CIM100#PhaseCode.ABC"
+                       code="224">
+         <Comment>Phases A, B, and C.</Comment>
+      </EnumeratedValue>
+      <EnumeratedValue hideInDiagrams="false"
+                       name="ABCN"
+                       ea_guid="EAID_8E38EE25_FD5C_4b01_938C_008998EDA526"
+                       baseResource="http://iec.ch/TC57/CIM100#PhaseCode.ABCN"
+                       code="225">
+         <Comment>Phases A, B, C, and N.</Comment>
+      </EnumeratedValue>
+      <EnumeratedValue hideInDiagrams="false"
+                       name="ABN"
+                       ea_guid="EAID_C5F9ED62_CB15_4c15_98DB_6593686F63E2"
+                       baseResource="http://iec.ch/TC57/CIM100#PhaseCode.ABN"
+                       code="193">
+         <Comment>Phases A, B, and neutral.</Comment>
+      </EnumeratedValue>
+      <EnumeratedValue hideInDiagrams="false"
+                       name="AC"
+                       ea_guid="EAID_598C4480_5C39_4889_8BD1_D1D2BCEB4DEA"
+                       baseResource="http://iec.ch/TC57/CIM100#PhaseCode.AC"
+                       code="96">
+         <Comment>Phases A and C.</Comment>
+      </EnumeratedValue>
+      <EnumeratedValue hideInDiagrams="false"
+                       name="ACN"
+                       ea_guid="EAID_0396E7F5_6112_49e7_A7C8_7B7FA0214AA7"
+                       baseResource="http://iec.ch/TC57/CIM100#PhaseCode.ACN"
+                       code="41">
+         <Comment>Phases A, C and neutral.</Comment>
+      </EnumeratedValue>
+      <EnumeratedValue hideInDiagrams="false"
+                       name="AN"
+                       ea_guid="EAID_9B41A289_EDF6_4728_AABE_B11D2E617549"
+                       baseResource="http://iec.ch/TC57/CIM100#PhaseCode.AN"
+                       code="129">
+         <Comment>Phases A and neutral.</Comment>
+      </EnumeratedValue>
+      <EnumeratedValue hideInDiagrams="false"
+                       name="B"
+                       ea_guid="EAID_DF516C67_D4FE_4a6b_9FE7_54E54036C7CA"
+                       baseResource="http://iec.ch/TC57/CIM100#PhaseCode.B"
+                       code="64">
+         <Comment>Phase B.</Comment>
+      </EnumeratedValue>
+      <EnumeratedValue hideInDiagrams="false"
+                       name="BC"
+                       ea_guid="EAID_8124AC36_FD4D_4b64_A414_6F9B8D350469"
+                       baseResource="http://iec.ch/TC57/CIM100#PhaseCode.BC"
+                       code="66">
+         <Comment>Phases B and C.</Comment>
+      </EnumeratedValue>
+      <EnumeratedValue hideInDiagrams="false"
+                       name="BCN"
+                       ea_guid="EAID_F494A423_E865_4c3d_8C83_180728F30A66"
+                       baseResource="http://iec.ch/TC57/CIM100#PhaseCode.BCN"
+                       code="97">
+         <Comment>Phases B, C, and neutral.</Comment>
+      </EnumeratedValue>
+      <EnumeratedValue hideInDiagrams="false"
+                       name="BN"
+                       ea_guid="EAID_2780D899_5467_4920_8DAA_117051620D3A"
+                       baseResource="http://iec.ch/TC57/CIM100#PhaseCode.BN"
+                       code="65">
+         <Comment>Phases B and neutral.</Comment>
+      </EnumeratedValue>
+      <EnumeratedValue hideInDiagrams="false"
+                       name="C"
+                       ea_guid="EAID_8E5E8952_BD3F_4b06_A218_7A1EE85598D0"
+                       baseResource="http://iec.ch/TC57/CIM100#PhaseCode.C"
+                       code="32">
+         <Comment>Phase C.</Comment>
+      </EnumeratedValue>
+      <EnumeratedValue hideInDiagrams="false"
+                       name="CN"
+                       ea_guid="EAID_DEB66611_AEAD_4b57_8CBD_65D1931709CE"
+                       baseResource="http://iec.ch/TC57/CIM100#PhaseCode.CN"
+                       code="33">
+         <Comment>Phases C and neutral.</Comment>
+      </EnumeratedValue>
+      <EnumeratedValue hideInDiagrams="false"
+                       name="N"
+                       ea_guid="EAID_177D92A8_237D_4ec7_99BF_6BBE2AA2CE9E"
+                       baseResource="http://iec.ch/TC57/CIM100#PhaseCode.N"
+                       code="16">
+         <Comment>Neutral phase.</Comment>
+      </EnumeratedValue>
+      <EnumeratedValue hideInDiagrams="false"
+                       name="X"
+                       ea_guid="EAID_18C21147_5A05_4e89_857C_07DED480CDD7"
+                       baseResource="http://iec.ch/TC57/CIM100#PhaseCode.X"
+                       code="1024">
+         <Comment>Unknown non-neutral phase.</Comment>
+      </EnumeratedValue>
+      <EnumeratedValue hideInDiagrams="false"
+                       name="XN"
+                       ea_guid="EAID_C97339FF_B1B1_4b27_9F89_F1224B83DFCD"
+                       baseResource="http://iec.ch/TC57/CIM100#PhaseCode.XN"
+                       code="1040">
+         <Comment>Unknown non-neutral phase plus neutral.</Comment>
+      </EnumeratedValue>
+      <EnumeratedValue hideInDiagrams="false"
+                       name="XY"
+                       ea_guid="EAID_88204DE0_8923_4886_8C42_955E3147E39B"
+                       baseResource="http://iec.ch/TC57/CIM100#PhaseCode.XY"
+                       code="3072">
+         <Comment>Two unknown non-neutral phases.</Comment>
+      </EnumeratedValue>
+      <EnumeratedValue hideInDiagrams="false"
+                       name="XYN"
+                       ea_guid="EAID_BE6C0B89_4F67_41fa_B56D_1195F07B82E0"
+                       baseResource="http://iec.ch/TC57/CIM100#PhaseCode.XYN"
+                       code="3088">
+         <Comment>Two unknown non-neutral phases plus neutral.</Comment>
+      </EnumeratedValue>
+      <EnumeratedValue hideInDiagrams="false"
+                       name="none"
+                       ea_guid="EAID_39811306_A5CF_49f9_9D71_313B1B5BC519"
+                       baseResource="http://iec.ch/TC57/CIM100#PhaseCode.none"
+                       code="0">
+         <Comment>No phases specified.</Comment>
+      </EnumeratedValue>
+      <EnumeratedValue hideInDiagrams="false"
+                       name="s1"
+                       ea_guid="EAID_50FB82A9_B3F5_4a7b_AF43_2EC84E06D953"
+                       baseResource="http://iec.ch/TC57/CIM100#PhaseCode.s1"
+                       code="512">
+         <Comment>Secondary phase 1.</Comment>
+      </EnumeratedValue>
+      <EnumeratedValue hideInDiagrams="false"
+                       name="s12"
+                       ea_guid="EAID_939E2E11_8FE6_4d66_A048_8F990F9BEBF6"
+                       baseResource="http://iec.ch/TC57/CIM100#PhaseCode.s12"
+                       code="768">
+         <Comment>Secondary phase 1 and 2.</Comment>
+      </EnumeratedValue>
+      <EnumeratedValue hideInDiagrams="false"
+                       name="s12N"
+                       ea_guid="EAID_2E31EA79_AFF2_45bf_82E3_DD2DD070FDB6"
+                       baseResource="http://iec.ch/TC57/CIM100#PhaseCode.s12N"
+                       code="784">
+         <Comment>Secondary phases 1, 2, and neutral.</Comment>
+      </EnumeratedValue>
+      <EnumeratedValue hideInDiagrams="false"
+                       name="s1N"
+                       ea_guid="EAID_7CBBF307_75C0_4255_B181_0BB16E0B4A23"
+                       baseResource="http://iec.ch/TC57/CIM100#PhaseCode.s1N"
+                       code="528">
+         <Comment>Secondary phase 1 and neutral.</Comment>
+      </EnumeratedValue>
+      <EnumeratedValue hideInDiagrams="false"
+                       name="s2"
+                       ea_guid="EAID_DD0F804D_9672_4043_8B7A_9937AC0C3BAB"
+                       baseResource="http://iec.ch/TC57/CIM100#PhaseCode.s2"
+                       code="256">
+         <Comment>Secondary phase 2.</Comment>
+      </EnumeratedValue>
+      <EnumeratedValue hideInDiagrams="false"
+                       name="s2N"
+                       ea_guid="EAID_16119B57_3431_4045_A8EB_1618E844A397"
+                       baseResource="http://iec.ch/TC57/CIM100#PhaseCode.s2N"
+                       code="272">
+         <Comment>Secondary phase 2 and neutral.</Comment>
+      </EnumeratedValue>
+   </EnumeratedType>
+   <ComplexType hideInDiagrams="false"
+                name="ShuntCompensatorControl"
+                ea_guid="EAID_5FFFB760_AFCE_495a_8F94_95B84D23690E"
+                baseClass="http://iec.ch/TC57/CIM100#ShuntCompensatorControl"
+                package="InfWiresExt"
+                packageURI="http://iec.ch/TC57/CIM100#Package_InfWiresExt"
+                minOccurs="0"
+                maxOccurs="unbounded">
+      <Comment>Distribution capacitor bank control settings.</Comment>
+      <Enumerated baseClass="http://iec.ch/TC57/CIM100#PhaseCode"
+                  type="PhaseCode"
+                  hideInDiagrams="false"
+                  name="sensingPhaseCode"
+                  ea_guid="EAID_B38D809A_2A66_41d6_BE06_2D6FADC5DFC8"
+                  baseProperty="http://iec.ch/TC57/CIM100#ShuntCompensatorControl.sensingPhaseCode"
+                  basePropertyClass="http://iec.ch/TC57/CIM100#ShuntCompensatorControl"
+                  minOccurs="0"
+                  maxOccurs="1"
+                  inverseBasePropertyClass="http://iec.ch/TC57/CIM100#ShuntCompensatorControl">
+         <Comment>Phases that are measured for controlling the device.</Comment>
+         <Stereotype label="enumeration">http://langdale.com.au/2005/UML#enumeration</Stereotype>
+         <Stereotype label="Attribute">http://langdale.com.au/2005/UML#attribute</Stereotype>
+      </Enumerated>
+   </ComplexType>
+   <Root hideInDiagrams="false"
+         name="ShuntCompensatorInfo"
+         ea_guid="EAID_3E9CFB82_B958_4601_9FE4_F334F40FA838"
+         baseClass="http://iec.ch/TC57/CIM100#ShuntCompensatorInfo"
+         package="AssetInfo"
+         packageURI="http://iec.ch/TC57/CIM100#Package_AssetInfo"
+         minOccurs="0"
+         maxOccurs="unbounded">
+      <Comment>Properties of shunt capacitor, shunt reactor or switchable bank of shunt capacitor or reactor assets.</Comment>
+      <Stereotype label="Concrete">http://langdale.com.au/2005/UML#concrete</Stereotype>
+      <SuperType name="AssetInfo"
+                 baseClass="http://iec.ch/TC57/CIM100#AssetInfo"
+                 baseClassIsShadowExtension="false"/>
+      <Domain hideInDiagrams="false"
+              type="ApparentPower"
+              dataType="http://iec.ch/TC57/CIM100#ApparentPower"
+              xstype="float"
+              name="maxPowerLoss"
+              ea_guid="EAID_54CBED91_48A8_49bb_BEDA_05CFF307441B"
+              baseProperty="http://iec.ch/TC57/CIM100#ShuntCompensatorInfo.maxPowerLoss"
+              basePropertyClass="http://iec.ch/TC57/CIM100#ShuntCompensatorInfo"
+              minOccurs="0"
+              maxOccurs="1">
+         <Comment>Maximum allowed apparent power loss.</Comment>
+         <Stereotype label="Attribute">http://langdale.com.au/2005/UML#attribute</Stereotype>
+      </Domain>
+      <Domain hideInDiagrams="false"
+              type="CurrentFlow"
+              dataType="http://iec.ch/TC57/CIM100#CurrentFlow"
+              xstype="float"
+              name="ratedCurrent"
+              ea_guid="EAID_4A99376B_5DC3_4624_A07C_747A7172A8F6"
+              baseProperty="http://iec.ch/TC57/CIM100#ShuntCompensatorInfo.ratedCurrent"
+              basePropertyClass="http://iec.ch/TC57/CIM100#ShuntCompensatorInfo"
+              minOccurs="0"
+              maxOccurs="1">
+         <Comment>Rated current.</Comment>
+         <Stereotype label="Attribute">http://langdale.com.au/2005/UML#attribute</Stereotype>
+      </Domain>
+      <Domain hideInDiagrams="false"
+              type="ReactivePower"
+              dataType="http://iec.ch/TC57/CIM100#ReactivePower"
+              xstype="float"
+              name="ratedReactivePower"
+              ea_guid="EAID_4608D242_6EF9_42be_B3FD_9F96542D71C5"
+              baseProperty="http://iec.ch/TC57/CIM100#ShuntCompensatorInfo.ratedReactivePower"
+              basePropertyClass="http://iec.ch/TC57/CIM100#ShuntCompensatorInfo"
+              minOccurs="0"
+              maxOccurs="1">
+         <Comment>Rated reactive power.</Comment>
+         <Stereotype label="Attribute">http://langdale.com.au/2005/UML#attribute</Stereotype>
+      </Domain>
+      <Domain hideInDiagrams="false"
+              type="Voltage"
+              dataType="http://iec.ch/TC57/CIM100#Voltage"
+              xstype="float"
+              name="ratedVoltage"
+              ea_guid="EAID_BA81D35A_EDC6_4968_8264_56C8F0954E71"
+              baseProperty="http://iec.ch/TC57/CIM100#ShuntCompensatorInfo.ratedVoltage"
+              basePropertyClass="http://iec.ch/TC57/CIM100#ShuntCompensatorInfo"
+              minOccurs="0"
+              maxOccurs="1">
+         <Comment>Rated voltage.</Comment>
+         <Stereotype label="Attribute">http://langdale.com.au/2005/UML#attribute</Stereotype>
+      </Domain>
+      <Instance baseClass="http://iec.ch/TC57/CIM100#ShuntCompensatorControl"
+                type="ShuntCompensatorControl"
+                hideInDiagrams="false"
+                name="ShuntCompensatorControl"
+                ea_guid="EAID_A5EB9D9A_15FF_4076_9909_2B14A074EA9C-A"
+                baseProperty="http://iec.ch/TC57/CIM100#ShuntCompensatorInfo.ShuntCompensatorControl"
+                basePropertyClass="http://iec.ch/TC57/CIM100#ShuntCompensatorInfo"
+                minOccurs="0"
+                maxOccurs="1"
+                inverseBasePropertyClass="http://iec.ch/TC57/CIM100#ShuntCompensatorControl"
+                inverseBaseProperty="http://iec.ch/TC57/CIM100#ShuntCompensatorControl.ShuntCompensatorInfo">
+         <Stereotype label="informative">http://langdale.com.au/2005/UML#informative</Stereotype>
+      </Instance>
+      <InverseInstance hideInDiagrams="false"
+                       baseClass="http://iec.ch/TC57/CIM100#ShuntCompensatorInfo"
+                       ea_guid="EAID_A5EB9D9A_15FF_4076_9909_2B14A074EA9C-B"
+                       type="ShuntCompensatorInfo"
+                       name="ShuntCompensatorInfo"
+                       baseProperty="http://iec.ch/TC57/CIM100#ShuntCompensatorControl.ShuntCompensatorInfo"
+                       basePropertyClass="http://iec.ch/TC57/CIM100#ShuntCompensatorControl"
+                       minOccurs="0"
+                       maxOccurs="1"
+                       inverseBasePropertyClass="http://iec.ch/TC57/CIM100#ShuntCompensatorInfo"
+                       inverseBaseProperty="http://iec.ch/TC57/CIM100#ShuntCompensatorInfo.ShuntCompensatorControl">
+         <Stereotype label="informative">http://langdale.com.au/2005/UML#informative</Stereotype>
+      </InverseInstance>
+   </Root>
+   <EnumeratedType hideInDiagrams="false"
+                   name="ShuntImpedanceControlKind"
+                   ea_guid="EAID_6F86F7A1_3B9B_4675_BFE8_7B47013B60A1"
+                   baseClass="http://iec.ch/TC57/CIM100#ShuntImpedanceControlKind"
+                   package="InfAssetInfo"
+                   packageURI="http://iec.ch/TC57/CIM100#Package_InfAssetInfo"
+                   minOccurs="0"
+                   maxOccurs="unbounded">
+      <Comment>Kind of control for shunt impedance.</Comment>
+      <Stereotype label="enumeration">http://langdale.com.au/2005/UML#enumeration</Stereotype>
+      <EnumeratedValue hideInDiagrams="false"
+                       name="fixed"
+                       ea_guid="EAID_E2EEC3F1_49C1_4d81_BB2B_09839E687C37"
+                       baseResource="http://iec.ch/TC57/CIM100#ShuntImpedanceControlKind.fixed"
+                       code=""/>
+      <EnumeratedValue hideInDiagrams="false"
+                       name="localOnly"
+                       ea_guid="EAID_4AE4E7F0_DF5A_4f36_B980_F7F60E44EC5D"
+                       baseResource="http://iec.ch/TC57/CIM100#ShuntImpedanceControlKind.localOnly"
+                       code=""/>
+      <EnumeratedValue hideInDiagrams="false"
+                       name="remoteOnly"
+                       ea_guid="EAID_29DDFAFE_5682_49f8_B9AA_F80ADBE3FA20"
+                       baseResource="http://iec.ch/TC57/CIM100#ShuntImpedanceControlKind.remoteOnly"
+                       code=""/>
+      <EnumeratedValue hideInDiagrams="false"
+                       name="remoteWithLocalOverride"
+                       ea_guid="EAID_7B40D412_6D0F_4f91_A609_07ACC7DFDD8B"
+                       baseResource="http://iec.ch/TC57/CIM100#ShuntImpedanceControlKind.remoteWithLocalOverride"
+                       code=""/>
+   </EnumeratedType>
+   <EnumeratedType hideInDiagrams="false"
+                   name="ShuntImpedanceLocalControlKind"
+                   ea_guid="EAID_1DF1339E_9D7C_4d81_A2FE_6E08BC99C021"
+                   baseClass="http://iec.ch/TC57/CIM100#ShuntImpedanceLocalControlKind"
+                   package="InfAssetInfo"
+                   packageURI="http://iec.ch/TC57/CIM100#Package_InfAssetInfo"
+                   minOccurs="0"
+                   maxOccurs="unbounded">
+      <Comment>Kind of local control for shunt impedance.</Comment>
+      <Stereotype label="enumeration">http://langdale.com.au/2005/UML#enumeration</Stereotype>
+      <EnumeratedValue hideInDiagrams="false"
+                       name="current"
+                       ea_guid="EAID_59C4859C_A809_4cbc_A9C5_AF2DCF5DC8E6"
+                       baseResource="http://iec.ch/TC57/CIM100#ShuntImpedanceLocalControlKind.current"
+                       code=""/>
+      <EnumeratedValue hideInDiagrams="false"
+                       name="none"
+                       ea_guid="EAID_A9E6A720_8379_4788_93E8_8669DF42B249"
+                       baseResource="http://iec.ch/TC57/CIM100#ShuntImpedanceLocalControlKind.none"
+                       code=""/>
+      <EnumeratedValue hideInDiagrams="false"
+                       name="powerFactor"
+                       ea_guid="EAID_0423B958_8C0F_4ee3_BAFD_F949A9C07892"
+                       baseResource="http://iec.ch/TC57/CIM100#ShuntImpedanceLocalControlKind.powerFactor"
+                       code=""/>
+      <EnumeratedValue hideInDiagrams="false"
+                       name="reactivePower"
+                       ea_guid="EAID_57531641_5175_4c05_AA18_6141E897E0EB"
+                       baseResource="http://iec.ch/TC57/CIM100#ShuntImpedanceLocalControlKind.reactivePower"
+                       code=""/>
+      <EnumeratedValue hideInDiagrams="false"
+                       name="temperature"
+                       ea_guid="EAID_59E3E447_A9CF_484d_A056_4D6E52E2BE91"
+                       baseResource="http://iec.ch/TC57/CIM100#ShuntImpedanceLocalControlKind.temperature"
+                       code=""/>
+      <EnumeratedValue hideInDiagrams="false"
+                       name="time"
+                       ea_guid="EAID_0027B6DD_FEFC_49b9_9C6C_3945C9B3B565"
+                       baseResource="http://iec.ch/TC57/CIM100#ShuntImpedanceLocalControlKind.time"
+                       code=""/>
+      <EnumeratedValue hideInDiagrams="false"
+                       name="voltage"
+                       ea_guid="EAID_8550A25E_2926_423f_A26F_E3FE0CB36E2B"
+                       baseResource="http://iec.ch/TC57/CIM100#ShuntImpedanceLocalControlKind.voltage"
+                       code=""/>
+   </EnumeratedType>
+   <CompoundType hideInDiagrams="false"
+                 name="Status"
+                 ea_guid="EAID_9EF7B157_4B24_45ee_A340_2CFB8F049D68"
+                 baseClass="http://iec.ch/TC57/CIM100#Status"
+                 package="Common"
+                 packageURI="http://iec.ch/TC57/CIM100#Package_Common"
+                 minOccurs="0"
+                 maxOccurs="unbounded">
+      <Comment>Current status information relevant to an entity.</Comment>
+      <Stereotype label="Compound">http://langdale.com.au/2005/UML#compound</Stereotype>
+      <Simple hideInDiagrams="false"
+              cimDatatype="http://iec.ch/TC57/CIM100#DateTime"
+              dataType="http://www.w3.org/2001/XMLSchema#dateTime"
+              xstype="dateTime"
+              name="dateTime"
+              ea_guid="EAID_F75CAF5C_DCC0_40fc_A2AF_D10354C0E735"
+              baseProperty="http://iec.ch/TC57/CIM100#Status.dateTime"
+              basePropertyClass="http://iec.ch/TC57/CIM100#Status"
+              minOccurs="0"
+              maxOccurs="1">
+         <Comment>Date and time for which status 'value' applies.</Comment>
+         <Stereotype label="Attribute">http://langdale.com.au/2005/UML#attribute</Stereotype>
+      </Simple>
+      <Simple hideInDiagrams="false"
+              cimDatatype="http://iec.ch/TC57/CIM100#String"
+              dataType="http://www.w3.org/2001/XMLSchema#string"
+              xstype="string"
+              name="reason"
+              ea_guid="EAID_BF4685AC_F0E0_40f0_87F2_5D4714B1D11F"
+              baseProperty="http://iec.ch/TC57/CIM100#Status.reason"
+              basePropertyClass="http://iec.ch/TC57/CIM100#Status"
+              minOccurs="0"
+              maxOccurs="1">
+         <Comment>Reason code or explanation for why an object went to the current status 'value'.</Comment>
+         <Stereotype label="Attribute">http://langdale.com.au/2005/UML#attribute</Stereotype>
+      </Simple>
+      <Simple hideInDiagrams="false"
+              cimDatatype="http://iec.ch/TC57/CIM100#String"
+              dataType="http://www.w3.org/2001/XMLSchema#string"
+              xstype="string"
+              name="remark"
+              ea_guid="EAID_BD8B05D0_CEC7_4f60_8CC3_7C88DA03505F"
+              baseProperty="http://iec.ch/TC57/CIM100#Status.remark"
+              basePropertyClass="http://iec.ch/TC57/CIM100#Status"
+              minOccurs="0"
+              maxOccurs="1">
+         <Comment>Pertinent information regarding the current 'value', as free form text.</Comment>
+         <Stereotype label="Attribute">http://langdale.com.au/2005/UML#attribute</Stereotype>
+      </Simple>
+      <Simple hideInDiagrams="false"
+              cimDatatype="http://iec.ch/TC57/CIM100#String"
+              dataType="http://www.w3.org/2001/XMLSchema#string"
+              xstype="string"
+              name="value"
+              ea_guid="EAID_7BAA985C_D13D_4282_91ED_90FBCF326D6B"
+              baseProperty="http://iec.ch/TC57/CIM100#Status.value"
+              basePropertyClass="http://iec.ch/TC57/CIM100#Status"
+              minOccurs="0"
+              maxOccurs="1">
+         <Comment>Status value at 'dateTime'; prior status changes may have been kept in instances of activity records associated with the object to which this status applies.</Comment>
+         <Stereotype label="Attribute">http://langdale.com.au/2005/UML#attribute</Stereotype>
+      </Simple>
+   </CompoundType>
+   <CompoundType hideInDiagrams="false"
+                 name="StreetAddress"
+                 ea_guid="EAID_90007399_BB87_4f28_9898_853DAB696115"
+                 baseClass="http://iec.ch/TC57/CIM100#StreetAddress"
+                 package="Common"
+                 packageURI="http://iec.ch/TC57/CIM100#Package_Common"
+                 minOccurs="0"
+                 maxOccurs="unbounded">
+      <Comment>General purpose street and postal address information.</Comment>
+      <Stereotype label="Compound">http://langdale.com.au/2005/UML#compound</Stereotype>
+      <Simple hideInDiagrams="false"
+              cimDatatype="http://iec.ch/TC57/CIM100#String"
+              dataType="http://www.w3.org/2001/XMLSchema#string"
+              xstype="string"
+              name="language"
+              ea_guid="EAID_7BD40FC3_3D5F_4229_ADAF_7CFC1AC97F0B"
+              baseProperty="http://iec.ch/TC57/CIM100#StreetAddress.language"
+              basePropertyClass="http://iec.ch/TC57/CIM100#StreetAddress"
+              minOccurs="0"
+              maxOccurs="1">
+         <Comment>The language in which the address is specified, using ISO 639-1 two digit language code.</Comment>
+         <Stereotype label="Attribute">http://langdale.com.au/2005/UML#attribute</Stereotype>
+      </Simple>
+      <Simple hideInDiagrams="false"
+              cimDatatype="http://iec.ch/TC57/CIM100#String"
+              dataType="http://www.w3.org/2001/XMLSchema#string"
+              xstype="string"
+              name="poBox"
+              ea_guid="EAID_AE33800A_1AD9_45e6_8415_1B9FB3A789C8"
+              baseProperty="http://iec.ch/TC57/CIM100#StreetAddress.poBox"
+              basePropertyClass="http://iec.ch/TC57/CIM100#StreetAddress"
+              minOccurs="0"
+              maxOccurs="1">
+         <Comment>Post office box.</Comment>
+         <Stereotype label="Attribute">http://langdale.com.au/2005/UML#attribute</Stereotype>
+      </Simple>
+      <Simple hideInDiagrams="false"
+              cimDatatype="http://iec.ch/TC57/CIM100#String"
+              dataType="http://www.w3.org/2001/XMLSchema#string"
+              xstype="string"
+              name="postalCode"
+              ea_guid="EAID_8F962EBC_8805_4e03_8051_45E7382F0649"
+              baseProperty="http://iec.ch/TC57/CIM100#StreetAddress.postalCode"
+              basePropertyClass="http://iec.ch/TC57/CIM100#StreetAddress"
+              minOccurs="0"
+              maxOccurs="1">
+         <Comment>Postal code for the address.</Comment>
+         <Stereotype label="Attribute">http://langdale.com.au/2005/UML#attribute</Stereotype>
+      </Simple>
+      <Compound baseClass="http://iec.ch/TC57/CIM100#Status"
+                type="Status"
+                hideInDiagrams="false"
+                name="status"
+                ea_guid="EAID_32354147_6588_46c6_9B6F_C327E702BCAC"
+                baseProperty="http://iec.ch/TC57/CIM100#StreetAddress.status"
+                basePropertyClass="http://iec.ch/TC57/CIM100#StreetAddress"
+                minOccurs="0"
+                maxOccurs="1"
+                inverseBasePropertyClass="http://iec.ch/TC57/CIM100#StreetAddress">
+         <Comment>Status of this address.</Comment>
+         <Stereotype label="Compound">http://langdale.com.au/2005/UML#compound</Stereotype>
+         <Stereotype label="Attribute">http://langdale.com.au/2005/UML#attribute</Stereotype>
+      </Compound>
+      <Compound baseClass="http://iec.ch/TC57/CIM100#StreetDetail"
+                type="StreetDetail"
+                hideInDiagrams="false"
+                name="streetDetail"
+                ea_guid="EAID_080F12A9_718C_4a10_A2BE_878231C3927F"
+                baseProperty="http://iec.ch/TC57/CIM100#StreetAddress.streetDetail"
+                basePropertyClass="http://iec.ch/TC57/CIM100#StreetAddress"
+                minOccurs="0"
+                maxOccurs="1"
+                inverseBasePropertyClass="http://iec.ch/TC57/CIM100#StreetAddress">
+         <Comment>Street detail.</Comment>
+         <Stereotype label="Compound">http://langdale.com.au/2005/UML#compound</Stereotype>
+         <Stereotype label="Attribute">http://langdale.com.au/2005/UML#attribute</Stereotype>
+      </Compound>
+      <Compound baseClass="http://iec.ch/TC57/CIM100#TownDetail"
+                type="TownDetail"
+                hideInDiagrams="false"
+                name="townDetail"
+                ea_guid="EAID_07E7BC8F_BAA8_4462_BDA1_BA35D58B129D"
+                baseProperty="http://iec.ch/TC57/CIM100#StreetAddress.townDetail"
+                basePropertyClass="http://iec.ch/TC57/CIM100#StreetAddress"
+                minOccurs="0"
+                maxOccurs="1"
+                inverseBasePropertyClass="http://iec.ch/TC57/CIM100#StreetAddress">
+         <Comment>Town detail.</Comment>
+         <Stereotype label="Compound">http://langdale.com.au/2005/UML#compound</Stereotype>
+         <Stereotype label="Attribute">http://langdale.com.au/2005/UML#attribute</Stereotype>
+      </Compound>
+   </CompoundType>
+   <CompoundType hideInDiagrams="false"
+                 name="StreetDetail"
+                 ea_guid="EAID_A4198329_7F25_4e72_8E8D_C4B4D37288F8"
+                 baseClass="http://iec.ch/TC57/CIM100#StreetDetail"
+                 package="Common"
+                 packageURI="http://iec.ch/TC57/CIM100#Package_Common"
+                 minOccurs="0"
+                 maxOccurs="unbounded">
+      <Comment>Street details, in the context of address.</Comment>
+      <Stereotype label="Compound">http://langdale.com.au/2005/UML#compound</Stereotype>
+      <Simple hideInDiagrams="false"
+              cimDatatype="http://iec.ch/TC57/CIM100#String"
+              dataType="http://www.w3.org/2001/XMLSchema#string"
+              xstype="string"
+              name="addressGeneral"
+              ea_guid="EAID_5CE3C56A_A8CB_4d17_8F13_B1D56813F9B0"
+              baseProperty="http://iec.ch/TC57/CIM100#StreetDetail.addressGeneral"
+              basePropertyClass="http://iec.ch/TC57/CIM100#StreetDetail"
+              minOccurs="0"
+              maxOccurs="1">
+         <Comment>First line of a free form address or some additional address information (for example a mail stop).</Comment>
+         <Stereotype label="Attribute">http://langdale.com.au/2005/UML#attribute</Stereotype>
+      </Simple>
+      <Simple hideInDiagrams="false"
+              cimDatatype="http://iec.ch/TC57/CIM100#String"
+              dataType="http://www.w3.org/2001/XMLSchema#string"
+              xstype="string"
+              name="addressGeneral2"
+              ea_guid="EAID_DC974BBD_371B_400a_BECB_7D8F8A5C58E2"
+              baseProperty="http://iec.ch/TC57/CIM100#StreetDetail.addressGeneral2"
+              basePropertyClass="http://iec.ch/TC57/CIM100#StreetDetail"
+              minOccurs="0"
+              maxOccurs="1">
+         <Comment>(if applicable) Second line of a free form address.</Comment>
+         <Stereotype label="Attribute">http://langdale.com.au/2005/UML#attribute</Stereotype>
+      </Simple>
+      <Simple hideInDiagrams="false"
+              cimDatatype="http://iec.ch/TC57/CIM100#String"
+              dataType="http://www.w3.org/2001/XMLSchema#string"
+              xstype="string"
+              name="addressGeneral3"
+              ea_guid="EAID_07C70D18_5538_4645_B13D_BBD72DE32C97"
+              baseProperty="http://iec.ch/TC57/CIM100#StreetDetail.addressGeneral3"
+              basePropertyClass="http://iec.ch/TC57/CIM100#StreetDetail"
+              minOccurs="0"
+              maxOccurs="1">
+         <Comment>(if applicable) Third line of a free form address.</Comment>
+         <Stereotype label="Attribute">http://langdale.com.au/2005/UML#attribute</Stereotype>
+      </Simple>
+      <Simple hideInDiagrams="false"
+              cimDatatype="http://iec.ch/TC57/CIM100#String"
+              dataType="http://www.w3.org/2001/XMLSchema#string"
+              xstype="string"
+              name="buildingName"
+              ea_guid="EAID_7537B883_F71B_4189_B0C4_036277339DEF"
+              baseProperty="http://iec.ch/TC57/CIM100#StreetDetail.buildingName"
+              basePropertyClass="http://iec.ch/TC57/CIM100#StreetDetail"
+              minOccurs="0"
+              maxOccurs="1">
+         <Comment>(if applicable) In certain cases the physical location of the place of interest does not have a direct point of entry from the street, but may be located inside a larger structure such as a building, complex, office block, apartment, etc.</Comment>
+         <Stereotype label="Attribute">http://langdale.com.au/2005/UML#attribute</Stereotype>
+      </Simple>
+      <Simple hideInDiagrams="false"
+              cimDatatype="http://iec.ch/TC57/CIM100#String"
+              dataType="http://www.w3.org/2001/XMLSchema#string"
+              xstype="string"
+              name="code"
+              ea_guid="EAID_9C44FAD9_C465_4c6b_A403_E6F1E66D9BE1"
+              baseProperty="http://iec.ch/TC57/CIM100#StreetDetail.code"
+              basePropertyClass="http://iec.ch/TC57/CIM100#StreetDetail"
+              minOccurs="0"
+              maxOccurs="1">
+         <Comment>(if applicable) Utilities often make use of external reference systems, such as those of the town-planner's department or surveyor general's mapping system, that allocate global reference codes to streets.</Comment>
+         <Stereotype label="Attribute">http://langdale.com.au/2005/UML#attribute</Stereotype>
+      </Simple>
+      <Simple hideInDiagrams="false"
+              cimDatatype="http://iec.ch/TC57/CIM100#String"
+              dataType="http://www.w3.org/2001/XMLSchema#string"
+              xstype="string"
+              name="floorIdentification"
+              ea_guid="EAID_24B16BCA_4094_43e8_9867_BC2E9EDC5D04"
+              baseProperty="http://iec.ch/TC57/CIM100#StreetDetail.floorIdentification"
+              basePropertyClass="http://iec.ch/TC57/CIM100#StreetDetail"
+              minOccurs="0"
+              maxOccurs="1">
+         <Comment>The identification by name or number, expressed as text, of the floor in the building as part of this address.</Comment>
+         <Stereotype label="Attribute">http://langdale.com.au/2005/UML#attribute</Stereotype>
+      </Simple>
+      <Simple hideInDiagrams="false"
+              cimDatatype="http://iec.ch/TC57/CIM100#String"
+              dataType="http://www.w3.org/2001/XMLSchema#string"
+              xstype="string"
+              name="name"
+              ea_guid="EAID_CFEA2CAE_B7AA_4efd_ADCA_844A71759BFD"
+              baseProperty="http://iec.ch/TC57/CIM100#StreetDetail.name"
+              basePropertyClass="http://iec.ch/TC57/CIM100#StreetDetail"
+              minOccurs="0"
+              maxOccurs="1">
+         <Comment>Name of the street.</Comment>
+         <Stereotype label="Attribute">http://langdale.com.au/2005/UML#attribute</Stereotype>
+      </Simple>
+      <Simple hideInDiagrams="false"
+              cimDatatype="http://iec.ch/TC57/CIM100#String"
+              dataType="http://www.w3.org/2001/XMLSchema#string"
+              xstype="string"
+              name="number"
+              ea_guid="EAID_DF4B02A3_F827_403b_AF42_3EDF7C5AB26E"
+              baseProperty="http://iec.ch/TC57/CIM100#StreetDetail.number"
+              basePropertyClass="http://iec.ch/TC57/CIM100#StreetDetail"
+              minOccurs="0"
+              maxOccurs="1">
+         <Comment>Designator of the specific location on the street.</Comment>
+         <Stereotype label="Attribute">http://langdale.com.au/2005/UML#attribute</Stereotype>
+      </Simple>
+      <Simple hideInDiagrams="false"
+              cimDatatype="http://iec.ch/TC57/CIM100#String"
+              dataType="http://www.w3.org/2001/XMLSchema#string"
+              xstype="string"
+              name="prefix"
+              ea_guid="EAID_C0D97DAC_BB35_430e_B7F4_8C9FFBBED05D"
+              baseProperty="http://iec.ch/TC57/CIM100#StreetDetail.prefix"
+              basePropertyClass="http://iec.ch/TC57/CIM100#StreetDetail"
+              minOccurs="0"
+              maxOccurs="1">
+         <Comment>Prefix to the street name. For example: North, South, East, West.</Comment>
+         <Stereotype label="Attribute">http://langdale.com.au/2005/UML#attribute</Stereotype>
+      </Simple>
+      <Simple hideInDiagrams="false"
+              cimDatatype="http://iec.ch/TC57/CIM100#String"
+              dataType="http://www.w3.org/2001/XMLSchema#string"
+              xstype="string"
+              name="suffix"
+              ea_guid="EAID_E00200CA_8258_41be_8D82_475C894ECD59"
+              baseProperty="http://iec.ch/TC57/CIM100#StreetDetail.suffix"
+              basePropertyClass="http://iec.ch/TC57/CIM100#StreetDetail"
+              minOccurs="0"
+              maxOccurs="1">
+         <Comment>Suffix to the street name. For example: North, South, East, West.</Comment>
+         <Stereotype label="Attribute">http://langdale.com.au/2005/UML#attribute</Stereotype>
+      </Simple>
+      <Simple hideInDiagrams="false"
+              cimDatatype="http://iec.ch/TC57/CIM100#String"
+              dataType="http://www.w3.org/2001/XMLSchema#string"
+              xstype="string"
+              name="suiteNumber"
+              ea_guid="EAID_2292B0DB_9622_4f91_A86B_C8067BCB34DF"
+              baseProperty="http://iec.ch/TC57/CIM100#StreetDetail.suiteNumber"
+              basePropertyClass="http://iec.ch/TC57/CIM100#StreetDetail"
+              minOccurs="0"
+              maxOccurs="1">
+         <Comment>Number of the apartment or suite.</Comment>
+         <Stereotype label="Attribute">http://langdale.com.au/2005/UML#attribute</Stereotype>
+      </Simple>
+      <Simple hideInDiagrams="false"
+              cimDatatype="http://iec.ch/TC57/CIM100#String"
+              dataType="http://www.w3.org/2001/XMLSchema#string"
+              xstype="string"
+              name="type"
+              ea_guid="EAID_C1813D47_8834_4076_8C7D_A2A86410A073"
+              baseProperty="http://iec.ch/TC57/CIM100#StreetDetail.type"
+              basePropertyClass="http://iec.ch/TC57/CIM100#StreetDetail"
+              minOccurs="0"
+              maxOccurs="1">
+         <Comment>Type of street. Examples include: street, circle, boulevard, avenue, road, drive, etc.</Comment>
+         <Stereotype label="Attribute">http://langdale.com.au/2005/UML#attribute</Stereotype>
+      </Simple>
+      <Simple hideInDiagrams="false"
+              cimDatatype="http://iec.ch/TC57/CIM100#Boolean"
+              dataType="http://www.w3.org/2001/XMLSchema#boolean"
+              xstype="boolean"
+              name="withinTownLimits"
+              ea_guid="EAID_9B131882_C1C7_4ecc_B52A_FC25C2AFFCC7"
+              baseProperty="http://iec.ch/TC57/CIM100#StreetDetail.withinTownLimits"
+              basePropertyClass="http://iec.ch/TC57/CIM100#StreetDetail"
+              minOccurs="0"
+              maxOccurs="1">
+         <Comment>True if this street is within the legal geographical boundaries of the specified town (default).</Comment>
+         <Stereotype label="Attribute">http://langdale.com.au/2005/UML#attribute</Stereotype>
+      </Simple>
+   </CompoundType>
+   <CompoundType hideInDiagrams="false"
+                 name="TelephoneNumber"
+                 ea_guid="EAID_456C7633_96C3_448b_BF2D_8D6110084CC6"
+                 baseClass="http://iec.ch/TC57/CIM100#TelephoneNumber"
+                 package="Common"
+                 packageURI="http://iec.ch/TC57/CIM100#Package_Common"
+                 minOccurs="0"
+                 maxOccurs="unbounded">
+      <Comment>Telephone number.</Comment>
+      <Stereotype label="Compound">http://langdale.com.au/2005/UML#compound</Stereotype>
+      <Simple hideInDiagrams="false"
+              cimDatatype="http://iec.ch/TC57/CIM100#String"
+              dataType="http://www.w3.org/2001/XMLSchema#string"
+              xstype="string"
+              name="areaCode"
+              ea_guid="EAID_C0F15152_9E3A_448e_941F_1352D0609D30"
+              baseProperty="http://iec.ch/TC57/CIM100#TelephoneNumber.areaCode"
+              basePropertyClass="http://iec.ch/TC57/CIM100#TelephoneNumber"
+              minOccurs="0"
+              maxOccurs="1">
+         <Comment>(if applicable) Area or region code.</Comment>
+         <Stereotype label="Attribute">http://langdale.com.au/2005/UML#attribute</Stereotype>
+      </Simple>
+      <Simple hideInDiagrams="false"
+              cimDatatype="http://iec.ch/TC57/CIM100#String"
+              dataType="http://www.w3.org/2001/XMLSchema#string"
+              xstype="string"
+              name="cityCode"
+              ea_guid="EAID_5EECBD36_B275_4c05_83A1_4CFC5763E23E"
+              baseProperty="http://iec.ch/TC57/CIM100#TelephoneNumber.cityCode"
+              basePropertyClass="http://iec.ch/TC57/CIM100#TelephoneNumber"
+              minOccurs="0"
+              maxOccurs="1">
+         <Comment>City code.</Comment>
+         <Stereotype label="Attribute">http://langdale.com.au/2005/UML#attribute</Stereotype>
+      </Simple>
+      <Simple hideInDiagrams="false"
+              cimDatatype="http://iec.ch/TC57/CIM100#String"
+              dataType="http://www.w3.org/2001/XMLSchema#string"
+              xstype="string"
+              name="countryCode"
+              ea_guid="EAID_B5A53069_6F98_4057_9C4C_13B658EF4D8B"
+              baseProperty="http://iec.ch/TC57/CIM100#TelephoneNumber.countryCode"
+              basePropertyClass="http://iec.ch/TC57/CIM100#TelephoneNumber"
+              minOccurs="0"
+              maxOccurs="1">
+         <Comment>Country code.</Comment>
+         <Stereotype label="Attribute">http://langdale.com.au/2005/UML#attribute</Stereotype>
+      </Simple>
+      <Simple hideInDiagrams="false"
+              cimDatatype="http://iec.ch/TC57/CIM100#String"
+              dataType="http://www.w3.org/2001/XMLSchema#string"
+              xstype="string"
+              name="dialOut"
+              ea_guid="EAID_DB70B0A2_0520_408d_B14D_91C330CBFC63"
+              baseProperty="http://iec.ch/TC57/CIM100#TelephoneNumber.dialOut"
+              basePropertyClass="http://iec.ch/TC57/CIM100#TelephoneNumber"
+              minOccurs="0"
+              maxOccurs="1">
+         <Comment>(if applicable) Dial out code, for instance to call outside an enterprise.</Comment>
+         <Stereotype label="Attribute">http://langdale.com.au/2005/UML#attribute</Stereotype>
+      </Simple>
+      <Simple hideInDiagrams="false"
+              cimDatatype="http://iec.ch/TC57/CIM100#String"
+              dataType="http://www.w3.org/2001/XMLSchema#string"
+              xstype="string"
+              name="extension"
+              ea_guid="EAID_A9F4D146_3D47_464f_B051_0C623B097B2D"
+              baseProperty="http://iec.ch/TC57/CIM100#TelephoneNumber.extension"
+              basePropertyClass="http://iec.ch/TC57/CIM100#TelephoneNumber"
+              minOccurs="0"
+              maxOccurs="1">
+         <Comment>(if applicable) Extension for this telephone number.</Comment>
+         <Stereotype label="Attribute">http://langdale.com.au/2005/UML#attribute</Stereotype>
+      </Simple>
+      <Simple hideInDiagrams="false"
+              cimDatatype="http://iec.ch/TC57/CIM100#String"
+              dataType="http://www.w3.org/2001/XMLSchema#string"
+              xstype="string"
+              name="internationalPrefix"
+              ea_guid="EAID_28A12A3C_F864_414c_B886_52B31BE3671B"
+              baseProperty="http://iec.ch/TC57/CIM100#TelephoneNumber.internationalPrefix"
+              basePropertyClass="http://iec.ch/TC57/CIM100#TelephoneNumber"
+              minOccurs="0"
+              maxOccurs="1">
+         <Comment>(if applicable) Prefix used when calling an international number.</Comment>
+         <Stereotype label="Attribute">http://langdale.com.au/2005/UML#attribute</Stereotype>
+      </Simple>
+      <Simple hideInDiagrams="false"
+              cimDatatype="http://iec.ch/TC57/CIM100#String"
+              dataType="http://www.w3.org/2001/XMLSchema#string"
+              xstype="string"
+              name="ituPhone"
+              ea_guid="EAID_2B1FD4FF_40C1_40ac_A218_94641E8F4470"
+              baseProperty="http://iec.ch/TC57/CIM100#TelephoneNumber.ituPhone"
+              basePropertyClass="http://iec.ch/TC57/CIM100#TelephoneNumber"
+              minOccurs="0"
+              maxOccurs="1">
+         <Comment>Phone number according to International Telecommunication Union (ITU) E.164.</Comment>
+         <Stereotype label="Attribute">http://langdale.com.au/2005/UML#attribute</Stereotype>
+      </Simple>
+      <Simple hideInDiagrams="false"
+              cimDatatype="http://iec.ch/TC57/CIM100#String"
+              dataType="http://www.w3.org/2001/XMLSchema#string"
+              xstype="string"
+              name="localNumber"
+              ea_guid="EAID_06880FBC_0A6F_410c_A423_AF24CF7901A7"
+              baseProperty="http://iec.ch/TC57/CIM100#TelephoneNumber.localNumber"
+              basePropertyClass="http://iec.ch/TC57/CIM100#TelephoneNumber"
+              minOccurs="0"
+              maxOccurs="1">
+         <Comment>Main (local) part of this telephone number.</Comment>
+         <Stereotype label="Attribute">http://langdale.com.au/2005/UML#attribute</Stereotype>
+      </Simple>
+   </CompoundType>
+   <CompoundType hideInDiagrams="false"
+                 name="TownDetail"
+                 ea_guid="EAID_26275F22_BDC6_4a76_ABE7_AC797CFE35D9"
+                 baseClass="http://iec.ch/TC57/CIM100#TownDetail"
+                 package="Common"
+                 packageURI="http://iec.ch/TC57/CIM100#Package_Common"
+                 minOccurs="0"
+                 maxOccurs="unbounded">
+      <Comment>Town details, in the context of address.</Comment>
+      <Stereotype label="Compound">http://langdale.com.au/2005/UML#compound</Stereotype>
+      <Simple hideInDiagrams="false"
+              cimDatatype="http://iec.ch/TC57/CIM100#String"
+              dataType="http://www.w3.org/2001/XMLSchema#string"
+              xstype="string"
+              name="code"
+              ea_guid="EAID_7435FA35_FEF2_44b0_96AC_8F11789C1AF9"
+              baseProperty="http://iec.ch/TC57/CIM100#TownDetail.code"
+              basePropertyClass="http://iec.ch/TC57/CIM100#TownDetail"
+              minOccurs="0"
+              maxOccurs="1">
+         <Comment>Town code.</Comment>
+         <Stereotype label="Attribute">http://langdale.com.au/2005/UML#attribute</Stereotype>
+      </Simple>
+      <Simple hideInDiagrams="false"
+              cimDatatype="http://iec.ch/TC57/CIM100#String"
+              dataType="http://www.w3.org/2001/XMLSchema#string"
+              xstype="string"
+              name="country"
+              ea_guid="EAID_ACD16500_AC2D_464f_AD2C_5F78BDB8C8A1"
+              baseProperty="http://iec.ch/TC57/CIM100#TownDetail.country"
+              basePropertyClass="http://iec.ch/TC57/CIM100#TownDetail"
+              minOccurs="0"
+              maxOccurs="1">
+         <Comment>Name of the country.</Comment>
+         <Stereotype label="Attribute">http://langdale.com.au/2005/UML#attribute</Stereotype>
+      </Simple>
+      <Simple hideInDiagrams="false"
+              cimDatatype="http://iec.ch/TC57/CIM100#String"
+              dataType="http://www.w3.org/2001/XMLSchema#string"
+              xstype="string"
+              name="name"
+              ea_guid="EAID_D21D8A7E_6B52_42de_BBC4_5A334BE6FC3B"
+              baseProperty="http://iec.ch/TC57/CIM100#TownDetail.name"
+              basePropertyClass="http://iec.ch/TC57/CIM100#TownDetail"
+              minOccurs="0"
+              maxOccurs="1">
+         <Comment>Town name.</Comment>
+         <Stereotype label="Attribute">http://langdale.com.au/2005/UML#attribute</Stereotype>
+      </Simple>
+      <Simple hideInDiagrams="false"
+              cimDatatype="http://iec.ch/TC57/CIM100#String"
+              dataType="http://www.w3.org/2001/XMLSchema#string"
+              xstype="string"
+              name="section"
+              ea_guid="EAID_D3BABCE4_BCC6_4352_838F_CE2D37898326"
+              baseProperty="http://iec.ch/TC57/CIM100#TownDetail.section"
+              basePropertyClass="http://iec.ch/TC57/CIM100#TownDetail"
+              minOccurs="0"
+              maxOccurs="1">
+         <Comment>Town section. For example, it is common for there to be 36 sections per township.</Comment>
+         <Stereotype label="Attribute">http://langdale.com.au/2005/UML#attribute</Stereotype>
+      </Simple>
+      <Simple hideInDiagrams="false"
+              cimDatatype="http://iec.ch/TC57/CIM100#String"
+              dataType="http://www.w3.org/2001/XMLSchema#string"
+              xstype="string"
+              name="stateOrProvince"
+              ea_guid="EAID_54BE5603_B97E_4fa8_9398_1AE6FE1A7538"
+              baseProperty="http://iec.ch/TC57/CIM100#TownDetail.stateOrProvince"
+              basePropertyClass="http://iec.ch/TC57/CIM100#TownDetail"
+              minOccurs="0"
+              maxOccurs="1">
+         <Comment>Name of the state or province.</Comment>
+         <Stereotype label="Attribute">http://langdale.com.au/2005/UML#attribute</Stereotype>
+      </Simple>
+   </CompoundType>
+   <Root hideInDiagrams="false"
+         name="WireInfo"
+         ea_guid="EAID_4C4D8C3D_A5C2_4fec_B9AF_1E5CDB329B44"
+         baseClass="http://iec.ch/TC57/CIM100#WireInfo"
+         package="AssetInfo"
+         packageURI="http://iec.ch/TC57/CIM100#Package_AssetInfo"
+         minOccurs="0"
+         maxOccurs="unbounded">
+      <Comment>Wire data that can be specified per line segment phase, or for the line segment as a whole in case its phases all have the same wire characteristics.</Comment>
+      <Stereotype label="Concrete">http://langdale.com.au/2005/UML#concrete</Stereotype>
+      <SuperType name="AssetInfo"
+                 baseClass="http://iec.ch/TC57/CIM100#AssetInfo"
+                 baseClassIsShadowExtension="false"/>
+      <Domain hideInDiagrams="false"
+              type="Length"
+              dataType="http://iec.ch/TC57/CIM100#Length"
+              xstype="float"
+              name="coreRadius"
+              ea_guid="EAID_965E91D6_A32D_4947_9716_E47B628E4569"
+              baseProperty="http://iec.ch/TC57/CIM100#WireInfo.coreRadius"
+              basePropertyClass="http://iec.ch/TC57/CIM100#WireInfo"
+              minOccurs="0"
+              maxOccurs="1">
+         <Comment>(if there is a different core material) Radius of the central core.</Comment>
+         <Stereotype label="Attribute">http://langdale.com.au/2005/UML#attribute</Stereotype>
+      </Domain>
+      <Simple hideInDiagrams="false"
+              cimDatatype="http://iec.ch/TC57/CIM100#Integer"
+              dataType="http://www.w3.org/2001/XMLSchema#integer"
+              xstype="integer"
+              name="coreStrandCount"
+              ea_guid="EAID_70338779_A979_480f_AB0C_0BD4C9C91E5F"
+              baseProperty="http://iec.ch/TC57/CIM100#WireInfo.coreStrandCount"
+              basePropertyClass="http://iec.ch/TC57/CIM100#WireInfo"
+              minOccurs="0"
+              maxOccurs="1">
+         <Comment>(if used) Number of strands in the steel core.</Comment>
+         <Stereotype label="Attribute">http://langdale.com.au/2005/UML#attribute</Stereotype>
+      </Simple>
+      <Domain hideInDiagrams="false"
+              type="Length"
+              dataType="http://iec.ch/TC57/CIM100#Length"
+              xstype="float"
+              name="gmr"
+              ea_guid="EAID_906DF7D6_9FAF_4a39_85BF_B80EFEB2665D"
+              baseProperty="http://iec.ch/TC57/CIM100#WireInfo.gmr"
+              basePropertyClass="http://iec.ch/TC57/CIM100#WireInfo"
+              minOccurs="0"
+              maxOccurs="1">
+         <Comment>Geometric mean radius. If we replace the conductor by a thin walled tube of radius GMR, then its reactance is identical to the reactance of the actual conductor.</Comment>
+         <Stereotype label="Attribute">http://langdale.com.au/2005/UML#attribute</Stereotype>
+      </Domain>
+      <Simple hideInDiagrams="false"
+              cimDatatype="http://iec.ch/TC57/CIM100#Boolean"
+              dataType="http://www.w3.org/2001/XMLSchema#boolean"
+              xstype="boolean"
+              name="insulated"
+              ea_guid="EAID_85C3A0AF_D527_49f9_9DCA_931F50A7D466"
+              baseProperty="http://iec.ch/TC57/CIM100#WireInfo.insulated"
+              basePropertyClass="http://iec.ch/TC57/CIM100#WireInfo"
+              minOccurs="0"
+              maxOccurs="1">
+         <Comment>True if conductor is insulated.</Comment>
+         <Stereotype label="Attribute">http://langdale.com.au/2005/UML#attribute</Stereotype>
+      </Simple>
+      <Enumerated baseClass="http://iec.ch/TC57/CIM100#WireInsulationKind"
+                  type="WireInsulationKind"
+                  hideInDiagrams="false"
+                  name="insulationMaterial"
+                  ea_guid="EAID_07B5CBFF_F12B_4352_8ABB_713BA7EF186B"
+                  baseProperty="http://iec.ch/TC57/CIM100#WireInfo.insulationMaterial"
+                  basePropertyClass="http://iec.ch/TC57/CIM100#WireInfo"
+                  minOccurs="0"
+                  maxOccurs="1"
+                  inverseBasePropertyClass="http://iec.ch/TC57/CIM100#WireInfo">
+         <Comment>(if insulated conductor) Material used for insulation.</Comment>
+         <Stereotype label="enumeration">http://langdale.com.au/2005/UML#enumeration</Stereotype>
+         <Stereotype label="Attribute">http://langdale.com.au/2005/UML#attribute</Stereotype>
+      </Enumerated>
+      <Domain hideInDiagrams="false"
+              type="Length"
+              dataType="http://iec.ch/TC57/CIM100#Length"
+              xstype="float"
+              name="insulationThickness"
+              ea_guid="EAID_D6A74A69_23AC_4736_AA86_7450B4629D48"
+              baseProperty="http://iec.ch/TC57/CIM100#WireInfo.insulationThickness"
+              basePropertyClass="http://iec.ch/TC57/CIM100#WireInfo"
+              minOccurs="0"
+              maxOccurs="1">
+         <Comment>(if insulated conductor) Thickness of the insulation.</Comment>
+         <Stereotype label="Attribute">http://langdale.com.au/2005/UML#attribute</Stereotype>
+      </Domain>
+      <Enumerated baseClass="http://iec.ch/TC57/CIM100#WireMaterialKind"
+                  type="WireMaterialKind"
+                  hideInDiagrams="false"
+                  name="material"
+                  ea_guid="EAID_111A854C_ED35_40aa_81ED_EC3F0BCA37EE"
+                  baseProperty="http://iec.ch/TC57/CIM100#WireInfo.material"
+                  basePropertyClass="http://iec.ch/TC57/CIM100#WireInfo"
+                  minOccurs="0"
+                  maxOccurs="1"
+                  inverseBasePropertyClass="http://iec.ch/TC57/CIM100#WireInfo">
+         <Comment>Conductor material.</Comment>
+         <Stereotype label="enumeration">http://langdale.com.au/2005/UML#enumeration</Stereotype>
+         <Stereotype label="Attribute">http://langdale.com.au/2005/UML#attribute</Stereotype>
+      </Enumerated>
+   </Root>
+   <EnumeratedType hideInDiagrams="false"
+                   name="WireInsulationKind"
+                   ea_guid="EAID_5DEE00A8_4B14_4375_95B6_F07914121D9E"
+                   baseClass="http://iec.ch/TC57/CIM100#WireInsulationKind"
+                   package="AssetInfo"
+                   packageURI="http://iec.ch/TC57/CIM100#Package_AssetInfo"
+                   minOccurs="0"
+                   maxOccurs="unbounded">
+      <Comment>Kind of wire insulation.</Comment>
+      <Stereotype label="enumeration">http://langdale.com.au/2005/UML#enumeration</Stereotype>
+      <EnumeratedValue hideInDiagrams="false"
+                       name="asbestosAndVarnishedCambric"
+                       ea_guid="EAID_30E375BA_C4B3_4505_968E_B8BA20914E5E"
+                       baseResource="http://iec.ch/TC57/CIM100#WireInsulationKind.asbestosAndVarnishedCambric"
+                       code="">
+         <Comment>Asbestos and varnished cambric wire insulation.</Comment>
+      </EnumeratedValue>
+      <EnumeratedValue hideInDiagrams="false"
+                       name="beltedPilc"
+                       ea_guid="EAID_62F9A2B8_02B3_4b5a_9AA6_B99CEC1EB596"
+                       baseResource="http://iec.ch/TC57/CIM100#WireInsulationKind.beltedPilc"
+                       code="">
+         <Comment>Belted pilc wire insulation.</Comment>
+      </EnumeratedValue>
+      <EnumeratedValue hideInDiagrams="false"
+                       name="butyl"
+                       ea_guid="EAID_A5F33528_CC25_4812_9088_E60D3BFA49AF"
+                       baseResource="http://iec.ch/TC57/CIM100#WireInsulationKind.butyl"
+                       code="">
+         <Comment>Butyl wire insulation.</Comment>
+      </EnumeratedValue>
+      <EnumeratedValue hideInDiagrams="false"
+                       name="crosslinkedPolyethylene"
+                       ea_guid="EAID_E912D943_F76D_46a4_B7FF_BF3871515F13"
+                       baseResource="http://iec.ch/TC57/CIM100#WireInsulationKind.crosslinkedPolyethylene"
+                       code="">
+         <Comment>Crosslinked polyethylene wire insulation.</Comment>
+      </EnumeratedValue>
+      <EnumeratedValue hideInDiagrams="false"
+                       name="ethylenePropyleneRubber"
+                       ea_guid="EAID_4A0619A9_20BD_4ad4_BB89_E88F7E74C948"
+                       baseResource="http://iec.ch/TC57/CIM100#WireInsulationKind.ethylenePropyleneRubber"
+                       code="">
+         <Comment>Ethylene propylene rubber wire insulation.</Comment>
+      </EnumeratedValue>
+      <EnumeratedValue hideInDiagrams="false"
+                       name="highMolecularWeightPolyethylene"
+                       ea_guid="EAID_0030F678_8470_4671_9E25_968B0DE137CF"
+                       baseResource="http://iec.ch/TC57/CIM100#WireInsulationKind.highMolecularWeightPolyethylene"
+                       code="">
+         <Comment>High nolecular weight polyethylene wire insulation.</Comment>
+      </EnumeratedValue>
+      <EnumeratedValue hideInDiagrams="false"
+                       name="highPressureFluidFilled"
+                       ea_guid="EAID_D5DDABAF_1CA9_454f_A87C_F361B7E6A72D"
+                       baseResource="http://iec.ch/TC57/CIM100#WireInsulationKind.highPressureFluidFilled"
+                       code="">
+         <Comment>High pressure fluid filled wire insulation.</Comment>
+      </EnumeratedValue>
+      <EnumeratedValue hideInDiagrams="false"
+                       name="lowCapacitanceRubber"
+                       ea_guid="EAID_5E43F710_8E6F_4fd0_AF8E_472D3E02EB4A"
+                       baseResource="http://iec.ch/TC57/CIM100#WireInsulationKind.lowCapacitanceRubber"
+                       code="">
+         <Comment>Low capacitance rubber wire insulation.</Comment>
+      </EnumeratedValue>
+      <EnumeratedValue hideInDiagrams="false"
+                       name="oilPaper"
+                       ea_guid="EAID_74E898D3_1C82_4efd_9AD9_9405B755DC60"
+                       baseResource="http://iec.ch/TC57/CIM100#WireInsulationKind.oilPaper"
+                       code="">
+         <Comment>Oil paper wire insulation.</Comment>
+      </EnumeratedValue>
+      <EnumeratedValue hideInDiagrams="false"
+                       name="other"
+                       ea_guid="EAID_7B2FF0B3_BBC2_4bfd_B2BA_96566F74904E"
+                       baseResource="http://iec.ch/TC57/CIM100#WireInsulationKind.other"
+                       code="">
+         <Comment>Other kind of wire insulation.</Comment>
+      </EnumeratedValue>
+      <EnumeratedValue hideInDiagrams="false"
+                       name="ozoneResistantRubber"
+                       ea_guid="EAID_A345779F_3C98_4c51_AED3_A9FF9B9C9A55"
+                       baseResource="http://iec.ch/TC57/CIM100#WireInsulationKind.ozoneResistantRubber"
+                       code="">
+         <Comment>Ozone resistant rubber wire insulation.</Comment>
+      </EnumeratedValue>
+      <EnumeratedValue hideInDiagrams="false"
+                       name="rubber"
+                       ea_guid="EAID_A9074515_1B3D_4b1e_99CA_5A869A2D844D"
+                       baseResource="http://iec.ch/TC57/CIM100#WireInsulationKind.rubber"
+                       code="">
+         <Comment>Rubber wire insulation.</Comment>
+      </EnumeratedValue>
+      <EnumeratedValue hideInDiagrams="false"
+                       name="siliconRubber"
+                       ea_guid="EAID_D0FAEC04_3EEF_4020_AA92_FD1C7735718D"
+                       baseResource="http://iec.ch/TC57/CIM100#WireInsulationKind.siliconRubber"
+                       code="">
+         <Comment>Silicon rubber wire insulation.</Comment>
+      </EnumeratedValue>
+      <EnumeratedValue hideInDiagrams="false"
+                       name="treeResistantHighMolecularWeightPolyethylene"
+                       ea_guid="EAID_D79DA710_F1DE_403e_9677_E4E201D8D310"
+                       baseResource="http://iec.ch/TC57/CIM100#WireInsulationKind.treeResistantHighMolecularWeightPolyethylene"
+                       code="">
+         <Comment>Tree resistant high molecular weight polyethylene wire insulation.</Comment>
+      </EnumeratedValue>
+      <EnumeratedValue hideInDiagrams="false"
+                       name="treeRetardantCrosslinkedPolyethylene"
+                       ea_guid="EAID_B1222D86_1336_4d6d_A202_D418B9EF825C"
+                       baseResource="http://iec.ch/TC57/CIM100#WireInsulationKind.treeRetardantCrosslinkedPolyethylene"
+                       code="">
+         <Comment>Tree retardant crosslinked polyethylene wire insulation.</Comment>
+      </EnumeratedValue>
+      <EnumeratedValue hideInDiagrams="false"
+                       name="unbeltedPilc"
+                       ea_guid="EAID_8FC1D561_1C31_408d_A2C9_7DF76D85010B"
+                       baseResource="http://iec.ch/TC57/CIM100#WireInsulationKind.unbeltedPilc"
+                       code="">
+         <Comment>Unbelted pilc wire insulation.</Comment>
+      </EnumeratedValue>
+      <EnumeratedValue hideInDiagrams="false"
+                       name="varnishedCambricCloth"
+                       ea_guid="EAID_B0089617_3C80_4a82_8986_4EF1D2D92106"
+                       baseResource="http://iec.ch/TC57/CIM100#WireInsulationKind.varnishedCambricCloth"
+                       code="">
+         <Comment>Varnished cambric cloth wire insulation.</Comment>
+      </EnumeratedValue>
+      <EnumeratedValue hideInDiagrams="false"
+                       name="varnishedDacronGlass"
+                       ea_guid="EAID_6DD767E3_93CA_46df_9E4C_2073C8E8574B"
+                       baseResource="http://iec.ch/TC57/CIM100#WireInsulationKind.varnishedDacronGlass"
+                       code="">
+         <Comment>Varnished dacron glass wire insulation.</Comment>
+      </EnumeratedValue>
+   </EnumeratedType>
+   <EnumeratedType hideInDiagrams="false"
+                   name="WireMaterialKind"
+                   ea_guid="EAID_79C6A256_4E46_4717_9E2F_BBB1984DB9D5"
+                   baseClass="http://iec.ch/TC57/CIM100#WireMaterialKind"
+                   package="AssetInfo"
+                   packageURI="http://iec.ch/TC57/CIM100#Package_AssetInfo"
+                   minOccurs="0"
+                   maxOccurs="unbounded">
+      <Comment>Kind of wire material.</Comment>
+      <Stereotype label="enumeration">http://langdale.com.au/2005/UML#enumeration</Stereotype>
+      <EnumeratedValue hideInDiagrams="false"
+                       name="aaac"
+                       ea_guid="EAID_39B47590_4B8E_4006_933C_BB396BA23217"
+                       baseResource="http://iec.ch/TC57/CIM100#WireMaterialKind.aaac"
+                       code="">
+         <Comment>Aluminum-alloy conductor steel reinforced.</Comment>
+      </EnumeratedValue>
+      <EnumeratedValue hideInDiagrams="false"
+                       name="acsr"
+                       ea_guid="EAID_95FD7B5D_209E_4eec_ACF6_E5387757BD08"
+                       baseResource="http://iec.ch/TC57/CIM100#WireMaterialKind.acsr"
+                       code="">
+         <Comment>Aluminum conductor steel reinforced.</Comment>
+      </EnumeratedValue>
+      <EnumeratedValue hideInDiagrams="false"
+                       name="aluminum"
+                       ea_guid="EAID_433A8D99_E844_4f17_B01B_966253FB305B"
+                       baseResource="http://iec.ch/TC57/CIM100#WireMaterialKind.aluminum"
+                       code="">
+         <Comment>Aluminum wire.</Comment>
+      </EnumeratedValue>
+      <EnumeratedValue hideInDiagrams="false"
+                       name="aluminumAlloy"
+                       ea_guid="EAID_2DF0A3CB_A604_4590_937D_226D68C40908"
+                       baseResource="http://iec.ch/TC57/CIM100#WireMaterialKind.aluminumAlloy"
+                       code="">
+         <Comment>Aluminum-alloy wire.</Comment>
+      </EnumeratedValue>
+      <EnumeratedValue hideInDiagrams="false"
+                       name="aluminumAlloySteel"
+                       ea_guid="EAID_815E84F9_FF5C_4af3_9991_24FE3D56F69B"
+                       baseResource="http://iec.ch/TC57/CIM100#WireMaterialKind.aluminumAlloySteel"
+                       code="">
+         <Comment>Aluminum-alloy-steel wire.</Comment>
+      </EnumeratedValue>
+      <EnumeratedValue hideInDiagrams="false"
+                       name="aluminumSteel"
+                       ea_guid="EAID_3D69894B_4569_4d20_87C9_1FC3311C6A63"
+                       baseResource="http://iec.ch/TC57/CIM100#WireMaterialKind.aluminumSteel"
+                       code="">
+         <Comment>Aluminum-steel wire.</Comment>
+      </EnumeratedValue>
+      <EnumeratedValue hideInDiagrams="false"
+                       name="copper"
+                       ea_guid="EAID_5A0B6132_86F0_4609_B74F_6F758C8D48EF"
+                       baseResource="http://iec.ch/TC57/CIM100#WireMaterialKind.copper"
+                       code="">
+         <Comment>Copper wire.</Comment>
+      </EnumeratedValue>
+      <EnumeratedValue hideInDiagrams="false"
+                       name="other"
+                       ea_guid="EAID_8399FECD_92B0_4ba6_B8B4_A9E6BFEE034D"
+                       baseResource="http://iec.ch/TC57/CIM100#WireMaterialKind.other"
+                       code="">
+         <Comment>Other wire material.</Comment>
+      </EnumeratedValue>
+      <EnumeratedValue hideInDiagrams="false"
+                       name="steel"
+                       ea_guid="EAID_EE3F58B1_30B5_4cdd_922B_787F07F820D8"
+                       baseResource="http://iec.ch/TC57/CIM100#WireMaterialKind.steel"
+                       code="">
+         <Comment>Steel wire.</Comment>
+      </EnumeratedValue>
+   </EnumeratedType>
+   <Root hideInDiagrams="false"
+         name="WireSpacingInfo"
+         ea_guid="EAID_B035BD42_43E8_49f5_9685_B4ECF92364A4"
+         baseClass="http://iec.ch/TC57/CIM100#WireSpacingInfo"
+         package="AssetInfo"
+         packageURI="http://iec.ch/TC57/CIM100#Package_AssetInfo"
+         minOccurs="0"
+         maxOccurs="unbounded">
+      <Comment>Wire spacing data that associates multiple wire positions with the line segment, and allows to calculate line segment impedances. Number of phases can be derived from the number of associated wire positions whose phase is not neutral.</Comment>
+      <Stereotype label="Concrete">http://langdale.com.au/2005/UML#concrete</Stereotype>
+      <SuperType name="AssetInfo"
+                 baseClass="http://iec.ch/TC57/CIM100#AssetInfo"
+                 baseClassIsShadowExtension="false"/>
+   </Root>
+   <SimpleType hideInDiagrams="false"
+               dataType="http://iec.ch/TC57/CIM100#ApparentPower"
+               name="ApparentPower"
+               ea_guid="EAID_95576B4A_D9AC_49fc_82ED_CB6DB2CE8584"
+               package="Domain"
+               packageURI="http://iec.ch/TC57/CIM100#Package_Domain"
+               xstype="float">
+      <Comment>Product of the RMS value of the voltage and the RMS value of the current.</Comment>
+      <Stereotype label="CIMDatatype">http://langdale.com.au/2005/UML#cimdatatype</Stereotype>
+      <Simple hideInDiagrams="false"
+              type="Float"
+              cimDatatype="http://iec.ch/TC57/CIM100#Float"
+              dataType="http://www.w3.org/2001/XMLSchema#float"
+              xstype="float"
+              name="value"
+              ea_guid="EAID_FEE24CD4_5876_4e4c_B179_AEAA3E11B738"
+              baseProperty="http://iec.ch/TC57/CIM100#ApparentPower.value"
+              basePropertyClass="http://iec.ch/TC57/CIM100#ApparentPower"
+              minOccurs="0"
+              maxOccurs="1">
+         <Comment/>
+         <Stereotype label="Attribute">http://langdale.com.au/2005/UML#attribute</Stereotype>
+      </Simple>
+      <Enumerated baseClass="http://iec.ch/TC57/CIM100#UnitSymbol"
+                  type="UnitSymbol"
+                  hideInDiagrams="false"
+                  name="unit"
+                  ea_guid="EAID_C93DE952_5AF9_40cc_9792_4D2372DC5EEF"
+                  constant="VA"
+                  baseProperty="http://iec.ch/TC57/CIM100#ApparentPower.unit"
+                  basePropertyClass="http://iec.ch/TC57/CIM100#ApparentPower"
+                  minOccurs="0"
+                  maxOccurs="1">
+         <Comment/>
+         <Stereotype label="enumeration">http://langdale.com.au/2005/UML#enumeration</Stereotype>
+         <Stereotype label="Attribute">http://langdale.com.au/2005/UML#attribute</Stereotype>
+      </Enumerated>
+      <Enumerated hideInDiagrams="false"
+                  type="UnitMultiplier"
+                  name="multiplier"
+                  constant=""
+                  ea_guid="EAID_C363463C_85C7_487f_BE31_B6444DAB07DD"
+                  baseClass="http://iec.ch/TC57/CIM100#UnitMultiplier"
+                  baseProperty="http://iec.ch/TC57/CIM100#ApparentPower.multiplier"
+                  basePropertyClass="http://iec.ch/TC57/CIM100#ApparentPower"
+                  minOccurs="0"
+                  maxOccurs="1">
+         <Comment/>
+         <Stereotype label="enumeration">http://langdale.com.au/2005/UML#enumeration</Stereotype>
+         <Stereotype label="Attribute">http://langdale.com.au/2005/UML#attribute</Stereotype>
+      </Enumerated>
+   </SimpleType>
+   <SimpleType hideInDiagrams="false"
+               dataType="http://iec.ch/TC57/CIM100#CurrentFlow"
+               name="CurrentFlow"
+               ea_guid="EAID_DC3FD69C_E9B2_440d_A113_BE84B71BA691"
+               package="Domain"
+               packageURI="http://iec.ch/TC57/CIM100#Package_Domain"
+               xstype="float">
+      <Comment>Electrical current with sign convention: positive flow is out of the conducting equipment into the connectivity node. Can be both AC and DC.</Comment>
+      <Stereotype label="CIMDatatype">http://langdale.com.au/2005/UML#cimdatatype</Stereotype>
+      <Simple hideInDiagrams="false"
+              type="Float"
+              cimDatatype="http://iec.ch/TC57/CIM100#Float"
+              dataType="http://www.w3.org/2001/XMLSchema#float"
+              xstype="float"
+              name="value"
+              ea_guid="EAID_83BDDC04_3689_432d_BF6E_0712C32CE504"
+              baseProperty="http://iec.ch/TC57/CIM100#CurrentFlow.value"
+              basePropertyClass="http://iec.ch/TC57/CIM100#CurrentFlow"
+              minOccurs="0"
+              maxOccurs="1">
+         <Comment/>
+         <Stereotype label="Attribute">http://langdale.com.au/2005/UML#attribute</Stereotype>
+      </Simple>
+      <Enumerated baseClass="http://iec.ch/TC57/CIM100#UnitSymbol"
+                  type="UnitSymbol"
+                  hideInDiagrams="false"
+                  name="unit"
+                  ea_guid="EAID_58C58CD1_5C85_4073_ACF8_9D9F1331364E"
+                  constant="A"
+                  baseProperty="http://iec.ch/TC57/CIM100#CurrentFlow.unit"
+                  basePropertyClass="http://iec.ch/TC57/CIM100#CurrentFlow"
+                  minOccurs="0"
+                  maxOccurs="1">
+         <Comment/>
+         <Stereotype label="enumeration">http://langdale.com.au/2005/UML#enumeration</Stereotype>
+         <Stereotype label="Attribute">http://langdale.com.au/2005/UML#attribute</Stereotype>
+      </Enumerated>
+      <Enumerated hideInDiagrams="false"
+                  type="UnitMultiplier"
+                  name="multiplier"
+                  constant=""
+                  ea_guid="EAID_86741909_5F72_4d38_8B1F_69C7C7308BE8"
+                  baseClass="http://iec.ch/TC57/CIM100#UnitMultiplier"
+                  baseProperty="http://iec.ch/TC57/CIM100#CurrentFlow.multiplier"
+                  basePropertyClass="http://iec.ch/TC57/CIM100#CurrentFlow"
+                  minOccurs="0"
+                  maxOccurs="1">
+         <Comment/>
+         <Stereotype label="enumeration">http://langdale.com.au/2005/UML#enumeration</Stereotype>
+         <Stereotype label="Attribute">http://langdale.com.au/2005/UML#attribute</Stereotype>
+      </Enumerated>
+   </SimpleType>
+   <SimpleType hideInDiagrams="false"
+               dataType="http://iec.ch/TC57/CIM100#Length"
+               name="Length"
+               ea_guid="EAID_06F9A3F0_3AE3_4ad1_88F8_06C207238C3B"
+               package="Domain"
+               packageURI="http://iec.ch/TC57/CIM100#Package_Domain"
+               xstype="float">
+      <Comment>Unit of length. It shall be a positive value or zero.</Comment>
+      <Stereotype label="CIMDatatype">http://langdale.com.au/2005/UML#cimdatatype</Stereotype>
+      <Simple hideInDiagrams="false"
+              type="Float"
+              cimDatatype="http://iec.ch/TC57/CIM100#Float"
+              dataType="http://www.w3.org/2001/XMLSchema#float"
+              xstype="float"
+              name="value"
+              ea_guid="EAID_C594A615_29EA_4d24_8984_B8844EE042B2"
+              baseProperty="http://iec.ch/TC57/CIM100#Length.value"
+              basePropertyClass="http://iec.ch/TC57/CIM100#Length"
+              minOccurs="0"
+              maxOccurs="1">
+         <Comment/>
+         <Stereotype label="Attribute">http://langdale.com.au/2005/UML#attribute</Stereotype>
+      </Simple>
+      <Enumerated baseClass="http://iec.ch/TC57/CIM100#UnitSymbol"
+                  type="UnitSymbol"
+                  hideInDiagrams="false"
+                  name="unit"
+                  ea_guid="EAID_3D6E3075_6B8A_44df_9D89_B4713FE7BDAC"
+                  constant="m"
+                  baseProperty="http://iec.ch/TC57/CIM100#Length.unit"
+                  basePropertyClass="http://iec.ch/TC57/CIM100#Length"
+                  minOccurs="0"
+                  maxOccurs="1">
+         <Comment/>
+         <Stereotype label="enumeration">http://langdale.com.au/2005/UML#enumeration</Stereotype>
+         <Stereotype label="Attribute">http://langdale.com.au/2005/UML#attribute</Stereotype>
+      </Enumerated>
+      <Enumerated hideInDiagrams="false"
+                  type="UnitMultiplier"
+                  name="multiplier"
+                  constant=""
+                  ea_guid="EAID_7E3DD904_59E9_4a23_8877_756089992413"
+                  baseClass="http://iec.ch/TC57/CIM100#UnitMultiplier"
+                  baseProperty="http://iec.ch/TC57/CIM100#Length.multiplier"
+                  basePropertyClass="http://iec.ch/TC57/CIM100#Length"
+                  minOccurs="0"
+                  maxOccurs="1">
+         <Comment/>
+         <Stereotype label="enumeration">http://langdale.com.au/2005/UML#enumeration</Stereotype>
+         <Stereotype label="Attribute">http://langdale.com.au/2005/UML#attribute</Stereotype>
+      </Enumerated>
+   </SimpleType>
+   <SimpleType hideInDiagrams="false"
+               dataType="http://iec.ch/TC57/CIM100#ReactivePower"
+               name="ReactivePower"
+               ea_guid="EAID_C15CB4E4_4430_43ea_AF69_BC3250B1F4A3"
+               package="Domain"
+               packageURI="http://iec.ch/TC57/CIM100#Package_Domain"
+               xstype="float">
+      <Comment>Product of RMS value of the voltage and the RMS value of the quadrature component of the current.</Comment>
+      <Stereotype label="CIMDatatype">http://langdale.com.au/2005/UML#cimdatatype</Stereotype>
+      <Simple hideInDiagrams="false"
+              type="Float"
+              cimDatatype="http://iec.ch/TC57/CIM100#Float"
+              dataType="http://www.w3.org/2001/XMLSchema#float"
+              xstype="float"
+              name="value"
+              ea_guid="EAID_4AEEBF1D_260E_4615_95F2_8219EA8B0AC9"
+              baseProperty="http://iec.ch/TC57/CIM100#ReactivePower.value"
+              basePropertyClass="http://iec.ch/TC57/CIM100#ReactivePower"
+              minOccurs="0"
+              maxOccurs="1">
+         <Comment/>
+         <Stereotype label="Attribute">http://langdale.com.au/2005/UML#attribute</Stereotype>
+      </Simple>
+      <Enumerated baseClass="http://iec.ch/TC57/CIM100#UnitSymbol"
+                  type="UnitSymbol"
+                  hideInDiagrams="false"
+                  name="unit"
+                  ea_guid="EAID_C4DA5044_2A5B_4504_997D_67F35395A5B0"
+                  constant="VAr"
+                  baseProperty="http://iec.ch/TC57/CIM100#ReactivePower.unit"
+                  basePropertyClass="http://iec.ch/TC57/CIM100#ReactivePower"
+                  minOccurs="0"
+                  maxOccurs="1">
+         <Comment/>
+         <Stereotype label="enumeration">http://langdale.com.au/2005/UML#enumeration</Stereotype>
+         <Stereotype label="Attribute">http://langdale.com.au/2005/UML#attribute</Stereotype>
+      </Enumerated>
+      <Enumerated hideInDiagrams="false"
+                  type="UnitMultiplier"
+                  name="multiplier"
+                  constant=""
+                  ea_guid="EAID_3ED78537_D36E_429a_AA73_EB86BF7020FB"
+                  baseClass="http://iec.ch/TC57/CIM100#UnitMultiplier"
+                  baseProperty="http://iec.ch/TC57/CIM100#ReactivePower.multiplier"
+                  basePropertyClass="http://iec.ch/TC57/CIM100#ReactivePower"
+                  minOccurs="0"
+                  maxOccurs="1">
+         <Comment/>
+         <Stereotype label="enumeration">http://langdale.com.au/2005/UML#enumeration</Stereotype>
+         <Stereotype label="Attribute">http://langdale.com.au/2005/UML#attribute</Stereotype>
+      </Enumerated>
+   </SimpleType>
+   <SimpleType hideInDiagrams="false"
+               dataType="http://iec.ch/TC57/CIM100#Voltage"
+               name="Voltage"
+               ea_guid="EAID_233C330A_11B8_4705_879C_5497380F1D82"
+               package="Domain"
+               packageURI="http://iec.ch/TC57/CIM100#Package_Domain"
+               xstype="float">
+      <Comment>Electrical voltage, can be both AC and DC.</Comment>
+      <Stereotype label="CIMDatatype">http://langdale.com.au/2005/UML#cimdatatype</Stereotype>
+      <Simple hideInDiagrams="false"
+              type="Float"
+              cimDatatype="http://iec.ch/TC57/CIM100#Float"
+              dataType="http://www.w3.org/2001/XMLSchema#float"
+              xstype="float"
+              name="value"
+              ea_guid="EAID_C86122FF_94E1_4244_975A_BA865D8135BC"
+              baseProperty="http://iec.ch/TC57/CIM100#Voltage.value"
+              basePropertyClass="http://iec.ch/TC57/CIM100#Voltage"
+              minOccurs="0"
+              maxOccurs="1">
+         <Comment/>
+         <Stereotype label="Attribute">http://langdale.com.au/2005/UML#attribute</Stereotype>
+      </Simple>
+      <Enumerated baseClass="http://iec.ch/TC57/CIM100#UnitSymbol"
+                  type="UnitSymbol"
+                  hideInDiagrams="false"
+                  name="unit"
+                  ea_guid="EAID_6E959BD4_0ACC_4884_99F5_0B158661A3D9"
+                  constant="V"
+                  baseProperty="http://iec.ch/TC57/CIM100#Voltage.unit"
+                  basePropertyClass="http://iec.ch/TC57/CIM100#Voltage"
+                  minOccurs="0"
+                  maxOccurs="1">
+         <Comment/>
+         <Stereotype label="enumeration">http://langdale.com.au/2005/UML#enumeration</Stereotype>
+         <Stereotype label="Attribute">http://langdale.com.au/2005/UML#attribute</Stereotype>
+      </Enumerated>
+      <Enumerated hideInDiagrams="false"
+                  type="UnitMultiplier"
+                  name="multiplier"
+                  constant=""
+                  ea_guid="EAID_5CFD034E_D7E1_4d20_BE0B_BB9E4F9D2D4B"
+                  baseClass="http://iec.ch/TC57/CIM100#UnitMultiplier"
+                  baseProperty="http://iec.ch/TC57/CIM100#Voltage.multiplier"
+                  basePropertyClass="http://iec.ch/TC57/CIM100#Voltage"
+                  minOccurs="0"
+                  maxOccurs="1">
+         <Comment/>
+         <Stereotype label="enumeration">http://langdale.com.au/2005/UML#enumeration</Stereotype>
+         <Stereotype label="Attribute">http://langdale.com.au/2005/UML#attribute</Stereotype>
+      </Enumerated>
+   </SimpleType>
+   <PrimitiveType hideInDiagrams="false"
+                  dataType="http://iec.ch/TC57/CIM100#Boolean"
+                  name="Boolean"
+                  ea_guid="EAID_9F8964F1_6C32_465b_A83D_F5A201A291C3"
+                  package="Domain"
+                  packageURI="http://iec.ch/TC57/CIM100#Package_Domain"
+                  xstype="boolean">
+      <Comment>A type with the value space "true" and "false".</Comment>
+      <Stereotype label="Primitive">http://langdale.com.au/2005/UML#primitive</Stereotype>
+   </PrimitiveType>
+   <PrimitiveType hideInDiagrams="false"
+                  dataType="http://iec.ch/TC57/CIM100#DateTime"
+                  name="DateTime"
+                  ea_guid="EAID_EEAE6E83_944C_489c_8E25_CFB85F80C3EB"
+                  package="Domain"
+                  packageURI="http://iec.ch/TC57/CIM100#Package_Domain"
+                  xstype="dateTime">
+      <Comment>Date and time as "yyyy-mm-ddThh:mm:ss.sss", which conforms with ISO 8601. UTC time zone is specified as "yyyy-mm-ddThh:mm:ss.sssZ". A local timezone relative UTC is specified as "yyyy-mm-ddThh:mm:ss.sss-hh:mm". The second component (shown here as "ss.sss") could have any number of digits in its fractional part to allow any kind of precision beyond seconds.</Comment>
+      <Stereotype label="Primitive">http://langdale.com.au/2005/UML#primitive</Stereotype>
+   </PrimitiveType>
+   <PrimitiveType hideInDiagrams="false"
+                  dataType="http://iec.ch/TC57/CIM100#Integer"
+                  name="Integer"
+                  ea_guid="EAID_5F6B613B_C31A_4476_8050_E600FBD5F789"
+                  package="Domain"
+                  packageURI="http://iec.ch/TC57/CIM100#Package_Domain"
+                  xstype="integer">
+      <Comment>An integer number. The range is unspecified and not limited.</Comment>
+      <Stereotype label="Primitive">http://langdale.com.au/2005/UML#primitive</Stereotype>
+   </PrimitiveType>
+   <PrimitiveType hideInDiagrams="false"
+                  dataType="http://iec.ch/TC57/CIM100#String"
+                  name="String"
+                  ea_guid="EAID_E50DF78B_84CE_42e9_A275_A956DEF45490"
+                  package="Domain"
+                  packageURI="http://iec.ch/TC57/CIM100#Package_Domain"
+                  xstype="string">
+      <Comment>A string consisting of a sequence of characters. The character encoding is UTF-8. The string length is unspecified and unlimited.</Comment>
+      <Stereotype label="Primitive">http://langdale.com.au/2005/UML#primitive</Stereotype>
+   </PrimitiveType>
+   <Package name="AssetInfo"
+            ea_guid="EAPK_DE6246EF_E71A_46da_BE5A_6A296C03DADD"
+            basePackage="http://iec.ch/TC57/CIM100#Package_AssetInfo">
+      <Comment>This package is an extension of Assets package and contains the core information classes that support asset management and different network and work planning applications with specialized AssetInfo subclasses. They hold attributes that can be referenced by not only Asset-s or AssetModel-s but also by ConductingEquipment-s.</Comment>
+      <ParentPackage name="IEC61968"
+                     basePackage="http://iec.ch/TC57/CIM100#Package_IEC61968"/>
+   </Package>
+   <Package name="Assets"
+            ea_guid="EAPK_6518C7D6_2509_431c_AB1A_02EFAFCE7A51"
+            basePackage="http://iec.ch/TC57/CIM100#Package_Assets">
+      <Comment>This package contains the core information classes that support asset management applications that deal with the physical and lifecycle aspects of various network resources (as opposed to power system resource models defined in IEC61970::Wires package, which support network applications).</Comment>
+      <ParentPackage name="IEC61968"
+                     basePackage="http://iec.ch/TC57/CIM100#Package_IEC61968"/>
+   </Package>
+   <Package name="Base"
+            ea_guid="EAPK_20A2C6D8_4765_466f_AD75_5E1B3CAF4E8D"
+            basePackage="http://iec.ch/TC57/CIM100#Package_Base">
+      <Comment>Content of the base CIM published as IEC 61970-301.</Comment>
+      <ParentPackage name="IEC61970"
+                     basePackage="http://iec.ch/TC57/CIM100#Package_IEC61970"/>
+   </Package>
+   <Package name="Common"
+            ea_guid="EAPK_EE877146_D323_4066_AB0A_FCE1513C20A4"
+            basePackage="http://iec.ch/TC57/CIM100#Package_Common">
+      <Comment>This package contains the information classes that support distribution management in general.</Comment>
+      <ParentPackage name="IEC61968"
+                     basePackage="http://iec.ch/TC57/CIM100#Package_IEC61968"/>
+   </Package>
+   <Package name="Core"
+            ea_guid="EAPK_6A503B72_6E15_4cd1_B92D_DDF6D14DBE29"
+            basePackage="http://iec.ch/TC57/CIM100#Package_Core">
+      <Comment>Contains the core PowerSystemResource and ConductingEquipment entities shared by all applications plus common collections of those entities. Not all applications require all the Core entities.  This package does not depend on any other package except the Domain package, but most of the other packages have associations and generalizations that depend on it.</Comment>
+      <ParentPackage name="Base" basePackage="http://iec.ch/TC57/CIM100#Package_Base"/>
+   </Package>
+   <Package name="Domain"
+            ea_guid="EAPK_0134E45C_F32A_4522_A725_E07B0AE4CB57"
+            basePackage="http://iec.ch/TC57/CIM100#Package_Domain">
+      <Comment>The domain package defines primitive datatypes that are used by classes in other packages. Stereotypes are used to describe the datatypes. The following stereotypes are defined:</Comment>
+      <Comment>&amp;lt;&amp;lt;enumeration&amp;gt;&amp;gt; A list of permissible constant values.</Comment>
+      <Comment>&amp;lt;&amp;lt;Primitive&amp;gt;&amp;gt; The most basic data types used to compose all other data types.</Comment>
+      <Comment>&amp;lt;&amp;lt;CIMDatatype&amp;gt;&amp;gt; A datatype that contains a value attribute, an optional unit of measure and a unit multiplier. The unit and multiplier may be specified as a static variable initialized to the allowed value.</Comment>
+      <Comment>&amp;lt;&amp;lt;Compound&amp;gt;&amp;gt; A composite of Primitive, enumeration, CIMDatatype or other Compound classes, as long as the Compound classes do not recurse.</Comment>
+      <Comment>For all datatypes both positive and negative values are allowed unless stated otherwise for a particular datatype.</Comment>
+      <ParentPackage name="Base" basePackage="http://iec.ch/TC57/CIM100#Package_Base"/>
+   </Package>
+   <Package name="IEC61968"
+            ea_guid="EAPK_F020E775_00E6_4716_A216_BDD5E2FF16F5"
+            basePackage="http://iec.ch/TC57/CIM100#Package_IEC61968">
+      <Comment>The IEC 61968 subpackages of the CIM are developed, standardized and maintained by the UCA community including its working groups and task forces.</Comment>
+      <Comment>Currently, normative parts of the model support the needs of information exchange defined in IEC 61968-3, IEC 61968-4, IEC 61968-5, IEC 61968-6, IEC 61968-8, IEC 61968-9 and in IEC 61968-13.</Comment>
+      <ParentPackage name="TC57CIM" basePackage="http://iec.ch/TC57/CIM100#Package_TC57CIM"/>
+   </Package>
+   <Package name="IEC61970"
+            ea_guid="EAPK_21D32832_FF64_4213_B81C_55ACE35EEBFF"
+            basePackage="http://iec.ch/TC57/CIM100#Package_IEC61970">
+      <Comment>Top package for IEC 61970.</Comment>
+      <ParentPackage name="TC57CIM" basePackage="http://iec.ch/TC57/CIM100#Package_TC57CIM"/>
+   </Package>
+   <Package name="InfAssetInfo"
+            ea_guid="EAPK_64B41E47_775F_4ec7_A068_4204B9810D7E"
+            basePackage="http://iec.ch/TC57/CIM100#Package_InfAssetInfo">
+      <ParentPackage name="InfIEC61968"
+                     basePackage="http://iec.ch/TC57/CIM100#Package_InfIEC61968"/>
+   </Package>
+   <Package name="InfIEC61968"
+            ea_guid="EAPK_6D361F11_F6D2_4e79_972E_9E34AA663CA4"
+            basePackage="http://iec.ch/TC57/CIM100#Package_InfIEC61968">
+      <Comment>This package and its subpackages contain informative (unstable) elements of the model, expected to evolve a lot or to be removed, and not published as IEC document yet. Some portions of it will be reworked and moved to normative packages as the need arises, and some portions may be removed.</Comment>
+      <Comment>WG14 does not generate documentation for this informative portion of the model.</Comment>
+      <ParentPackage name="IEC61968"
+                     basePackage="http://iec.ch/TC57/CIM100#Package_IEC61968"/>
+   </Package>
+   <Package name="InfWiresExt"
+            ea_guid="EAPK_C5B06802_9987_4648_AB20_57391B09A164"
+            basePackage="http://iec.ch/TC57/CIM100#Package_InfWiresExt">
+      <ParentPackage name="InfIEC61968"
+                     basePackage="http://iec.ch/TC57/CIM100#Package_InfIEC61968"/>
+   </Package>
+   <Package name="TC57CIM"
+            ea_guid="EAPK_39AA7E64_A03A_4934_AF09_E74943F7E6C0"
+            basePackage="http://iec.ch/TC57/CIM100#Package_TC57CIM">
+      <Comment>Top package for IEC TC57 CIM.</Comment>
+      <ParentPackage name="Global"
+                     basePackage="http://langdale.com.au/2005/UML#global_package"/>
+   </Package>
+   <Package name="Global"
+            basePackage="http://langdale.com.au/2005/UML#global_package"/>
+</Catalog>
