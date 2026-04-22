@@ -1,0 +1,28 @@
+using System.ComponentModel.DataAnnotations;
+using Microsoft.EntityFrameworkCore;
+====
+[Table("IdentifiedObject")]
+public class IdentifiedObject
+{
+====
+[Key]
+        [Column("mRID")]
+        [MaxLength(100)]
+        public string MRId { get; set; } = null!;
+====
+public ElectronicAddress() { Id = System.Guid.NewGuid().ToString(); }
+====
+public class ParentOrganization : Organisation
+{
+====
+e.HasOne(x => x.ParentOrganisation).WithMany().HasForeignKey(x => x.ParentOrganisationId).OnDelete(DeleteBehavior.ClientNoAction);
+====
+e.HasOne(x => x.ElectronicAddress).WithMany().HasForeignKey(x => x.ElectronicAddressId).OnDelete(DeleteBehavior.Cascade);
+====
+typeof(OverheadWireInfo)
+====
+[Table("OverheadWireInfo")]
+==== 
+public static class ModelConfiguration
+{
+        public static void ConfigureModel(ModelBuilder modelBuilder)

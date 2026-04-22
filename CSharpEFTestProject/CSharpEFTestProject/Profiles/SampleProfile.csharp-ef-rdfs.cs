@@ -11,6 +11,9 @@ using System;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Collections.Generic;
+using System.Linq;
+using System.Threading;
+using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 
 /// <summary>
@@ -79,36 +82,25 @@ using Microsoft.EntityFrameworkCore;
 /// and the generated <c>ModelConfiguration</c> applies
 /// <c>DeleteBehavior.Cascade</c> for compound relationships so EF Core treats
 /// compound references as owned-like one-to-one links in its relationship metadata.
-/// However, when the FK column lives on the owner row, EF Core does not by itself
-/// perform owner-side orphan cleanup during replacement or parent deletion. If you need
-/// full compound ownership cleanup parity with the companion SQL DDL, add a
-/// <c>SaveChanges</c> override or interceptor that deletes now-unreferenced
-/// compound rows after the owner changes are saved.
+/// Because the FK column lives on the owner row, owner-side orphan cleanup during
+/// replacement or parent deletion must still be handled explicitly. The generated
+/// <c>DbContextBase</c> in this file includes profile-specific cleanup hooks that
+/// collect and remove now-unreferenced compound rows after owner changes are saved.
 /// Each compound entity constructor assigns a new <see cref="System.Guid"/>
 /// to its <c>Id</c> property on instantiation.
 /// </para>
 /// <para>
 /// <b>DbContext Integration</b><br/>
 /// This file includes a generated <c>ModelConfiguration</c> nested static
-/// class containing the complete EF Core Fluent API configuration for all
-/// entities in this profile. Create the following DbContext subclass once
-/// in your project - it will not be overwritten by CIMTool:
+/// class and a generated abstract <c>DbContextBase</c> that provides
+/// DbSet properties, EF model configuration wiring, and generated compound
+/// cleanup support for owner-side orphan handling.
+/// Create the following thin DbContext subclass once in your project - it
+/// will not be overwritten by CIMTool:
 /// <code>
-/// public class SampleProfileDbContext : DbContext
+/// public class SampleProfileDbContext : SampleProfile.DbContextBase
 /// {
-///     // Add one DbSet<T> per entity class, e.g.:
-///     // public DbSet<SampleProfile.Organisation> Organisations { get; set; } = null!;
-///     
 ///     public SampleProfileDbContext(DbContextOptions options) : base(options) { }
-///     
-///     protected override void OnModelCreating(ModelBuilder modelBuilder)
-///     {
-///         SampleProfile.ModelConfiguration.ConfigureModel(modelBuilder);
-///     }
-///     
-///     // If you need owner-side compound cleanup parity with the companion DDL,
-///     // add a SaveChanges override or interceptor that deletes now-unreferenced
-///     // compound rows after owner updates and deletes are saved.
 /// }
 /// </code>
 /// </para>
@@ -1396,10 +1388,8 @@ public class SampleProfile
     ///      Compound rows are value objects with exactly one owner. The companion
     ///      SQL DDL emits <c>ON DELETE CASCADE</c> for these FKs.
     ///      <c>DeleteBehavior.Cascade</c> keeps EF Core's relationship metadata and
-    ///      tracked graph behavior aligned, but it does not by itself implement
-    ///      owner-side orphan cleanup when the FK column is stored on the owner row.
-    ///      Applications that need exact compound ownership cleanup should add a
-    ///      <c>SaveChanges</c> override or interceptor.
+    ///      tracked graph behavior aligned. Owner-side orphan cleanup is handled
+    ///      by the generated <c>DbContextBase</c> when consumers derive from it.
     ///    </item>
     ///    <item>
     ///      <c>DeleteBehavior.ClientNoAction</c> - associations between independent
@@ -1498,115 +1488,275 @@ public class SampleProfile
         private static void ConfigureOverheadWireInfo(ModelBuilder modelBuilder)
         => modelBuilder.Entity<OverheadWireInfo>().ToTable("OverheadWireInfo");
     }
-
-    // Generated — do not edit. Part of SampleProfile.cs
+    /// <summary>
+    /// Generated EF Core DbContext base for the SampleProfile profile.
+    /// This base class provides generated DbSet properties, model wiring,
+    /// and compound orphan cleanup hooks derived from the profile itself.
+    /// </summary>
+    /// <remarks>
+    /// <para>
+    /// Create a thin hand-written subclass in your application:
+    /// </para>
+    /// <code>
+    /// public class SampleProfileDbContext : SampleProfile.DbContextBase
+    /// {
+    ///     public SampleProfileDbContext(DbContextOptions options) : base(options) { }
+    /// }
+    /// </code>
+    /// </remarks>
     public abstract class DbContextBase : DbContext
     {
-        // Generated DbSet properties
-        public DbSet<SampleProfile.Organisation> Organisations 
-            => Set<SampleProfile.Organisation>();
-        // ... other DbSets ...
-
+        protected DbContextBase(DbContextOptions options) : base(options) { }
+        public DbSet<SampleProfile.CrewStatusKind> CrewStatusKinds => Set<SampleProfile.CrewStatusKind>();
+        public DbSet<SampleProfile.PhaseCode> PhaseCodes => Set<SampleProfile.PhaseCode>();
+        public DbSet<SampleProfile.ShuntImpedanceControlKind> ShuntImpedanceControlKinds => Set<SampleProfile.ShuntImpedanceControlKind>();
+        public DbSet<SampleProfile.ShuntImpedanceLocalControlKind> ShuntImpedanceLocalControlKinds => Set<SampleProfile.ShuntImpedanceLocalControlKind>();
+        public DbSet<SampleProfile.WireInsulationKind> WireInsulationKinds => Set<SampleProfile.WireInsulationKind>();
+        public DbSet<SampleProfile.WireMaterialKind> WireMaterialKinds => Set<SampleProfile.WireMaterialKind>();
+        public DbSet<SampleProfile.ElectronicAddress> ElectronicAddresses => Set<SampleProfile.ElectronicAddress>();
+        public DbSet<SampleProfile.Status> Statuses => Set<SampleProfile.Status>();
+        public DbSet<SampleProfile.StreetDetail> StreetDetails => Set<SampleProfile.StreetDetail>();
+        public DbSet<SampleProfile.TelephoneNumber> TelephoneNumbers => Set<SampleProfile.TelephoneNumber>();
+        public DbSet<SampleProfile.TownDetail> TownDetails => Set<SampleProfile.TownDetail>();
+        public DbSet<SampleProfile.StreetAddress> StreetAddresses => Set<SampleProfile.StreetAddress>();
+        public DbSet<SampleProfile.IdentifiedObject> IdentifiedObjects => Set<SampleProfile.IdentifiedObject>();
+        public DbSet<SampleProfile.ShuntCompensatorControl> ShuntCompensatorControls => Set<SampleProfile.ShuntCompensatorControl>();
+        public DbSet<SampleProfile.AssetInfo> AssetInfos => Set<SampleProfile.AssetInfo>();
+        public DbSet<SampleProfile.Organisation> Organisations => Set<SampleProfile.Organisation>();
+        public DbSet<SampleProfile.ParentOrganization> ParentOrganizations => Set<SampleProfile.ParentOrganization>();
+        public DbSet<SampleProfile.ShuntCompensatorInfo> ShuntCompensatorInfos => Set<SampleProfile.ShuntCompensatorInfo>();
+        public DbSet<SampleProfile.WireInfo> WireInfos => Set<SampleProfile.WireInfo>();
+        public DbSet<SampleProfile.WireSpacingInfo> WireSpacingInfos => Set<SampleProfile.WireSpacingInfo>();
+        public DbSet<SampleProfile.OverheadWireInfo> OverheadWireInfos => Set<SampleProfile.OverheadWireInfo>();
         protected override void OnModelCreating(ModelBuilder modelBuilder)
-            => SampleProfile.ModelConfiguration.ConfigureModel(modelBuilder);
-
+        => SampleProfile.ModelConfiguration.ConfigureModel(modelBuilder);
         public override int SaveChanges()
+        => SaveChangesWithCleanup(() => base.SaveChanges());
+        public override int SaveChanges(bool acceptAllChangesOnSuccess)
+        => SaveChangesWithCleanup(() => base.SaveChanges(acceptAllChangesOnSuccess));
+        public override Task<int> SaveChangesAsync(CancellationToken cancellationToken = default)
+        => SaveChangesWithCleanupAsync(ct => base.SaveChangesAsync(ct), cancellationToken);
+        public override Task<int> SaveChangesAsync(bool acceptAllChangesOnSuccess, CancellationToken cancellationToken = default)
+        => SaveChangesWithCleanupAsync(ct => base.SaveChangesAsync(acceptAllChangesOnSuccess, ct), cancellationToken);
+        private int SaveChangesWithCleanup(Func<int> baseSaveChanges)
         {
-            var orphans = CollectCompoundOrphans();
-            var rows = base.SaveChanges();
-            if (orphans.Count == 0) return rows;
-            DeleteOrphanedCompounds(orphans);
-            return rows + base.SaveChanges();
-        }
-
-        // ... SaveChangesAsync override, same pattern ...
-
-        private List<(Type Type, string Id)> CollectCompoundOrphans()
-        {
+            ArgumentNullException.ThrowIfNull(baseSaveChanges);
             ChangeTracker.DetectChanges();
-            var orphans = new List<(Type, string)>();
-
-            foreach (var entry in ChangeTracker.Entries<SampleProfile.Organisation>())
+            var candidates = CollectCleanupCandidates();
+            var rows = baseSaveChanges();
+            if (candidates.Count == 0)
             {
-                if (entry.State is not EntityState.Modified 
-                            and not EntityState.Deleted) continue;
-
-                // Generated per a:Compound child of Organisation
-                CollectOrphan(entry, nameof(SampleProfile.Organisation.ElectronicAddressId), 
-                            typeof(SampleProfile.ElectronicAddress), orphans);
-                CollectOrphan(entry, nameof(SampleProfile.Organisation.Phone1Id),           
-                            typeof(SampleProfile.TelephoneNumber), orphans);
-                CollectOrphan(entry, nameof(SampleProfile.Organisation.Phone2Id),           
-                            typeof(SampleProfile.TelephoneNumber), orphans);
-                CollectOrphan(entry, nameof(SampleProfile.Organisation.PostalAddressId),    
-                            typeof(SampleProfile.StreetAddress), orphans);
-                CollectOrphan(entry, nameof(SampleProfile.Organisation.StreetAddressId),    
-                            typeof(SampleProfile.StreetAddress), orphans);
+                return rows;
             }
-
-            // Generated per a:Compound child of StreetAddress (nested compound hierarchy)
+            if (!MarkOrphanedCompoundsForDeletion(candidates))
+            {
+                return rows;
+            }
+            rows += baseSaveChanges();
+            return rows;
+        }
+        private async Task<int> SaveChangesWithCleanupAsync(Func<CancellationToken, Task<int>> baseSaveChangesAsync, CancellationToken cancellationToken)
+        {
+            ArgumentNullException.ThrowIfNull(baseSaveChangesAsync);
+            ChangeTracker.DetectChanges();
+            var candidates = CollectCleanupCandidates();
+            var rows = await baseSaveChangesAsync(cancellationToken);
+            if (candidates.Count == 0)
+            {
+                return rows;
+            }
+            if (!MarkOrphanedCompoundsForDeletion(candidates))
+            {
+                return rows;
+            }
+            rows += await baseSaveChangesAsync(cancellationToken);
+            return rows;
+        }
+        private List<CompoundCleanupCandidate> CollectCleanupCandidates()
+        {
+            var candidates = new List<CompoundCleanupCandidate>();
             foreach (var entry in ChangeTracker.Entries<SampleProfile.StreetAddress>())
             {
-                if (entry.State is not EntityState.Modified 
-                            and not EntityState.Deleted) continue;
-
-                CollectOrphan(entry, nameof(SampleProfile.StreetAddress.StatusId),      
-                            typeof(SampleProfile.Status), orphans);
-                CollectOrphan(entry, nameof(SampleProfile.StreetAddress.StreetDetailId),
-                            typeof(SampleProfile.StreetDetail), orphans);
-                CollectOrphan(entry, nameof(SampleProfile.StreetAddress.TownDetailId),  
-                            typeof(SampleProfile.TownDetail), orphans);
+                if (entry.State is not EntityState.Modified and not EntityState.Deleted)
+                {
+                    continue;
+                }
+                CollectChangedCompound(entry, nameof(SampleProfile.StreetAddress.StatusId), typeof(SampleProfile.Status), candidates);
+                CollectChangedCompound(entry, nameof(SampleProfile.StreetAddress.StreetDetailId), typeof(SampleProfile.StreetDetail), candidates);
+                CollectChangedCompound(entry, nameof(SampleProfile.StreetAddress.TownDetailId), typeof(SampleProfile.TownDetail), candidates);
             }
-
-            return orphans;
-        }
-
-        private void DeleteOrphanedCompounds(List<(Type Type, string Id)> orphans)
-        {
-            foreach (var (type, id) in orphans)
+            foreach (var entry in ChangeTracker.Entries<SampleProfile.Organisation>())
             {
-                // Generated per compound type
-                if (type == typeof(SampleProfile.ElectronicAddress))
-                    DeleteCompound(Set<SampleProfile.ElectronicAddress>(), 
-                                x => x.Id == id);
-                else if (type == typeof(SampleProfile.TelephoneNumber))
-                    DeleteCompound(Set<SampleProfile.TelephoneNumber>(),   
-                                x => x.Id == id);
-                else if (type == typeof(SampleProfile.StreetAddress))
-                    DeleteCompound(Set<SampleProfile.StreetAddress>(),     
-                                x => x.Id == id);
-                else if (type == typeof(SampleProfile.Status))
-                    DeleteCompound(Set<SampleProfile.Status>(),            
-                                x => x.Id == id);
-                else if (type == typeof(SampleProfile.StreetDetail))
-                    DeleteCompound(Set<SampleProfile.StreetDetail>(),      
-                                x => x.Id == id);
-                else if (type == typeof(SampleProfile.TownDetail))
-                    DeleteCompound(Set<SampleProfile.TownDetail>(),        
-                                x => x.Id == id);
+                if (entry.State is not EntityState.Modified and not EntityState.Deleted)
+                {
+                    continue;
+                }
+                CollectChangedCompound(entry, nameof(SampleProfile.Organisation.ElectronicAddressId), typeof(SampleProfile.ElectronicAddress), candidates);
+                CollectChangedCompound(entry, nameof(SampleProfile.Organisation.Phone1Id), typeof(SampleProfile.TelephoneNumber), candidates);
+                CollectChangedCompound(entry, nameof(SampleProfile.Organisation.Phone2Id), typeof(SampleProfile.TelephoneNumber), candidates);
+                CollectChangedCompound(entry, nameof(SampleProfile.Organisation.PostalAddressId), typeof(SampleProfile.StreetAddress), candidates);
+                CollectChangedCompound(entry, nameof(SampleProfile.Organisation.StreetAddressId), typeof(SampleProfile.StreetAddress), candidates);
             }
+            return candidates;
         }
-
-        // Shared helper — not generated, part of the base infrastructure
-        private static void CollectOrphan<TEntity>(
-            EntityEntry<TEntity> entry, string propertyName, 
-            Type compoundType, List<(Type, string)> orphans)
-            where TEntity : class
+        private static void CollectChangedCompound<TEntity>(Microsoft.EntityFrameworkCore.ChangeTracking.EntityEntry<TEntity> entry, string propertyName, Type compoundType, List<CompoundCleanupCandidate> candidates)
+        where TEntity : class
         {
             var originalId = entry.OriginalValues[propertyName] as string;
-            var currentId  = entry.State == EntityState.Deleted ? null
-                        : entry.CurrentValues[propertyName] as string;
-            if (!string.IsNullOrWhiteSpace(originalId) && originalId != currentId)
-                orphans.Add((compoundType, originalId));
+            var currentId = entry.State == EntityState.Deleted ? null : entry.CurrentValues[propertyName] as string;
+            if (!string.IsNullOrWhiteSpace(originalId) && !string.Equals(originalId, currentId, StringComparison.Ordinal))
+            {
+                candidates.Add(new CompoundCleanupCandidate(compoundType, originalId));
+            }
         }
-
-        private void DeleteCompound<TEntity>(
-            DbSet<TEntity> set, Expression<Func<TEntity, bool>> predicate)
-            where TEntity : class
+        private bool MarkOrphanedCompoundsForDeletion(IReadOnlyCollection<CompoundCleanupCandidate> candidates)
         {
-            var entity = set.Local.FirstOrDefault(predicate.Compile()) 
-                    ?? set.AsEnumerable().FirstOrDefault(predicate.Compile());
-            if (entity is not null) Remove(entity);
+            var plannedDeletes = new HashSet<CompoundCleanupCandidate>();
+            var visiting = new HashSet<CompoundCleanupCandidate>();
+            foreach (var candidate in candidates)
+            {
+                PlanCompoundDeletion(candidate, plannedDeletes, visiting);
+            }
+            var deletedAny = false;
+            foreach (var candidate in plannedDeletes)
+            {
+                deletedAny |= MarkCompoundForDeletion(candidate);
+            }
+            return deletedAny;
         }
+        private void PlanCompoundDeletion(CompoundCleanupCandidate candidate, HashSet<CompoundCleanupCandidate> plannedDeletes, HashSet<CompoundCleanupCandidate> visiting)
+        {
+            if (string.IsNullOrWhiteSpace(candidate.Id) || plannedDeletes.Contains(candidate) || !visiting.Add(candidate))
+            {
+                return;
+            }
+            if (IsStillReferenced(candidate, plannedDeletes))
+            {
+                visiting.Remove(candidate);
+                return;
+            }
+            plannedDeletes.Add(candidate);
+            foreach (var child in GetNestedCompoundCandidates(candidate))
+            {
+                PlanCompoundDeletion(child, plannedDeletes, visiting);
+            }
+            visiting.Remove(candidate);
+        }
+        private bool IsStillReferenced(CompoundCleanupCandidate candidate, HashSet<CompoundCleanupCandidate> plannedDeletes)
+        {
+            if (candidate.CompoundType == typeof(SampleProfile.ElectronicAddress))
+            {
+                var isReferenced = false;
+                isReferenced = isReferenced || Set<SampleProfile.Organisation>().Any(x => x.ElectronicAddressId == candidate.Id);
+                return isReferenced;
+            }
+            if (candidate.CompoundType == typeof(SampleProfile.Status))
+            {
+                var isReferenced = false;
+                isReferenced = isReferenced || Set<SampleProfile.StreetAddress>()
+                    .Where(x => x.StatusId == candidate.Id)
+                    .Select(x => x.Id)
+                    .AsEnumerable()
+                    .Any(id => !plannedDeletes.Contains(new CompoundCleanupCandidate(typeof(SampleProfile.StreetAddress), id)));
+                return isReferenced;
+            }
+            if (candidate.CompoundType == typeof(SampleProfile.StreetDetail))
+            {
+                var isReferenced = false;
+                isReferenced = isReferenced || Set<SampleProfile.StreetAddress>()
+                    .Where(x => x.StreetDetailId == candidate.Id)
+                    .Select(x => x.Id)
+                    .AsEnumerable()
+                    .Any(id => !plannedDeletes.Contains(new CompoundCleanupCandidate(typeof(SampleProfile.StreetAddress), id)));
+                return isReferenced;
+            }
+            if (candidate.CompoundType == typeof(SampleProfile.TelephoneNumber))
+            {
+                var isReferenced = false;
+                isReferenced = isReferenced || Set<SampleProfile.Organisation>().Any(x => x.Phone1Id == candidate.Id || x.Phone2Id == candidate.Id);
+                return isReferenced;
+            }
+            if (candidate.CompoundType == typeof(SampleProfile.TownDetail))
+            {
+                var isReferenced = false;
+                isReferenced = isReferenced || Set<SampleProfile.StreetAddress>()
+                    .Where(x => x.TownDetailId == candidate.Id)
+                    .Select(x => x.Id)
+                    .AsEnumerable()
+                    .Any(id => !plannedDeletes.Contains(new CompoundCleanupCandidate(typeof(SampleProfile.StreetAddress), id)));
+                return isReferenced;
+            }
+            if (candidate.CompoundType == typeof(SampleProfile.StreetAddress))
+            {
+                var isReferenced = false;
+                isReferenced = isReferenced || Set<SampleProfile.Organisation>().Any(x => x.PostalAddressId == candidate.Id || x.StreetAddressId == candidate.Id);
+                return isReferenced;
+            }
+            return false;
+        }
+        private IEnumerable<CompoundCleanupCandidate> GetNestedCompoundCandidates(CompoundCleanupCandidate candidate)
+        {
+            if (candidate.CompoundType == typeof(SampleProfile.StreetAddress))
+            {
+                var entity = Set<SampleProfile.StreetAddress>().SingleOrDefault(x => x.Id == candidate.Id);
+                if (entity is null)
+                {
+                    return Array.Empty<CompoundCleanupCandidate>();
+                }
+                var children = new List<CompoundCleanupCandidate>();
+                AddIfPresent(children, typeof(SampleProfile.Status), entity.StatusId);
+                AddIfPresent(children, typeof(SampleProfile.StreetDetail), entity.StreetDetailId);
+                AddIfPresent(children, typeof(SampleProfile.TownDetail), entity.TownDetailId);
+                return children;
+            }
+            return Array.Empty<CompoundCleanupCandidate>();
+        }
+        private static void AddIfPresent(List<CompoundCleanupCandidate> children, Type type, string? id)
+        {
+            if (!string.IsNullOrWhiteSpace(id))
+            {
+                children.Add(new CompoundCleanupCandidate(type, id));
+            }
+        }
+        private bool MarkCompoundForDeletion(CompoundCleanupCandidate candidate)
+        {
+            if (candidate.CompoundType == typeof(SampleProfile.ElectronicAddress))
+            {
+                return DeleteIfPresent(Set<SampleProfile.ElectronicAddress>(), x => x.Id == candidate.Id);
+            }
+            if (candidate.CompoundType == typeof(SampleProfile.Status))
+            {
+                return DeleteIfPresent(Set<SampleProfile.Status>(), x => x.Id == candidate.Id);
+            }
+            if (candidate.CompoundType == typeof(SampleProfile.StreetDetail))
+            {
+                return DeleteIfPresent(Set<SampleProfile.StreetDetail>(), x => x.Id == candidate.Id);
+            }
+            if (candidate.CompoundType == typeof(SampleProfile.TelephoneNumber))
+            {
+                return DeleteIfPresent(Set<SampleProfile.TelephoneNumber>(), x => x.Id == candidate.Id);
+            }
+            if (candidate.CompoundType == typeof(SampleProfile.TownDetail))
+            {
+                return DeleteIfPresent(Set<SampleProfile.TownDetail>(), x => x.Id == candidate.Id);
+            }
+            if (candidate.CompoundType == typeof(SampleProfile.StreetAddress))
+            {
+                return DeleteIfPresent(Set<SampleProfile.StreetAddress>(), x => x.Id == candidate.Id);
+            }
+            return false;
+        }
+        private bool DeleteIfPresent<TEntity>(DbSet<TEntity> set, Func<TEntity, bool> predicate)
+        where TEntity : class
+        {
+            var entity = set.Local.FirstOrDefault(predicate) ?? set.AsEnumerable().FirstOrDefault(predicate);
+            if (entity is null)
+            {
+                return false;
+            }
+            Remove(entity);
+            return true;
+        }
+        private readonly record struct CompoundCleanupCandidate(Type CompoundType, string Id);
     }
 }

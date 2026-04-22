@@ -6,6 +6,8 @@ I was able to set up the current C# EF builder workflow and generate C# output f
 
 The comprehensive regression test currently passes overall, which means the generated code is at least usable enough to build, map, and exercise through EF Core with SQLite.
 
+On April 21, 2026, after regenerating `SampleProfile.csharp-ef-rdfs.cs` from the updated builder, I switched the smoke-test `SampleProfileDbContext` from the older hand-written cleanup prototype to the newly generated `SampleProfile.DbContextBase`. The regression suite still passed all 30 sections after that switch, which is the strongest confirmation so far that the XSL is now generating the intended cleanup path directly.
+
 On April 17, 2026, I also applied a formatting-focused cleanup to the `csharp-ef-rdfs.xsl` template in the CIMTool source tree and synced the same XSL into the RC8 runtime builder folder. That cleanup was intentionally conservative: it reduced extra spacer emissions inside generated class bodies and removed one extra blank section break after the `allClasses` block, without changing the entity-model semantics.
 
 Any blank-line counts or formatting diagnostics still refer to the last generated `.cs` artifact until the profile is regenerated through CIMTool using the updated builder.
@@ -176,11 +178,11 @@ What still remains open after that regeneration:
 
 Prototype work completed later on April 18, 2026:
 
-- added a profile-aware compound cleanup helper in the EF Core smoke test project
-- wired the test `SampleProfileDbContext` through that helper using `SaveChanges` / `SaveChangesAsync` overrides
-- reran the full regression harness successfully after the helper change
+- added a profile-aware compound cleanup prototype in the EF Core smoke test project
+- wired the test `SampleProfileDbContext` through that prototype using `SaveChanges` / `SaveChangesAsync` overrides
+- reran the full regression harness successfully after the prototype change
 
-What the helper improved in the regression run:
+What the prototype improved in the regression run:
 
 - deleting `Organisation` now cleans up its orphaned compound graph rows in the smoke test context
 - replacing `Organisation.Phone1` now cleans up the previous `TelephoneNumber` row in the smoke test context
@@ -194,32 +196,34 @@ Additional regression clarification added later on April 18, 2026:
 - introduced a second, plain `GeneratedOnlySampleProfileDbContext` with no cleanup override
 - added a dedicated `Generated mapping baseline` section so the regression suite now distinguishes:
   - native generated EF behavior
-  - helper-assisted smoke test behavior
+  - cleanup-enabled smoke test behavior
 
 What the baseline section now proves explicitly:
 
-- without the cleanup helper, replacing compound references leaves orphaned compound rows behind
-- without the cleanup helper, deleting the owner `Organisation` leaves compound graphs behind
-- without the cleanup helper, deleting a compound principal still cascades into the owner and leaves the inherited `IdentifiedObject` base row behind
-- without the cleanup helper, clearing optional compound navigations back to `null` leaves orphan compound rows behind
+- without generated cleanup, replacing compound references leaves orphaned compound rows behind
+- without generated cleanup, deleting the owner `Organisation` leaves compound graphs behind
+- without generated cleanup, deleting a compound principal still cascades into the owner and leaves the inherited `IdentifiedObject` base row behind
+- without generated cleanup, clearing optional compound navigations back to `null` leaves orphan compound rows behind
 
-Important scope note:
+Updated scope note after regeneration on April 21, 2026:
 
-- this cleanup helper currently exists in the test project, not yet as generated profile code from `csharp-ef-rdfs.xsl`
+- the main smoke-test path now uses generated profile code from `csharp-ef-rdfs.xsl` via `SampleProfile.DbContextBase`
+- the old hand-written helper has been superseded by generated `DbContextBase` cleanup
+- `GeneratedOnlySampleProfileDbContext` is still intentionally kept as a plain `DbContext` baseline so the suite can compare raw `ModelConfiguration` behavior against the generated cleanup-enabled path
 - the builder documentation has been updated to stop claiming that no `SaveChanges` override is required for owner-side compound cleanup
 - the underlying EF metadata still points cascade in the principal-to-owner direction because the FK column remains on the owner row
 
-What remains open after the helper prototype:
+What remains open after the generated cleanup switch:
 
 - direct deletion of a compound principal still reproduces the old bad behavior in EF metadata terms
-- the C# EF builder still does not generate a reusable cleanup helper/interceptor automatically
+- the generated `DbContextBase` cleanup still needs continued scrutiny on more profile shapes beyond the current sample
 - lookup-table `UNIQUE` vs `PRIMARY KEY` parity questions still need a design decision
 - ownership is still not fully enforced per compound slot: the same compound row can currently be assigned to multiple owner columns on the same `Organisation`
 - ownership is also not fully enforced across owners when the same compound row is reused through different slots (for example `Phone1` on one owner and `Phone2` on another)
-- helper cleanup still needs continued scrutiny on handoff/move scenarios, because ownership can change without the compound becoming orphaned
-- helper cleanup also needs stress verification when a single unit of work mixes detach, replacement, and reassignment across multiple compounds at once
-- helper cleanup should also be verified under failing saves so candidate collection does not accidentally translate into partial deletions when the database rejects the mutation
-- helper cleanup should also be verified for repaired retries in the same tracked context after a failed save
+- generated cleanup still needs continued scrutiny on handoff/move scenarios, because ownership can change without the compound becoming orphaned
+- generated cleanup also needs stress verification when a single unit of work mixes detach, replacement, and reassignment across multiple compounds at once
+- generated cleanup should also be verified under failing saves so candidate collection does not accidentally translate into partial deletions when the database rejects the mutation
+- generated cleanup should also be verified for repaired retries in the same tracked context after a failed save
 
 Testing scope update:
 
@@ -291,6 +295,11 @@ The latest local run passed with 30 sections:
 - Repeated compound replacement cycles
 - Repeated address replacement cycles
 
+The current mainline runtime path for those passing sections is now:
+
+- `SampleProfileDbContext : SampleProfile.DbContextBase` for the generated cleanup-enabled behavior
+- `GeneratedOnlySampleProfileDbContext : DbContext` for the raw mapping baseline comparisons
+
 The SQL parity section now checks both selected contract points and broader table-column parity, including:
 
 - mapped table presence
@@ -313,7 +322,7 @@ The newest ownership-focused runtime checks also distinguish:
 - mixed-slot cross-owner reuse still slips through, which means uniqueness is enforced per FK column rather than per compound row across all owner slots
 - same-save same-slot handoff between organisations keeps the shared compound row alive when ownership is transferred rather than deleted
 - one mixed same-save stress update can still preserve transferred compounds while deleting only the truly orphaned compound rows and nested address rows
-- failed same-save duplicate-slot mutations leave the previously committed compound rows and nested address rows untouched, which is the expected rollback-safe behavior for the helper context
+- failed same-save duplicate-slot mutations leave the previously committed compound rows and nested address rows untouched, which is the expected rollback-safe behavior for the generated cleanup path
 - after a failed same-context duplicate-slot mutation, repairing the tracked entities and retrying still produces the intended cleanup result for the replaced compound rows
 
 ## Likely Cause of Formatting Issues

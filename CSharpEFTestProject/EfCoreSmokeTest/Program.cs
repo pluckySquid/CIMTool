@@ -2228,7 +2228,7 @@ void VerifyGeneratedMappingBaseline()
             AssertCondition(context.Set<SampleProfile.TownDetail>().Count() == 2,
                 "Expected generated-only baseline to leave replaced nested TownDetail rows behind.");
             diagnostics.Add(
-                "BASELINE OBSERVED: without the SaveChanges cleanup helper, generated EF mapping leaves replaced compound graphs orphaned.");
+                "BASELINE OBSERVED: without generated DbContextBase cleanup, raw EF mapping leaves replaced compound graphs orphaned.");
 
             var loaded = context.Organisations
                 .Include(x => x.Phone1)
@@ -2259,7 +2259,7 @@ void VerifyGeneratedMappingBaseline()
             AssertCondition(context.Set<SampleProfile.TownDetail>().Count() == 2,
                 "Expected generated-only baseline delete to leave nested TownDetail rows behind.");
             diagnostics.Add(
-                "BASELINE OBSERVED: without the SaveChanges cleanup helper, deleting the owner Organisation leaves compound graphs behind.");
+                "BASELINE OBSERVED: without generated DbContextBase cleanup, deleting the owner Organisation leaves compound graphs behind.");
         }
 
         using (var context = new GeneratedOnlySampleProfileDbContext(options))
@@ -2290,7 +2290,7 @@ void VerifyGeneratedMappingBaseline()
             AssertCondition(context.IdentifiedObjects.Count() == 1,
                 "Expected generated-only baseline principal delete to leave the IdentifiedObject base row behind.");
             diagnostics.Add(
-                "BASELINE OBSERVED: without the SaveChanges cleanup helper, deleting a compound principal still cascades into the owner and leaves the IdentifiedObject base row behind.");
+                "BASELINE OBSERVED: without generated DbContextBase cleanup, deleting a compound principal still cascades into the owner and leaves the IdentifiedObject base row behind.");
         }
 
         _ = originalPhoneId;
@@ -2357,17 +2357,17 @@ void VerifyCompoundNullDetachCleanup()
                 "Expected StreetAddressId to clear when the navigation is detached.");
 
             AssertCondition(context.ElectronicAddresses.Count() == 0,
-                "Expected detached ElectronicAddress rows to be cleaned up by the helper context.");
+                "Expected detached ElectronicAddress rows to be cleaned up by the generated DbContextBase path.");
             AssertCondition(context.TelephoneNumbers.Count() == 0,
-                "Expected detached TelephoneNumber rows to be cleaned up by the helper context.");
+                "Expected detached TelephoneNumber rows to be cleaned up by the generated DbContextBase path.");
             AssertCondition(context.StreetAddresses.Count() == 0,
-                "Expected detached StreetAddress rows to be cleaned up by the helper context.");
+                "Expected detached StreetAddress rows to be cleaned up by the generated DbContextBase path.");
             AssertCondition(context.Set<SampleProfile.Status>().Count() == 0,
-                "Expected nested detached Status rows to be cleaned up by the helper context.");
+                "Expected nested detached Status rows to be cleaned up by the generated DbContextBase path.");
             AssertCondition(context.Set<SampleProfile.StreetDetail>().Count() == 0,
-                "Expected nested detached StreetDetail rows to be cleaned up by the helper context.");
+                "Expected nested detached StreetDetail rows to be cleaned up by the generated DbContextBase path.");
             AssertCondition(context.Set<SampleProfile.TownDetail>().Count() == 0,
-                "Expected nested detached TownDetail rows to be cleaned up by the helper context.");
+                "Expected nested detached TownDetail rows to be cleaned up by the generated DbContextBase path.");
         }
     });
 }

@@ -8,17 +8,17 @@ What it does:
 
 - reuses the generated `SampleProfile.csharp-ef-rdfs.cs` file directly
 - builds an in-memory SQLite database
-- applies the generated `SampleProfile.ModelConfiguration`
+- exercises the generated `SampleProfile.DbContextBase` through a thin hand-written subclass
 - verifies reflection-level contracts such as `[Key]`, `[Column]`, `[MaxLength]`, and index placement
 - verifies EF Core model metadata such as table names, primary keys, relational column names, indexes, and delete behaviors
 - inserts and reloads a deep `Organisation` graph with compound children
 - verifies all generated relationship directions present in the sample profile
 - verifies independent references such as `ParentOrganisation` and `ShuntCompensatorControl` block principal deletion
 - verifies inheritance storage across base and derived tables
-- verifies helper-assisted cleanup when optional compound navigations are cleared back to `null`
-- distinguishes native generated mapping behavior from helper-assisted behavior for null-detach orphan cleanup
+- verifies generated cleanup when optional compound navigations are cleared back to `null`
+- distinguishes generated `DbContextBase` behavior from a plain `ModelConfiguration`-only baseline for null-detach orphan cleanup
 - checks which compound-sharing cases are blocked by per-slot unique indexes and which still slip through across different slots
-- verifies that helper cleanup does not over-delete compounds during same-save ownership handoff between organisations
+- verifies that generated cleanup does not over-delete compounds during same-save ownership handoff between organisations
 - stress-tests one `SaveChanges` that mixes detach, replacement, and reassignment across multiple compounds and owners
 - verifies rollback safety when a failing `SaveChanges` should leave both existing compounds and nested rows untouched
 - verifies same-context recovery after a failed save, so a repaired retry still cleans up only the intended orphaned compounds
@@ -52,6 +52,7 @@ behind.
 - `EfCoreSmokeTest.csproj`
 - `Program.cs`
 - `SampleProfileDbContext.cs`
+- `GeneratedOnlySampleProfileDbContext.cs`
 
 The generated model file is referenced from:
 

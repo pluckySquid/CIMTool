@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.InputStream;
 import java.net.URL;
+import java.nio.charset.StandardCharsets;
 
 import org.apache.commons.io.IOUtils;
 import org.eclipse.core.runtime.FileLocator;
@@ -23,8 +24,10 @@ public class ProfileBuildletConfigUtilsTest extends WorkspaceTest {
 	private static final String CONFIG_FILE = ".builders";
 	private static final String JUNIT_TEST_XSL_FILE = "junit-test.xsl";
 	private static final String JUNIT_TEST2_XSL_FILE = "junit-test2.xsl";
+	private static final String CSHARP_EF_RDFS_XSL_FILE = "csharp-ef-rdfs.xsl";
 	private static final String SCHEMA_JSON_DRAFT_07_XSL_FILE = "schema-json-draft-07.xsl";
 
+	private File csharpEfRdfsXslFile;
 	private File schemaJsonDraft07XslFile;
 
 	private File dataAreaDir;
@@ -40,6 +43,10 @@ public class ProfileBuildletConfigUtilsTest extends WorkspaceTest {
 		dataAreaBuilderConfigFile = new File(dataAreaDir, CONFIG_FILE);
 
 		Bundle cimtooleBundle = Platform.getBundle(CIMToolPlugin.PLUGIN_ID);
+		URL csharpEfRdfsXslURL = cimtooleBundle.getEntry(CONFIG_DIR + "/" + CSHARP_EF_RDFS_XSL_FILE);
+		URL csharpEfRdfsXslFileURL = FileLocator.toFileURL(csharpEfRdfsXslURL);
+		csharpEfRdfsXslFile = new File(csharpEfRdfsXslFileURL.toURI());
+
 		URL schemaJsonDraft07XslURL = cimtooleBundle.getEntry(CONFIG_DIR + "/" + SCHEMA_JSON_DRAFT_07_XSL_FILE);
 		URL schemaJsonDraft07XslFileURL = FileLocator.toFileURL(schemaJsonDraft07XslURL);
 		schemaJsonDraft07XslFile = new File(schemaJsonDraft07XslFileURL.toURI());
@@ -79,6 +86,29 @@ public class ProfileBuildletConfigUtilsTest extends WorkspaceTest {
 		assertTrue("The " + CONFIG_FILE + " config file was not initialized", dataAreaBuilderConfigFile.exists());
 		assertTrue(SCHEMA_JSON_DRAFT_07_XSL_FILE + " was not copied into the new config directory",
 				schemaJsonDraft07XslFile.exists());
+	}
+
+	public final void testCSharpEfRdfsBuilderIsAvailable() throws Exception {
+
+		TransformBuildlet buildlet = ProfileBuildletConfigUtils.getTransformBuildlet("csharp-ef-rdfs");
+		TransformBuildlet buildletByExtension = ProfileBuildletConfigUtils
+				.getTransformBuildletForExtension("csharp-ef-rdfs.cs");
+		InputStream buildletInputStream = ProfileBuildletConfigUtils.getTransformBuildletInputStream("csharp-ef-rdfs");
+
+		assertNotNull("csharp-ef-rdfs builder should be registered", buildlet);
+		assertNotNull("csharp-ef-rdfs builder should be discoverable by extension", buildletByExtension);
+		assertNotNull("csharp-ef-rdfs builder should provide an XSLT input stream", buildletInputStream);
+		assertEquals("csharp-ef-rdfs.cs", buildlet.getFileExt());
+		assertEquals("csharp-ef-rdfs", buildletByExtension.getStyle());
+		try (InputStream is = buildletInputStream) {
+			String xslt = IOUtils.toString(is, StandardCharsets.UTF_8);
+			assertTrue("csharp-ef-rdfs builder should provide XSLT content", !xslt.isEmpty());
+			assertTrue("csharp-ef-rdfs XSLT should be a stylesheet", xslt.contains("<xsl:stylesheet"));
+			assertTrue("csharp-ef-rdfs XSLT should contain EF Core cascade-delete guidance",
+					xslt.contains("DeleteBehavior.Cascade"));
+		}
+		assertTrue(CSHARP_EF_RDFS_XSL_FILE + " should exist in the shipped builders bundle",
+				csharpEfRdfsXslFile.exists());
 	}
 
 	public final void testRemoveCustomBuilderConfigEntry() throws Exception {

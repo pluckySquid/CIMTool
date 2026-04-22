@@ -44,9 +44,9 @@
     <xsl:param name="mridType">string</xsl:param>
 
     <!--
-    ════════════════════════════════════════════════════════════════════════════════
+    Ã¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢Â
     BEGIN: TYPE MAPPING FUNCTIONS
-    ════════════════════════════════════════════════════════════════════════════════
+    Ã¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢Â
     -->
 
     <!--
@@ -57,14 +57,14 @@
         generated in the SQL DDL script by the sql.xsl builder.
 
         Parameters:
-            $xstype  — The XSD simple type name taken from @xstype on the profile
+            $xstype  Ã¢â‚¬â€ The XSD simple type name taken from @xstype on the profile
                        attribute node (e.g. 'string', 'integer', 'dateTime').
-            $name    — The attribute or column name taken from @name on the profile
+            $name    Ã¢â‚¬â€ The attribute or column name taken from @name on the profile
                        attribute node. Used to distinguish the 'mRID' and surrogate
                        compound 'id' columns, which are capped at 100 rather than 255.
 
         Returns:
-            xs:string?  — One of:
+            xs:string?  Ã¢â‚¬â€ One of:
                 '[MaxLength(100)]'   for mRID and compound surrogate id columns
                 '[MaxLength(255)]'   for string, normalizedString, and token types
                 '[MaxLength(2048)]'  for anyURI (per practical browser compatibility ceiling)
@@ -75,7 +75,7 @@
             - The empty sequence return allows the call site to use exists() as a
               clean gate, or simply pass the result to xsl:value-of which produces
               no output for an empty sequence.
-            - BLOB types (base64Binary, hexBinary) intentionally return () — EF Core
+            - BLOB types (base64Binary, hexBinary) intentionally return () Ã¢â‚¬â€ EF Core
               maps these to byte[] which carries no MaxLength constraint by default.
             - The boolean type maps to INTEGER 0/1 in SQL and to bool in C#, neither
               of which uses MaxLength.
@@ -95,21 +95,21 @@
                 <xsl:sequence select="'[MaxLength(255)]'"/>
             </xsl:when>
 
-            <!-- URLs — 2048 per practical browser/IE compatibility ceiling -->
+            <!-- URLs Ã¢â‚¬â€ 2048 per practical browser/IE compatibility ceiling -->
             <xsl:when test="$xstype = 'anyURI'">
                 <xsl:sequence select="'[MaxLength(2048)]'"/>
             </xsl:when>
 
             <!-- Non-string types carry no MaxLength annotation:        -->
-            <!-- short → SMALLINT                                        -->
-            <!-- int/integer → INTEGER                                   -->
-            <!-- long → BIGINT                                           -->
-            <!-- decimal/float/double → DOUBLE PRECISION                 -->
-            <!-- base64Binary/hexBinary → BLOB                           -->
-            <!-- date → DATE                                             -->
-            <!-- time → TIME                                             -->
-            <!-- dateTime → TIMESTAMP                                    -->
-            <!-- boolean → INTEGER 0/1                                   -->
+            <!-- short Ã¢â€ â€™ SMALLINT                                        -->
+            <!-- int/integer Ã¢â€ â€™ INTEGER                                   -->
+            <!-- long Ã¢â€ â€™ BIGINT                                           -->
+            <!-- decimal/float/double Ã¢â€ â€™ DOUBLE PRECISION                 -->
+            <!-- base64Binary/hexBinary Ã¢â€ â€™ BLOB                           -->
+            <!-- date Ã¢â€ â€™ DATE                                             -->
+            <!-- time Ã¢â€ â€™ TIME                                             -->
+            <!-- dateTime Ã¢â€ â€™ TIMESTAMP                                    -->
+            <!-- boolean Ã¢â€ â€™ INTEGER 0/1                                   -->
             <xsl:otherwise>
                 <xsl:sequence select="()"/>
             </xsl:otherwise>
@@ -121,11 +121,11 @@
         XSD simple type, for use in generating EF Core entity property declarations.
 
         Parameters:
-            $xstype  — The XSD simple type name taken from @xstype on the profile
+            $xstype  Ã¢â‚¬â€ The XSD simple type name taken from @xstype on the profile
                        attribute node (e.g. 'string', 'integer', 'dateTime').
 
         Returns:
-            xs:string  — The C# type name. One of:
+            xs:string  Ã¢â‚¬â€ The C# type name. One of:
                            'string'    for string, normalizedString, token, anyURI
                            'short'     for short
                            'int'       for integer, int
@@ -145,7 +145,7 @@
               profile, the caller should override accordingly.
             - DateOnly and TimeOnly require .NET 6 or later. If earlier .NET
               versions must be supported, these should be mapped to DateTime.
-            - byte[] carries no MaxLength annotation — cimtool:maxLength() correctly
+            - byte[] carries no MaxLength annotation Ã¢â‚¬â€ cimtool:maxLength() correctly
               returns () for base64Binary and hexBinary types.
             - anyURI is mapped to string as there is no native C# Uri property
               type that EF Core maps cleanly across all five target RDBMS backends.
@@ -172,7 +172,7 @@
                 <xsl:sequence select="'long'"/>
             </xsl:when>
 
-            <!-- Floating point types — all map to double to align with
+            <!-- Floating point types Ã¢â‚¬â€ all map to double to align with
                  DOUBLE PRECISION in the parallel SQL DDL generator -->
             <xsl:when test="$xstype = 'decimal' or $xstype = 'float' or $xstype = 'double'">
                 <xsl:sequence select="'double'"/>
@@ -183,7 +183,7 @@
                 <xsl:sequence select="'byte[]'"/>
             </xsl:when>
 
-            <!-- Date and time types — require .NET 6+ -->
+            <!-- Date and time types Ã¢â‚¬â€ require .NET 6+ -->
             <xsl:when test="$xstype = 'date'">
                 <xsl:sequence select="'DateOnly'"/>
             </xsl:when>
@@ -194,12 +194,12 @@
                 <xsl:sequence select="'DateTime'"/>
             </xsl:when>
 
-            <!-- Boolean — maps to INTEGER 0/1 in SQL, bool in C# -->
+            <!-- Boolean Ã¢â‚¬â€ maps to INTEGER 0/1 in SQL, bool in C# -->
             <xsl:when test="$xstype = 'boolean'">
                 <xsl:sequence select="'bool'"/>
             </xsl:when>
 
-            <!-- Safe fallback — mirrors VARCHAR(255) fallback in SQL DDL generator -->
+            <!-- Safe fallback Ã¢â‚¬â€ mirrors VARCHAR(255) fallback in SQL DDL generator -->
             <xsl:otherwise>
                 <xsl:sequence select="'string'"/>
             </xsl:otherwise>
@@ -211,11 +211,11 @@
         hyphens replaced by underscores prior to capitalisation.
 
         Parameters:
-            $name  — The name string to capitalize, typically taken from @name
+            $name  Ã¢â‚¬â€ The name string to capitalize, typically taken from @name
                      on a profile element node.
 
         Returns:
-            xs:string  — The input string with hyphens replaced by underscores
+            xs:string  Ã¢â‚¬â€ The input string with hyphens replaced by underscores
                          and the first character converted to uppercase.
 
         Notes:
@@ -224,7 +224,7 @@
               here. The translate() approach is used in preference to the
               XPath 3.0 upper-case() function to keep capitalisation behaviour
               explicit and locale-independent.
-            - Only the first character is capitalized — the remainder of the
+            - Only the first character is capitalized Ã¢â‚¬â€ the remainder of the
               string is preserved exactly as supplied.
             - This function is naturally immune to C# keyword conflicts because
               it always produces a result beginning with an uppercase letter,
@@ -264,32 +264,32 @@
 	      3. Prefixing with '@' if the result matches a C# reserved or contextual
 	         keyword (e.g. 'base', 'default', 'in', 'value', 'get', 'set')
 	
-	    This function is intentionally case-preserving — it does NOT capitalize the
+	    This function is intentionally case-preserving Ã¢â‚¬â€ it does NOT capitalize the
 	    first character. Use cimtool:capitalize() for PascalCase property names.
 	    Use this function directly for enum literal identifiers where case must be
 	    preserved to avoid collisions between values that differ only in case
 	    (e.g. UnitSymbol 'H' henry vs 'h' hour).
 	
 	    Parameters:
-	        $name  — The raw name string, typically taken from @name on a profile
+	        $name  Ã¢â‚¬â€ The raw name string, typically taken from @name on a profile
 	                 element node (e.g. an a:EnumeratedValue).
 	
 	    Returns:
-	        xs:string  — A valid C# identifier. Examples:
-	                       'H'          → 'H'
-	                       'h'          → 'h'
-	                       'some-value' → 'some_value'
-	                       '3phase'     → '_3phase'
-	                       'base'       → '@base'
-	                       'default'    → '@default'
-	                       'value'      → '@value'
+	        xs:string  Ã¢â‚¬â€ A valid C# identifier. Examples:
+	                       'H'          Ã¢â€ â€™ 'H'
+	                       'h'          Ã¢â€ â€™ 'h'
+	                       'some-value' Ã¢â€ â€™ 'some_value'
+	                       '3phase'     Ã¢â€ â€™ '_3phase'
+	                       'base'       Ã¢â€ â€™ '@base'
+	                       'default'    Ã¢â€ â€™ '@default'
+	                       'value'      Ã¢â€ â€™ '@value'
 	
 	    Notes:
 	        - Covers all C# reserved keywords (C# specification section 6.4.4) and
 	          all contextual keywords (section 6.4.4.1) since contextual keywords
 	          can still conflict in certain syntactic positions.
 	        - Digit-leading values are prefixed with '_' rather than '@' since '@'
-	          is only valid for keyword escaping in C# — '@3phase' is not legal.
+	          is only valid for keyword escaping in C# Ã¢â‚¬â€ '@3phase' is not legal.
 	        - cimtool:capitalize() is naturally safe against both issues since it
 	          always produces a PascalCase result beginning with an uppercase letter,
 	          and all C# keywords are lowercase. This function is therefore only
@@ -300,7 +300,7 @@
 	
 	    <xsl:variable name="clean" select="translate($name, '-', '_')"/>
 	
-	    <!-- C# reserved keywords — C# specification section 6.4.4 -->
+	    <!-- C# reserved keywords Ã¢â‚¬â€ C# specification section 6.4.4 -->
 	    <xsl:variable name="reserved" as="xs:string+" select="(
 	        'abstract', 'as',       'base',      'bool',      'break',
 	        'byte',     'case',     'catch',     'char',      'checked',
@@ -320,7 +320,7 @@
 	        'volatile', 'while'
 	    )"/>
 	
-	    <!-- C# contextual keywords — section 6.4.4.1 -->
+	    <!-- C# contextual keywords Ã¢â‚¬â€ section 6.4.4.1 -->
 	    <xsl:variable name="contextual" as="xs:string+" select="(
 	        'add',       'alias',     'ascending', 'async',     'await',
 	        'by',        'descending','dynamic',   'equals',    'from',
@@ -344,15 +344,15 @@
         against two distinct collision classes that cimtool:capitalize() alone
         cannot detect:
 
-        Collision class 1 — property name matches a sibling class name.
+        Collision class 1 Ã¢â‚¬â€ property name matches a sibling class name.
             Example: a:Enumerated @name='curveStyle' on class Curve capitalizes
             to 'CurveStyle', which is also a sibling EnumeratedType class name.
             In a nested-class context, the unqualified name resolves to the type,
             making 'public string CurveStyle' ambiguous or a compile error
-            depending on usage. Similarly 'sVCControlMode' → 'SVCControlMode'
+            depending on usage. Similarly 'sVCControlMode' Ã¢â€ â€™ 'SVCControlMode'
             collides with the SVCControlMode EnumeratedType class.
 
-        Collision class 2 — property name matches its own C# type name.
+        Collision class 2 Ã¢â‚¬â€ property name matches its own C# type name.
             Example: a:Simple @name='dateTime' @xstype='dateTime' capitalizes to
             'DateTime' and maps to C# type 'DateTime', producing:
                 public DateTime? DateTime { get; set; }
@@ -365,17 +365,17 @@
         which preserves the original database column name unchanged.
 
         Parameters:
-            $name    — The raw attribute name from @name on the profile element.
-            $xstype  — The XSD type string from @xstype. Pass the empty string ''
+            $name    Ã¢â‚¬â€ The raw attribute name from @name on the profile element.
+            $xstype  Ã¢â‚¬â€ The XSD type string from @xstype. Pass the empty string ''
                        for a:Enumerated properties which carry no @xstype.
-            $context — Any element node within the current document, used to reach
+            $context Ã¢â‚¬â€ Any element node within the current document, used to reach
                        the document root for the catalog class-name lookup.
 
         Returns:
-            xs:string — A collision-free PascalCase C# property name.
+            xs:string Ã¢â‚¬â€ A collision-free PascalCase C# property name.
 
         Notes:
-            - cimtool:capitalize() is called first, so the mRID → MRId special
+            - cimtool:capitalize() is called first, so the mRID Ã¢â€ â€™ MRId special
               case is already applied before collision checking.
             - Navigation property names produced by a:Instance / a:Reference /
               a:Compound are intentionally NOT routed through this function.
@@ -404,6 +404,23 @@
 
         <xsl:sequence select="
             if ($classCollision or $typeCollision) then concat($base, 'Value') else $base
+        "/>
+    </xsl:function>
+
+    <!--
+        Returns a simple pluralized DbSet property name for a generated entity type.
+
+        The generated DbContextBase uses these names so consumers get a predictable
+        property surface (e.g. Organisations, TelephoneNumbers, StreetAddresses).
+        This is intentionally heuristic rather than dictionary-driven; the goal is
+        stable generated names, not linguistic perfection.
+    -->
+    <xsl:function name="cimtool:pluralize" as="xs:string">
+        <xsl:param name="name" as="xs:string"/>
+        <xsl:sequence select="
+            if (matches($name, '(s|ss|sh|ch|x|z)$')) then concat($name, 'es')
+            else if (matches($name, '[^AEIOUaeiou]y$')) then concat(substring($name, 1, string-length($name) - 1), 'ies')
+            else concat($name, 's')
         "/>
     </xsl:function>
 
@@ -446,10 +463,10 @@
         every call site.
 
         Parameters:
-            $element  — The a:ComplexType or a:Root element to examine.
+            $element  Ã¢â‚¬â€ The a:ComplexType or a:Root element to examine.
 
         Returns:
-            xs:boolean  — true if mRID is present at this class or any ancestor.
+            xs:boolean  Ã¢â‚¬â€ true if mRID is present at this class or any ancestor.
     -->
     <xsl:function name="cimtool:has-mrid-ancestor" as="xs:boolean">
         <xsl:param name="element" as="element()"/>
@@ -471,7 +488,7 @@
     </xsl:function>
 
     <!--
-    ════════════════════════════════════════════════════════════════════════════════   
+    Ã¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢Â   
     BEGIN: TOPOLOGICAL SORT FUNCTIONS
     
     These six functions form a self-contained unit with no dependencies on any. 
@@ -488,15 +505,15 @@
 
     Call sequence:
         cimtool:topological-sort
-            └── cimtool:topological-sort-helper
-                    └── cimtool:build-dependencies-map
-                            └── cimtool:get-dependencies
-                                    ├── cimtool:get-union-dependencies
-                                    │       └── cimtool:inherits-from
-                                    └── cimtool:inherits-from
+            Ã¢â€â€Ã¢â€â‚¬Ã¢â€â‚¬ cimtool:topological-sort-helper
+                    Ã¢â€â€Ã¢â€â‚¬Ã¢â€â‚¬ cimtool:build-dependencies-map
+                            Ã¢â€â€Ã¢â€â‚¬Ã¢â€â‚¬ cimtool:get-dependencies
+                                    Ã¢â€Å“Ã¢â€â‚¬Ã¢â€â‚¬ cimtool:get-union-dependencies
+                                    Ã¢â€â€š       Ã¢â€â€Ã¢â€â‚¬Ã¢â€â‚¬ cimtool:inherits-from
+                                    Ã¢â€â€Ã¢â€â‚¬Ã¢â€â‚¬ cimtool:inherits-from
         cimtool:create-exclusions-map   (used to seed the exclusion map passed
                                         into build-dependencies-map)
-    ════════════════════════════════════════════════════════════════════════════════
+    Ã¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢Â
     -->
 
     <!--
@@ -504,10 +521,10 @@
         Purpose: Checks if an element inherits from a given baseClass by
                  recursively walking the a:SuperType chain.
         Parameters:
-            $element         — The element to check (a:Root or a:ComplexType)
-            $targetBaseClass — The @baseClass URI to search for in the hierarchy
+            $element         Ã¢â‚¬â€ The element to check (a:Root or a:ComplexType)
+            $targetBaseClass Ã¢â‚¬â€ The @baseClass URI to search for in the hierarchy
         Returns:
-            xs:boolean — true if $element is or inherits from $targetBaseClass
+            xs:boolean Ã¢â‚¬â€ true if $element is or inherits from $targetBaseClass
     -->
     <xsl:function name="cimtool:inherits-from" as="xs:boolean">
         <xsl:param name="element"         as="element()"/>
@@ -540,9 +557,9 @@
                  resolve abstract class references to their concrete subtypes
                  when building the dependency graph.
         Parameters:
-            $abstract-element — The a:ComplexType element (abstract class)
+            $abstract-element Ã¢â‚¬â€ The a:ComplexType element (abstract class)
         Returns:
-            xs:string* — Distinct sequence of @baseClass values for all
+            xs:string* Ã¢â‚¬â€ Distinct sequence of @baseClass values for all
                          concrete subclasses
     -->
     <xsl:function name="cimtool:get-union-dependencies" as="xs:string*">
@@ -573,7 +590,7 @@
                  cimtool:get-union-dependencies. Excludes types present in the
                  $exclusion-map (i.e. already-processed categories).
 
-                 USAGE IN THIS BUILDER — COMPOUND TYPES ONLY:
+                 USAGE IN THIS BUILDER Ã¢â‚¬â€ COMPOUND TYPES ONLY:
                  This function is used only for Tier 2 (CompoundType) ordering,
                  where full FK dep tracking is appropriate. CompoundType association
                  networks are shallow and do not create cycles, so the full dep graph
@@ -588,10 +605,10 @@
                  and fall back to document order for 40+ classes.
                  cimtool:get-inheritance-deps is used for Tier 3 instead.
         Parameters:
-            $element       — The element to examine (a:CompoundType, a:Root, etc.)
-            $exclusion-map — map(xs:string, xs:boolean) of baseClass values to exclude
+            $element       Ã¢â‚¬â€ The element to examine (a:CompoundType, a:Root, etc.)
+            $exclusion-map Ã¢â‚¬â€ map(xs:string, xs:boolean) of baseClass values to exclude
         Returns:
-            xs:string* — Distinct filtered sequence of dependency @baseClass values
+            xs:string* Ã¢â‚¬â€ Distinct filtered sequence of dependency @baseClass values
     -->
     <xsl:function name="cimtool:get-dependencies" as="xs:string*">
         <xsl:param name="element"       as="element()"/>
@@ -599,7 +616,7 @@
 
         <xsl:variable name="result" select="
             distinct-values((
-                (: Non-association children with @baseClass — e.g. Compound references :)
+                (: Non-association children with @baseClass Ã¢â‚¬â€ e.g. Compound references :)
                 $element/*[@baseClass]
                     [not(self::a:SuperType)]
                     [not(self::a:Instance)]
@@ -608,7 +625,7 @@
                     [not(self::a:InverseReference)]
                     /string(@baseClass)[not(map:contains($exclusion-map, .))],
 
-                (: Instance/Reference children — resolve abstract classes to union members.
+                (: Instance/Reference children Ã¢â‚¬â€ resolve abstract classes to union members.
                    The [1] predicate on $referenced-element guards against profiles where
                    the same @baseClass URI appears on more than one catalog element (e.g. a
                    class defined both as a Root and as a ComplexType in cross-profile
@@ -621,12 +638,12 @@
                     return
                         if ($referenced-element/self::a:ComplexType) then
                             (
-                                (: Union members — concrete Root subclasses of this abstract class :)
+                                (: Union members Ã¢â‚¬â€ concrete Root subclasses of this abstract class :)
                                 cimtool:get-union-dependencies($referenced-element)
                                     [not(map:contains($exclusion-map, .))],
-                                (: The ComplexType itself — needed when it has no Root subclasses in
+                                (: The ComplexType itself Ã¢â‚¬â€ needed when it has no Root subclasses in
                                    this profile (e.g. NameType, NameTypeAuthority in EndDeviceControls).
-                                   Without this, edges like Name→NameType are invisible to the sort
+                                   Without this, edges like NameÃ¢â€ â€™NameType are invisible to the sort
                                    and ordering becomes arbitrary. When union members do exist,
                                    distinct-values() collapses any redundancy. :)
                                 if (not(map:contains($exclusion-map, $assoc-baseClass)))
@@ -647,7 +664,7 @@
                    so the topological sort places the parent before this element even
                    when the parent has no associations of its own (e.g. WorkLocation
                    before ServiceLocation). Without this, only the parent's transitive
-                   dependencies flow through — the parent→child edge is missing. :)
+                   dependencies flow through Ã¢â‚¬â€ the parentÃ¢â€ â€™child edge is missing. :)
                 if ($element/a:SuperType) then
                     let $supertype-baseClass := string($element/a:SuperType/@baseClass),
                         $parent := (root($element)/*/node()[@baseClass = $supertype-baseClass])[1]
@@ -676,14 +693,14 @@
 
                  For C# EF Core entity class ordering, only inheritance order is
                  needed. C# allows forward class references within a single
-                 compilation unit — EF Core resolves all relationships by type name
+                 compilation unit Ã¢â‚¬â€ EF Core resolves all relationships by type name
                  and reflection, not by declaration order. FK associations do NOT
                  impose any ordering constraint on class declarations.
 
                  Using the full cimtool:get-dependencies for entity class ordering
                  creates cycles in profiles with dense association graphs (e.g. CGMES
-                 CoreEquipment where OperationalLimitSet → Equipment → Terminal →
-                 ACDCConverter → ... loops back through the association network).
+                 CoreEquipment where OperationalLimitSet Ã¢â€ â€™ Equipment Ã¢â€ â€™ Terminal Ã¢â€ â€™
+                 ACDCConverter Ã¢â€ â€™ ... loops back through the association network).
                  These cycles cause Kahn's algorithm to stall and fall back to
                  document order for 40+ classes, defeating the purpose of the sort.
 
@@ -691,12 +708,12 @@
                  guarantees a cycle-free dependency graph and produces correct
                  inheritance-ordered output for all CIM profiles.
         Parameters:
-            $element       — The element to examine (a:Root or a:ComplexType)
-            $exclusion-map — map(xs:string, xs:boolean) of baseClass values to exclude
+            $element       Ã¢â‚¬â€ The element to examine (a:Root or a:ComplexType)
+            $exclusion-map Ã¢â‚¬â€ map(xs:string, xs:boolean) of baseClass values to exclude
                              (already-processed tiers such as EnumeratedType and
                              CompoundType)
         Returns:
-            xs:string* — Zero or one @baseClass string (the direct parent, if any
+            xs:string* Ã¢â‚¬â€ Zero or one @baseClass string (the direct parent, if any
                          and if not excluded)
     -->
     <xsl:function name="cimtool:get-inheritance-deps" as="xs:string*">
@@ -722,10 +739,10 @@
                  cimtool:build-dependencies-map to exclude those types from the
                  dependency graph of the next processing tier.
         Parameters:
-            $elements — Elements whose @baseClass values should be excluded
+            $elements Ã¢â‚¬â€ Elements whose @baseClass values should be excluded
                         (e.g. //a:EnumeratedType after enumerations are processed)
         Returns:
-            map(xs:string, xs:boolean) — Key: @baseClass value, Value: true()
+            map(xs:string, xs:boolean) Ã¢â‚¬â€ Key: @baseClass value, Value: true()
     -->
     <xsl:function name="cimtool:create-exclusions-map" as="map(xs:string, xs:boolean)">
         <xsl:param name="elements" as="element()*"/>
@@ -747,11 +764,11 @@
                  element's @baseClass to the sequence of @baseClass values it
                  depends on (filtered by $exclusion-map).
         Parameters:
-            $elements      — Elements to include in the dependency graph
-            $exclusion-map — map(xs:string, xs:boolean) of already-processed
+            $elements      Ã¢â‚¬â€ Elements to include in the dependency graph
+            $exclusion-map Ã¢â‚¬â€ map(xs:string, xs:boolean) of already-processed
                              types to exclude from all dependency lists
         Returns:
-            map(xs:string, xs:string*) — Key: @baseClass, Value: dependency sequence
+            map(xs:string, xs:string*) Ã¢â‚¬â€ Key: @baseClass, Value: dependency sequence
     -->
     <xsl:function name="cimtool:build-dependencies-map" as="map(xs:string, xs:string*)">
         <xsl:param name="elements"      as="element()*"/>
@@ -775,12 +792,12 @@
         Purpose: Variant of cimtool:build-dependencies-map that uses
                  cimtool:get-inheritance-deps instead of cimtool:get-dependencies.
                  Used for Tier 3 (ComplexType + Root) sorting where only inheritance
-                 order is required — see cimtool:get-inheritance-deps for rationale.
+                 order is required Ã¢â‚¬â€ see cimtool:get-inheritance-deps for rationale.
         Parameters:
-            $elements      — Elements to include in the dependency graph
-            $exclusion-map — map(xs:string, xs:boolean) of already-processed types
+            $elements      Ã¢â‚¬â€ Elements to include in the dependency graph
+            $exclusion-map Ã¢â‚¬â€ map(xs:string, xs:boolean) of already-processed types
         Returns:
-            map(xs:string, xs:string*) — Key: @baseClass, Value: dependency sequence
+            map(xs:string, xs:string*) Ã¢â‚¬â€ Key: @baseClass, Value: dependency sequence
     -->
     <xsl:function name="cimtool:build-inheritance-map" as="map(xs:string, xs:string*)">
         <xsl:param name="elements"      as="element()*"/>
@@ -806,10 +823,10 @@
                  all elements it depends on. Falls back to document order for
                  any elements involved in circular dependencies.
         Parameters:
-            $elements  — Elements to sort (e.g. //a:CompoundType or //a:Root)
-            $deps-map  — Dependency map from cimtool:build-dependencies-map
+            $elements  Ã¢â‚¬â€ Elements to sort (e.g. //a:CompoundType or //a:Root)
+            $deps-map  Ã¢â‚¬â€ Dependency map from cimtool:build-dependencies-map
         Returns:
-            element()* — Elements in topological (dependency-safe) order
+            element()* Ã¢â‚¬â€ Elements in topological (dependency-safe) order
     -->
     <xsl:function name="cimtool:topological-sort" as="element()*">
         <xsl:param name="elements"  as="element()*"/>
@@ -827,11 +844,11 @@
                  sorted or a circular dependency is detected (fallback to
                  document order for the remaining unsortable elements).
         Parameters:
-            $remaining — Elements not yet placed in the sorted output
-            $deps-map  — Dependency map
-            $sorted    — Accumulated sorted elements (initially empty)
+            $remaining Ã¢â‚¬â€ Elements not yet placed in the sorted output
+            $deps-map  Ã¢â‚¬â€ Dependency map
+            $sorted    Ã¢â‚¬â€ Accumulated sorted elements (initially empty)
         Returns:
-            element()* — Fully sorted sequence
+            element()* Ã¢â‚¬â€ Fully sorted sequence
     -->
     <xsl:function name="cimtool:topological-sort-helper" as="element()*">
         <xsl:param name="remaining" as="element()*"/>
@@ -869,7 +886,7 @@
                         )"/>
                     </xsl:when>
                     <xsl:otherwise>
-                        <!-- Circular dependency detected — append remaining in document order -->
+                        <!-- Circular dependency detected Ã¢â‚¬â€ append remaining in document order -->
                         <xsl:sequence select="$sorted"/>
                         <xsl:sequence select="$remaining"/>
                     </xsl:otherwise>
@@ -879,20 +896,20 @@
     </xsl:function>
 
     <!--
-    ════════════════════════════════════════════════════════════════════════════════
+    Ã¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢Â
     END: TOPOLOGICAL SORT FUNCTIONS
-    ════════════════════════════════════════════════════════════════════════════════
+    Ã¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢Â
     -->
 
     <!-- Top-level Catalog template -->
     <xsl:template match="a:Catalog">
 
-        <!-- ── Topological sort — computed once, reused by both class output   -->
-        <!-- ── and allClasses array to ensure both are in the same safe order. -->
+        <!-- Ã¢â€â‚¬Ã¢â€â‚¬ Topological sort Ã¢â‚¬â€ computed once, reused by both class output   -->
+        <!-- Ã¢â€â‚¬Ã¢â€â‚¬ and allClasses array to ensure both are in the same safe order. -->
 
-        <!-- Tier 1: EnumeratedType — no dependencies, processed first -->
+        <!-- Tier 1: EnumeratedType Ã¢â‚¬â€ no dependencies, processed first -->
 
-        <!-- Tier 2: CompoundType — exclude already-processed EnumeratedTypes -->
+        <!-- Tier 2: CompoundType Ã¢â‚¬â€ exclude already-processed EnumeratedTypes -->
         <xsl:variable name="compound-exclusions"
             select="cimtool:create-exclusions-map(//a:EnumeratedType)"/>
         <xsl:variable name="compound-deps-map"
@@ -900,7 +917,7 @@
         <xsl:variable name="sorted-compounds"
             select="cimtool:topological-sort(//a:CompoundType, $compound-deps-map)"/>
 
-        <!-- Tier 3: ComplexType + Root — exclude EnumeratedTypes and CompoundTypes.    -->
+        <!-- Tier 3: ComplexType + Root Ã¢â‚¬â€ exclude EnumeratedTypes and CompoundTypes.    -->
         <!-- Uses cimtool:get-inheritance-deps rather than cimtool:get-dependencies   -->
         <!-- because only inheritance order is needed for C# class declarations.      -->
         <!-- See cimtool:get-inheritance-deps documentation for full rationale.       -->
@@ -916,7 +933,7 @@
 				<item>Annotated C# for <xsl:value-of select="$envelope"/></item>
 				<item>Generated by CIMTool https://cimtool.ucaiug.io [cimtool.ucaiug.io]</item>
 				<item></item>
-				<item>DO NOT EDIT — this file is fully regenerated by CIMTool on</item>
+				<item>DO NOT EDIT - this file is fully regenerated by CIMTool on</item>
 				<item>every build.  Hand-written customisations belong in partial</item>
 				<item>class files alongside this one.</item>
             </list>
@@ -925,6 +942,9 @@
             <item>using System.ComponentModel.DataAnnotations;</item>
             <item>using System.ComponentModel.DataAnnotations.Schema;</item>
             <item>using System.Collections.Generic;</item>
+            <item>using System.Linq;</item>
+            <item>using System.Threading;</item>
+            <item>using System.Threading.Tasks;</item>
             <item>using Microsoft.EntityFrameworkCore;</item>
             <item></item>
             <list begin="" indent="/// " end="">
@@ -934,7 +954,7 @@
 				</list>
 				<list begin="&lt;remarks&gt;" indent="" end="&lt;/remarks&gt;">
 					<list begin="&lt;para&gt;" indent="" end="&lt;/para&gt;">
-						<item>&lt;b&gt;No &lt;c&gt;ICollection&amp;lt;T&amp;gt;&lt;/c&gt; Properties — Intentional Design&lt;/b&gt;&lt;br/&gt;</item>
+						<item>&lt;b&gt;No &lt;c&gt;ICollection&amp;lt;T&amp;gt;&lt;/c&gt; Properties - Intentional Design&lt;/b&gt;&lt;br/&gt;</item>
 						<item>Collection-valued inverse navigation properties</item>
 						<item>(&lt;c&gt;ICollection&amp;lt;T&amp;gt;&lt;/c&gt;) are intentionally not generated.</item>
 						<item>Single-valued foreign-key relationships are fully mapped; inverse</item>
@@ -985,42 +1005,34 @@
 					</list>	
 					<list begin="&lt;para&gt;" indent="" end="&lt;/para&gt;">
 						<item>&lt;b&gt;Compound Type References&lt;/b&gt;&lt;br/&gt;</item>
-						<item>CIM Compound types are treated as value objects — each compound row has</item>
+						<item>CIM Compound types are treated as value objects - each compound row has</item>
 						<item>exactly one owner and is never shared across parent columns or rows.</item>
 						<item>Each compound reference is represented as a shadow FK string property</item>
 						<item>(e.g. &lt;c&gt;ElectronicAddressId&lt;/c&gt;) paired with a nullable navigation</item>
 						<item>property (e.g. &lt;c&gt;ElectronicAddress?&lt;/c&gt;).</item>
-						<item>Cascade deletion of compound rows is enforced at two levels that work</item>
-						<item>together: the companion SQL DDL emits &lt;c&gt;ON DELETE CASCADE&lt;/c&gt; for every</item>
-						<item>compound FK, and the generated &lt;c&gt;ModelConfiguration&lt;/c&gt; applies</item>
-						<item>&lt;c&gt;DeleteBehavior.Cascade&lt;/c&gt; for compound relationships so that EF Core's</item>
-						<item>in-memory change tracker stays consistent with the database when tracked</item>
-						<item>compound children are present. No &lt;c&gt;SaveChanges&lt;/c&gt; override is required.</item>
+						<item>The companion SQL DDL emits &lt;c&gt;ON DELETE CASCADE&lt;/c&gt; for every compound FK,</item>
+						<item>and the generated &lt;c&gt;ModelConfiguration&lt;/c&gt; applies</item>
+						<item>&lt;c&gt;DeleteBehavior.Cascade&lt;/c&gt; for compound relationships so EF Core treats</item>
+						<item>compound references as owned-like one-to-one links in its relationship metadata.</item>
+						<item>Because the FK column lives on the owner row, owner-side orphan cleanup during</item>
+						<item>replacement or parent deletion must still be handled explicitly. The generated</item>
+						<item>&lt;c&gt;DbContextBase&lt;/c&gt; in this file includes profile-specific cleanup hooks that</item>
+						<item>collect and remove now-unreferenced compound rows after owner changes are saved.</item>
 						<item>Each compound entity constructor assigns a new &lt;see cref="System.Guid"/&gt;</item>
 						<item>to its &lt;c&gt;Id&lt;/c&gt; property on instantiation.</item>
 					</list>
 					<list begin="&lt;para&gt;" indent="" end="&lt;/para&gt;">
 						<item>&lt;b&gt;DbContext Integration&lt;/b&gt;&lt;br/&gt;</item>
 						<item>This file includes a generated &lt;c&gt;ModelConfiguration&lt;/c&gt; nested static</item>
-						<item>class containing the complete EF Core Fluent API configuration for all</item>
-						<item>entities in this profile.  Create the following DbContext subclass once</item>
-						<item>in your project — it will not be overwritten by CIMTool:</item>
+						<item>class and a generated abstract &lt;c&gt;DbContextBase&lt;/c&gt; that provides</item>
+						<item>DbSet properties, EF model configuration wiring, and generated compound</item>
+						<item>cleanup support for owner-side orphan handling.</item>
+						<item>Create the following thin DbContext subclass once in your project - it</item>
+						<item>will not be overwritten by CIMTool:</item>
 						<list begin="&lt;code&gt;" indent="" end="&lt;/code&gt;">
-							<item>public class <xsl:value-of select="$envelope"/>DbContext : DbContext</item>
+							<item>public class <xsl:value-of select="$envelope"/>DbContext : <xsl:value-of select="$envelope"/>.DbContextBase</item>
 							<list begin="{{" indent="    " end="}}">
-								<item>// Add one DbSet&lt;T&gt; per entity class, e.g.:</item>
-								<item>// public DbSet&lt;<xsl:value-of select="$envelope"/>.Organisation&gt; Organisations { get; set; } = null!;</item>
-								<item></item>
 								<item>public <xsl:value-of select="$envelope"/>DbContext(DbContextOptions options) : base(options) { }</item>
-								<item></item>
-								<item>protected override void OnModelCreating(ModelBuilder modelBuilder)</item>
-								<list begin="{{" indent="    " end="}}">
-									<item><xsl:value-of select="$envelope"/>.ModelConfiguration.ConfigureModel(modelBuilder);</item>
-								</list>
-								<item></item>
-								<item>// Compound rows cascade at both the DB level (ON DELETE CASCADE in the</item>
-								<item>// companion DDL) and the EF Core level (DeleteBehavior.Cascade in</item>
-								<item>// ModelConfiguration). No SaveChanges override is required.</item>
 							</list>
 						</list>
 					</list>	
@@ -1037,8 +1049,12 @@
                     <xsl:with-param name="sorted-compounds" select="$sorted-compounds"/>
                     <xsl:with-param name="sorted-classes"   select="$sorted-classes"/>
                 </xsl:call-template>
-                <!-- ModelConfiguration static class — complete Fluent API configuration -->
+                <!-- ModelConfiguration static class Ã¢â‚¬â€ complete Fluent API configuration -->
                 <xsl:call-template name="dbcontext">
+                    <xsl:with-param name="sorted-compounds" select="$sorted-compounds"/>
+                    <xsl:with-param name="sorted-classes"   select="$sorted-classes"/>
+                </xsl:call-template>
+                <xsl:call-template name="dbcontext-base">
                     <xsl:with-param name="sorted-compounds" select="$sorted-compounds"/>
                     <xsl:with-param name="sorted-classes"   select="$sorted-classes"/>
                 </xsl:call-template>
@@ -1050,17 +1066,17 @@
         Class template for ComplexType and Root.
 
         ROUTING LOGIC
-        ─────────────
+        Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬
         This template handles two structurally distinct cases, detected by
         cimtool:has-mrid-ancestor():
 
-        Case 1 — IdentifiedObject hierarchy (mRID ancestor found)
+        Case 1 Ã¢â‚¬â€ IdentifiedObject hierarchy (mRID ancestor found)
           The standard Table-Per-Type (TPT) path. The class inherits mRID as its
           natural primary key from IdentifiedObject (directly or transitively). EF
           Core maps the class to its own table, inheriting the [Key] from the root
           entity. A superclass reference is emitted as a C# base class.
 
-        Case 2 — Non-IdentifiedObject class (no mRID ancestor)
+        Case 2 Ã¢â‚¬â€ Non-IdentifiedObject class (no mRID ancestor)
           A small subset of CIM classes do not inherit from IdentifiedObject. These
           are typically collection-member or point-data classes (e.g. CurveData,
           RegularTimePoint, NonlinearShuntCompensatorPoint, TapChangerTablePoint).
@@ -1068,20 +1084,20 @@
 
           Treatment mirrors the CompoundType surrogate pattern with two sub-cases:
 
-          2a — Has a superclass (e.g. PhaseTapChangerTablePoint, RatioTapChangerTablePoint)
+          2a Ã¢â‚¬â€ Has a superclass (e.g. PhaseTapChangerTablePoint, RatioTapChangerTablePoint)
             The entity participates in a non-IdentifiedObject TPT hierarchy. It
             inherits the surrogate 'id' key from its parent and MUST NOT redeclare
             it. The class declaration emits C# inheritance (': SuperType') without
             any [Key] block.
 
-          2b — No superclass (e.g. TapChangerTablePoint, CurveData, RegularTimePoint,
+          2b Ã¢â‚¬â€ No superclass (e.g. TapChangerTablePoint, CurveData, RegularTimePoint,
             NonlinearShuntCompensatorPoint)
             A surrogate VARCHAR(100) 'id' column is emitted as the [Key].
             A heuristic [Index(..., IsUnique=true)] is emitted across all required
             (minOccurs=1) non-surrogate scalar properties and single-valued FK
             shadow properties. This is the best uniqueness guard achievable without
             class-specific knowledge, since the profile XML does not encode which
-            subset of columns forms the natural composite key — that information
+            subset of columns forms the natural composite key Ã¢â‚¬â€ that information
             exists only in the IEC specification prose, not the machine-readable
             profile.
             - The heuristic may include more columns than strictly necessary for the
@@ -1096,12 +1112,11 @@
               cimtool:has-mrid-ancestor logic to ensure consistent output.
     -->
     <xsl:template match="a:ComplexType|a:Root">
-        <item></item>
         <xsl:variable name="super" select="a:SuperType[1]"/>
         <xsl:call-template name="annotate"/>
         <item>[Table(&quot;<xsl:value-of select="@name"/>&quot;)]</item>
         <!-- Emit [Index] unique constraint for each a:Compound FK column.
-             a:Instance references are NOT unique — a:Compound references are
+             a:Instance references are NOT unique Ã¢â‚¬â€ a:Compound references are
              always 1:1 by definition and must be enforced as such in EF Core.
              [Index] is a class-level attribute from Microsoft.EntityFrameworkCore
              and has no data annotation equivalent in System.ComponentModel.DataAnnotations. -->
@@ -1111,7 +1126,7 @@
 
         <xsl:choose>
 
-            <!-- ═══ Case 1: IdentifiedObject hierarchy — standard TPT path ═══ -->
+            <!-- Ã¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢Â Case 1: IdentifiedObject hierarchy Ã¢â‚¬â€ standard TPT path Ã¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢Â -->
             <xsl:when test="cimtool:has-mrid-ancestor(.)">
                 <xsl:choose>
                     <xsl:when test="$super">
@@ -1128,7 +1143,6 @@
                     <item>public <xsl:value-of select="@name"/>() { }</item>
                     <item>public override string ToString() { return this.GetType().Name; }</item>
                     <xsl:if test="not($super)">
-                        <item></item>
                         <list begin="" indent="/// " end="">
                             <list begin="&lt;summary&gt;" indent="" end="&lt;/summary&gt;">
                                 <item>Determines whether this instance and a specified object represent the same</item>
@@ -1156,7 +1170,6 @@
                             <item>if (GetType() != other.GetType()) return false;</item>
                             <item>return MRId != null &amp;&amp; MRId == other.MRId;</item>
                         </list>
-                        <item></item>
                         <list begin="" indent="/// " end="">
                             <list begin="&lt;summary&gt;" indent="" end="&lt;/summary&gt;">
                                 <item>Returns a hash code based on runtime type and &lt;c&gt;MRId&lt;/c&gt;.</item>
@@ -1172,11 +1185,11 @@
                 </list>
             </xsl:when>
 
-            <!-- ═══ Case 2: Non-IdentifiedObject — surrogate id + heuristic UNIQUE ═══
+            <!-- Ã¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢Â Case 2: Non-IdentifiedObject Ã¢â‚¬â€ surrogate id + heuristic UNIQUE Ã¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢Â
                  Sub-case 2a: Has a superclass (e.g. PhaseTapChangerTablePoint, RatioTapChangerTablePoint)
                    The entity participates in a non-IdentifiedObject TPT hierarchy. It
                    inherits the surrogate 'id' key from its parent and must NOT redeclare
-                   it — doing so would create a duplicate [Key] in the EF model. The class
+                   it Ã¢â‚¬â€ doing so would create a duplicate [Key] in the EF model. The class
                    declaration emits C# inheritance exactly as Case 1 does, but without the
                    surrogate key block. The SQL schema enforces this via the inheritance FK
                    constraint (e.g. "PhaseTapChangerTablePoint"."id" REFERENCES
@@ -1205,11 +1218,11 @@
                 </xsl:if>
                 <xsl:choose>
 
-                    <!-- Sub-case 2a: Has superclass — inherits surrogate key from parent -->
+                    <!-- Sub-case 2a: Has superclass Ã¢â‚¬â€ inherits surrogate key from parent -->
                     <xsl:when test="$super">
                         <item>public class <xsl:value-of select="@name"/> : <xsl:value-of select="$super/@name"/></item>
                         <list begin="{{" indent="    " delim="" end="}}">
-                            <item>// Inherits surrogate 'id' key from <xsl:value-of select="$super/@name"/> — do not redeclare [Key] here.</item>
+                            <item>// Inherits surrogate 'id' key from <xsl:value-of select="$super/@name"/> Ã¢â‚¬â€ do not redeclare [Key] here.</item>
                             <item>// Neither this class nor its parent inherits from IdentifiedObject.</item>
                             <item>// EF Core maps this as TPT using the shared surrogate 'id' PK.</item>
                             <item>public <xsl:value-of select="@name"/>() { }</item>
@@ -1218,13 +1231,12 @@
                         </list>
                     </xsl:when>
 
-                    <!-- Sub-case 2b: No superclass — declares its own surrogate key -->
+                    <!-- Sub-case 2b: No superclass Ã¢â‚¬â€ declares its own surrogate key -->
                     <xsl:otherwise>
                         <item>public class <xsl:value-of select="@name"/></item>
                         <list begin="{{" indent="    " delim="" end="}}">
                             <item>public <xsl:value-of select="@name"/>() { }</item>
                             <item>public override string ToString() { return this.GetType().Name; }</item>
-                            <item></item>
                             <list begin="" indent="/// " end="">
                                 <list begin="&lt;summary&gt;" indent="" end="&lt;/summary&gt;">
                                     <item>Determines whether this instance and a specified object represent the same</item>
@@ -1253,7 +1265,6 @@
                                 <item>if (GetType() != other.GetType()) return false;</item>
                                 <item>return Id != null &amp;&amp; Id == other.Id;</item>
                             </list>
-                            <item></item>
                             <list begin="" indent="/// " end="">
                                 <list begin="&lt;summary&gt;" indent="" end="&lt;/summary&gt;">
                                     <item>Returns a hash code based on runtime type and surrogate &lt;c&gt;Id&lt;/c&gt;.</item>
@@ -1264,10 +1275,9 @@
                                 </list>
                             </list>
                             <item>public override int GetHashCode() => HashCode.Combine(GetType(), Id);</item>
-                            <item></item>
                             <list begin="" indent="/// " end="">
                                 <list begin="&lt;summary&gt;" indent="" end="&lt;/summary&gt;">
-                                    <item>Surrogate primary key — this class does not inherit from IdentifiedObject</item>
+                                    <item>Surrogate primary key - this class does not inherit from IdentifiedObject</item>
                                     <item>and has no natural single-column primary key. This surrogate 'id' is a</item>
                                     <item>persistence artefact. The [Index] above enforces a heuristic uniqueness</item>
                                     <item>constraint across all required non-surrogate columns as a guard against</item>
@@ -1291,7 +1301,6 @@
 
     <!-- Class template for CompoundType -->
     <xsl:template match="a:CompoundType">
-        <item></item>
         <xsl:call-template name="annotate"/>
         <item>[Table(&quot;<xsl:value-of select="@name"/>&quot;)]</item>
         <!-- Emit [Index] unique constraint for each nested a:Compound FK column.
@@ -1314,7 +1323,6 @@
             </list>
             <item>public <xsl:value-of select="@name"/>() { Id = System.Guid.NewGuid().ToString(); }</item>
             <item>public override string ToString() { return this.GetType().Name; }</item>
-            <item></item>
             <list begin="" indent="/// " end="">
                 <list begin="&lt;summary&gt;" indent="" end="&lt;/summary&gt;">
                     <item>Determines whether this instance and a specified object represent the same</item>
@@ -1328,7 +1336,7 @@
                     <item>&lt;c&gt;Id&lt;/c&gt;; otherwise &lt;c&gt;false&lt;/c&gt;.</item>
                 </list>
                 <list begin="&lt;remarks&gt;" indent="" end="&lt;/remarks&gt;">
-                    <item>Compound types are value objects — each row has exactly one owner and its</item>
+                    <item>Compound types are value objects - each row has exactly one owner and its</item>
                     <item>&lt;c&gt;Id&lt;/c&gt; is a UUID assigned on construction, so &lt;c&gt;Id&lt;/c&gt; is never</item>
                     <item>&lt;c&gt;null&lt;/c&gt; and no null guard is required.</item>
                 </list>
@@ -1339,7 +1347,6 @@
                 <item>if (ReferenceEquals(this, other)) return true;</item>
                 <item>return Id == other.Id;</item>
             </list>
-            <item></item>
             <list begin="" indent="/// " end="">
                 <list begin="&lt;summary&gt;" indent="" end="&lt;/summary&gt;">
                     <item>Returns a hash code based on the surrogate &lt;c&gt;Id&lt;/c&gt; of this instance.</item>
@@ -1349,7 +1356,6 @@
                 </list>
             </list>
             <item>public override int GetHashCode() => Id.GetHashCode();</item>
-            <item></item>
             <item>[Key]</item>
             <item>[Column("id")]</item>
             <item>[MaxLength(100)]</item>
@@ -1360,14 +1366,12 @@
 
     <!-- Class template for EnumeratedType -->
     <xsl:template match="a:EnumeratedType">
-        <item></item>
         <xsl:call-template name="annotate"/>
         <item>[Table(&quot;<xsl:value-of select="@name"/>&quot;)]</item>
         <item>public class <xsl:value-of select="@name"/></item>
         <list begin="{{" indent="    " delim="" end="}}">
             <item>public <xsl:value-of select="@name"/>() { }</item>
             <item>public override string ToString() { return this.GetType().Name; }</item>
-            <item></item>
             <list begin="" indent="/// " end="">
                 <list begin="&lt;summary&gt;" indent="" end="&lt;/summary&gt;">
                     <item>Determines whether this instance and a specified object represent the same</item>
@@ -1392,7 +1396,6 @@
                 <item>if (ReferenceEquals(this, other)) return true;</item>
                 <item>return Name != null &amp;&amp; Name == other.Name;</item>
             </list>
-            <item></item>
             <list begin="" indent="/// " end="">
                 <list begin="&lt;summary&gt;" indent="" end="&lt;/summary&gt;">
                     <item>Returns a hash code based on the &lt;c&gt;Name&lt;/c&gt; of this enumeration literal.</item>
@@ -1403,12 +1406,10 @@
                 </list>
             </list>
             <item>public override int GetHashCode() => Name?.GetHashCode() ?? 0;</item>
-            <item></item>
             <item>[Key]</item>
             <item>[Column("name")]</item>
             <item>[MaxLength(100)]</item>
             <item>public string Name { get; set; } = null!;</item>
-            <item></item>
             <xsl:apply-templates select="a:EnumeratedValue"/>
         </list>
     </xsl:template>
@@ -1420,7 +1421,6 @@
 
     <!-- Property template for a:Simple and a:Domain (simple attributes) -->
     <xsl:template match="a:Simple|a:Domain">
-        <item></item>
         <xsl:call-template name="annotate"/>
         <xsl:choose>
             <xsl:when test="@name = 'mRID'">
@@ -1434,23 +1434,23 @@
             <item><xsl:value-of select="$maxLength"/></item>
         </xsl:if>
         <xsl:choose>
-            <!-- Non-nullable string PK — MRId and compound surrogate id -->
+            <!-- Non-nullable string PK Ã¢â‚¬â€ MRId and compound surrogate id -->
             <xsl:when test="cimtool:csType(@xstype) = 'string' and (@name = 'mRID' or @name = 'id')">
                 <item>public string <xsl:value-of select="cimtool:safePropertyName(@name, @xstype, .)"/> { get; set; } = null!;</item>
             </xsl:when>
-            <!-- Required string — minOccurs = 1 -->
+            <!-- Required string Ã¢â‚¬â€ minOccurs = 1 -->
             <xsl:when test="cimtool:csType(@xstype) = 'string' and @minOccurs = '1'">
                 <item>public string <xsl:value-of select="cimtool:safePropertyName(@name, @xstype, .)"/> { get; set; } = null!;</item>
             </xsl:when>
-            <!-- Optional string — minOccurs = 0 or absent -->
+            <!-- Optional string Ã¢â‚¬â€ minOccurs = 0 or absent -->
             <xsl:when test="cimtool:csType(@xstype) = 'string'">
                 <item>public string? <xsl:value-of select="cimtool:safePropertyName(@name, @xstype, .)"/> { get; set; }</item>
             </xsl:when>
-            <!-- Required value type — minOccurs = 1 (bool, int, DateTime, etc.) -->
+            <!-- Required value type Ã¢â‚¬â€ minOccurs = 1 (bool, int, DateTime, etc.) -->
             <xsl:when test="@minOccurs = '1'">
                 <item>public <xsl:value-of select="cimtool:csType(@xstype)"/><xsl:text> </xsl:text><xsl:value-of select="cimtool:safePropertyName(@name, @xstype, .)"/> { get; set; }</item>
             </xsl:when>
-            <!-- Optional value type — minOccurs = 0 or absent -->
+            <!-- Optional value type Ã¢â‚¬â€ minOccurs = 0 or absent -->
             <xsl:otherwise>
                 <item>public <xsl:value-of select="cimtool:csType(@xstype)"/>?<xsl:text> </xsl:text><xsl:value-of select="cimtool:safePropertyName(@name, @xstype, .)"/> { get; set; }</item>
             </xsl:otherwise>
@@ -1464,19 +1464,18 @@
          at the C# EF layer both produce identical property declarations.
 
          Shadow FK nullability:
-           @minOccurs='1'  →  non-nullable string (= null!) — EF Core treats the relationship
+           @minOccurs='1'  Ã¢â€ â€™  non-nullable string (= null!) Ã¢â‚¬â€ EF Core treats the relationship
                               as required, consistent with the NOT NULL column in the SQL DDL.
-           @minOccurs='0'  →  nullable string? — EF Core treats the relationship as optional,
+           @minOccurs='0'  Ã¢â€ â€™  nullable string? Ã¢â‚¬â€ EF Core treats the relationship as optional,
                               consistent with the nullable column in the SQL DDL.
          In EF Core 6+, a non-nullable FK property automatically implies a required relationship
          without needing an explicit .IsRequired() call in the Fluent API. -->
     <xsl:template match="a:Instance|a:Reference|a:Compound">
-        <item></item>
         <xsl:call-template name="annotate"/>
         <xsl:choose>
             <!-- Single navigation property when maxOccurs is missing or equals '1' -->
             <xsl:when test="not(@maxOccurs) or @maxOccurs = '1'">
-                <!-- Shadow FK property — nullability driven by minOccurs -->
+                <!-- Shadow FK property Ã¢â‚¬â€ nullability driven by minOccurs -->
                 <item>[Column(&quot;<xsl:value-of select="@name"/>&quot;)]</item>
                 <item>[MaxLength(100)]</item>
                 <xsl:choose>
@@ -1487,13 +1486,12 @@
                         <item>public string? <xsl:value-of select="cimtool:capitalize(@name)"/>Id { get; set; }</item>
                     </xsl:otherwise>
                 </xsl:choose>
-                <item></item>
-                <!-- Navigation property — [ForeignKey] points at the shadow property above, not the column -->
+                <!-- Navigation property Ã¢â‚¬â€ [ForeignKey] points at the shadow property above, not the column -->
                 <item>[ForeignKey(nameof(<xsl:value-of select="cimtool:capitalize(@name)"/>Id))]</item>
                 <item>public virtual <xsl:value-of select="@type"/>?<xsl:text> </xsl:text><xsl:value-of select="cimtool:capitalize(@name)"/> { get; set; }</item>
             </xsl:when>
             <!-- Unbounded collection (maxOccurs > '1' or 'unbounded'): intentionally suppressed.
-                 ICollection<T> navigation properties are never generated — see the assembly-level
+                 ICollection<T> navigation properties are never generated Ã¢â‚¬â€ see the assembly-level
                  <remarks> block at the top of this file for the full rationale. The FK column
                  lives on the child table; the relationship must be configured from the child side
                  via Fluent API. A self-documenting comment block is emitted in the generated
@@ -1509,8 +1507,8 @@
                     select="if (cimtool:has-mrid-ancestor(parent::*)) then 'MRId' else 'Id'"/>
                 <item></item>
 				<list begin="" indent="// " end="">
-					<item>────────────────────────────────────────────────────────────────────────────────────────────────</item>
-					<item> Suppressed Collection Navigation:  <xsl:value-of select="$parentType"/> → <xsl:value-of select="$childType"/>  [<xsl:value-of select="@minOccurs"/>..*] </item>
+					<item>Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬</item>
+					<item>Suppressed Collection Navigation: <xsl:value-of select="$parentType"/> Ã¢â€ â€™ <xsl:value-of select="$childType"/> [<xsl:value-of select="@minOccurs"/>..*]</item>
 					<item>The profile declares a [<xsl:value-of select="@minOccurs"/>..*] association on this class to <xsl:value-of select="$childType"/>.</item>
 					<item>A collection navigation property has been intentionally suppressed:</item>
 					<item></item>
@@ -1543,7 +1541,7 @@
 							<item>.ToListAsync();</item>
 						</list>
 					</list>
-					<item>────────────────────────────────────────────────────────────────────────────────────────────────</item>
+					<item>Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬</item>
 				</list>
 				<item></item>
             </xsl:otherwise>
@@ -1552,16 +1550,15 @@
 
     <!-- Property template for a:Enumerated (enumerated property as a FK string reference) -->
     <xsl:template match="a:Enumerated">
-        <item></item>
         <xsl:call-template name="annotate"/>
         <item>[Column(&quot;<xsl:value-of select="@name"/>&quot;)]</item>
         <item>[MaxLength(100)]</item>
         <xsl:choose>
-            <!-- Required enumerated reference — minOccurs = 1 -->
+            <!-- Required enumerated reference Ã¢â‚¬â€ minOccurs = 1 -->
             <xsl:when test="@minOccurs = '1'">
                 <item>public string <xsl:value-of select="cimtool:safePropertyName(@name, '', .)"/> { get; set; } = null!;</item>
             </xsl:when>
-            <!-- Optional enumerated reference — minOccurs = 0 or absent -->
+            <!-- Optional enumerated reference Ã¢â‚¬â€ minOccurs = 0 or absent -->
             <xsl:otherwise>
                 <item>public string? <xsl:value-of select="cimtool:safePropertyName(@name, '', .)"/> { get; set; }</item>
             </xsl:otherwise>
@@ -1590,17 +1587,15 @@
     <xsl:template name="config">
         <xsl:param name="sorted-compounds" as="element()*"/>
         <xsl:param name="sorted-classes"   as="element()*"/>
-        <item></item>
         <item>public static readonly System.Type[] allClasses = new System.Type[]</item>
         <list begin="{{" indent="    " delim="," end="}};">
-            <!-- Tier 1: EnumeratedType — lookup tables, no dependencies -->
+            <!-- Tier 1: EnumeratedType Ã¢â‚¬â€ lookup tables, no dependencies -->
             <xsl:apply-templates select="a:EnumeratedType" mode="config"/>
-            <!-- Tier 2: CompoundType — in topological dependency order -->
+            <!-- Tier 2: CompoundType Ã¢â‚¬â€ in topological dependency order -->
             <xsl:apply-templates select="$sorted-compounds" mode="config"/>
-            <!-- Tier 3: ComplexType + Root — superclasses before subclasses -->
+            <!-- Tier 3: ComplexType + Root Ã¢â‚¬â€ superclasses before subclasses -->
             <xsl:apply-templates select="$sorted-classes" mode="config"/>
         </list>
-        <item></item>
     </xsl:template>
 
     <!--
@@ -1620,13 +1615,13 @@
           - Entities with no FK relationships use a concise arrow expression body.
           - Entities with FK relationships use a block body with a local variable.
 
-        CASCADE VS CLIENTNOACTION — DESIGN RATIONALE
-        ─────────────────────────────────────────────
+        CASCADE VS CLIENTNOACTION Ã¢â‚¬â€ DESIGN RATIONALE
+        Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬
         Two distinct DeleteBehavior values are emitted depending on relationship kind:
 
           a:Compound:  DeleteBehavior.Cascade
             Compound types (e.g. ElectronicAddress, Status, TelephoneNumber) are CIM
-            value objects — each compound row has exactly one owner and its lifecycle
+            value objects Ã¢â‚¬â€ each compound row has exactly one owner and its lifecycle
             is fully subordinate to the parent. The companion SQL DDL emits ON DELETE
             CASCADE for every compound FK, so DeleteBehavior.Cascade is required here
             to keep EF Core's in-memory change tracker consistent with the database.
@@ -1645,13 +1640,12 @@
     <xsl:template name="dbcontext">
         <xsl:param name="sorted-compounds" as="element()*"/>
         <xsl:param name="sorted-classes"   as="element()*"/>
-        <item></item>
         <list begin="" indent="/// " end="">
             <list begin="&lt;summary&gt;" indent="" end="&lt;/summary&gt;">
                 <item>Generated EF Core Fluent API configuration for the <xsl:value-of select="$envelope"/> profile.</item>
-                <item>Apply this from your hand-written DbContext.OnModelCreating override — see the</item>
+                <item>Apply this from your hand-written DbContext.OnModelCreating override - see the</item>
                 <item>file header comment for the recommended usage pattern.</item>
-                <item>This class is fully regenerated by CIMTool — do not edit manually.</item>
+                <item>This class is fully regenerated by CIMTool - do not edit manually.</item>
             </list>
             <list begin="&lt;remarks&gt;" indent="" end="&lt;/remarks&gt;">
                 <list begin="&lt;para&gt;" indent="" end="&lt;/para&gt;">
@@ -1660,17 +1654,16 @@
                     <item>relationship kind:</item>
                     <list begin="&lt;list type=&quot;bullet&quot;&gt;" indent="   " end=" &lt;/list&gt;">
                         <list begin="&lt;item&gt;" indent="  " end="&lt;/item&gt;">
-                            <item>&lt;c&gt;DeleteBehavior.Cascade&lt;/c&gt; — CIM Compound type references</item>
+                            <item>&lt;c&gt;DeleteBehavior.Cascade&lt;/c&gt; - CIM Compound type references</item>
                             <item>(e.g. &lt;c&gt;ElectronicAddress&lt;/c&gt;, &lt;c&gt;Status&lt;/c&gt;, &lt;c&gt;TelephoneNumber&lt;/c&gt;).</item>
                             <item>Compound rows are value objects with exactly one owner. The companion</item>
                             <item>SQL DDL emits &lt;c&gt;ON DELETE CASCADE&lt;/c&gt; for these FKs.</item>
-                            <item>&lt;c&gt;DeleteBehavior.Cascade&lt;/c&gt; keeps EF Core's in-memory change</item>
-                            <item>tracker consistent with the database. Without it, deleting a tracked</item>
-                            <item>parent while a compound child is also tracked causes EF Core to throw</item>
-                            <item>a referential integrity exception before the delete reaches the DB.</item>
+                            <item>&lt;c&gt;DeleteBehavior.Cascade&lt;/c&gt; keeps EF Core's relationship metadata and</item>
+                            <item>tracked graph behavior aligned. Owner-side orphan cleanup is handled</item>
+                            <item>by the generated &lt;c&gt;DbContextBase&lt;/c&gt; when consumers derive from it.</item>
                         </list>
                         <list begin="&lt;item&gt;" indent="  " end="&lt;/item&gt;">
-                            <item>&lt;c&gt;DeleteBehavior.ClientNoAction&lt;/c&gt; — associations between independent</item>
+                            <item>&lt;c&gt;DeleteBehavior.ClientNoAction&lt;/c&gt; - associations between independent</item>
                             <item>IdentifiedObject entities. These carry no DB-level cascade and deleting</item>
                             <item>one end must not silently delete the other. Cascade responsibility is</item>
                             <item>left entirely to the application.</item>
@@ -1681,7 +1674,7 @@
         </list>
         <item>public static class ModelConfiguration</item>
         <list begin="{{" indent="    " delim="" end="}}">
-            <!-- Entry point — calls one private method per entity in topological order -->
+            <!-- Entry point Ã¢â‚¬â€ calls one private method per entity in topological order -->
             <item>public static void ConfigureModel(ModelBuilder modelBuilder)</item>
             <list begin="{{" indent="    " delim="" end="}}">
                 <!-- Tier 1: EnumeratedType -->
@@ -1692,12 +1685,12 @@
                 <xsl:for-each select="$sorted-compounds">
                     <item>Configure<xsl:value-of select="@name"/>(modelBuilder);</item>
                 </xsl:for-each>
-                <!-- Tier 3: ComplexType + Root — superclasses before subclasses -->
+                <!-- Tier 3: ComplexType + Root Ã¢â‚¬â€ superclasses before subclasses -->
                 <xsl:for-each select="$sorted-classes">
                     <item>Configure<xsl:value-of select="@name"/>(modelBuilder);</item>
                 </xsl:for-each>
             </list>
-            <!-- Private configuration methods — one per entity -->
+            <!-- Private configuration methods Ã¢â‚¬â€ one per entity -->
             <xsl:apply-templates select="a:EnumeratedType" mode="dbcontext"/>
             <xsl:apply-templates select="$sorted-compounds" mode="dbcontext"/>
             <xsl:apply-templates select="$sorted-classes" mode="dbcontext"/>
@@ -1711,29 +1704,28 @@
         block body with a local variable to chain the relationship configuration.
 
         DeleteBehavior is differentiated by relationship kind:
-          a:Compound   →  DeleteBehavior.Cascade
+          a:Compound   Ã¢â€ â€™  DeleteBehavior.Cascade
             Compound type rows are value objects owned exclusively by their parent.
             The companion SQL DDL emits ON DELETE CASCADE for these FKs. Cascade
             must be mirrored here so that EF Core's change tracker handles deletion
-            of a tracked parent consistently — ClientNoAction would cause EF Core
+            of a tracked parent consistently Ã¢â‚¬â€ ClientNoAction would cause EF Core
             to throw a referential integrity exception when a tracked compound child
             is orphaned in memory, before the delete can reach the DB and trigger
             the SQL-level cascade.
-          a:Instance | a:Reference  →  DeleteBehavior.ClientNoAction
+          a:Instance | a:Reference  Ã¢â€ â€™  DeleteBehavior.ClientNoAction
             Independent IdentifiedObject associations carry no DB-level cascade.
             Deleting one end must not silently remove the other; application code
             is responsible for managing the lifecycle of associated entities.
     -->
     <xsl:template match="a:EnumeratedType|a:CompoundType|a:ComplexType|a:Root" mode="dbcontext">
-        <item></item>
         <xsl:variable name="fks" select="a:Compound|a:Instance|a:Reference"/>
         <xsl:choose>
-            <!-- No FK relationships — concise arrow expression body -->
+            <!-- No FK relationships Ã¢â‚¬â€ concise arrow expression body -->
             <xsl:when test="not($fks)">
                 <item>private static void Configure<xsl:value-of select="@name"/>(ModelBuilder modelBuilder)</item>
                 <item>    => modelBuilder.Entity&lt;<xsl:value-of select="@name"/>&gt;().ToTable(&quot;<xsl:value-of select="@name"/>&quot;);</item>
             </xsl:when>
-            <!-- Has FK relationships — block body with local variable -->
+            <!-- Has FK relationships Ã¢â‚¬â€ block body with local variable -->
             <xsl:otherwise>
                 <item>private static void Configure<xsl:value-of select="@name"/>(ModelBuilder modelBuilder)</item>
                 <list begin="{{" indent="    " delim="" end="}}">
@@ -1741,13 +1733,13 @@
                     <item>e.ToTable(&quot;<xsl:value-of select="@name"/>&quot;);</item>
                     <xsl:for-each select="$fks">
                         <xsl:choose>
-                            <!-- Compound: value object — Cascade mirrors ON DELETE CASCADE in companion DDL.
+                            <!-- Compound: value object Ã¢â‚¬â€ Cascade mirrors ON DELETE CASCADE in companion DDL.
                                  See the ModelConfiguration class <remarks> for the full design rationale. -->
                             <xsl:when test="self::a:Compound">
                                 <item>e.HasOne(x => x.<xsl:value-of select="cimtool:capitalize(@name)"/>).WithMany().HasForeignKey(x => x.<xsl:value-of select="cimtool:capitalize(@name)"/>Id).OnDelete(DeleteBehavior.Cascade);</item>
                             </xsl:when>
                             <!-- Unbounded Reference [0..*]: FK lives on the child table.
-                                 No HasOne/HasMany is emitted on this (parent) side — doing so
+                                 No HasOne/HasMany is emitted on this (parent) side Ã¢â‚¬â€ doing so
                                  would reference a shadow FK property that does not exist on this
                                  entity. The relationship must be configured from the child side.
                                  A comment is emitted here to make that expectation explicit and
@@ -1758,8 +1750,8 @@
                                 <xsl:variable name="inversePropName" select="cimtool:capitalize(tokenize(@inverseBaseProperty, '[\.#]')[last()])"/>
                                 <item></item>
 								<list begin="" indent="// " end="">
-									<item>────────────────────────────────────────────────────────────────────────────────────────────────</item>
-									<item>Suppressed Fluent API:  <xsl:value-of select="$parentType"/> → <xsl:value-of select="$childType"/>  [<xsl:value-of select="@minOccurs"/>..*]</item>
+									<item>Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬</item>
+									<item>Suppressed Fluent API:  <xsl:value-of select="$parentType"/> Ã¢â€ â€™ <xsl:value-of select="$childType"/>  [<xsl:value-of select="@minOccurs"/>..*]</item>
 									<item>The FK column for this [<xsl:value-of select="@minOccurs"/>..*] association lives on <xsl:value-of select="$childType"/>, not here.</item>
 									<item>HasOne/HasMany is intentionally not configured on this parent side because</item>
 									<item>no shadow FK property exists on <xsl:value-of select="$parentType"/> (see the suppressed collection</item>
@@ -1774,10 +1766,10 @@
 											<item>.OnDelete(DeleteBehavior.ClientNoAction);</item>
 										</list>
 									</list>
-									<item>────────────────────────────────────────────────────────────────────────────────────────────────</item>
+									<item>Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬</item>
 								</list>
                             </xsl:when>
-                            <!-- Instance/Reference: independent entity — no cascade -->
+                            <!-- Instance/Reference: independent entity Ã¢â‚¬â€ no cascade -->
                             <xsl:otherwise>
                                 <item>e.HasOne(x => x.<xsl:value-of select="cimtool:capitalize(@name)"/>).WithMany().HasForeignKey(x => x.<xsl:value-of select="cimtool:capitalize(@name)"/>Id).OnDelete(DeleteBehavior.ClientNoAction);</item>
                             </xsl:otherwise>
@@ -1786,6 +1778,265 @@
                 </list>
             </xsl:otherwise>
         </xsl:choose>
+    </xsl:template>
+
+    <!--
+        Generates an abstract DbContextBase nested inside the generated profile class.
+
+        The goal is to move profile-specific EF boilerplate into generated code:
+          - DbSet properties for each generated entity type
+          - OnModelCreating() wiring into ModelConfiguration
+          - SaveChanges / SaveChangesAsync cleanup hooks
+          - orphan collection and nested compound cleanup logic derived directly
+            from a:Compound relationships in the profile
+
+        Consumers keep only a thin hand-written subclass that provides constructor
+        wiring and any application-specific customisation.
+    -->
+    <xsl:template name="dbcontext-base">
+        <xsl:param name="sorted-compounds" as="element()*"/>
+        <xsl:param name="sorted-classes"   as="element()*"/>
+        <xsl:variable name="entities-with-compounds" select="($sorted-compounds, $sorted-classes)[a:Compound]"/>
+
+        <list begin="" indent="/// " end="">
+            <list begin="&lt;summary&gt;" indent="" end="&lt;/summary&gt;">
+                <item>Generated EF Core DbContext base for the <xsl:value-of select="$envelope"/> profile.</item>
+                <item>This base class provides generated DbSet properties, model wiring,</item>
+                <item>and compound orphan cleanup hooks derived from the profile itself.</item>
+            </list>
+            <list begin="&lt;remarks&gt;" indent="" end="&lt;/remarks&gt;">
+                <list begin="&lt;para&gt;" indent="" end="&lt;/para&gt;">
+                    <item>Create a thin hand-written subclass in your application:</item>
+                </list>
+                <list begin="&lt;code&gt;" indent="" end="&lt;/code&gt;">
+                    <item>public class <xsl:value-of select="$envelope"/>DbContext : <xsl:value-of select="$envelope"/>.DbContextBase</item>
+                    <list begin="{{" indent="    " end="}}">
+                        <item>public <xsl:value-of select="$envelope"/>DbContext(DbContextOptions options) : base(options) { }</item>
+                    </list>
+                </list>
+            </list>
+        </list>
+        <item>public abstract class DbContextBase : DbContext</item>
+        <list begin="{{" indent="    " delim="" end="}}">
+            <item>protected DbContextBase(DbContextOptions options) : base(options) { }</item>
+
+            <xsl:for-each select="a:EnumeratedType">
+                <item>public DbSet&lt;<xsl:value-of select="$envelope"/>.<xsl:value-of select="@name"/>&gt; <xsl:value-of select="cimtool:pluralize(@name)"/> =&gt; Set&lt;<xsl:value-of select="$envelope"/>.<xsl:value-of select="@name"/>&gt;();</item>
+            </xsl:for-each>
+            <xsl:for-each select="$sorted-compounds">
+                <item>public DbSet&lt;<xsl:value-of select="$envelope"/>.<xsl:value-of select="@name"/>&gt; <xsl:value-of select="cimtool:pluralize(@name)"/> =&gt; Set&lt;<xsl:value-of select="$envelope"/>.<xsl:value-of select="@name"/>&gt;();</item>
+            </xsl:for-each>
+            <xsl:for-each select="$sorted-classes">
+                <item>public DbSet&lt;<xsl:value-of select="$envelope"/>.<xsl:value-of select="@name"/>&gt; <xsl:value-of select="cimtool:pluralize(@name)"/> =&gt; Set&lt;<xsl:value-of select="$envelope"/>.<xsl:value-of select="@name"/>&gt;();</item>
+            </xsl:for-each>
+
+            <item>protected override void OnModelCreating(ModelBuilder modelBuilder)</item>
+            <item>    =&gt; <xsl:value-of select="$envelope"/>.ModelConfiguration.ConfigureModel(modelBuilder);</item>
+
+            <item>public override int SaveChanges()</item>
+            <item>    =&gt; SaveChangesWithCleanup(() =&gt; base.SaveChanges());</item>
+
+            <item>public override int SaveChanges(bool acceptAllChangesOnSuccess)</item>
+            <item>    =&gt; SaveChangesWithCleanup(() =&gt; base.SaveChanges(acceptAllChangesOnSuccess));</item>
+
+            <item>public override Task&lt;int&gt; SaveChangesAsync(CancellationToken cancellationToken = default)</item>
+            <item>    =&gt; SaveChangesWithCleanupAsync(ct =&gt; base.SaveChangesAsync(ct), cancellationToken);</item>
+
+            <item>public override Task&lt;int&gt; SaveChangesAsync(bool acceptAllChangesOnSuccess, CancellationToken cancellationToken = default)</item>
+            <item>    =&gt; SaveChangesWithCleanupAsync(ct =&gt; base.SaveChangesAsync(acceptAllChangesOnSuccess, ct), cancellationToken);</item>
+
+            <item>private int SaveChangesWithCleanup(Func&lt;int&gt; baseSaveChanges)</item>
+            <list begin="{{" indent="    " delim="" end="}}">
+                <item>ArgumentNullException.ThrowIfNull(baseSaveChanges);</item>
+                <item>ChangeTracker.DetectChanges();</item>
+                <item>var candidates = CollectCleanupCandidates();</item>
+                <item>var rows = baseSaveChanges();</item>
+                <item>if (candidates.Count == 0)</item>
+                <list begin="{{" indent="    " delim="" end="}}">
+                    <item>return rows;</item>
+                </list>
+                <item>if (!MarkOrphanedCompoundsForDeletion(candidates))</item>
+                <list begin="{{" indent="    " delim="" end="}}">
+                    <item>return rows;</item>
+                </list>
+                <item>rows += baseSaveChanges();</item>
+                <item>return rows;</item>
+            </list>
+
+            <item>private async Task&lt;int&gt; SaveChangesWithCleanupAsync(Func&lt;CancellationToken, Task&lt;int&gt;&gt; baseSaveChangesAsync, CancellationToken cancellationToken)</item>
+            <list begin="{{" indent="    " delim="" end="}}">
+                <item>ArgumentNullException.ThrowIfNull(baseSaveChangesAsync);</item>
+                <item>ChangeTracker.DetectChanges();</item>
+                <item>var candidates = CollectCleanupCandidates();</item>
+                <item>var rows = await baseSaveChangesAsync(cancellationToken);</item>
+                <item>if (candidates.Count == 0)</item>
+                <list begin="{{" indent="    " delim="" end="}}">
+                    <item>return rows;</item>
+                </list>
+                <item>if (!MarkOrphanedCompoundsForDeletion(candidates))</item>
+                <list begin="{{" indent="    " delim="" end="}}">
+                    <item>return rows;</item>
+                </list>
+                <item>rows += await baseSaveChangesAsync(cancellationToken);</item>
+                <item>return rows;</item>
+            </list>
+
+            <item>private List&lt;CompoundCleanupCandidate&gt; CollectCleanupCandidates()</item>
+            <list begin="{{" indent="    " delim="" end="}}">
+                <item>var candidates = new List&lt;CompoundCleanupCandidate&gt;();</item>
+                <xsl:for-each select="$entities-with-compounds">
+                    <item>foreach (var entry in ChangeTracker.Entries&lt;<xsl:value-of select="$envelope"/>.<xsl:value-of select="@name"/>&gt;())</item>
+                    <list begin="{{" indent="    " delim="" end="}}">
+                        <item>if (entry.State is not EntityState.Modified and not EntityState.Deleted)</item>
+                        <list begin="{{" indent="    " delim="" end="}}">
+                            <item>continue;</item>
+                        </list>
+                        <xsl:for-each select="a:Compound">
+                            <item>CollectChangedCompound(entry, nameof(<xsl:value-of select="$envelope"/>.<xsl:value-of select="parent::*/@name"/>.<xsl:value-of select="cimtool:capitalize(@name)"/>Id), typeof(<xsl:value-of select="$envelope"/>.<xsl:value-of select="@type"/>), candidates);</item>
+                        </xsl:for-each>
+                    </list>
+                </xsl:for-each>
+                <item>return candidates;</item>
+            </list>
+
+            <item>private static void CollectChangedCompound&lt;TEntity&gt;(Microsoft.EntityFrameworkCore.ChangeTracking.EntityEntry&lt;TEntity&gt; entry, string propertyName, Type compoundType, List&lt;CompoundCleanupCandidate&gt; candidates)</item>
+            <item>    where TEntity : class</item>
+            <list begin="{{" indent="    " delim="" end="}}">
+                <item>var originalId = entry.OriginalValues[propertyName] as string;</item>
+                <item>var currentId = entry.State == EntityState.Deleted ? null : entry.CurrentValues[propertyName] as string;</item>
+                <item>if (!string.IsNullOrWhiteSpace(originalId) &amp;&amp; !string.Equals(originalId, currentId, StringComparison.Ordinal))</item>
+                <list begin="{{" indent="    " delim="" end="}}">
+                    <item>candidates.Add(new CompoundCleanupCandidate(compoundType, originalId));</item>
+                </list>
+            </list>
+
+            <item>private bool MarkOrphanedCompoundsForDeletion(IReadOnlyCollection&lt;CompoundCleanupCandidate&gt; candidates)</item>
+            <list begin="{{" indent="    " delim="" end="}}">
+                <item>var plannedDeletes = new HashSet&lt;CompoundCleanupCandidate&gt;();</item>
+                <item>var visiting = new HashSet&lt;CompoundCleanupCandidate&gt;();</item>
+                <item>foreach (var candidate in candidates)</item>
+                <list begin="{{" indent="    " delim="" end="}}">
+                    <item>PlanCompoundDeletion(candidate, plannedDeletes, visiting);</item>
+                </list>
+                <item>var deletedAny = false;</item>
+                <item>foreach (var candidate in plannedDeletes)</item>
+                <list begin="{{" indent="    " delim="" end="}}">
+                    <item>deletedAny |= MarkCompoundForDeletion(candidate);</item>
+                </list>
+                <item>return deletedAny;</item>
+            </list>
+
+            <item>private void PlanCompoundDeletion(CompoundCleanupCandidate candidate, HashSet&lt;CompoundCleanupCandidate&gt; plannedDeletes, HashSet&lt;CompoundCleanupCandidate&gt; visiting)</item>
+            <list begin="{{" indent="    " delim="" end="}}">
+                <item>if (string.IsNullOrWhiteSpace(candidate.Id) || plannedDeletes.Contains(candidate) || !visiting.Add(candidate))</item>
+                <list begin="{{" indent="    " delim="" end="}}">
+                    <item>return;</item>
+                </list>
+                <item>if (IsStillReferenced(candidate, plannedDeletes))</item>
+                <list begin="{{" indent="    " delim="" end="}}">
+                    <item>visiting.Remove(candidate);</item>
+                    <item>return;</item>
+                </list>
+                <item>plannedDeletes.Add(candidate);</item>
+                <item>foreach (var child in GetNestedCompoundCandidates(candidate))</item>
+                <list begin="{{" indent="    " delim="" end="}}">
+                    <item>PlanCompoundDeletion(child, plannedDeletes, visiting);</item>
+                </list>
+                <item>visiting.Remove(candidate);</item>
+            </list>
+
+            <item>private bool IsStillReferenced(CompoundCleanupCandidate candidate, HashSet&lt;CompoundCleanupCandidate&gt; plannedDeletes)</item>
+            <list begin="{{" indent="    " delim="" end="}}">
+                <xsl:for-each select="$sorted-compounds">
+                    <xsl:variable name="compound-name" select="string(@name)"/>
+                    <xsl:variable name="root-complex-parents" select="$sorted-classes[a:Compound[@type = $compound-name]]"/>
+                    <xsl:variable name="compound-parents" select="$sorted-compounds[a:Compound[@type = $compound-name]]"/>
+                    <item>if (candidate.CompoundType == typeof(<xsl:value-of select="$envelope"/>.<xsl:value-of select="@name"/>))</item>
+                    <list begin="{{" indent="    " delim="" end="}}">
+                        <item>var isReferenced = false;</item>
+                        <xsl:for-each select="$root-complex-parents">
+                            <xsl:variable name="predicate" as="xs:string"
+                                select="string-join(
+                                    for $child in a:Compound[@type = $compound-name]
+                                    return concat('x.', cimtool:capitalize(string($child/@name)), 'Id == candidate.Id'),
+                                    ' || '
+                                )"/>
+                            <item>isReferenced = isReferenced || Set&lt;<xsl:value-of select="$envelope"/>.<xsl:value-of select="@name"/>&gt;().Any(x =&gt; <xsl:value-of select="$predicate"/>);</item>
+                        </xsl:for-each>
+                        <xsl:for-each select="$compound-parents">
+                            <xsl:variable name="predicate" as="xs:string"
+                                select="string-join(
+                                    for $child in a:Compound[@type = $compound-name]
+                                    return concat('x.', cimtool:capitalize(string($child/@name)), 'Id == candidate.Id'),
+                                    ' || '
+                                )"/>
+                            <item>isReferenced = isReferenced || Set&lt;<xsl:value-of select="$envelope"/>.<xsl:value-of select="@name"/>&gt;()</item>
+                            <list begin="" indent="    " delim="" end="">
+                                <item>.Where(x =&gt; <xsl:value-of select="$predicate"/>)</item>
+                                <item>.Select(x =&gt; x.Id)</item>
+                                <item>.AsEnumerable()</item>
+                                <item>.Any(id =&gt; !plannedDeletes.Contains(new CompoundCleanupCandidate(typeof(<xsl:value-of select="$envelope"/>.<xsl:value-of select="@name"/>), id)));</item>
+                            </list>
+                        </xsl:for-each>
+                        <item>return isReferenced;</item>
+                    </list>
+                </xsl:for-each>
+                <item>return false;</item>
+            </list>
+
+            <item>private IEnumerable&lt;CompoundCleanupCandidate&gt; GetNestedCompoundCandidates(CompoundCleanupCandidate candidate)</item>
+            <list begin="{{" indent="    " delim="" end="}}">
+                <xsl:for-each select="$sorted-compounds[a:Compound]">
+                    <item>if (candidate.CompoundType == typeof(<xsl:value-of select="$envelope"/>.<xsl:value-of select="@name"/>))</item>
+                    <list begin="{{" indent="    " delim="" end="}}">
+                        <item>var entity = Set&lt;<xsl:value-of select="$envelope"/>.<xsl:value-of select="@name"/>&gt;().SingleOrDefault(x =&gt; x.Id == candidate.Id);</item>
+                        <item>if (entity is null)</item>
+                        <list begin="{{" indent="    " delim="" end="}}">
+                            <item>return Array.Empty&lt;CompoundCleanupCandidate&gt;();</item>
+                        </list>
+                        <item>var children = new List&lt;CompoundCleanupCandidate&gt;();</item>
+                        <xsl:for-each select="a:Compound">
+                            <item>AddIfPresent(children, typeof(<xsl:value-of select="$envelope"/>.<xsl:value-of select="@type"/>), entity.<xsl:value-of select="cimtool:capitalize(@name)"/>Id);</item>
+                        </xsl:for-each>
+                        <item>return children;</item>
+                    </list>
+                </xsl:for-each>
+                <item>return Array.Empty&lt;CompoundCleanupCandidate&gt;();</item>
+            </list>
+
+            <item>private static void AddIfPresent(List&lt;CompoundCleanupCandidate&gt; children, Type type, string? id)</item>
+            <list begin="{{" indent="    " delim="" end="}}">
+                <item>if (!string.IsNullOrWhiteSpace(id))</item>
+                <list begin="{{" indent="    " delim="" end="}}">
+                    <item>children.Add(new CompoundCleanupCandidate(type, id));</item>
+                </list>
+            </list>
+
+            <item>private bool MarkCompoundForDeletion(CompoundCleanupCandidate candidate)</item>
+            <list begin="{{" indent="    " delim="" end="}}">
+                <xsl:for-each select="$sorted-compounds">
+                    <item>if (candidate.CompoundType == typeof(<xsl:value-of select="$envelope"/>.<xsl:value-of select="@name"/>))</item>
+                    <list begin="{{" indent="    " delim="" end="}}">
+                        <item>return DeleteIfPresent(Set&lt;<xsl:value-of select="$envelope"/>.<xsl:value-of select="@name"/>&gt;(), x =&gt; x.Id == candidate.Id);</item>
+                    </list>
+                </xsl:for-each>
+                <item>return false;</item>
+            </list>
+
+            <item>private bool DeleteIfPresent&lt;TEntity&gt;(DbSet&lt;TEntity&gt; set, Func&lt;TEntity, bool&gt; predicate)</item>
+            <item>    where TEntity : class</item>
+            <list begin="{{" indent="    " delim="" end="}}">
+                <item>var entity = set.Local.FirstOrDefault(predicate) ?? set.AsEnumerable().FirstOrDefault(predicate);</item>
+                <item>if (entity is null)</item>
+                <list begin="{{" indent="    " delim="" end="}}">
+                    <item>return false;</item>
+                </list>
+                <item>Remove(entity);</item>
+                <item>return true;</item>
+            </list>
+
+            <item>private readonly record struct CompoundCleanupCandidate(Type CompoundType, string Id);</item>
+        </list>
     </xsl:template>
 
     <!--
@@ -1840,7 +2091,7 @@
           2. Bidirectional mappings require both sides to be kept in sync on every
              add/remove, adding fragility and bug surface to consumer code.
           3. They introduce circular-reference risk during JSON serialization.
-          4. Inverse associations are profile-dependent — not every profile includes them,
+          4. Inverse associations are profile-dependent Ã¢â‚¬â€ not every profile includes them,
              so generated ICollection<T> properties would be inconsistent across profiles.
           5. Explicit LINQ queries (query through the child side via the shadow FK property)
              support pagination, filtering, and sorting that a collection property cannot.
