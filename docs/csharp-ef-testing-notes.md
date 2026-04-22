@@ -6,6 +6,8 @@ I was able to set up the current C# EF builder workflow and generate C# output f
 
 The comprehensive regression test currently passes overall, which means the generated code is at least usable enough to build, map, and exercise through EF Core with SQLite.
 
+On April 22, 2026, after adding the `Name` class to the sample profile and regenerating the C# output, I updated the EF Core regression harness to match the new generated shape. The important model change is that human-readable object names on `IdentifiedObject`-derived classes and on compound detail classes are now emitted as `NameValue`, because the profile also contains a concrete `Name` entity. After updating the harness, the regression suite passed all 31 sections. The new `Name Association Behavior` section confirms that `Name` rows round-trip correctly through `Name.IdentifiedObjectId -> IdentifiedObject.MRId`, and that deleting an `Organisation` referenced by a `Name` is currently blocked by the generated `ClientNoAction` foreign key.
+
 On April 21, 2026, after regenerating `SampleProfile.csharp-ef-rdfs.cs` from the updated builder, I switched the smoke-test `SampleProfileDbContext` from the older hand-written cleanup prototype to the newly generated `SampleProfile.DbContextBase`. The regression suite still passed all 30 sections after that switch, which is the strongest confirmation so far that the XSL is now generating the intended cleanup path directly.
 
 On April 17, 2026, I also applied a formatting-focused cleanup to the `csharp-ef-rdfs.xsl` template in the CIMTool source tree and synced the same XSL into the RC8 runtime builder folder. That cleanup was intentionally conservative: it reduced extra spacer emissions inside generated class bodies and removed one extra blank section break after the `allClasses` block, without changing the entity-model semantics.
@@ -69,6 +71,7 @@ The current regression test covers these areas:
 - Compound null detach cleanup
 - Generated null detach baseline
 - Independent relationships
+- Name association behavior
 - Inheritance storage
 - Inheritance delete cleanup
 - Inheritance query materialization
@@ -117,6 +120,17 @@ Deleting a compound principal can remove the dependent `Organisation`, but the i
 This suggests there may be an inheritance cleanup issue or a table-per-type delete behavior gap in the generated mapping.
 
 Direct EF deletes of inherited entities themselves currently behave better in testing: deleting `ParentOrganization` and `OverheadWireInfo` through both derived and base-set queries cleaned up their inheritance rows correctly.
+
+### 3. Name association delete behavior
+
+After adding `Name` into the sample profile, the generated C# model now emits `Name` as a separate entity plus a `Name.IdentifiedObjectId` foreign key back to `IdentifiedObject.MRId`.
+
+Observed behavior:
+
+- deleting a `Name` row does not delete the referenced `Organisation`
+- deleting an `Organisation` that is still referenced by a `Name` currently fails, because the generated relationship is configured with `DeleteBehavior.ClientNoAction`
+
+This behavior looks internally consistent with the generated EF metadata, but it should be confirmed whether this is the intended design for profile-generated `Name` associations.
 
 This suggests the leftover `IdentifiedObject` rows are more likely tied to the compound-principal cascade path than to normal EF delete handling of inheritance in general.
 

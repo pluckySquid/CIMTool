@@ -154,6 +154,20 @@ CREATE TABLE "IdentifiedObject"
     "name" VARCHAR(255)
 );
 
+-- The Name class provides the means to define any number of human readable
+-- names for an object. A name is <b>not</b> to be used for defining inter-object
+-- relationships. For inter-object relationships instead use the object identification
+-- 'mRID'.
+CREATE TABLE "Name"
+(
+    "id" VARCHAR(100) PRIMARY KEY,
+    -- Any free text that name the object.
+    "name" VARCHAR(255),
+    -- Identified object that this name designates.
+    -- FK column reference to table representing the "IdentifiedObject" class
+    "IdentifiedObject" VARCHAR(100)
+);
+
 -- Organisation that might have roles as utility, contractor, supplier, manufacturer,
 -- customer, etc.
 CREATE TABLE "Organisation"
@@ -543,6 +557,9 @@ ALTER TABLE "WireSpacingInfo" ADD FOREIGN KEY ( "mRID" ) REFERENCES "AssetInfo" 
 -- Standard foreign key constraint definitions
 ------------------------------------------------------------------------------
 
+-- Foreign keys for table "Name"
+ALTER TABLE "Name" ADD FOREIGN KEY ( "IdentifiedObject" ) REFERENCES "IdentifiedObject" ( "mRID" );
+
 -- Foreign keys for table "Organisation"
 ALTER TABLE "Organisation" ADD FOREIGN KEY ( "electronicAddress" ) REFERENCES "ElectronicAddress" ( "id" );
 ALTER TABLE "Organisation" ADD FOREIGN KEY ( "ParentOrganisation" ) REFERENCES "ParentOrganization" ( "mRID" );
@@ -599,6 +616,8 @@ ALTER TABLE "StreetAddress" ADD FOREIGN KEY ( "townDetail" ) REFERENCES "TownDet
 -- on the compound table simultaneously. This is by design: the constraint
 -- violation serves as the enforcement mechanism for the ownership model.
 
+-- Cascade deletes for compounds referenced in table "Name"
+
 -- Cascade deletes for compounds referenced in table "Organisation"
 ALTER TABLE "ElectronicAddress" ADD CONSTRAINT fk_ElectronicAddress_Organisation_electronicAddress FOREIGN KEY ( "id" ) REFERENCES "Organisation" ( "electronicAddress" ) ON DELETE CASCADE;
 ALTER TABLE "TelephoneNumber" ADD CONSTRAINT fk_TelephoneNumber_Organisation_phone1 FOREIGN KEY ( "id" ) REFERENCES "Organisation" ( "phone1" ) ON DELETE CASCADE;
@@ -617,6 +636,7 @@ ALTER TABLE "TownDetail" ADD CONSTRAINT fk_TownDetail_StreetAddress_townDetail F
 -- Foreign key column indexes for optimized queries and joins
 ------------------------------------------------------------------------------
 
+CREATE INDEX ix_Name_IdentifiedObject ON "Name" ( "IdentifiedObject" );
 CREATE INDEX ix_Organisation_electronicAddress ON "Organisation" ( "electronicAddress" );
 CREATE INDEX ix_Organisation_ParentOrganisation ON "Organisation" ( "ParentOrganisation" );
 CREATE INDEX ix_Organisation_phone1 ON "Organisation" ( "phone1" );

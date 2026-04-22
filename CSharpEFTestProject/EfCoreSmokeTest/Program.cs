@@ -48,7 +48,7 @@ AssertCondition(!lookupAssignedA.Equals(lookupArrived),
 var organisation = new SampleProfile.Organisation
 {
     MRId = "org-001",
-    Name = "Todd Test Utility",
+    NameValue = "Todd Test Utility",
     ElectronicAddress = new SampleProfile.ElectronicAddress
     {
         Email1 = "ops@example.com",
@@ -65,7 +65,7 @@ var organisation = new SampleProfile.Organisation
         StreetDetail = new SampleProfile.StreetDetail
         {
             Number = "123",
-            Name = "Grid Way",
+            NameValue = "Grid Way",
             Type = "Road"
         }
     }
@@ -101,7 +101,7 @@ var loaded = context.Organisations
         .ThenInclude(x => x!.StreetDetail)
     .Single(x => x.MRId == "org-001");
 
-AssertCondition(loaded.Name == "Todd Test Utility", "Expected Organisation.Name to round-trip through EF Core.");
+AssertCondition(loaded.NameValue == "Todd Test Utility", "Expected Organisation.NameValue to round-trip through EF Core.");
 AssertCondition(loaded.ElectronicAddress?.Email1 == "ops@example.com",
     "Expected ElectronicAddress.Email1 to round-trip through EF Core.");
 AssertCondition(loaded.ElectronicAddressId == loaded.ElectronicAddress?.Id,
@@ -110,8 +110,8 @@ AssertCondition(loaded.Phone1?.ItuPhone == "+1-505-555-0100",
     "Expected TelephoneNumber.ItuPhone to round-trip through EF Core.");
 AssertCondition(loaded.Phone1Id == loaded.Phone1?.Id,
     "Expected Phone1 FK to match the related entity Id.");
-AssertCondition(loaded.StreetAddress?.StreetDetail?.Name == "Grid Way",
-    "Expected StreetDetail.Name to round-trip through EF Core.");
+AssertCondition(loaded.StreetAddress?.StreetDetail?.NameValue == "Grid Way",
+    "Expected StreetDetail.NameValue to round-trip through EF Core.");
 AssertCondition(loaded.StreetAddressId == loaded.StreetAddress?.Id,
     "Expected StreetAddress FK to match the related entity Id.");
 
@@ -141,13 +141,13 @@ using (var relationshipContext = new SampleProfileDbContext(options))
     var parent = new SampleProfile.ParentOrganization
     {
         MRId = "org-parent-001",
-        Name = "Parent Utility"
+        NameValue = "Parent Utility"
     };
 
     var child = new SampleProfile.Organisation
     {
         MRId = "org-child-001",
-        Name = "Child Utility",
+        NameValue = "Child Utility",
         ParentOrganisation = parent
     };
 
@@ -204,10 +204,10 @@ using (var postFailureContext = new SampleProfileDbContext(options))
 }
 
 Console.WriteLine("EF Core smoke test passed.");
-Console.WriteLine($"Organisation: {loaded.MRId} / {loaded.Name}");
+Console.WriteLine($"Organisation: {loaded.MRId} / {loaded.NameValue}");
 Console.WriteLine($"Email: {loaded.ElectronicAddress?.Email1}");
 Console.WriteLine($"Phone: {loaded.Phone1?.ItuPhone}");
-Console.WriteLine($"Street: {loaded.StreetAddress?.StreetDetail?.Number} {loaded.StreetAddress?.StreetDetail?.Name}");
+Console.WriteLine($"Street: {loaded.StreetAddress?.StreetDetail?.Number} {loaded.StreetAddress?.StreetDetail?.NameValue}");
 Console.WriteLine("Independent relationship delete test: ParentOrganization cannot be deleted while referenced.");
 #endif
 using System.ComponentModel.DataAnnotations;
@@ -247,6 +247,7 @@ RunSection("Generated Mapping Baseline", VerifyGeneratedMappingBaseline);
 RunSection("Compound Null Detach Cleanup", VerifyCompoundNullDetachCleanup);
 RunSection("Generated Null Detach Baseline", VerifyGeneratedNullDetachBaseline);
 RunSection("Independent Relationships", VerifyIndependentRelationships);
+RunSection("Name Association Behavior", VerifyNameAssociationBehavior);
 RunSection("Inheritance Storage", VerifyInheritanceStorage);
 RunSection("Inheritance Delete Cleanup", VerifyInheritanceDeleteCleanup);
 RunSection("Inheritance Query Materialization", VerifyInheritanceQueryMaterialization);
@@ -329,7 +330,7 @@ void WithFreshGeneratedOnlyDatabase(Action<DbContextOptions<GeneratedOnlySampleP
 
 void VerifyReflectionContract()
 {
-    AssertCondition(SampleProfile.allClasses.Length == 21, "Expected 21 generated model classes in SampleProfile.allClasses.");
+    AssertCondition(SampleProfile.allClasses.Length == 22, "Expected 22 generated model classes in SampleProfile.allClasses.");
 
     foreach (var type in SampleProfile.allClasses)
     {
@@ -338,6 +339,7 @@ void VerifyReflectionContract()
     }
 
     AssertPropertyKey(typeof(SampleProfile.IdentifiedObject), nameof(SampleProfile.IdentifiedObject.MRId), "mRID", 100);
+    AssertPropertyKey(typeof(SampleProfile.Name), nameof(SampleProfile.Name.Id), "id", 100);
     AssertPropertyKey(typeof(SampleProfile.ElectronicAddress), nameof(SampleProfile.ElectronicAddress.Id), "id", 100);
     AssertPropertyKey(typeof(SampleProfile.StreetAddress), nameof(SampleProfile.StreetAddress.Id), "id", 100);
     AssertPropertyKey(typeof(SampleProfile.CrewStatusKind), nameof(SampleProfile.CrewStatusKind.Name), "name", 100);
@@ -602,6 +604,8 @@ void VerifySqlSchemaParity()
             typeof(SampleProfile.ElectronicAddress), nameof(SampleProfile.ElectronicAddress.Id));
         AssertForeignKeyTarget(context, typeof(SampleProfile.Organisation), nameof(SampleProfile.Organisation.ParentOrganisationId),
             typeof(SampleProfile.ParentOrganization), nameof(SampleProfile.ParentOrganization.MRId));
+        AssertForeignKeyTarget(context, typeof(SampleProfile.Name), nameof(SampleProfile.Name.IdentifiedObjectId),
+            typeof(SampleProfile.IdentifiedObject), nameof(SampleProfile.IdentifiedObject.MRId));
         AssertForeignKeyTarget(context, typeof(SampleProfile.StreetAddress), nameof(SampleProfile.StreetAddress.StatusId),
             typeof(SampleProfile.Status), nameof(SampleProfile.Status.Id));
 
@@ -641,7 +645,7 @@ void VerifyDatabaseUniquenessEnforcement()
             context.Add(new SampleProfile.Organisation
             {
                 MRId = "org-unique-001",
-                Name = "Unique One",
+        NameValue = "Unique One",
                 ElectronicAddress = sharedAddress
             });
             context.SaveChanges();
@@ -653,7 +657,7 @@ void VerifyDatabaseUniquenessEnforcement()
             context.Add(new SampleProfile.Organisation
             {
                 MRId = "org-unique-002",
-                Name = "Unique Two",
+        NameValue = "Unique Two",
                 ElectronicAddress = sharedAddress
             });
         });
@@ -712,7 +716,7 @@ void VerifyRequiredAndOptionalBehavior()
             context.Add(new SampleProfile.Organisation
             {
                 MRId = null!,
-                Name = "Missing MRId"
+        NameValue = "Missing MRId"
             });
         });
 
@@ -724,7 +728,7 @@ void VerifyRequiredAndOptionalBehavior()
             context.Add(new SampleProfile.Organisation
             {
                 MRId = "org-optional-001",
-                Name = "Optional Utility",
+        NameValue = "Optional Utility",
                 Phone2 = null,
                 PostalAddress = null,
                 StreetAddress = new SampleProfile.StreetAddress
@@ -732,7 +736,7 @@ void VerifyRequiredAndOptionalBehavior()
                     StreetDetail = new SampleProfile.StreetDetail
                     {
                         Number = "10",
-                        Name = "Optional Way"
+            NameValue = "Optional Way"
                     }
                 }
             });
@@ -751,7 +755,7 @@ void VerifyRequiredAndOptionalBehavior()
             AssertCondition(loaded.PostalAddressId is null, "Expected optional PostalAddressId to remain null.");
             AssertCondition(loaded.PostalAddress is null, "Expected optional PostalAddress navigation to remain null.");
             AssertCondition(loaded.StreetAddressId is not null, "Expected StreetAddressId to be populated for assigned optional navigation.");
-            AssertCondition(loaded.StreetAddress?.StreetDetail?.Name == "Optional Way",
+    AssertCondition(loaded.StreetAddress?.StreetDetail?.NameValue == "Optional Way",
                 "Expected assigned StreetAddress graph to round-trip while unrelated optional navigations stay null.");
         }
     });
@@ -766,7 +770,7 @@ void VerifyForeignKeyNavigationSynchronization()
             context.Add(new SampleProfile.ParentOrganization
             {
                 MRId = "parent-fk-001",
-                Name = "Parent FK Utility"
+        NameValue = "Parent FK Utility"
             });
             context.Add(new SampleProfile.TelephoneNumber
             {
@@ -781,7 +785,7 @@ void VerifyForeignKeyNavigationSynchronization()
             context.Add(new SampleProfile.Organisation
             {
                 MRId = "org-sync-001",
-                Name = "Sync Utility",
+        NameValue = "Sync Utility",
                 ParentOrganisationId = "parent-fk-001",
                 Phone1Id = "phone-sync-001"
             });
@@ -846,7 +850,7 @@ void VerifyCompoundReferenceReplacement()
             var organisation = new SampleProfile.Organisation
             {
                 MRId = "org-replace-001",
-                Name = "Replace Utility",
+        NameValue = "Replace Utility",
                 Phone1 = new SampleProfile.TelephoneNumber
                 {
                     ItuPhone = "+1-555-0200"
@@ -939,6 +943,7 @@ void VerifyEfMetadataContract()
             (typeof(SampleProfile.TownDetail), nameof(SampleProfile.TownDetail.Id)),
             (typeof(SampleProfile.StreetAddress), nameof(SampleProfile.StreetAddress.Id)),
             (typeof(SampleProfile.IdentifiedObject), nameof(SampleProfile.IdentifiedObject.MRId)),
+            (typeof(SampleProfile.Name), nameof(SampleProfile.Name.Id)),
             (typeof(SampleProfile.ShuntCompensatorControl), nameof(SampleProfile.ShuntCompensatorControl.Id)),
             (typeof(SampleProfile.AssetInfo), nameof(SampleProfile.AssetInfo.MRId)),
             (typeof(SampleProfile.Organisation), nameof(SampleProfile.Organisation.MRId)),
@@ -955,6 +960,9 @@ void VerifyEfMetadataContract()
         }
 
         AssertColumnName(context, typeof(SampleProfile.IdentifiedObject), nameof(SampleProfile.IdentifiedObject.MRId), "mRID");
+        AssertColumnName(context, typeof(SampleProfile.Name), nameof(SampleProfile.Name.Id), "id");
+        AssertColumnName(context, typeof(SampleProfile.Name), nameof(SampleProfile.Name.NameValue), "name");
+        AssertColumnName(context, typeof(SampleProfile.Name), nameof(SampleProfile.Name.IdentifiedObjectId), "IdentifiedObject");
         AssertColumnName(context, typeof(SampleProfile.Organisation), nameof(SampleProfile.Organisation.ElectronicAddressId), "electronicAddress");
         AssertColumnName(context, typeof(SampleProfile.Organisation), nameof(SampleProfile.Organisation.ParentOrganisationId), "ParentOrganisation");
         AssertColumnName(context, typeof(SampleProfile.ElectronicAddress), nameof(SampleProfile.ElectronicAddress.Email1), "email1");
@@ -966,6 +974,7 @@ void VerifyEfMetadataContract()
             (typeof(SampleProfile.StreetAddress), nameof(SampleProfile.StreetAddress.StatusId), DeleteBehavior.Cascade),
             (typeof(SampleProfile.StreetAddress), nameof(SampleProfile.StreetAddress.StreetDetailId), DeleteBehavior.Cascade),
             (typeof(SampleProfile.StreetAddress), nameof(SampleProfile.StreetAddress.TownDetailId), DeleteBehavior.Cascade),
+            (typeof(SampleProfile.Name), nameof(SampleProfile.Name.IdentifiedObjectId), DeleteBehavior.ClientNoAction),
             (typeof(SampleProfile.Organisation), nameof(SampleProfile.Organisation.ElectronicAddressId), DeleteBehavior.Cascade),
             (typeof(SampleProfile.Organisation), nameof(SampleProfile.Organisation.ParentOrganisationId), DeleteBehavior.ClientNoAction),
             (typeof(SampleProfile.Organisation), nameof(SampleProfile.Organisation.Phone1Id), DeleteBehavior.Cascade),
@@ -1018,21 +1027,21 @@ void VerifyDependentDeleteDirection()
         var organisation = new SampleProfile.Organisation
         {
             MRId = "org-dependent-001",
-            Name = "Dependent Delete Utility",
+        NameValue = "Dependent Delete Utility",
             ElectronicAddress = new SampleProfile.ElectronicAddress { Email1 = "ops@example.com", UserID = "ops-user" },
             Phone1 = new SampleProfile.TelephoneNumber { ItuPhone = "+1-505-555-0100" },
             Phone2 = new SampleProfile.TelephoneNumber { ItuPhone = "+1-505-555-0101" },
             PostalAddress = new SampleProfile.StreetAddress
             {
                 Status = new SampleProfile.Status { Value = "postal" },
-                StreetDetail = new SampleProfile.StreetDetail { Number = "123", Name = "Postal Way", Type = "Road" },
-                TownDetail = new SampleProfile.TownDetail { Name = "Postal Town" }
+        StreetDetail = new SampleProfile.StreetDetail { Number = "123", NameValue = "Postal Way", Type = "Road" },
+        TownDetail = new SampleProfile.TownDetail { NameValue = "Postal Town" }
             },
             StreetAddress = new SampleProfile.StreetAddress
             {
                 Status = new SampleProfile.Status { Value = "street" },
-                StreetDetail = new SampleProfile.StreetDetail { Number = "456", Name = "Grid Way", Type = "Road" },
-                TownDetail = new SampleProfile.TownDetail { Name = "Grid Town" }
+        StreetDetail = new SampleProfile.StreetDetail { Number = "456", NameValue = "Grid Way", Type = "Road" },
+        TownDetail = new SampleProfile.TownDetail { NameValue = "Grid Town" }
             }
         };
 
@@ -1092,13 +1101,13 @@ void VerifyPrincipalDeleteCascade()
 
     VerifyOrganisationCompoundPrincipalDelete(
         "org-postal",
-        organisation => organisation.PostalAddress = new SampleProfile.StreetAddress { StreetDetail = new SampleProfile.StreetDetail { Name = "Postal Cascade" } },
+        organisation => organisation.PostalAddress = new SampleProfile.StreetAddress { StreetDetail = new SampleProfile.StreetDetail { NameValue = "Postal Cascade" } },
         context => context.StreetAddresses.Single(),
         "Deleting PostalAddress principal should cascade-delete Organisation.");
 
     VerifyOrganisationCompoundPrincipalDelete(
         "org-street",
-        organisation => organisation.StreetAddress = new SampleProfile.StreetAddress { StreetDetail = new SampleProfile.StreetDetail { Name = "Street Cascade" } },
+        organisation => organisation.StreetAddress = new SampleProfile.StreetAddress { StreetDetail = new SampleProfile.StreetDetail { NameValue = "Street Cascade" } },
         context => context.StreetAddresses.Single(),
         "Deleting StreetAddress principal should cascade-delete Organisation.");
 
@@ -1108,12 +1117,12 @@ void VerifyPrincipalDeleteCascade()
         "Deleting Status principal should cascade-delete StreetAddress.");
 
     VerifyStreetAddressCompoundPrincipalDelete(
-        address => address.StreetDetail = new SampleProfile.StreetDetail { Name = "Cascade Detail" },
+        address => address.StreetDetail = new SampleProfile.StreetDetail { NameValue = "Cascade Detail" },
         context => context.Set<SampleProfile.StreetDetail>().Single(),
         "Deleting StreetDetail principal should cascade-delete StreetAddress.");
 
     VerifyStreetAddressCompoundPrincipalDelete(
-        address => address.TownDetail = new SampleProfile.TownDetail { Name = "Cascade Town" },
+        address => address.TownDetail = new SampleProfile.TownDetail { NameValue = "Cascade Town" },
         context => context.Set<SampleProfile.TownDetail>().Single(),
         "Deleting TownDetail principal should cascade-delete StreetAddress.");
 }
@@ -1127,7 +1136,7 @@ void VerifyAsyncCompoundCleanup()
             context.Add(new SampleProfile.Organisation
             {
                 MRId = "org-async-001",
-                Name = "Async Utility",
+        NameValue = "Async Utility",
                 Phone1 = new SampleProfile.TelephoneNumber
                 {
                     ItuPhone = "+1-555-0400"
@@ -1162,7 +1171,7 @@ void VerifyAsyncCompoundCleanup()
 
             AssertCondition(loaded.Phone1?.ItuPhone == "+1-555-0499",
                 "Expected async SaveChanges to persist the replacement Phone1 graph.");
-            AssertCondition(loaded.StreetAddress?.StreetDetail?.Name == "async-updated",
+    AssertCondition(loaded.StreetAddress?.StreetDetail?.NameValue == "async-updated",
                 "Expected async SaveChanges to persist the replacement StreetAddress graph.");
             AssertCondition(context.TelephoneNumbers.Count() == 1,
                 "Expected async SaveChanges cleanup to remove the replaced TelephoneNumber row.");
@@ -1203,7 +1212,7 @@ void VerifyDirectForeignKeyCompoundReplacement()
             context.Add(new SampleProfile.Organisation
             {
                 MRId = "org-direct-fk-001",
-                Name = "Direct FK Utility",
+        NameValue = "Direct FK Utility",
                 Phone1Id = originalPhone.Id
             });
             context.SaveChanges();
@@ -1254,7 +1263,7 @@ void VerifyCompoundSlotOwnership()
             context.Add(new SampleProfile.Organisation
             {
                 MRId = "org-slot-001",
-                Name = "Slot Ownership Utility",
+        NameValue = "Slot Ownership Utility",
                 Phone1Id = sharedPhone.Id,
                 Phone2Id = sharedPhone.Id
             });
@@ -1283,7 +1292,7 @@ void VerifyCompoundSlotOwnership()
             context.Add(new SampleProfile.Organisation
             {
                 MRId = "org-slot-002",
-                Name = "Address Slot Ownership Utility",
+        NameValue = "Address Slot Ownership Utility",
                 PostalAddressId = sharedAddress.Id,
                 StreetAddressId = sharedAddress.Id
             });
@@ -1318,7 +1327,7 @@ void VerifyCrossOwnerCompoundOwnership()
             context.Add(new SampleProfile.Organisation
             {
                 MRId = "org-cross-owner-phone1-a",
-                Name = "Cross Owner Phone1 A",
+        NameValue = "Cross Owner Phone1 A",
                 Phone1Id = sharedPhone1.Id
             });
             context.SaveChanges();
@@ -1330,7 +1339,7 @@ void VerifyCrossOwnerCompoundOwnership()
             context.Add(new SampleProfile.Organisation
             {
                 MRId = "org-cross-owner-phone1-b",
-                Name = "Cross Owner Phone1 B",
+        NameValue = "Cross Owner Phone1 B",
                 Phone1 = sharedPhone1
             });
         });
@@ -1350,7 +1359,7 @@ void VerifyCrossOwnerCompoundOwnership()
             context.Add(new SampleProfile.Organisation
             {
                 MRId = "org-cross-owner-postal-a",
-                Name = "Cross Owner Postal A",
+        NameValue = "Cross Owner Postal A",
                 PostalAddressId = sharedPostalAddress.Id
             });
             context.SaveChanges();
@@ -1362,7 +1371,7 @@ void VerifyCrossOwnerCompoundOwnership()
             context.Add(new SampleProfile.Organisation
             {
                 MRId = "org-cross-owner-postal-b",
-                Name = "Cross Owner Postal B",
+        NameValue = "Cross Owner Postal B",
                 PostalAddress = sharedPostalAddress
             });
         });
@@ -1385,7 +1394,7 @@ void VerifyCrossOwnerCompoundOwnership()
             context.Add(new SampleProfile.Organisation
             {
                 MRId = "org-cross-owner-mixed-slot-a",
-                Name = "Cross Owner Mixed Slot A",
+        NameValue = "Cross Owner Mixed Slot A",
                 Phone1Id = sharedPhone.Id
             });
             context.SaveChanges();
@@ -1397,7 +1406,7 @@ void VerifyCrossOwnerCompoundOwnership()
             context.Add(new SampleProfile.Organisation
             {
                 MRId = "org-cross-owner-mixed-slot-b",
-                Name = "Cross Owner Mixed Slot B",
+        NameValue = "Cross Owner Mixed Slot B",
                 Phone2 = sharedPhone
             });
             context.SaveChanges();
@@ -1433,7 +1442,7 @@ void VerifyCrossOwnerCompoundOwnership()
             context.Add(new SampleProfile.Organisation
             {
                 MRId = "org-cross-owner-address-a",
-                Name = "Cross Owner Address A",
+        NameValue = "Cross Owner Address A",
                 PostalAddressId = sharedAddress.Id
             });
             context.SaveChanges();
@@ -1445,7 +1454,7 @@ void VerifyCrossOwnerCompoundOwnership()
             context.Add(new SampleProfile.Organisation
             {
                 MRId = "org-cross-owner-address-b",
-                Name = "Cross Owner Address B",
+        NameValue = "Cross Owner Address B",
                 StreetAddress = sharedAddress
             });
             context.SaveChanges();
@@ -1487,13 +1496,13 @@ void VerifyCompoundOwnershipHandoff()
             context.Add(new SampleProfile.Organisation
             {
                 MRId = "org-handoff-phone-a",
-                Name = "Phone Handoff A",
+        NameValue = "Phone Handoff A",
                 Phone1Id = sharedPhone.Id
             });
             context.Add(new SampleProfile.Organisation
             {
                 MRId = "org-handoff-phone-b",
-                Name = "Phone Handoff B"
+        NameValue = "Phone Handoff B"
             });
             context.SaveChanges();
         }
@@ -1555,13 +1564,13 @@ void VerifyCompoundOwnershipHandoff()
             context.Add(new SampleProfile.Organisation
             {
                 MRId = "org-handoff-address-a",
-                Name = "Address Handoff A",
+        NameValue = "Address Handoff A",
                 PostalAddressId = sharedAddress.Id
             });
             context.Add(new SampleProfile.Organisation
             {
                 MRId = "org-handoff-address-b",
-                Name = "Address Handoff B"
+        NameValue = "Address Handoff B"
             });
             context.SaveChanges();
         }
@@ -1607,7 +1616,7 @@ void VerifyCompoundOwnershipHandoff()
                 "Expected source PostalAddress navigation to clear after same-slot handoff.");
             AssertCondition(target.PostalAddressId == "address-handoff-001",
                 "Expected target PostalAddress FK to receive the handed-off address.");
-            AssertCondition(target.PostalAddress?.StreetDetail?.Name == "handoff-address",
+    AssertCondition(target.PostalAddress?.StreetDetail?.NameValue == "handoff-address",
                 "Expected handed-off address graph to remain intact after same-slot handoff.");
             AssertCondition(context.StreetAddresses.Count() == 1,
                 "Expected same-slot address handoff to keep exactly one StreetAddress row.");
@@ -1655,7 +1664,7 @@ void VerifyCompoundMutationStress()
             context.Add(new SampleProfile.Organisation
             {
                 MRId = "org-mutation-stress-a",
-                Name = "Mutation Stress A",
+        NameValue = "Mutation Stress A",
                 ElectronicAddressId = electronicAddress.Id,
                 Phone1Id = phone1.Id,
                 Phone2Id = phone2.Id,
@@ -1665,7 +1674,7 @@ void VerifyCompoundMutationStress()
             context.Add(new SampleProfile.Organisation
             {
                 MRId = "org-mutation-stress-b",
-                Name = "Mutation Stress B"
+        NameValue = "Mutation Stress B"
             });
             context.SaveChanges();
         }
@@ -1742,7 +1751,7 @@ void VerifyCompoundMutationStress()
                 "Expected source PostalAddressId to clear in the compound mutation stress scenario.");
             AssertCondition(source.StreetAddressId is not null && source.StreetAddressId != "address-stress-street-001",
                 "Expected source StreetAddress to be replaced with a newly generated graph in the stress scenario.");
-            AssertCondition(source.StreetAddress?.StreetDetail?.Name == "stress-street-new",
+    AssertCondition(source.StreetAddress?.StreetDetail?.NameValue == "stress-street-new",
                 "Expected replacement StreetAddress graph to round-trip in the stress scenario.");
 
             AssertCondition(target.Phone1Id == "phone-stress-002",
@@ -1755,7 +1764,7 @@ void VerifyCompoundMutationStress()
                 "Expected target Phone2 to resolve the transferred original Phone1 row.");
             AssertCondition(target.StreetAddressId == "address-stress-postal-001",
                 "Expected target StreetAddress to receive the transferred original PostalAddress graph.");
-            AssertCondition(target.StreetAddress?.StreetDetail?.Name == "stress-postal-old",
+    AssertCondition(target.StreetAddress?.StreetDetail?.NameValue == "stress-postal-old",
                 "Expected transferred original PostalAddress graph to remain intact on the target.");
 
             AssertCondition(!context.ElectronicAddresses.Any(x => x.Id == "email-stress-001"),
@@ -1800,7 +1809,7 @@ void VerifyCompoundFailureRollbackSafety()
             context.Add(new SampleProfile.Organisation
             {
                 MRId = "org-failure-phone-a",
-                Name = "Failure Phone A",
+        NameValue = "Failure Phone A",
                 Phone1 = new SampleProfile.TelephoneNumber
                 {
                     Id = "phone-failure-a",
@@ -1810,7 +1819,7 @@ void VerifyCompoundFailureRollbackSafety()
             context.Add(new SampleProfile.Organisation
             {
                 MRId = "org-failure-phone-b",
-                Name = "Failure Phone B",
+        NameValue = "Failure Phone B",
                 Phone1 = new SampleProfile.TelephoneNumber
                 {
                     Id = "phone-failure-b",
@@ -1890,13 +1899,13 @@ void VerifyCompoundFailureRollbackSafety()
             context.Add(new SampleProfile.Organisation
             {
                 MRId = "org-failure-address-a",
-                Name = "Failure Address A",
+        NameValue = "Failure Address A",
                 StreetAddress = addressA
             });
             context.Add(new SampleProfile.Organisation
             {
                 MRId = "org-failure-address-b",
-                Name = "Failure Address B",
+        NameValue = "Failure Address B",
                 StreetAddress = addressB
             });
             context.SaveChanges();
@@ -1946,11 +1955,11 @@ void VerifyCompoundFailureRollbackSafety()
 
             AssertCondition(first.StreetAddressId == "address-failure-a",
                 "Expected first organisation StreetAddress FK to remain unchanged after failed save.");
-            AssertCondition(first.StreetAddress?.StreetDetail?.Name == "failure-address-a",
+    AssertCondition(first.StreetAddress?.StreetDetail?.NameValue == "failure-address-a",
                 "Expected first organisation StreetAddress graph to remain unchanged after failed save.");
             AssertCondition(second.StreetAddressId == "address-failure-b",
                 "Expected second organisation StreetAddress FK to remain unchanged after failed save.");
-            AssertCondition(second.StreetAddress?.StreetDetail?.Name == "failure-address-b",
+    AssertCondition(second.StreetAddress?.StreetDetail?.NameValue == "failure-address-b",
                 "Expected second organisation original StreetAddress graph to remain after failed save.");
             AssertCondition(context.StreetAddresses.Count() == 2,
                 "Expected failed address save not to delete existing address graphs or persist the replacement graph.");
@@ -1960,7 +1969,7 @@ void VerifyCompoundFailureRollbackSafety()
                 "Expected failed address save not to delete nested StreetDetail rows.");
             AssertCondition(context.Set<SampleProfile.TownDetail>().Count() == 2,
                 "Expected failed address save not to delete nested TownDetail rows.");
-            AssertCondition(!context.Set<SampleProfile.StreetDetail>().Any(x => x.Name == "failure-address-new"),
+    AssertCondition(!context.Set<SampleProfile.StreetDetail>().Any(x => x.NameValue == "failure-address-new"),
                 "Expected failed address save not to persist the replacement StreetAddress graph.");
         }
     });
@@ -1975,7 +1984,7 @@ void VerifyCompoundFailureRecovery()
             context.Add(new SampleProfile.Organisation
             {
                 MRId = "org-recovery-phone-a",
-                Name = "Recovery Phone A",
+        NameValue = "Recovery Phone A",
                 Phone1 = new SampleProfile.TelephoneNumber
                 {
                     Id = "phone-recovery-a",
@@ -1985,7 +1994,7 @@ void VerifyCompoundFailureRecovery()
             context.Add(new SampleProfile.Organisation
             {
                 MRId = "org-recovery-phone-b",
-                Name = "Recovery Phone B",
+        NameValue = "Recovery Phone B",
                 Phone1 = new SampleProfile.TelephoneNumber
                 {
                     Id = "phone-recovery-b",
@@ -2070,13 +2079,13 @@ void VerifyCompoundFailureRecovery()
             context.Add(new SampleProfile.Organisation
             {
                 MRId = "org-recovery-address-a",
-                Name = "Recovery Address A",
+        NameValue = "Recovery Address A",
                 StreetAddress = addressA
             });
             context.Add(new SampleProfile.Organisation
             {
                 MRId = "org-recovery-address-b",
-                Name = "Recovery Address B",
+        NameValue = "Recovery Address B",
                 StreetAddress = addressB
             });
             context.SaveChanges();
@@ -2141,11 +2150,11 @@ void VerifyCompoundFailureRecovery()
 
             AssertCondition(first.StreetAddressId == "address-recovery-a",
                 "Expected first organisation StreetAddress to remain unchanged after recovery save.");
-            AssertCondition(first.StreetAddress?.StreetDetail?.Name == "recovery-address-a",
+    AssertCondition(first.StreetAddress?.StreetDetail?.NameValue == "recovery-address-a",
                 "Expected first organisation StreetAddress graph to remain unchanged after recovery save.");
             AssertCondition(second.StreetAddressId is not null && second.StreetAddressId != "address-recovery-b",
                 "Expected second organisation StreetAddress to be replaced with a new valid graph after recovery save.");
-            AssertCondition(second.StreetAddress?.StreetDetail?.Name == "recovery-address-new",
+    AssertCondition(second.StreetAddress?.StreetDetail?.NameValue == "recovery-address-new",
                 "Expected second organisation replacement StreetAddress graph to round-trip after recovery save.");
             AssertCondition(context.StreetAddresses.Count() == 2,
                 "Expected recovery save to keep only the surviving original address graph and the new replacement graph.");
@@ -2180,7 +2189,7 @@ void VerifyGeneratedMappingBaseline()
             var organisation = new SampleProfile.Organisation
             {
                 MRId = "org-generated-baseline-001",
-                Name = "Generated Baseline Utility",
+        NameValue = "Generated Baseline Utility",
                 Phone1 = new SampleProfile.TelephoneNumber
                 {
                     ItuPhone = "+1-555-0700"
@@ -2267,7 +2276,7 @@ void VerifyGeneratedMappingBaseline()
             context.Add(new SampleProfile.Organisation
             {
                 MRId = "org-generated-baseline-002",
-                Name = "Generated Baseline Cascade Utility",
+        NameValue = "Generated Baseline Cascade Utility",
                 Phone1 = new SampleProfile.TelephoneNumber
                 {
                     ItuPhone = "+1-555-0710"
@@ -2307,7 +2316,7 @@ void VerifyCompoundNullDetachCleanup()
             context.Add(new SampleProfile.Organisation
             {
                 MRId = "org-null-detach-001",
-                Name = "Null Detach Utility",
+        NameValue = "Null Detach Utility",
                 ElectronicAddress = new SampleProfile.ElectronicAddress
                 {
                     Email1 = "detach@example.com"
@@ -2381,7 +2390,7 @@ void VerifyGeneratedNullDetachBaseline()
             context.Add(new SampleProfile.Organisation
             {
                 MRId = "org-generated-null-detach-001",
-                Name = "Generated Null Detach Utility",
+        NameValue = "Generated Null Detach Utility",
                 ElectronicAddress = new SampleProfile.ElectronicAddress
                 {
                     Email1 = "baseline-detach@example.com"
@@ -2457,18 +2466,18 @@ void VerifyIndependentRelationships()
     {
         using (var context = new SampleProfileDbContext(options))
         {
-            context.Add(new SampleProfile.ParentOrganization { MRId = "org-parent-001", Name = "Parent Utility" });
+    context.Add(new SampleProfile.ParentOrganization { MRId = "org-parent-001", NameValue = "Parent Utility" });
             context.Add(new SampleProfile.Organisation
             {
                 MRId = "org-child-001",
-                Name = "Child Utility",
+        NameValue = "Child Utility",
                 ParentOrganisation = context.ParentOrganizations.Local.Single(x => x.MRId == "org-parent-001")
             });
             context.Add(new SampleProfile.ShuntCompensatorControl { Id = "control-001", SensingPhaseCode = "ABC" });
             context.Add(new SampleProfile.ShuntCompensatorInfo
             {
                 MRId = "info-001",
-                Name = "Shunt Info",
+        NameValue = "Shunt Info",
                 ShuntCompensatorControl = context.Set<SampleProfile.ShuntCompensatorControl>().Local.Single(x => x.Id == "control-001")
             });
             context.SaveChanges();
@@ -2505,13 +2514,95 @@ void VerifyIndependentRelationships()
     });
 }
 
+void VerifyNameAssociationBehavior()
+{
+    WithFreshDatabase(options =>
+    {
+        using (var context = new SampleProfileDbContext(options))
+        {
+            var organisation = new SampleProfile.Organisation
+            {
+                MRId = "org-name-001",
+                NameValue = "Name Utility"
+            };
+
+            var displayName = new SampleProfile.Name
+            {
+                Id = "name-001",
+                NameValue = "Primary Display Name",
+                IdentifiedObject = organisation
+            };
+
+            context.Add(organisation);
+            context.Add(displayName);
+            context.SaveChanges();
+        }
+
+        using (var context = new SampleProfileDbContext(options))
+        {
+            var loadedName = context.Names
+                .Include(x => x.IdentifiedObject)
+                .Single(x => x.Id == "name-001");
+
+            AssertCondition(loadedName.NameValue == "Primary Display Name",
+                "Name.NameValue should round-trip through EF Core.");
+            AssertCondition(loadedName.IdentifiedObjectId == "org-name-001",
+                "Name.IdentifiedObjectId should store the Organisation MRId.");
+            AssertCondition(loadedName.IdentifiedObject?.MRId == "org-name-001",
+                "Name.IdentifiedObject should round-trip through EF Core.");
+        }
+
+        using (var context = new SampleProfileDbContext(options))
+        {
+            context.Remove(context.Names.Single(x => x.Id == "name-001"));
+            context.SaveChanges();
+        }
+
+        using (var context = new SampleProfileDbContext(options))
+        {
+            AssertCondition(context.Organisations.Count(x => x.MRId == "org-name-001") == 1,
+                "Deleting a Name row should not delete its referenced Organisation.");
+            AssertCondition(context.Names.Count() == 0,
+                "Deleting the Name row should remove only the dependent Name record.");
+
+            context.Names.Add(new SampleProfile.Name
+            {
+                Id = "name-002",
+                NameValue = "Delete Probe Name",
+                IdentifiedObjectId = "org-name-001"
+            });
+            context.SaveChanges();
+        }
+
+        var deleteOrganisationException = TryDelete(options, context =>
+            context.Organisations.Single(x => x.MRId == "org-name-001"));
+
+        using var verificationContext = new SampleProfileDbContext(options);
+        var remainingOrganisationCount = verificationContext.Organisations.Count(x => x.MRId == "org-name-001");
+        var remainingNameCount = verificationContext.Names.Count(x => x.IdentifiedObjectId == "org-name-001");
+
+        if (deleteOrganisationException is DbUpdateException)
+        {
+            diagnostics.Add("NAME ASSOCIATION OBSERVED: deleting an Organisation referenced by Name is blocked by the IdentifiedObject foreign key (ClientNoAction).");
+            AssertCondition(remainingOrganisationCount == 1 && remainingNameCount == 1,
+                "A failed Organisation delete should leave both Organisation and Name rows intact.");
+        }
+        else
+        {
+            diagnostics.Add($"NAME ASSOCIATION OBSERVED: deleting an Organisation referenced by Name succeeded without DbUpdateException; remaining Organisations={remainingOrganisationCount}, remaining Names={remainingNameCount}.");
+            AssertCondition(remainingOrganisationCount == 0 && remainingNameCount == 0,
+                "If deleting an Organisation with related Name succeeds, it should not leave orphan Name rows behind.");
+        }
+    });
+}
+
 void VerifyInheritanceStorage()
 {
     WithFreshDatabase(options =>
     {
         using var context = new SampleProfileDbContext(options);
-        context.Add(new SampleProfile.ParentOrganization { MRId = "inherit-parent-001", Name = "Parent Utility" });
-        context.Add(new SampleProfile.OverheadWireInfo { MRId = "wire-001", Name = "Overhead Wire" });
+    context.Add(new SampleProfile.ParentOrganization { MRId = "inherit-parent-001", NameValue = "Parent Utility" });
+    context.Add(new SampleProfile.OverheadWireInfo { MRId = "wire-001", NameValue = "Overhead Wire" });
         context.SaveChanges();
 
         AssertCondition(GetTableRowCount(context, "IdentifiedObject") == 2,
@@ -2536,7 +2627,7 @@ void VerifyInheritanceDeleteCleanup()
         context => context.Add(new SampleProfile.ParentOrganization
         {
             MRId = "inherit-delete-parent-derived",
-            Name = "Derived Parent"
+        NameValue = "Derived Parent"
         }),
         context => context.ParentOrganizations.Single(x => x.MRId == "inherit-delete-parent-derived"),
         new (string Table, int ExpectedCount)[]
@@ -2551,7 +2642,7 @@ void VerifyInheritanceDeleteCleanup()
         context => context.Add(new SampleProfile.ParentOrganization
         {
             MRId = "inherit-delete-parent-base",
-            Name = "Base Loaded Parent"
+        NameValue = "Base Loaded Parent"
         }),
         context => context.Set<SampleProfile.IdentifiedObject>().Single(x => x.MRId == "inherit-delete-parent-base"),
         new (string Table, int ExpectedCount)[]
@@ -2566,7 +2657,7 @@ void VerifyInheritanceDeleteCleanup()
         context => context.Add(new SampleProfile.OverheadWireInfo
         {
             MRId = "inherit-delete-wire-derived",
-            Name = "Derived Wire",
+        NameValue = "Derived Wire",
             Material = "aluminum"
         }),
         context => context.Set<SampleProfile.OverheadWireInfo>().Single(x => x.MRId == "inherit-delete-wire-derived"),
@@ -2583,7 +2674,7 @@ void VerifyInheritanceDeleteCleanup()
         context => context.Add(new SampleProfile.OverheadWireInfo
         {
             MRId = "inherit-delete-wire-base",
-            Name = "Base Loaded Wire",
+        NameValue = "Base Loaded Wire",
             Material = "copper"
         }),
         context => context.Set<SampleProfile.AssetInfo>().Single(x => x.MRId == "inherit-delete-wire-base"),
@@ -2605,22 +2696,22 @@ void VerifyInheritanceQueryMaterialization()
             context.Add(new SampleProfile.Organisation
             {
                 MRId = "org-base-001",
-                Name = "Base Organisation"
+        NameValue = "Base Organisation"
             });
             context.Add(new SampleProfile.ParentOrganization
             {
                 MRId = "org-parent-010",
-                Name = "Derived Parent Organisation"
+        NameValue = "Derived Parent Organisation"
             });
             context.Add(new SampleProfile.WireSpacingInfo
             {
                 MRId = "asset-spacing-001",
-                Name = "Wire Spacing Asset"
+        NameValue = "Wire Spacing Asset"
             });
             context.Add(new SampleProfile.OverheadWireInfo
             {
                 MRId = "asset-overhead-001",
-                Name = "Overhead Wire Asset",
+        NameValue = "Overhead Wire Asset",
                 Material = "aluminum",
                 Gmr = 0.42
             });
@@ -2687,7 +2778,7 @@ void VerifyRepeatedCompoundReplacementCycles()
             context.Add(new SampleProfile.Organisation
             {
                 MRId = "org-replace-cycles-001",
-                Name = "Replacement Cycle Utility",
+        NameValue = "Replacement Cycle Utility",
                 Phone1 = new SampleProfile.TelephoneNumber
                 {
                     ItuPhone = "+1-555-0300"
@@ -2739,7 +2830,7 @@ void VerifyRepeatedAddressReplacementCycles()
             context.Add(new SampleProfile.Organisation
             {
                 MRId = "org-address-cycles-001",
-                Name = "Address Replacement Utility",
+        NameValue = "Address Replacement Utility",
                 PostalAddress = CreateAddressGraph("postal-initial"),
                 StreetAddress = CreateAddressGraph("street-initial")
             });
@@ -2782,9 +2873,9 @@ void VerifyRepeatedAddressReplacementCycles()
                 "Expected repeated PostalAddress replacement cycles to keep the latest FK value.");
             AssertCondition(loaded.StreetAddressId == latestStreetId,
                 "Expected repeated StreetAddress replacement cycles to keep the latest FK value.");
-            AssertCondition(loaded.PostalAddress?.StreetDetail?.Name == "postal-cycle-3",
+    AssertCondition(loaded.PostalAddress?.StreetDetail?.NameValue == "postal-cycle-3",
                 "Expected latest PostalAddress replacement graph to round-trip after multiple cycles.");
-            AssertCondition(loaded.StreetAddress?.StreetDetail?.Name == "street-cycle-3",
+    AssertCondition(loaded.StreetAddress?.StreetDetail?.NameValue == "street-cycle-3",
                 "Expected latest StreetAddress replacement graph to round-trip after multiple cycles.");
             AssertCondition(context.StreetAddresses.Count() == 2,
                 "Expected repeated Organisation address replacements to keep only the active StreetAddress graphs.");
@@ -2809,12 +2900,12 @@ SampleProfile.StreetAddress CreateAddressGraph(string label)
         StreetDetail = new SampleProfile.StreetDetail
         {
             Number = "100",
-            Name = label,
+            NameValue = label,
             Type = "Road"
         },
         TownDetail = new SampleProfile.TownDetail
         {
-            Name = $"{label}-town"
+            NameValue = $"{label}-town"
         }
     };
 }
@@ -2826,7 +2917,7 @@ void VerifyOrganisationCompoundPrincipalDelete(string organisationId, Action<Sam
     {
         using (var context = new SampleProfileDbContext(options))
         {
-            var organisation = new SampleProfile.Organisation { MRId = organisationId, Name = organisationId };
+            var organisation = new SampleProfile.Organisation { MRId = organisationId, NameValue = organisationId };
             attachPrincipal(organisation);
             context.Organisations.Add(organisation);
             context.SaveChanges();

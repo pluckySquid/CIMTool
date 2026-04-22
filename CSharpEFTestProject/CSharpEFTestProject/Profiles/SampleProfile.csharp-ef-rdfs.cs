@@ -715,7 +715,7 @@ public class SampleProfile
         /// </summary>
         [Column("name")]
         [MaxLength(255)]
-        public string? Name { get; set; }
+        public string? NameValue { get; set; }
         /// <summary>
         /// Designator of the specific location on the street.
         /// </summary>
@@ -916,7 +916,7 @@ public class SampleProfile
         /// </summary>
         [Column("name")]
         [MaxLength(255)]
-        public string? Name { get; set; }
+        public string? NameValue { get; set; }
         /// <summary>
         /// Town section. For example, it is common for there to be 36 sections per
         /// township.
@@ -1086,7 +1086,79 @@ public class SampleProfile
         /// </summary>
         [Column("name")]
         [MaxLength(255)]
-        public string? Name { get; set; }
+        public string? NameValue { get; set; }
+    }
+    /// <summary>
+    /// The Name class provides the means to define any number of human readable
+    /// names for an object. A name is <b>not</b> to be used for defining inter-object
+    /// relationships. For inter-object relationships instead use the object identification
+    /// 'mRID'.
+    /// </summary>
+    [Table("Name")]
+    public class Name
+    {
+        public Name() { }
+        public override string ToString() { return this.GetType().Name; }
+        /// <summary>
+        /// Determines whether this instance and a specified object represent the same
+        /// <c>Name</c>, compared by runtime type and surrogate <c>Id</c>.
+        /// </summary>
+        /// <param name="obj">
+        /// The object to compare with this instance.
+        /// </param>
+        /// <returns>
+        /// <c>true</c> if <paramref name="obj"/> is the same concrete type as this instance
+        /// and both have an equal, non-null surrogate <c>Id</c>; otherwise <c>false</c>.
+        /// </returns>
+        /// <remarks>
+        /// This class uses a surrogate <c>Id</c> rather than a natural <c>MRId</c>
+        /// because it does not inherit from IdentifiedObject. The runtime-type guard
+        /// ensures subclasses with the same surrogate <c>Id</c> are not considered equal.
+        /// Returning <c>false</c> when <c>Id</c> is <c>null</c> is consistent with the
+        /// convention that a transient entity is not equal to any other entity.
+        /// Subclasses inherit this implementation and must not override it.
+        /// </remarks>
+        public override bool Equals(object? obj)
+        {
+            if (obj is not Name other) return false;
+            if (ReferenceEquals(this, other)) return true;
+            if (GetType() != other.GetType()) return false;
+            return Id != null && Id == other.Id;
+        }
+        /// <summary>
+        /// Returns a hash code based on runtime type and surrogate <c>Id</c>.
+        /// </summary>
+        /// <returns>
+        /// A hash code combining the runtime type and <c>Id</c>, consistent with
+        /// the <see cref="Equals"/> override. Subclasses inherit this implementation.
+        /// </returns>
+        public override int GetHashCode() => HashCode.Combine(GetType(), Id);
+        /// <summary>
+        /// Surrogate primary key - this class does not inherit from IdentifiedObject
+        /// and has no natural single-column primary key. This surrogate 'id' is a
+        /// persistence artefact. The [Index] above enforces a heuristic uniqueness
+        /// constraint across all required non-surrogate columns as a guard against
+        /// semantically corrupt duplicate rows. See the template documentation in
+        /// the XSLT source for a full explanation of the design tradeoffs.
+        /// </summary>
+        [Key]
+        [Column("id")]
+        [MaxLength(100)]
+        public string Id { get; set; } = null!;
+        /// <summary>
+        /// Any free text that name the object.
+        /// </summary>
+        [Column("name")]
+        [MaxLength(255)]
+        public string? NameValue { get; set; }
+        /// <summary>
+        /// Identified object that this name designates.
+        /// </summary>
+        [Column("IdentifiedObject")]
+        [MaxLength(100)]
+        public string? IdentifiedObjectId { get; set; }
+        [ForeignKey(nameof(IdentifiedObjectId))]
+        public virtual IdentifiedObject? IdentifiedObject { get; set; }
     }
     /// <summary>
     /// Distribution capacitor bank control settings.
@@ -1361,6 +1433,7 @@ public class SampleProfile
         typeof(TownDetail),
         typeof(StreetAddress),
         typeof(IdentifiedObject),
+        typeof(Name),
         typeof(ShuntCompensatorControl),
         typeof(AssetInfo),
         typeof(Organisation),
@@ -1417,6 +1490,7 @@ public class SampleProfile
             ConfigureTownDetail(modelBuilder);
             ConfigureStreetAddress(modelBuilder);
             ConfigureIdentifiedObject(modelBuilder);
+            ConfigureName(modelBuilder);
             ConfigureShuntCompensatorControl(modelBuilder);
             ConfigureAssetInfo(modelBuilder);
             ConfigureOrganisation(modelBuilder);
@@ -1458,6 +1532,12 @@ public class SampleProfile
         }
         private static void ConfigureIdentifiedObject(ModelBuilder modelBuilder)
         => modelBuilder.Entity<IdentifiedObject>().ToTable("IdentifiedObject");
+        private static void ConfigureName(ModelBuilder modelBuilder)
+        {
+            var e = modelBuilder.Entity<Name>();
+            e.ToTable("Name");
+            e.HasOne(x => x.IdentifiedObject).WithMany().HasForeignKey(x => x.IdentifiedObjectId).OnDelete(DeleteBehavior.ClientNoAction);
+        }
         private static void ConfigureShuntCompensatorControl(ModelBuilder modelBuilder)
         => modelBuilder.Entity<ShuntCompensatorControl>().ToTable("ShuntCompensatorControl");
         private static void ConfigureAssetInfo(ModelBuilder modelBuilder)
@@ -1520,6 +1600,7 @@ public class SampleProfile
         public DbSet<SampleProfile.TownDetail> TownDetails => Set<SampleProfile.TownDetail>();
         public DbSet<SampleProfile.StreetAddress> StreetAddresses => Set<SampleProfile.StreetAddress>();
         public DbSet<SampleProfile.IdentifiedObject> IdentifiedObjects => Set<SampleProfile.IdentifiedObject>();
+        public DbSet<SampleProfile.Name> Names => Set<SampleProfile.Name>();
         public DbSet<SampleProfile.ShuntCompensatorControl> ShuntCompensatorControls => Set<SampleProfile.ShuntCompensatorControl>();
         public DbSet<SampleProfile.AssetInfo> AssetInfos => Set<SampleProfile.AssetInfo>();
         public DbSet<SampleProfile.Organisation> Organisations => Set<SampleProfile.Organisation>();
