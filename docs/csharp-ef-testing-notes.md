@@ -6,6 +6,29 @@ I was able to set up the current C# EF builder workflow and generate C# output f
 
 The comprehensive regression test currently passes overall, which means the generated code is at least usable enough to build, map, and exercise through EF Core with SQLite.
 
+On April 23, 2026, after pulling Todd's updated `SampleProfile.owl` and replacing the broken empty RC8 `csharp-ef-rdfs.xsl` override with Todd's builder, I regenerated the sample and rebuilt the smoke test around the current smaller model. The current harness now passes 12 sections against the regenerated external project sample. The active sections are:
+
+- Reflection contract
+- EF metadata contract
+- SQL schema parity
+- Generated CSharp text integrity
+- Lookup equality semantics
+- Name association behavior
+- Parent organisation delete guard
+- Generated compound replacement cleanup
+- Generated null detach cleanup
+- Generated mapping baseline
+- Inheritance storage
+- Inheritance delete cleanup
+
+The most important currently reproduced diagnostics from that April 23 run are:
+
+- `DbContextBase` is generated without a `DbContextOptions` constructor, so the test subclass currently has to configure SQLite through `OnConfiguring`
+- the generated `DbContextBase` cleanup removes top-level replaced/detached compounds such as `TelephoneNumber`, `ElectronicAddress`, and `StreetAddress`
+- replacing or null-detaching `StreetAddress` still leaves nested `Status`, `StreetDetail`, and `TownDetail` rows behind
+- the generated-only baseline still leaves compound graphs orphaned without the generated cleanup path
+- `Name -> IdentifiedObject -> Organisation` behaves consistently with `ClientNoAction`: deleting `Name` is fine, deleting an `Organisation` still referenced by `Name` is blocked
+
 On April 22, 2026, after adding the `Name` class to the sample profile and regenerating the C# output, I updated the EF Core regression harness to match the new generated shape. The important model change is that human-readable object names on `IdentifiedObject`-derived classes and on compound detail classes are now emitted as `NameValue`, because the profile also contains a concrete `Name` entity. After updating the harness, the regression suite passed all 31 sections. The new `Name Association Behavior` section confirms that `Name` rows round-trip correctly through `Name.IdentifiedObjectId -> IdentifiedObject.MRId`, and that deleting an `Organisation` referenced by a `Name` is currently blocked by the generated `ClientNoAction` foreign key.
 
 On April 21, 2026, after regenerating `SampleProfile.csharp-ef-rdfs.cs` from the updated builder, I switched the smoke-test `SampleProfileDbContext` from the older hand-written cleanup prototype to the newly generated `SampleProfile.DbContextBase`. The regression suite still passed all 30 sections after that switch, which is the strongest confirmation so far that the XSL is now generating the intended cleanup path directly.
