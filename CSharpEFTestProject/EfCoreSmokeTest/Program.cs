@@ -1,12 +1,15 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.IO;
 using System.Reflection;
 using Microsoft.Data.Sqlite;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
 
-const string GeneratedCSharpPath = @"D:\Claude\CIM\CSharpEFTestProject\CSharpEFTestProject\Profiles\SampleProfile.csharp-ef-rdfs.cs";
-const string SqlPath = @"D:\Claude\CIM\CSharpEFTestProject\CSharpEFTestProject\Profiles\SampleProfile.rdfs-ansi92.sql";
+var projectDirectory = Path.GetFullPath(Path.Combine(AppContext.BaseDirectory, "..", "..", ".."));
+var profilesDirectory = Path.GetFullPath(Path.Combine(projectDirectory, "..", "CSharpEFTestProject", "Profiles"));
+var GeneratedCSharpPath = Path.Combine(profilesDirectory, "SampleProfile.csharp-ef-rdfs.cs");
+var SqlPath = Path.Combine(profilesDirectory, "SampleProfile.rdfs-ansi92.sql");
 
 var completedSections = new List<string>();
 var diagnostics = new List<string>();
@@ -775,3 +778,5 @@ IEntityType GetEntityType(SampleProfileDbContext context, Type type)
     return context.Model.FindEntityType(type)
         ?? throw new InvalidOperationException($"Could not find entity type metadata for {type.Name}.");
 }
+
+
