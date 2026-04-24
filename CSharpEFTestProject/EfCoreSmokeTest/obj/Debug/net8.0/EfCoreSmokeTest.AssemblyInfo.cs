@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("EfCoreSmokeTest")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+5040f8282802605940d81f3a287812c2c25ea203")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+ea2723833df405e2e1f65ec3bf5f5fa012661f43")]
 [assembly: System.Reflection.AssemblyProductAttribute("EfCoreSmokeTest")]
 [assembly: System.Reflection.AssemblyTitleAttribute("EfCoreSmokeTest")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

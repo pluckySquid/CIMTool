@@ -1561,6 +1561,21 @@ public class SampleProfile
         public DbSet<SampleProfile.WireSpacingInfo> WireSpacingInfos => Set<SampleProfile.WireSpacingInfo>();
         public DbSet<SampleProfile.OverheadWireInfo> OverheadWireInfos => Set<SampleProfile.OverheadWireInfo>();
         
+        /// <summary>
+        /// Initialises a new instance of <c>DbContextBase</c> with the supplied
+        /// EF Core options. Use this constructor when registering the context
+        /// with a dependency injection container:
+        /// <code>
+        /// services.AddDbContext<SampleProfileDbContext>(options =>
+        ///     options.UseSqlServer(connectionString));
+        /// </code>
+        /// </summary>
+        /// <param name="options">
+        /// The EF Core options for this context, typically supplied by the
+        /// host's dependency injection container.
+        /// </param>
+        protected DbContextBase(DbContextOptions options) : base(options) { }
+        
         protected override void OnModelCreating(ModelBuilder modelBuilder)
             => SampleProfile.ModelConfiguration.ConfigureModel(modelBuilder);
         
@@ -1603,7 +1618,7 @@ public class SampleProfile
         private List<(Type Type, string Id)> CollectCompoundOrphans()
         {
             ChangeTracker.DetectChanges();
-            var orphans = new List<(Type, string)>();
+            var orphans = new List<(Type Type, string Id)>();
             
             foreach (var entry in ChangeTracker.Entries<SampleProfile.StreetAddress>())
             {
@@ -1622,6 +1637,34 @@ public class SampleProfile
                 CollectOrphan(entry, nameof(SampleProfile.Organisation.PostalAddressId), typeof(SampleProfile.StreetAddress), orphans);
                 CollectOrphan(entry, nameof(SampleProfile.Organisation.StreetAddressId), typeof(SampleProfile.StreetAddress), orphans);
             }
+            
+            // Phase 2: expand orphans for compound types that have their own compound children.
+            // Compounds orphaned via a parent FK change remain Unchanged in the change tracker
+            // and are invisible to Phase 1. The do/while loop handles arbitrary nesting depth —
+            // each iteration discovers the next level of nested compounds until no new entries
+            // are added. The deduplication guard prevents re-processing already-expanded entries.
+            int countBefore;
+            do
+            {
+                countBefore = orphans.Count;
+                
+                foreach (var (_, id) in orphans.Where(o => o.Type == typeof(SampleProfile.StreetAddress)).ToList())
+                {
+                    var entity = Set<SampleProfile.StreetAddress>().Local.FirstOrDefault(x => x.Id == id)
+                        ?? Set<SampleProfile.StreetAddress>().FirstOrDefault(x => x.Id == id);
+                    if (entity is null) continue;
+                    if (!string.IsNullOrWhiteSpace(entity.StatusId)
+                        && !orphans.Any(o => o.Type == typeof(SampleProfile.Status) && o.Id == entity.StatusId))
+                        orphans.Add((typeof(SampleProfile.Status), entity.StatusId!));
+                    if (!string.IsNullOrWhiteSpace(entity.StreetDetailId)
+                        && !orphans.Any(o => o.Type == typeof(SampleProfile.StreetDetail) && o.Id == entity.StreetDetailId))
+                        orphans.Add((typeof(SampleProfile.StreetDetail), entity.StreetDetailId!));
+                    if (!string.IsNullOrWhiteSpace(entity.TownDetailId)
+                        && !orphans.Any(o => o.Type == typeof(SampleProfile.TownDetail) && o.Id == entity.TownDetailId))
+                        orphans.Add((typeof(SampleProfile.TownDetail), entity.TownDetailId!));
+                }
+            }
+            while (orphans.Count != countBefore);
             
             return orphans;
         }

@@ -108,7 +108,7 @@ CREATE TABLE "AssetInfo"
 );
 
 -- Defines the current status of the Crew - assigned, arrived, etc.
-CREATE TABLE "CrewStatusKind" ( "name" VARCHAR(100) UNIQUE );
+CREATE TABLE "CrewStatusKind" ( "name" VARCHAR(100) PRIMARY KEY );
 -- the crew is on site at the outage location
 INSERT INTO "CrewStatusKind" ( "name" ) VALUES ( 'arrived' );
 -- the crew has been assigned to work on a task
@@ -218,7 +218,7 @@ CREATE TABLE "ParentOrganization"
 -- A, B, and C. For three-phase loads, use the A, B, C phase codes instead
 -- of s12N.
 -- The integer values are from IEC 61968-9 to support revenue metering applications.
-CREATE TABLE "PhaseCode" ( "name" VARCHAR(100) UNIQUE );
+CREATE TABLE "PhaseCode" ( "name" VARCHAR(100) PRIMARY KEY );
 -- Phase A.
 INSERT INTO "PhaseCode" ( "name" ) VALUES ( 'A' );
 -- Phases A and B.
@@ -417,7 +417,7 @@ CREATE TABLE "WireInfo"
 );
 
 -- Kind of wire insulation.
-CREATE TABLE "WireInsulationKind" ( "name" VARCHAR(100) UNIQUE );
+CREATE TABLE "WireInsulationKind" ( "name" VARCHAR(100) PRIMARY KEY );
 -- Asbestos and varnished cambric wire insulation.
 INSERT INTO "WireInsulationKind" ( "name" ) VALUES ( 'asbestosAndVarnishedCambric' );
 -- Belted pilc wire insulation.
@@ -456,7 +456,7 @@ INSERT INTO "WireInsulationKind" ( "name" ) VALUES ( 'varnishedCambricCloth' );
 INSERT INTO "WireInsulationKind" ( "name" ) VALUES ( 'varnishedDacronGlass' );
 
 -- Kind of wire material.
-CREATE TABLE "WireMaterialKind" ( "name" VARCHAR(100) UNIQUE );
+CREATE TABLE "WireMaterialKind" ( "name" VARCHAR(100) PRIMARY KEY );
 -- Aluminum-alloy conductor steel reinforced.
 INSERT INTO "WireMaterialKind" ( "name" ) VALUES ( 'aaac' );
 -- Aluminum conductor steel reinforced.
