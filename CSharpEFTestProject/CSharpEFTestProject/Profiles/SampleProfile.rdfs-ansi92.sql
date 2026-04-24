@@ -272,49 +272,6 @@ INSERT INTO "PhaseCode" ( "name" ) VALUES ( 's2' );
 -- Secondary phase 2 and neutral.
 INSERT INTO "PhaseCode" ( "name" ) VALUES ( 's2N' );
 
--- Distribution capacitor bank control settings.
-CREATE TABLE "ShuntCompensatorControl"
-(
-    "id" VARCHAR(100) PRIMARY KEY,
-    -- Phases that are measured for controlling the device.
-    -- FK column reference to table representing the "PhaseCode" enumeration
-    "sensingPhaseCode" VARCHAR(100)
-);
-
--- Properties of shunt capacitor, shunt reactor or switchable bank of shunt
--- capacitor or reactor assets.
-CREATE TABLE "ShuntCompensatorInfo"
-(
-    "mRID" VARCHAR(100) PRIMARY KEY,
-    -- Maximum allowed apparent power loss.
-    "maxPowerLoss" DOUBLE PRECISION,
-    -- Rated current.
-    "ratedCurrent" DOUBLE PRECISION,
-    -- Rated reactive power.
-    "ratedReactivePower" DOUBLE PRECISION,
-    -- Rated voltage.
-    "ratedVoltage" DOUBLE PRECISION,
-    -- FK column reference to table representing the "ShuntCompensatorControl" class
-    "ShuntCompensatorControl" VARCHAR(100)
-);
-
--- Kind of control for shunt impedance.
-CREATE TABLE "ShuntImpedanceControlKind" ( "name" VARCHAR(100) UNIQUE );
-INSERT INTO "ShuntImpedanceControlKind" ( "name" ) VALUES ( 'fixed' );
-INSERT INTO "ShuntImpedanceControlKind" ( "name" ) VALUES ( 'localOnly' );
-INSERT INTO "ShuntImpedanceControlKind" ( "name" ) VALUES ( 'remoteOnly' );
-INSERT INTO "ShuntImpedanceControlKind" ( "name" ) VALUES ( 'remoteWithLocalOverride' );
-
--- Kind of local control for shunt impedance.
-CREATE TABLE "ShuntImpedanceLocalControlKind" ( "name" VARCHAR(100) UNIQUE );
-INSERT INTO "ShuntImpedanceLocalControlKind" ( "name" ) VALUES ( 'current' );
-INSERT INTO "ShuntImpedanceLocalControlKind" ( "name" ) VALUES ( 'none' );
-INSERT INTO "ShuntImpedanceLocalControlKind" ( "name" ) VALUES ( 'powerFactor' );
-INSERT INTO "ShuntImpedanceLocalControlKind" ( "name" ) VALUES ( 'reactivePower' );
-INSERT INTO "ShuntImpedanceLocalControlKind" ( "name" ) VALUES ( 'temperature' );
-INSERT INTO "ShuntImpedanceLocalControlKind" ( "name" ) VALUES ( 'time' );
-INSERT INTO "ShuntImpedanceLocalControlKind" ( "name" ) VALUES ( 'voltage' );
-
 -- Current status information relevant to an entity.
 CREATE TABLE "Status"
 (
@@ -544,9 +501,6 @@ ALTER TABLE "OverheadWireInfo" ADD FOREIGN KEY ( "mRID" ) REFERENCES "WireInfo" 
 -- Inheritance subclass-superclass constraint for table "ParentOrganization"
 ALTER TABLE "ParentOrganization" ADD FOREIGN KEY ( "mRID" ) REFERENCES "Organisation" ( "mRID" );
 
--- Inheritance subclass-superclass constraint for table "ShuntCompensatorInfo"
-ALTER TABLE "ShuntCompensatorInfo" ADD FOREIGN KEY ( "mRID" ) REFERENCES "AssetInfo" ( "mRID" );
-
 -- Inheritance subclass-superclass constraint for table "WireInfo"
 ALTER TABLE "WireInfo" ADD FOREIGN KEY ( "mRID" ) REFERENCES "AssetInfo" ( "mRID" );
 
@@ -567,9 +521,6 @@ ALTER TABLE "Organisation" ADD FOREIGN KEY ( "phone1" ) REFERENCES "TelephoneNum
 ALTER TABLE "Organisation" ADD FOREIGN KEY ( "phone2" ) REFERENCES "TelephoneNumber" ( "id" );
 ALTER TABLE "Organisation" ADD FOREIGN KEY ( "postalAddress" ) REFERENCES "StreetAddress" ( "id" );
 ALTER TABLE "Organisation" ADD FOREIGN KEY ( "streetAddress" ) REFERENCES "StreetAddress" ( "id" );
-
--- Foreign keys for table "ShuntCompensatorInfo"
-ALTER TABLE "ShuntCompensatorInfo" ADD FOREIGN KEY ( "ShuntCompensatorControl" ) REFERENCES "ShuntCompensatorControl" ( "id" );
 
 -- Foreign keys for table "StreetAddress"
 ALTER TABLE "StreetAddress" ADD FOREIGN KEY ( "status" ) REFERENCES "Status" ( "id" );
@@ -625,8 +576,6 @@ ALTER TABLE "TelephoneNumber" ADD CONSTRAINT fk_TelephoneNumber_Organisation_pho
 ALTER TABLE "StreetAddress" ADD CONSTRAINT fk_StreetAddress_Organisation_postalAddress FOREIGN KEY ( "id" ) REFERENCES "Organisation" ( "postalAddress" ) ON DELETE CASCADE;
 ALTER TABLE "StreetAddress" ADD CONSTRAINT fk_StreetAddress_Organisation_streetAddress FOREIGN KEY ( "id" ) REFERENCES "Organisation" ( "streetAddress" ) ON DELETE CASCADE;
 
--- Cascade deletes for compounds referenced in table "ShuntCompensatorInfo"
-
 -- Cascade deletes for compounds referenced in table "StreetAddress"
 ALTER TABLE "Status" ADD CONSTRAINT fk_Status_StreetAddress_status FOREIGN KEY ( "id" ) REFERENCES "StreetAddress" ( "status" ) ON DELETE CASCADE;
 ALTER TABLE "StreetDetail" ADD CONSTRAINT fk_StreetDetail_StreetAddress_streetDetail FOREIGN KEY ( "id" ) REFERENCES "StreetAddress" ( "streetDetail" ) ON DELETE CASCADE;
@@ -643,7 +592,6 @@ CREATE INDEX ix_Organisation_phone1 ON "Organisation" ( "phone1" );
 CREATE INDEX ix_Organisation_phone2 ON "Organisation" ( "phone2" );
 CREATE INDEX ix_Organisation_postalAddress ON "Organisation" ( "postalAddress" );
 CREATE INDEX ix_Organisation_streetAddress ON "Organisation" ( "streetAddress" );
-CREATE INDEX ix_ShuntCompensatorInfo_ShuntCompensatorControl ON "ShuntCompensatorInfo" ( "ShuntCompensatorControl" );
 CREATE INDEX ix_StreetAddress_status ON "StreetAddress" ( "status" );
 CREATE INDEX ix_StreetAddress_streetDetail ON "StreetAddress" ( "streetDetail" );
 CREATE INDEX ix_StreetAddress_townDetail ON "StreetAddress" ( "townDetail" );

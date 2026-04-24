@@ -401,70 +401,6 @@ public class SampleProfile {
     };
     
     /**
-     * Kind of control for shunt impedance.
-     */
-    @Entity
-    @Table(name="ShuntImpedanceControlKind")
-    public static class ShuntImpedanceControlKind {
-        @Id
-        @Column(name="name")
-        private String name;
-        
-        public String getName() {
-            return name;
-        }
-        
-        public void setName(String name) {
-            this.name = name;
-        }
-        
-        @Override
-        public boolean equals(Object o) {
-            if (this == o) return true;
-            if (o == null || getClass() != o.getClass()) return false;
-            ShuntImpedanceControlKind that = (ShuntImpedanceControlKind) o;
-            return name != null && name.equals(that.name);
-        }
-        
-        @Override
-        public int hashCode() {
-            return getClass().hashCode();
-        }
-    };
-    
-    /**
-     * Kind of local control for shunt impedance.
-     */
-    @Entity
-    @Table(name="ShuntImpedanceLocalControlKind")
-    public static class ShuntImpedanceLocalControlKind {
-        @Id
-        @Column(name="name")
-        private String name;
-        
-        public String getName() {
-            return name;
-        }
-        
-        public void setName(String name) {
-            this.name = name;
-        }
-        
-        @Override
-        public boolean equals(Object o) {
-            if (this == o) return true;
-            if (o == null || getClass() != o.getClass()) return false;
-            ShuntImpedanceLocalControlKind that = (ShuntImpedanceLocalControlKind) o;
-            return name != null && name.equals(that.name);
-        }
-        
-        @Override
-        public int hashCode() {
-            return getClass().hashCode();
-        }
-    };
-    
-    /**
      * Kind of wire insulation.
      */
     @Entity
@@ -1408,11 +1344,14 @@ public class SampleProfile {
     }
     
     /**
-     * Distribution capacitor bank control settings.
+     * The Name class provides the means to define any number of human readable
+     * names for an object. A name is <b>not</b> to be used for defining inter-object
+     * relationships. For inter-object relationships instead use the object identification
+     * 'mRID'.
      */
     @Entity
-    @Table(name="ShuntCompensatorControl")
-    public static class ShuntCompensatorControl {
+    @Table(name="Name", indexes = {{ @Index(name="ix_Name_IdentifiedObject", columnList="IdentifiedObject") }})
+    public static class Name {
         @Id
         @GeneratedValue(strategy=GenerationType.UUID)
         @Column(name="id")
@@ -1430,7 +1369,7 @@ public class SampleProfile {
         public boolean equals(Object o) {
             if (this == o) return true;
             if (o == null || getClass() != o.getClass()) return false;
-            ShuntCompensatorControl that = (ShuntCompensatorControl) o;
+            Name that = (Name) o;
             return id != null && id.equals(that.id);
         }
         
@@ -1438,18 +1377,33 @@ public class SampleProfile {
         public int hashCode() {
             return getClass().hashCode();
         }
-        /**
-         * Phases that are measured for controlling the device.
-         */
-        @Column(name="sensingPhaseCode")
-        private String sensingPhaseCode;
         
-        public String getSensingPhaseCode() {
-            return sensingPhaseCode;
+        /**
+         * Any free text that name the object.
+         */
+        @Column(name="name")
+        private String name;
+        
+        public String getName() {
+            return name;
         }
         
-        public void setSensingPhaseCode(String sensingPhaseCode) {
-            this.sensingPhaseCode = sensingPhaseCode;
+        public void setName(String name) {
+            this.name = name;
+        }
+        /**
+         * Identified object that this name designates.
+         */
+        @ManyToOne(fetch=FetchType.LAZY)
+        @JoinColumn(name="IdentifiedObject")
+        private IdentifiedObject identifiedObject;
+        
+        public IdentifiedObject getIdentifiedObject() {
+            return identifiedObject;
+        }
+        
+        public void setIdentifiedObject(IdentifiedObject identifiedObject) {
+            this.identifiedObject = identifiedObject;
         }
     }
     
@@ -1572,86 +1526,6 @@ public class SampleProfile {
     @PrimaryKeyJoinColumn(name="mRID")
     public static class ParentOrganization extends Organisation {
         
-    }
-    
-    /**
-     * Properties of shunt capacitor, shunt reactor or switchable bank of shunt
-     * capacitor or reactor assets.
-     */
-    @Entity
-    @Table(name="ShuntCompensatorInfo", indexes = {{ @Index(name="ix_ShuntCompensatorInfo_ShuntCompensatorControl", columnList="ShuntCompensatorControl") }})
-    @PrimaryKeyJoinColumn(name="mRID")
-    public static class ShuntCompensatorInfo extends AssetInfo {
-        
-        
-        /**
-         * Maximum allowed apparent power loss.
-         */
-        @Column(name="maxPowerLoss")
-        private Double maxPowerLoss;
-        
-        public Double getMaxPowerLoss() {
-            return maxPowerLoss;
-        }
-        
-        public void setMaxPowerLoss(Double maxPowerLoss) {
-            this.maxPowerLoss = maxPowerLoss;
-        }
-        
-        /**
-         * Rated current.
-         */
-        @Column(name="ratedCurrent")
-        private Double ratedCurrent;
-        
-        public Double getRatedCurrent() {
-            return ratedCurrent;
-        }
-        
-        public void setRatedCurrent(Double ratedCurrent) {
-            this.ratedCurrent = ratedCurrent;
-        }
-        
-        /**
-         * Rated reactive power.
-         */
-        @Column(name="ratedReactivePower")
-        private Double ratedReactivePower;
-        
-        public Double getRatedReactivePower() {
-            return ratedReactivePower;
-        }
-        
-        public void setRatedReactivePower(Double ratedReactivePower) {
-            this.ratedReactivePower = ratedReactivePower;
-        }
-        
-        /**
-         * Rated voltage.
-         */
-        @Column(name="ratedVoltage")
-        private Double ratedVoltage;
-        
-        public Double getRatedVoltage() {
-            return ratedVoltage;
-        }
-        
-        public void setRatedVoltage(Double ratedVoltage) {
-            this.ratedVoltage = ratedVoltage;
-        }
-        /**
-         */
-        @ManyToOne(fetch=FetchType.LAZY)
-        @JoinColumn(name="ShuntCompensatorControl")
-        private ShuntCompensatorControl shuntCompensatorControl;
-        
-        public ShuntCompensatorControl getShuntCompensatorControl() {
-            return shuntCompensatorControl;
-        }
-        
-        public void setShuntCompensatorControl(ShuntCompensatorControl shuntCompensatorControl) {
-            this.shuntCompensatorControl = shuntCompensatorControl;
-        }
     }
     
     /**
@@ -1790,8 +1664,6 @@ public class SampleProfile {
     {
         CrewStatusKind.class,
         PhaseCode.class,
-        ShuntImpedanceControlKind.class,
-        ShuntImpedanceLocalControlKind.class,
         WireInsulationKind.class,
         WireMaterialKind.class,
         ElectronicAddress.class,
@@ -1801,11 +1673,10 @@ public class SampleProfile {
         TownDetail.class,
         StreetAddress.class,
         IdentifiedObject.class,
-        ShuntCompensatorControl.class,
+        Name.class,
         AssetInfo.class,
         Organisation.class,
         ParentOrganization.class,
-        ShuntCompensatorInfo.class,
         WireInfo.class,
         WireSpacingInfo.class,
         OverheadWireInfo.class

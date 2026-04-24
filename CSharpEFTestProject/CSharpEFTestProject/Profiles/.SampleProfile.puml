@@ -61,9 +61,9 @@ top to bottom direction
 hide empty methods
 
 ' Adjust the horizontal spacing for better spatial rendering (the PlantUML default is ~20)
-skinparam nodesep 20
+skinparam nodesep 25
 ' Adjust the vertical spacing for better spatial rendering (the PlantUML default is ~30)
-skinparam ranksep 30
+skinparam ranksep 35
 
 skinparam BackgroundColor #FFFFFF
 skinparam shadowing false
@@ -201,12 +201,32 @@ enum CrewStatusKind <<enumeration>>  {
    fieldComplete
 }
 
+' ElectronicAddress
+class ElectronicAddress <<Compound>> {
+   +email1: String [0..1]
+   +email2: String [0..1]
+   +lan: String [0..1]
+   +mac: String [0..1]
+   +password: String [0..1]
+   +radio: String [0..1]
+   +userID: String [0..1]
+   +web: String [0..1]
+}
+
+
 ' IdentifiedObject
 abstract class IdentifiedObject  <<abstract>> {
    +mRID: String [1]
    +name: String [0..1]
 }
 
+
+' Name
+class Name   {
+   +name: String [0..1]
+}
+
+Name "+Names 0..*" --> "+IdentifiedObject 0..1" IdentifiedObject
 
 ' Organisation inherits from IdentifiedObject
 class Organisation   {
@@ -256,48 +276,66 @@ enum PhaseCode <<enumeration>>  {
    [Remaining 6 literals hidden]
 }
 
-' ShuntCompensatorControl
-abstract class ShuntCompensatorControl <<error>>  <<abstract>> {
-   +sensingPhaseCode: PhaseCode [0..1]
+' Status
+class Status <<Compound>> {
+   +dateTime: DateTime [0..1]
+   +reason: String [0..1]
+   +remark: String [0..1]
+   +value: String [0..1]
 }
 
 
-
-note as ErrorShuntCompensatorControl
-Class ShuntCompensatorControl is 'abstract'. If it is serving as
-a reference to an external object then no fields should be defined in
-it. Otherwise, it should be declared as 'concrete'.
-end note
-
-ErrorShuntCompensatorControl ..> ShuntCompensatorControl #red
-
-' ShuntCompensatorInfo inherits from AssetInfo
-class ShuntCompensatorInfo   {
-   +maxPowerLoss: ApparentPower [0..1]
-   +ratedCurrent: CurrentFlow [0..1]
-   +ratedReactivePower: ReactivePower [0..1]
-   +ratedVoltage: Voltage [0..1]
+' StreetAddress
+class StreetAddress <<Compound>> {
+   +language: String [0..1]
+   +poBox: String [0..1]
+   +postalCode: String [0..1]
+   +status: Status [0..1]
+   +streetDetail: StreetDetail [0..1]
+   +townDetail: TownDetail [0..1]
 }
 
-AssetInfo <|-- ShuntCompensatorInfo
-ShuntCompensatorInfo "+ShuntCompensatorInfo 0..1" --> "+ShuntCompensatorControl 0..1" ShuntCompensatorControl : <<informative>>
 
-enum ShuntImpedanceControlKind <<enumeration>>  {
-   fixed
-   localOnly
-   remoteOnly
-   remoteWithLocalOverride
+' StreetDetail
+class StreetDetail <<Compound>> {
+   +addressGeneral: String [0..1]
+   +addressGeneral2: String [0..1]
+   +addressGeneral3: String [0..1]
+   +buildingName: String [0..1]
+   +code: String [0..1]
+   +floorIdentification: String [0..1]
+   +name: String [0..1]
+   +number: String [0..1]
+   +prefix: String [0..1]
+   +suffix: String [0..1]
+   +suiteNumber: String [0..1]
+   +type: String [0..1]
+   +withinTownLimits: Boolean [0..1]
 }
 
-enum ShuntImpedanceLocalControlKind <<enumeration>>  {
-   current
-   none
-   powerFactor
-   reactivePower
-   temperature
-   time
-   voltage
+
+' TelephoneNumber
+class TelephoneNumber <<Compound>> {
+   +areaCode: String [0..1]
+   +cityCode: String [0..1]
+   +countryCode: String [0..1]
+   +dialOut: String [0..1]
+   +extension: String [0..1]
+   +internationalPrefix: String [0..1]
+   +ituPhone: String [0..1]
+   +localNumber: String [0..1]
 }
+
+
+' TownDetail
+class TownDetail <<Compound>> {
+   +code: String [0..1]
+   +country: String [0..1]
+   +name: String [0..1]
+   +section: String [0..1]
+   +stateOrProvince: String [0..1]
+}
+
 
 ' WireInfo inherits from AssetInfo
 class WireInfo   {
@@ -350,5 +388,11 @@ class WireSpacingInfo   {
 }
 
 AssetInfo <|-- WireSpacingInfo
+
+class Length <<CIMDatatype>> {
+   +value: Float [0..1]
+   +unit: UnitSymbol [0..1] = m {readOnly}
+   +multiplier: UnitMultiplier [0..1]
+}
 
 @enduml

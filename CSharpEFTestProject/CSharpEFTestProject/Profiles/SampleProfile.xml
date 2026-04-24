@@ -220,6 +220,57 @@
       </Simple>
    </ComplexType>
    <Root hideInDiagrams="false"
+         name="Name"
+         ea_guid="EAID_D6F3DF4E_3363_48d2_AB61_7872E337C422"
+         baseClass="http://iec.ch/TC57/CIM100#Name"
+         package="Core"
+         packageURI="http://iec.ch/TC57/CIM100#Package_Core"
+         minOccurs="0"
+         maxOccurs="unbounded">
+      <Comment>The Name class provides the means to define any number of human readable  names for an object. A name is &lt;b&gt;not&lt;/b&gt; to be used for defining inter-object relationships. For inter-object relationships instead use the object identification 'mRID'.</Comment>
+      <Stereotype label="Concrete">http://langdale.com.au/2005/UML#concrete</Stereotype>
+      <Simple hideInDiagrams="false"
+              cimDatatype="http://iec.ch/TC57/CIM100#String"
+              dataType="http://www.w3.org/2001/XMLSchema#string"
+              xstype="string"
+              name="name"
+              ea_guid="EAID_A2162B14_022E_4cda_AC84_B9D32A0C6C00"
+              baseProperty="http://iec.ch/TC57/CIM100#Name.name"
+              basePropertyClass="http://iec.ch/TC57/CIM100#Name"
+              minOccurs="0"
+              maxOccurs="1">
+         <Comment>Any free text that name the object.</Comment>
+         <Stereotype label="Attribute">http://langdale.com.au/2005/UML#attribute</Stereotype>
+      </Simple>
+      <Reference hideInDiagrams="false"
+                 baseClass="http://iec.ch/TC57/CIM100#IdentifiedObject"
+                 type="IdentifiedObject"
+                 name="IdentifiedObject"
+                 ea_guid="EAID_203C47E2_30FB_4c8f_ABEA_1661621CC0A7-A"
+                 baseProperty="http://iec.ch/TC57/CIM100#Name.IdentifiedObject"
+                 basePropertyClass="http://iec.ch/TC57/CIM100#Name"
+                 minOccurs="0"
+                 maxOccurs="1"
+                 inverseBasePropertyClass="http://iec.ch/TC57/CIM100#IdentifiedObject"
+                 inverseBaseProperty="http://iec.ch/TC57/CIM100#IdentifiedObject.Names">
+         <Comment>Identified object that this name designates.</Comment>
+         <Stereotype label="ByReference">http://langdale.com.au/2005/UML#byreference</Stereotype>
+      </Reference>
+      <InverseReference hideInDiagrams="false"
+                        baseClass="http://iec.ch/TC57/CIM100#Name"
+                        ea_guid="EAID_203C47E2_30FB_4c8f_ABEA_1661621CC0A7-B"
+                        type="Name"
+                        name="Names"
+                        baseProperty="http://iec.ch/TC57/CIM100#IdentifiedObject.Names"
+                        basePropertyClass="http://iec.ch/TC57/CIM100#IdentifiedObject"
+                        minOccurs="0"
+                        maxOccurs="unbounded"
+                        inverseBasePropertyClass="http://iec.ch/TC57/CIM100#Name"
+                        inverseBaseProperty="http://iec.ch/TC57/CIM100#Name.IdentifiedObject">
+         <Comment>All names of this identified object.</Comment>
+      </InverseReference>
+   </Root>
+   <Root hideInDiagrams="false"
          name="Organisation"
          ea_guid="EAID_F8CDB36C_C67A_437e_B836_79674718904E"
          baseClass="http://iec.ch/TC57/CIM100#Organisation"
@@ -550,199 +601,6 @@
                        code="272">
          <Comment>Secondary phase 2 and neutral.</Comment>
       </EnumeratedValue>
-   </EnumeratedType>
-   <ComplexType hideInDiagrams="false"
-                name="ShuntCompensatorControl"
-                ea_guid="EAID_5FFFB760_AFCE_495a_8F94_95B84D23690E"
-                baseClass="http://iec.ch/TC57/CIM100#ShuntCompensatorControl"
-                package="InfWiresExt"
-                packageURI="http://iec.ch/TC57/CIM100#Package_InfWiresExt"
-                minOccurs="0"
-                maxOccurs="unbounded">
-      <Comment>Distribution capacitor bank control settings.</Comment>
-      <Enumerated baseClass="http://iec.ch/TC57/CIM100#PhaseCode"
-                  type="PhaseCode"
-                  hideInDiagrams="false"
-                  name="sensingPhaseCode"
-                  ea_guid="EAID_B38D809A_2A66_41d6_BE06_2D6FADC5DFC8"
-                  baseProperty="http://iec.ch/TC57/CIM100#ShuntCompensatorControl.sensingPhaseCode"
-                  basePropertyClass="http://iec.ch/TC57/CIM100#ShuntCompensatorControl"
-                  minOccurs="0"
-                  maxOccurs="1"
-                  inverseBasePropertyClass="http://iec.ch/TC57/CIM100#ShuntCompensatorControl">
-         <Comment>Phases that are measured for controlling the device.</Comment>
-         <Stereotype label="enumeration">http://langdale.com.au/2005/UML#enumeration</Stereotype>
-         <Stereotype label="Attribute">http://langdale.com.au/2005/UML#attribute</Stereotype>
-      </Enumerated>
-   </ComplexType>
-   <Root hideInDiagrams="false"
-         name="ShuntCompensatorInfo"
-         ea_guid="EAID_3E9CFB82_B958_4601_9FE4_F334F40FA838"
-         baseClass="http://iec.ch/TC57/CIM100#ShuntCompensatorInfo"
-         package="AssetInfo"
-         packageURI="http://iec.ch/TC57/CIM100#Package_AssetInfo"
-         minOccurs="0"
-         maxOccurs="unbounded">
-      <Comment>Properties of shunt capacitor, shunt reactor or switchable bank of shunt capacitor or reactor assets.</Comment>
-      <Stereotype label="Concrete">http://langdale.com.au/2005/UML#concrete</Stereotype>
-      <SuperType name="AssetInfo"
-                 baseClass="http://iec.ch/TC57/CIM100#AssetInfo"
-                 baseClassIsShadowExtension="false"/>
-      <Domain hideInDiagrams="false"
-              type="ApparentPower"
-              dataType="http://iec.ch/TC57/CIM100#ApparentPower"
-              xstype="float"
-              name="maxPowerLoss"
-              ea_guid="EAID_54CBED91_48A8_49bb_BEDA_05CFF307441B"
-              baseProperty="http://iec.ch/TC57/CIM100#ShuntCompensatorInfo.maxPowerLoss"
-              basePropertyClass="http://iec.ch/TC57/CIM100#ShuntCompensatorInfo"
-              minOccurs="0"
-              maxOccurs="1">
-         <Comment>Maximum allowed apparent power loss.</Comment>
-         <Stereotype label="Attribute">http://langdale.com.au/2005/UML#attribute</Stereotype>
-      </Domain>
-      <Domain hideInDiagrams="false"
-              type="CurrentFlow"
-              dataType="http://iec.ch/TC57/CIM100#CurrentFlow"
-              xstype="float"
-              name="ratedCurrent"
-              ea_guid="EAID_4A99376B_5DC3_4624_A07C_747A7172A8F6"
-              baseProperty="http://iec.ch/TC57/CIM100#ShuntCompensatorInfo.ratedCurrent"
-              basePropertyClass="http://iec.ch/TC57/CIM100#ShuntCompensatorInfo"
-              minOccurs="0"
-              maxOccurs="1">
-         <Comment>Rated current.</Comment>
-         <Stereotype label="Attribute">http://langdale.com.au/2005/UML#attribute</Stereotype>
-      </Domain>
-      <Domain hideInDiagrams="false"
-              type="ReactivePower"
-              dataType="http://iec.ch/TC57/CIM100#ReactivePower"
-              xstype="float"
-              name="ratedReactivePower"
-              ea_guid="EAID_4608D242_6EF9_42be_B3FD_9F96542D71C5"
-              baseProperty="http://iec.ch/TC57/CIM100#ShuntCompensatorInfo.ratedReactivePower"
-              basePropertyClass="http://iec.ch/TC57/CIM100#ShuntCompensatorInfo"
-              minOccurs="0"
-              maxOccurs="1">
-         <Comment>Rated reactive power.</Comment>
-         <Stereotype label="Attribute">http://langdale.com.au/2005/UML#attribute</Stereotype>
-      </Domain>
-      <Domain hideInDiagrams="false"
-              type="Voltage"
-              dataType="http://iec.ch/TC57/CIM100#Voltage"
-              xstype="float"
-              name="ratedVoltage"
-              ea_guid="EAID_BA81D35A_EDC6_4968_8264_56C8F0954E71"
-              baseProperty="http://iec.ch/TC57/CIM100#ShuntCompensatorInfo.ratedVoltage"
-              basePropertyClass="http://iec.ch/TC57/CIM100#ShuntCompensatorInfo"
-              minOccurs="0"
-              maxOccurs="1">
-         <Comment>Rated voltage.</Comment>
-         <Stereotype label="Attribute">http://langdale.com.au/2005/UML#attribute</Stereotype>
-      </Domain>
-      <Instance baseClass="http://iec.ch/TC57/CIM100#ShuntCompensatorControl"
-                type="ShuntCompensatorControl"
-                hideInDiagrams="false"
-                name="ShuntCompensatorControl"
-                ea_guid="EAID_A5EB9D9A_15FF_4076_9909_2B14A074EA9C-A"
-                baseProperty="http://iec.ch/TC57/CIM100#ShuntCompensatorInfo.ShuntCompensatorControl"
-                basePropertyClass="http://iec.ch/TC57/CIM100#ShuntCompensatorInfo"
-                minOccurs="0"
-                maxOccurs="1"
-                inverseBasePropertyClass="http://iec.ch/TC57/CIM100#ShuntCompensatorControl"
-                inverseBaseProperty="http://iec.ch/TC57/CIM100#ShuntCompensatorControl.ShuntCompensatorInfo">
-         <Stereotype label="informative">http://langdale.com.au/2005/UML#informative</Stereotype>
-      </Instance>
-      <InverseInstance hideInDiagrams="false"
-                       baseClass="http://iec.ch/TC57/CIM100#ShuntCompensatorInfo"
-                       ea_guid="EAID_A5EB9D9A_15FF_4076_9909_2B14A074EA9C-B"
-                       type="ShuntCompensatorInfo"
-                       name="ShuntCompensatorInfo"
-                       baseProperty="http://iec.ch/TC57/CIM100#ShuntCompensatorControl.ShuntCompensatorInfo"
-                       basePropertyClass="http://iec.ch/TC57/CIM100#ShuntCompensatorControl"
-                       minOccurs="0"
-                       maxOccurs="1"
-                       inverseBasePropertyClass="http://iec.ch/TC57/CIM100#ShuntCompensatorInfo"
-                       inverseBaseProperty="http://iec.ch/TC57/CIM100#ShuntCompensatorInfo.ShuntCompensatorControl">
-         <Stereotype label="informative">http://langdale.com.au/2005/UML#informative</Stereotype>
-      </InverseInstance>
-   </Root>
-   <EnumeratedType hideInDiagrams="false"
-                   name="ShuntImpedanceControlKind"
-                   ea_guid="EAID_6F86F7A1_3B9B_4675_BFE8_7B47013B60A1"
-                   baseClass="http://iec.ch/TC57/CIM100#ShuntImpedanceControlKind"
-                   package="InfAssetInfo"
-                   packageURI="http://iec.ch/TC57/CIM100#Package_InfAssetInfo"
-                   minOccurs="0"
-                   maxOccurs="unbounded">
-      <Comment>Kind of control for shunt impedance.</Comment>
-      <Stereotype label="enumeration">http://langdale.com.au/2005/UML#enumeration</Stereotype>
-      <EnumeratedValue hideInDiagrams="false"
-                       name="fixed"
-                       ea_guid="EAID_E2EEC3F1_49C1_4d81_BB2B_09839E687C37"
-                       baseResource="http://iec.ch/TC57/CIM100#ShuntImpedanceControlKind.fixed"
-                       code=""/>
-      <EnumeratedValue hideInDiagrams="false"
-                       name="localOnly"
-                       ea_guid="EAID_4AE4E7F0_DF5A_4f36_B980_F7F60E44EC5D"
-                       baseResource="http://iec.ch/TC57/CIM100#ShuntImpedanceControlKind.localOnly"
-                       code=""/>
-      <EnumeratedValue hideInDiagrams="false"
-                       name="remoteOnly"
-                       ea_guid="EAID_29DDFAFE_5682_49f8_B9AA_F80ADBE3FA20"
-                       baseResource="http://iec.ch/TC57/CIM100#ShuntImpedanceControlKind.remoteOnly"
-                       code=""/>
-      <EnumeratedValue hideInDiagrams="false"
-                       name="remoteWithLocalOverride"
-                       ea_guid="EAID_7B40D412_6D0F_4f91_A609_07ACC7DFDD8B"
-                       baseResource="http://iec.ch/TC57/CIM100#ShuntImpedanceControlKind.remoteWithLocalOverride"
-                       code=""/>
-   </EnumeratedType>
-   <EnumeratedType hideInDiagrams="false"
-                   name="ShuntImpedanceLocalControlKind"
-                   ea_guid="EAID_1DF1339E_9D7C_4d81_A2FE_6E08BC99C021"
-                   baseClass="http://iec.ch/TC57/CIM100#ShuntImpedanceLocalControlKind"
-                   package="InfAssetInfo"
-                   packageURI="http://iec.ch/TC57/CIM100#Package_InfAssetInfo"
-                   minOccurs="0"
-                   maxOccurs="unbounded">
-      <Comment>Kind of local control for shunt impedance.</Comment>
-      <Stereotype label="enumeration">http://langdale.com.au/2005/UML#enumeration</Stereotype>
-      <EnumeratedValue hideInDiagrams="false"
-                       name="current"
-                       ea_guid="EAID_59C4859C_A809_4cbc_A9C5_AF2DCF5DC8E6"
-                       baseResource="http://iec.ch/TC57/CIM100#ShuntImpedanceLocalControlKind.current"
-                       code=""/>
-      <EnumeratedValue hideInDiagrams="false"
-                       name="none"
-                       ea_guid="EAID_A9E6A720_8379_4788_93E8_8669DF42B249"
-                       baseResource="http://iec.ch/TC57/CIM100#ShuntImpedanceLocalControlKind.none"
-                       code=""/>
-      <EnumeratedValue hideInDiagrams="false"
-                       name="powerFactor"
-                       ea_guid="EAID_0423B958_8C0F_4ee3_BAFD_F949A9C07892"
-                       baseResource="http://iec.ch/TC57/CIM100#ShuntImpedanceLocalControlKind.powerFactor"
-                       code=""/>
-      <EnumeratedValue hideInDiagrams="false"
-                       name="reactivePower"
-                       ea_guid="EAID_57531641_5175_4c05_AA18_6141E897E0EB"
-                       baseResource="http://iec.ch/TC57/CIM100#ShuntImpedanceLocalControlKind.reactivePower"
-                       code=""/>
-      <EnumeratedValue hideInDiagrams="false"
-                       name="temperature"
-                       ea_guid="EAID_59E3E447_A9CF_484d_A056_4D6E52E2BE91"
-                       baseResource="http://iec.ch/TC57/CIM100#ShuntImpedanceLocalControlKind.temperature"
-                       code=""/>
-      <EnumeratedValue hideInDiagrams="false"
-                       name="time"
-                       ea_guid="EAID_0027B6DD_FEFC_49b9_9C6C_3945C9B3B565"
-                       baseResource="http://iec.ch/TC57/CIM100#ShuntImpedanceLocalControlKind.time"
-                       code=""/>
-      <EnumeratedValue hideInDiagrams="false"
-                       name="voltage"
-                       ea_guid="EAID_8550A25E_2926_423f_A26F_E3FE0CB36E2B"
-                       baseResource="http://iec.ch/TC57/CIM100#ShuntImpedanceLocalControlKind.voltage"
-                       code=""/>
    </EnumeratedType>
    <CompoundType hideInDiagrams="false"
                  name="Status"
@@ -1603,110 +1461,6 @@
                  baseClassIsShadowExtension="false"/>
    </Root>
    <SimpleType hideInDiagrams="false"
-               dataType="http://iec.ch/TC57/CIM100#ApparentPower"
-               name="ApparentPower"
-               ea_guid="EAID_95576B4A_D9AC_49fc_82ED_CB6DB2CE8584"
-               package="Domain"
-               packageURI="http://iec.ch/TC57/CIM100#Package_Domain"
-               xstype="float">
-      <Comment>Product of the RMS value of the voltage and the RMS value of the current.</Comment>
-      <Stereotype label="CIMDatatype">http://langdale.com.au/2005/UML#cimdatatype</Stereotype>
-      <Simple hideInDiagrams="false"
-              type="Float"
-              cimDatatype="http://iec.ch/TC57/CIM100#Float"
-              dataType="http://www.w3.org/2001/XMLSchema#float"
-              xstype="float"
-              name="value"
-              ea_guid="EAID_FEE24CD4_5876_4e4c_B179_AEAA3E11B738"
-              baseProperty="http://iec.ch/TC57/CIM100#ApparentPower.value"
-              basePropertyClass="http://iec.ch/TC57/CIM100#ApparentPower"
-              minOccurs="0"
-              maxOccurs="1">
-         <Comment/>
-         <Stereotype label="Attribute">http://langdale.com.au/2005/UML#attribute</Stereotype>
-      </Simple>
-      <Enumerated baseClass="http://iec.ch/TC57/CIM100#UnitSymbol"
-                  type="UnitSymbol"
-                  hideInDiagrams="false"
-                  name="unit"
-                  ea_guid="EAID_C93DE952_5AF9_40cc_9792_4D2372DC5EEF"
-                  constant="VA"
-                  baseProperty="http://iec.ch/TC57/CIM100#ApparentPower.unit"
-                  basePropertyClass="http://iec.ch/TC57/CIM100#ApparentPower"
-                  minOccurs="0"
-                  maxOccurs="1">
-         <Comment/>
-         <Stereotype label="enumeration">http://langdale.com.au/2005/UML#enumeration</Stereotype>
-         <Stereotype label="Attribute">http://langdale.com.au/2005/UML#attribute</Stereotype>
-      </Enumerated>
-      <Enumerated hideInDiagrams="false"
-                  type="UnitMultiplier"
-                  name="multiplier"
-                  constant=""
-                  ea_guid="EAID_C363463C_85C7_487f_BE31_B6444DAB07DD"
-                  baseClass="http://iec.ch/TC57/CIM100#UnitMultiplier"
-                  baseProperty="http://iec.ch/TC57/CIM100#ApparentPower.multiplier"
-                  basePropertyClass="http://iec.ch/TC57/CIM100#ApparentPower"
-                  minOccurs="0"
-                  maxOccurs="1">
-         <Comment/>
-         <Stereotype label="enumeration">http://langdale.com.au/2005/UML#enumeration</Stereotype>
-         <Stereotype label="Attribute">http://langdale.com.au/2005/UML#attribute</Stereotype>
-      </Enumerated>
-   </SimpleType>
-   <SimpleType hideInDiagrams="false"
-               dataType="http://iec.ch/TC57/CIM100#CurrentFlow"
-               name="CurrentFlow"
-               ea_guid="EAID_DC3FD69C_E9B2_440d_A113_BE84B71BA691"
-               package="Domain"
-               packageURI="http://iec.ch/TC57/CIM100#Package_Domain"
-               xstype="float">
-      <Comment>Electrical current with sign convention: positive flow is out of the conducting equipment into the connectivity node. Can be both AC and DC.</Comment>
-      <Stereotype label="CIMDatatype">http://langdale.com.au/2005/UML#cimdatatype</Stereotype>
-      <Simple hideInDiagrams="false"
-              type="Float"
-              cimDatatype="http://iec.ch/TC57/CIM100#Float"
-              dataType="http://www.w3.org/2001/XMLSchema#float"
-              xstype="float"
-              name="value"
-              ea_guid="EAID_83BDDC04_3689_432d_BF6E_0712C32CE504"
-              baseProperty="http://iec.ch/TC57/CIM100#CurrentFlow.value"
-              basePropertyClass="http://iec.ch/TC57/CIM100#CurrentFlow"
-              minOccurs="0"
-              maxOccurs="1">
-         <Comment/>
-         <Stereotype label="Attribute">http://langdale.com.au/2005/UML#attribute</Stereotype>
-      </Simple>
-      <Enumerated baseClass="http://iec.ch/TC57/CIM100#UnitSymbol"
-                  type="UnitSymbol"
-                  hideInDiagrams="false"
-                  name="unit"
-                  ea_guid="EAID_58C58CD1_5C85_4073_ACF8_9D9F1331364E"
-                  constant="A"
-                  baseProperty="http://iec.ch/TC57/CIM100#CurrentFlow.unit"
-                  basePropertyClass="http://iec.ch/TC57/CIM100#CurrentFlow"
-                  minOccurs="0"
-                  maxOccurs="1">
-         <Comment/>
-         <Stereotype label="enumeration">http://langdale.com.au/2005/UML#enumeration</Stereotype>
-         <Stereotype label="Attribute">http://langdale.com.au/2005/UML#attribute</Stereotype>
-      </Enumerated>
-      <Enumerated hideInDiagrams="false"
-                  type="UnitMultiplier"
-                  name="multiplier"
-                  constant=""
-                  ea_guid="EAID_86741909_5F72_4d38_8B1F_69C7C7308BE8"
-                  baseClass="http://iec.ch/TC57/CIM100#UnitMultiplier"
-                  baseProperty="http://iec.ch/TC57/CIM100#CurrentFlow.multiplier"
-                  basePropertyClass="http://iec.ch/TC57/CIM100#CurrentFlow"
-                  minOccurs="0"
-                  maxOccurs="1">
-         <Comment/>
-         <Stereotype label="enumeration">http://langdale.com.au/2005/UML#enumeration</Stereotype>
-         <Stereotype label="Attribute">http://langdale.com.au/2005/UML#attribute</Stereotype>
-      </Enumerated>
-   </SimpleType>
-   <SimpleType hideInDiagrams="false"
                dataType="http://iec.ch/TC57/CIM100#Length"
                name="Length"
                ea_guid="EAID_06F9A3F0_3AE3_4ad1_88F8_06C207238C3B"
@@ -1751,110 +1505,6 @@
                   baseClass="http://iec.ch/TC57/CIM100#UnitMultiplier"
                   baseProperty="http://iec.ch/TC57/CIM100#Length.multiplier"
                   basePropertyClass="http://iec.ch/TC57/CIM100#Length"
-                  minOccurs="0"
-                  maxOccurs="1">
-         <Comment/>
-         <Stereotype label="enumeration">http://langdale.com.au/2005/UML#enumeration</Stereotype>
-         <Stereotype label="Attribute">http://langdale.com.au/2005/UML#attribute</Stereotype>
-      </Enumerated>
-   </SimpleType>
-   <SimpleType hideInDiagrams="false"
-               dataType="http://iec.ch/TC57/CIM100#ReactivePower"
-               name="ReactivePower"
-               ea_guid="EAID_C15CB4E4_4430_43ea_AF69_BC3250B1F4A3"
-               package="Domain"
-               packageURI="http://iec.ch/TC57/CIM100#Package_Domain"
-               xstype="float">
-      <Comment>Product of RMS value of the voltage and the RMS value of the quadrature component of the current.</Comment>
-      <Stereotype label="CIMDatatype">http://langdale.com.au/2005/UML#cimdatatype</Stereotype>
-      <Simple hideInDiagrams="false"
-              type="Float"
-              cimDatatype="http://iec.ch/TC57/CIM100#Float"
-              dataType="http://www.w3.org/2001/XMLSchema#float"
-              xstype="float"
-              name="value"
-              ea_guid="EAID_4AEEBF1D_260E_4615_95F2_8219EA8B0AC9"
-              baseProperty="http://iec.ch/TC57/CIM100#ReactivePower.value"
-              basePropertyClass="http://iec.ch/TC57/CIM100#ReactivePower"
-              minOccurs="0"
-              maxOccurs="1">
-         <Comment/>
-         <Stereotype label="Attribute">http://langdale.com.au/2005/UML#attribute</Stereotype>
-      </Simple>
-      <Enumerated baseClass="http://iec.ch/TC57/CIM100#UnitSymbol"
-                  type="UnitSymbol"
-                  hideInDiagrams="false"
-                  name="unit"
-                  ea_guid="EAID_C4DA5044_2A5B_4504_997D_67F35395A5B0"
-                  constant="VAr"
-                  baseProperty="http://iec.ch/TC57/CIM100#ReactivePower.unit"
-                  basePropertyClass="http://iec.ch/TC57/CIM100#ReactivePower"
-                  minOccurs="0"
-                  maxOccurs="1">
-         <Comment/>
-         <Stereotype label="enumeration">http://langdale.com.au/2005/UML#enumeration</Stereotype>
-         <Stereotype label="Attribute">http://langdale.com.au/2005/UML#attribute</Stereotype>
-      </Enumerated>
-      <Enumerated hideInDiagrams="false"
-                  type="UnitMultiplier"
-                  name="multiplier"
-                  constant=""
-                  ea_guid="EAID_3ED78537_D36E_429a_AA73_EB86BF7020FB"
-                  baseClass="http://iec.ch/TC57/CIM100#UnitMultiplier"
-                  baseProperty="http://iec.ch/TC57/CIM100#ReactivePower.multiplier"
-                  basePropertyClass="http://iec.ch/TC57/CIM100#ReactivePower"
-                  minOccurs="0"
-                  maxOccurs="1">
-         <Comment/>
-         <Stereotype label="enumeration">http://langdale.com.au/2005/UML#enumeration</Stereotype>
-         <Stereotype label="Attribute">http://langdale.com.au/2005/UML#attribute</Stereotype>
-      </Enumerated>
-   </SimpleType>
-   <SimpleType hideInDiagrams="false"
-               dataType="http://iec.ch/TC57/CIM100#Voltage"
-               name="Voltage"
-               ea_guid="EAID_233C330A_11B8_4705_879C_5497380F1D82"
-               package="Domain"
-               packageURI="http://iec.ch/TC57/CIM100#Package_Domain"
-               xstype="float">
-      <Comment>Electrical voltage, can be both AC and DC.</Comment>
-      <Stereotype label="CIMDatatype">http://langdale.com.au/2005/UML#cimdatatype</Stereotype>
-      <Simple hideInDiagrams="false"
-              type="Float"
-              cimDatatype="http://iec.ch/TC57/CIM100#Float"
-              dataType="http://www.w3.org/2001/XMLSchema#float"
-              xstype="float"
-              name="value"
-              ea_guid="EAID_C86122FF_94E1_4244_975A_BA865D8135BC"
-              baseProperty="http://iec.ch/TC57/CIM100#Voltage.value"
-              basePropertyClass="http://iec.ch/TC57/CIM100#Voltage"
-              minOccurs="0"
-              maxOccurs="1">
-         <Comment/>
-         <Stereotype label="Attribute">http://langdale.com.au/2005/UML#attribute</Stereotype>
-      </Simple>
-      <Enumerated baseClass="http://iec.ch/TC57/CIM100#UnitSymbol"
-                  type="UnitSymbol"
-                  hideInDiagrams="false"
-                  name="unit"
-                  ea_guid="EAID_6E959BD4_0ACC_4884_99F5_0B158661A3D9"
-                  constant="V"
-                  baseProperty="http://iec.ch/TC57/CIM100#Voltage.unit"
-                  basePropertyClass="http://iec.ch/TC57/CIM100#Voltage"
-                  minOccurs="0"
-                  maxOccurs="1">
-         <Comment/>
-         <Stereotype label="enumeration">http://langdale.com.au/2005/UML#enumeration</Stereotype>
-         <Stereotype label="Attribute">http://langdale.com.au/2005/UML#attribute</Stereotype>
-      </Enumerated>
-      <Enumerated hideInDiagrams="false"
-                  type="UnitMultiplier"
-                  name="multiplier"
-                  constant=""
-                  ea_guid="EAID_5CFD034E_D7E1_4d20_BE0B_BB9E4F9D2D4B"
-                  baseClass="http://iec.ch/TC57/CIM100#UnitMultiplier"
-                  baseProperty="http://iec.ch/TC57/CIM100#Voltage.multiplier"
-                  basePropertyClass="http://iec.ch/TC57/CIM100#Voltage"
                   minOccurs="0"
                   maxOccurs="1">
          <Comment/>
@@ -1959,26 +1609,6 @@
             basePackage="http://iec.ch/TC57/CIM100#Package_IEC61970">
       <Comment>Top package for IEC 61970.</Comment>
       <ParentPackage name="TC57CIM" basePackage="http://iec.ch/TC57/CIM100#Package_TC57CIM"/>
-   </Package>
-   <Package name="InfAssetInfo"
-            ea_guid="EAPK_64B41E47_775F_4ec7_A068_4204B9810D7E"
-            basePackage="http://iec.ch/TC57/CIM100#Package_InfAssetInfo">
-      <ParentPackage name="InfIEC61968"
-                     basePackage="http://iec.ch/TC57/CIM100#Package_InfIEC61968"/>
-   </Package>
-   <Package name="InfIEC61968"
-            ea_guid="EAPK_6D361F11_F6D2_4e79_972E_9E34AA663CA4"
-            basePackage="http://iec.ch/TC57/CIM100#Package_InfIEC61968">
-      <Comment>This package and its subpackages contain informative (unstable) elements of the model, expected to evolve a lot or to be removed, and not published as IEC document yet. Some portions of it will be reworked and moved to normative packages as the need arises, and some portions may be removed.</Comment>
-      <Comment>WG14 does not generate documentation for this informative portion of the model.</Comment>
-      <ParentPackage name="IEC61968"
-                     basePackage="http://iec.ch/TC57/CIM100#Package_IEC61968"/>
-   </Package>
-   <Package name="InfWiresExt"
-            ea_guid="EAPK_C5B06802_9987_4648_AB20_57391B09A164"
-            basePackage="http://iec.ch/TC57/CIM100#Package_InfWiresExt">
-      <ParentPackage name="InfIEC61968"
-                     basePackage="http://iec.ch/TC57/CIM100#Package_InfIEC61968"/>
    </Package>
    <Package name="TC57CIM"
             ea_guid="EAPK_39AA7E64_A03A_4934_AF09_E74943F7E6C0"

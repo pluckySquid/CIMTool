@@ -1,20 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!-- 
 
-	Copyright 2026 UCAIug
+	Copyright 2026 Aspen Technology
+	All rights reserved.
 
-	Licensed under the Apache License, Version 2.0 (the "License");
-	you may not use this file except in compliance with the License.
-	You may obtain a copy of the License at
-
-	https://www.apache.org/licenses/LICENSE-2.0
-
-	Unless required by applicable law or agreed to in writing, software
-	distributed under the License is distributed on an "AS IS" BASIS,
-	WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-	
-	See the License for the specific language governing permissions and
-	limitations under the License.
 
 -->
 <rdf:RDF
@@ -27,23 +16,6 @@
     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
   xml:base="http://www.ucaiug.org/profile" > 
-  <rdf:Description rdf:nodeID="X33X7d496bcXa3X19d4b058497Xa3X-7fd3">
-    <rdf:first rdf:resource="#PhaseCode"/>
-    <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="X33X7d496bcXa3X19d4b058497Xa3X-7fd4">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
-    <owl:allValuesFrom rdf:nodeID="X33X7d496bcXa3X19d4b058497Xa3X-7fd5"/>
-    <owl:onProperty rdf:resource="http://iec.ch/TC57/CIM100#ShuntCompensatorControl.sensingPhaseCode"/>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="X33X7d496bcXa3X19d4b058497Xa3X-7fd5">
-    <uml:hasStereotype rdf:resource="http://langdale.com.au/2005/UML#attribute"/>
-    <uml:hasStereotype rdf:resource="http://langdale.com.au/2005/UML#enumeration"/>
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
-    <rdfs:label>sensingPhaseCode</rdfs:label>
-    <rdfs:subClassOf rdf:resource="http://iec.ch/TC57/CIM100#PhaseCode"/>
-    <owl:unionOf rdf:nodeID="X33X7d496bcXa3X19d4b058497Xa3X-7fd3"/>
-  </rdf:Description>
   <rdf:Description rdf:nodeID="X33X7d496bcXa3X19d4b058497Xa3X-7fd6">
     <rdf:first rdf:resource="#WireMaterialKind"/>
     <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
@@ -133,68 +105,8 @@
     <rdfs:label>coreRadius</rdfs:label>
     <owl:equivalentClass rdf:resource="http://iec.ch/TC57/CIM100#Length"/>
   </rdf:Description>
-  <rdf:Description rdf:nodeID="X33X7d496bcXa3X19d4b058497Xa3X-7fe6">
-    <rdf:first rdf:resource="#ShuntCompensatorControl"/>
-    <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="X33X7d496bcXa3X19d4b058497Xa3X-7fe7">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
-    <owl:allValuesFrom rdf:nodeID="X33X7d496bcXa3X19d4b058497Xa3X-7fe8"/>
-    <owl:onProperty rdf:resource="http://iec.ch/TC57/CIM100#ShuntCompensatorInfo.ShuntCompensatorControl"/>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="X33X7d496bcXa3X19d4b058497Xa3X-7fe8">
-    <uml:hasStereotype rdf:resource="http://langdale.com.au/2005/UML#informative"/>
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
-    <rdfs:label>ShuntCompensatorControl</rdfs:label>
-    <rdfs:subClassOf rdf:resource="http://iec.ch/TC57/CIM100#ShuntCompensatorControl"/>
-    <owl:unionOf rdf:nodeID="X33X7d496bcXa3X19d4b058497Xa3X-7fe6"/>
-  </rdf:Description>
   <rdf:Description rdf:nodeID="X33X7d496bcXa3X19d4b058497Xa3X-7ff5">
     <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="X33X7d496bcXa3X19d4b058497Xa3X-7ff8">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
-    <owl:allValuesFrom rdf:nodeID="X33X7d496bcXa3X19d4b058497Xa3X-7ff9"/>
-    <owl:onProperty rdf:resource="http://iec.ch/TC57/CIM100#ShuntCompensatorInfo.ratedVoltage"/>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="X33X7d496bcXa3X19d4b058497Xa3X-7ff9">
-    <uml:hasStereotype rdf:resource="http://langdale.com.au/2005/UML#attribute"/>
-    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Datatype"/>
-    <rdfs:label>ratedVoltage</rdfs:label>
-    <owl:equivalentClass rdf:resource="http://iec.ch/TC57/CIM100#Voltage"/>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="X33X7d496bcXa3X19d4b058497Xa3X-7ffa">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
-    <owl:allValuesFrom rdf:nodeID="X33X7d496bcXa3X19d4b058497Xa3X-7ffb"/>
-    <owl:onProperty rdf:resource="http://iec.ch/TC57/CIM100#ShuntCompensatorInfo.ratedReactivePower"/>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="X33X7d496bcXa3X19d4b058497Xa3X-7ffb">
-    <uml:hasStereotype rdf:resource="http://langdale.com.au/2005/UML#attribute"/>
-    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Datatype"/>
-    <rdfs:label>ratedReactivePower</rdfs:label>
-    <owl:equivalentClass rdf:resource="http://iec.ch/TC57/CIM100#ReactivePower"/>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="X33X7d496bcXa3X19d4b058497Xa3X-7ffc">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
-    <owl:allValuesFrom rdf:nodeID="X33X7d496bcXa3X19d4b058497Xa3X-7ffd"/>
-    <owl:onProperty rdf:resource="http://iec.ch/TC57/CIM100#ShuntCompensatorInfo.ratedCurrent"/>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="X33X7d496bcXa3X19d4b058497Xa3X-7ffd">
-    <uml:hasStereotype rdf:resource="http://langdale.com.au/2005/UML#attribute"/>
-    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Datatype"/>
-    <rdfs:label>ratedCurrent</rdfs:label>
-    <owl:equivalentClass rdf:resource="http://iec.ch/TC57/CIM100#CurrentFlow"/>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="X33X7d496bcXa3X19d4b058497Xa3X-7ffe">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
-    <owl:allValuesFrom rdf:nodeID="X33X7d496bcXa3X19d4b058497Xa3X-7fff"/>
-    <owl:onProperty rdf:resource="http://iec.ch/TC57/CIM100#ShuntCompensatorInfo.maxPowerLoss"/>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="X33X7d496bcXa3X19d4b058497Xa3X-7fff">
-    <uml:hasStereotype rdf:resource="http://langdale.com.au/2005/UML#attribute"/>
-    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Datatype"/>
-    <rdfs:label>maxPowerLoss</rdfs:label>
-    <owl:equivalentClass rdf:resource="http://iec.ch/TC57/CIM100#ApparentPower"/>
   </rdf:Description>
   <rdf:Description rdf:nodeID="X73X2b1f34bXa3X19d0cda48a9Xa3X-7fe5">
     <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
@@ -944,32 +856,6 @@
     <uml:hasStereotype rdf:resource="http://langdale.com.au/2005/UML#enumeration"/>
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
     <rdfs:subClassOf rdf:resource="http://iec.ch/TC57/CIM100#PhaseCode"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="#ShuntCompensatorControl">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
-    <rdfs:subClassOf rdf:nodeID="X33X7d496bcXa3X19d4b058497Xa3X-7fd4"/>
-    <rdfs:subClassOf rdf:resource="http://iec.ch/TC57/CIM100#ShuntCompensatorControl"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="#ShuntCompensatorInfo">
-    <uml:hasStereotype rdf:resource="http://langdale.com.au/2005/UML#concrete"/>
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
-    <rdfs:subClassOf rdf:nodeID="X33X7d496bcXa3X19d4b058497Xa3X-7fe7"/>
-    <rdfs:subClassOf rdf:nodeID="X33X7d496bcXa3X19d4b058497Xa3X-7ff8"/>
-    <rdfs:subClassOf rdf:nodeID="X33X7d496bcXa3X19d4b058497Xa3X-7ffa"/>
-    <rdfs:subClassOf rdf:nodeID="X33X7d496bcXa3X19d4b058497Xa3X-7ffc"/>
-    <rdfs:subClassOf rdf:nodeID="X33X7d496bcXa3X19d4b058497Xa3X-7ffe"/>
-    <rdfs:subClassOf rdf:resource="http://iec.ch/TC57/CIM100#ShuntCompensatorInfo"/>
-    <rdfs:subClassOf rdf:resource="#AssetInfo"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="#ShuntImpedanceControlKind">
-    <uml:hasStereotype rdf:resource="http://langdale.com.au/2005/UML#enumeration"/>
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
-    <rdfs:subClassOf rdf:resource="http://iec.ch/TC57/CIM100#ShuntImpedanceControlKind"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="#ShuntImpedanceLocalControlKind">
-    <uml:hasStereotype rdf:resource="http://langdale.com.au/2005/UML#enumeration"/>
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
-    <rdfs:subClassOf rdf:resource="http://iec.ch/TC57/CIM100#ShuntImpedanceLocalControlKind"/>
   </rdf:Description>
   <rdf:Description rdf:about="#Status">
     <uml:hasStereotype rdf:resource="http://langdale.com.au/2005/UML#compound"/>
