@@ -216,6 +216,72 @@ properties and verifies that all TPT rows — including base `IdentifiedObject` 
 intermediate table rows — are removed across the full inheritance chain.
 
 
+## Eclipse IDE Integration
+
+CIMTool developers who work primarily in Eclipse IDE have two options for accessing the
+`EfCoreSmokeTest` project from within their existing Eclipse workspace.
+
+
+### Option A — General Project Import (view only)
+
+Importing the project as a General Project requires no additional plugins and takes less
+than a minute. It gives full access to all project files — including this README, the
+`.csproj`, and all `.cs` source files — through Eclipse's file browser and text editor,
+with no C#-specific language intelligence.
+
+1. In Eclipse, select **File → Import → General → Existing Projects into Workspace**.
+2. Set the root directory to the `EfCoreSmokeTest` folder.
+3. Click **Finish**.
+
+The project appears in the Package Explorer. Files open in Eclipse's built-in text editor.
+All developmental work — editing `Program.cs`, running `dotnet run`, debugging — is
+performed externally in Visual Studio Code or a terminal. Eclipse serves purely as a
+project viewer under this option.
+
+
+### Option B — Eclipse aCute Plugin (full C# language support)
+
+Eclipse aCute provides a rich C# editor with error reporting, hover, content assist, and
+jump to references using OmniSharp, and syntax highlighting using TextMate grammar.
+Integration with OmniSharp-Roslyn and the Language Server Protocol is powered by Eclipse
+LSP4E. This is the same OmniSharp language server that the C# extension for Visual
+Studio Code uses, so the editing experience — completions, diagnostics, hover
+documentation, go-to-definition, find references — is equivalent to working in VS Code,
+presented through the familiar Eclipse IDE shell.
+
+aCute supports Eclipse versions through 2025-03 (4.35) and later. The .NET 8 SDK
+must already be installed and available on `PATH` before configuring aCute.
+
+**Prerequisites**
+
+- Eclipse IDE (2023-06 or later recommended)
+- .NET 8 SDK installed and on `PATH` — verify with `dotnet --version`
+
+**Installation steps**
+
+1. Open Eclipse and select **Help → Eclipse Marketplace**.
+2. Search for `aCute`.
+3. Select **Eclipse aCute: C# development tools** and click **Install**.
+4. Accept the license agreement and restart Eclipse when prompted.
+
+**Verifying the installation**
+
+Open any `.cs` file from the `EfCoreSmokeTest` project. Eclipse should open the file
+using the Generic Editor with C# language features active. If OmniSharp does not start
+automatically, check **Window → Preferences → aCute** to confirm the OmniSharp server
+path is detected. OmniSharp requires the .NET SDK on `PATH` to locate and load the
+project's dependencies; if it fails to start, verify `dotnet --version` is resolvable
+from a terminal launched from Eclipse's working directory.
+
+**Note for CIMTool developers**
+
+aCute is an optional convenience for developers who prefer to remain in Eclipse while
+reviewing or making minor edits to the C# smoke test. Running the test (`dotnet run`)
+and managing NuGet packages still requires a terminal or Visual Studio Code. For
+significant changes to `Program.cs` or the project structure, Visual Studio Code remains
+the recommended environment.
+
+
 ## Running the Test
 
 The .NET 8 SDK must be installed and `dotnet` available on `PATH`.
