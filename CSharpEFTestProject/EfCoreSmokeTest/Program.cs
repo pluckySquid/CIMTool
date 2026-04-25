@@ -23,6 +23,8 @@ RunSection("Name Association Behavior", VerifyNameAssociationBehavior);
 RunSection("Parent Organisation Delete Guard", VerifyParentOrganisationDeleteGuard);
 RunSection("Generated Compound Replacement Cleanup", VerifyGeneratedCompoundReplacementCleanup);
 RunSection("Generated Null Detach Cleanup", VerifyGeneratedNullDetachCleanup);
+RunSection("Generated Compound Async Cleanup", () => VerifyGeneratedCompoundAsyncCleanup().GetAwaiter().GetResult());
+RunSection("Generated Compoundless Entity Cleanup", VerifyCompoundlessEntityCleanup);
 RunSection("Generated Mapping Baseline", VerifyGeneratedMappingBaseline);
 RunSection("Inheritance Storage", VerifyInheritanceStorage);
 RunSection("Inheritance Delete Cleanup", VerifyInheritanceDeleteCleanup);
@@ -45,6 +47,12 @@ if (diagnostics.Count > 0)
 void RunSection(string name, Action action)
 {
     action();
+    completedSections.Add(name);
+}
+
+void RunSectionAsync(string name, Func<Task> action)
+{
+    action().GetAwaiter().GetResult();
     completedSections.Add(name);
 }
 
@@ -116,10 +124,8 @@ void VerifyReflectionContract()
             return parameters.Length == 1 && typeof(DbContextOptions).IsAssignableFrom(parameters[0].ParameterType);
         });
 
-    if (!optionsCtorExists)
-    {
-        diagnostics.Add("GENERATOR GAP OBSERVED: DbContextBase does not currently expose a DbContextOptions constructor; the smoke test configures SQLite via OnConfiguring override.");
-    }
+    AssertCondition(optionsCtorExists,
+        "Expected DbContextBase to expose a protected DbContextOptions constructor for dependency injection registration.");
 }
 
 void VerifyEfMetadataContract()
@@ -132,6 +138,10 @@ void VerifyEfMetadataContract()
         AssertPrimaryKey(context, typeof(SampleProfile.Name), nameof(SampleProfile.Name.Id));
         AssertPrimaryKey(context, typeof(SampleProfile.ElectronicAddress), nameof(SampleProfile.ElectronicAddress.Id));
         AssertPrimaryKey(context, typeof(SampleProfile.StreetAddress), nameof(SampleProfile.StreetAddress.Id));
+        AssertPrimaryKey(context, typeof(SampleProfile.CrewStatusKind), nameof(SampleProfile.CrewStatusKind.Name));
+        AssertPrimaryKey(context, typeof(SampleProfile.PhaseCode), nameof(SampleProfile.PhaseCode.Name));
+        AssertPrimaryKey(context, typeof(SampleProfile.WireInsulationKind), nameof(SampleProfile.WireInsulationKind.Name));
+        AssertPrimaryKey(context, typeof(SampleProfile.WireMaterialKind), nameof(SampleProfile.WireMaterialKind.Name));
 
         AssertTableName(context, typeof(SampleProfile.IdentifiedObject), "IdentifiedObject");
         AssertTableName(context, typeof(SampleProfile.Name), "Name");
@@ -183,14 +193,6 @@ void VerifySqlSchemaParity()
     AssertCondition(sql.Contains("CREATE INDEX ix_Name_IdentifiedObject ON \"Name\" ( \"IdentifiedObject\" );"),
         "Expected SQL index on Name.IdentifiedObject.");
 
-    foreach (var lookup in new[] { "CrewStatusKind", "PhaseCode", "WireInsulationKind", "WireMaterialKind" })
-    {
-        if (sql.Contains($"CREATE TABLE \"{lookup}\" ( \"name\" VARCHAR(100) UNIQUE );"))
-        {
-            diagnostics.Add($"PARITY NOTE OBSERVED: SQL uses UNIQUE instead of PRIMARY KEY for {lookup}.name, while EF treats it as the key.");
-        }
-    }
-
     diagnostics.Add("PARITY GAP OBSERVED: SQL models compound ownership with reverse ON DELETE CASCADE constraints, while generated EF Core uses DeleteBehavior.Restrict plus SaveChanges cleanup.");
 }
 
@@ -235,6 +237,15 @@ void VerifyLookupEqualitySemantics()
         "Expected TelephoneNumber constructor to assign a surrogate Id.");
     AssertCondition(!string.IsNullOrWhiteSpace(new SampleProfile.StreetAddress().Id),
         "Expected StreetAddress constructor to assign a surrogate Id.");
+
+    var phone1 = new SampleProfile.TelephoneNumber();
+    var phone2 = new SampleProfile.TelephoneNumber();
+    AssertCondition(phone1.Id != phone2.Id,
+        "Expected each TelephoneNumber constructor call to assign a distinct surrogate Id.");
+    var addr1 = new SampleProfile.ElectronicAddress();
+    var addr2 = new SampleProfile.ElectronicAddress();
+    AssertCondition(addr1.Id != addr2.Id,
+        "Expected each ElectronicAddress constructor call to assign a distinct surrogate Id.");
 }
 
 void VerifyNameAssociationBehavior()
@@ -399,15 +410,12 @@ void VerifyGeneratedCompoundReplacementCleanup()
             "Expected generated cleanup to remove the replaced TelephoneNumber row.");
         AssertCondition(verificationContext.Set<SampleProfile.StreetAddress>().Count() == 1,
             "Expected generated cleanup to remove the replaced StreetAddress row.");
-        var statusCount = verificationContext.Set<SampleProfile.Status>().Count();
-        var streetDetailCount = verificationContext.Set<SampleProfile.StreetDetail>().Count();
-        var townDetailCount = verificationContext.Set<SampleProfile.TownDetail>().Count();
-
-        if (statusCount != 1 || streetDetailCount != 1 || townDetailCount != 1)
-        {
-            diagnostics.Add(
-                $"KNOWN ISSUE REPRODUCED: replacing StreetAddress cleans the StreetAddress row itself, but nested Status/StreetDetail/TownDetail rows remain behind ({statusCount}/{streetDetailCount}/{townDetailCount}).");
-        }
+        AssertCondition(verificationContext.Set<SampleProfile.Status>().Count() == 1,
+            "Expected Phase 2 generated cleanup to remove the nested Status row orphaned by StreetAddress replacement.");
+        AssertCondition(verificationContext.Set<SampleProfile.StreetDetail>().Count() == 1,
+            "Expected Phase 2 generated cleanup to remove the nested StreetDetail row orphaned by StreetAddress replacement.");
+        AssertCondition(verificationContext.Set<SampleProfile.TownDetail>().Count() == 1,
+            "Expected Phase 2 generated cleanup to remove the nested TownDetail row orphaned by StreetAddress replacement.");
     });
 }
 
@@ -456,15 +464,12 @@ void VerifyGeneratedNullDetachCleanup()
             "Expected generated cleanup to delete detached TelephoneNumber rows.");
         AssertCondition(verificationContext.Set<SampleProfile.StreetAddress>().Count() == 0,
             "Expected generated cleanup to delete detached StreetAddress rows.");
-        var statusCount = verificationContext.Set<SampleProfile.Status>().Count();
-        var streetDetailCount = verificationContext.Set<SampleProfile.StreetDetail>().Count();
-        var townDetailCount = verificationContext.Set<SampleProfile.TownDetail>().Count();
-
-        if (statusCount != 0 || streetDetailCount != 0 || townDetailCount != 0)
-        {
-            diagnostics.Add(
-                $"KNOWN ISSUE REPRODUCED: null-detaching StreetAddress removes the StreetAddress row, but nested Status/StreetDetail/TownDetail rows remain behind ({statusCount}/{streetDetailCount}/{townDetailCount}).");
-        }
+        AssertCondition(verificationContext.Set<SampleProfile.Status>().Count() == 0,
+            "Expected Phase 2 generated cleanup to delete nested Status rows orphaned by StreetAddress null-detach.");
+        AssertCondition(verificationContext.Set<SampleProfile.StreetDetail>().Count() == 0,
+            "Expected Phase 2 generated cleanup to delete nested StreetDetail rows orphaned by StreetAddress null-detach.");
+        AssertCondition(verificationContext.Set<SampleProfile.TownDetail>().Count() == 0,
+            "Expected Phase 2 generated cleanup to delete nested TownDetail rows orphaned by StreetAddress null-detach.");
     });
 }
 
@@ -605,12 +610,117 @@ void VerifyInheritanceDeleteCleanup()
 
         AssertCondition(!verificationContext.IdentifiedObjects.Any(x => x.MRId == "wire-overhead-delete-001"),
             "Expected deleting OverheadWireInfo to remove its IdentifiedObject base row.");
+        AssertCondition(!verificationContext.AssetInfos.Any(x => x.MRId == "wire-overhead-delete-001"),
+            "Expected deleting OverheadWireInfo to remove its AssetInfo intermediate row.");
         AssertCondition(!verificationContext.WireInfos.Any(x => x.MRId == "wire-overhead-delete-001"),
             "Expected deleting OverheadWireInfo to remove its WireInfo row.");
         AssertCondition(!verificationContext.OverheadWireInfos.Any(x => x.MRId == "wire-overhead-delete-001"),
             "Expected deleting OverheadWireInfo to remove its derived row.");
     });
 }
+
+async Task VerifyGeneratedCompoundAsyncCleanup()
+{
+    await WithFreshDatabaseAsync(async connection =>
+    {
+        string originalPhoneId;
+
+        using (var context = new SampleProfileDbContext(connection))
+        {
+            var organisation = new SampleProfile.Organisation
+            {
+                MRId = "org-async-001",
+                NameValue = "Async Utility",
+                Phone1 = new SampleProfile.TelephoneNumber { ItuPhone = "+1-555-0500" },
+                StreetAddress = CreateAddressGraph("async-initial")
+            };
+
+            context.Add(organisation);
+            await context.SaveChangesAsync();
+
+            originalPhoneId = organisation.Phone1Id!;
+        }
+
+        using (var context = new SampleProfileDbContext(connection))
+        {
+            var loaded = context.Organisations
+                .Include(x => x.Phone1)
+                .Include(x => x.StreetAddress)!.ThenInclude(x => x!.Status)
+                .Include(x => x.StreetAddress)!.ThenInclude(x => x!.StreetDetail)
+                .Include(x => x.StreetAddress)!.ThenInclude(x => x!.TownDetail)
+                .Single(x => x.MRId == "org-async-001");
+
+            loaded.Phone1 = new SampleProfile.TelephoneNumber { ItuPhone = "+1-555-0599" };
+            loaded.StreetAddress = CreateAddressGraph("async-updated");
+            await context.SaveChangesAsync();
+        }
+
+        using var verificationContext = new SampleProfileDbContext(connection);
+        AssertCondition(verificationContext.Set<SampleProfile.TelephoneNumber>().Count() == 1,
+            "Expected SaveChangesAsync cleanup to remove the replaced TelephoneNumber row.");
+        AssertCondition(verificationContext.Set<SampleProfile.StreetAddress>().Count() == 1,
+            "Expected SaveChangesAsync cleanup to remove the replaced StreetAddress row.");
+        AssertCondition(verificationContext.Set<SampleProfile.Status>().Count() == 1,
+            "Expected SaveChangesAsync Phase 2 cleanup to remove nested Status rows.");
+        AssertCondition(verificationContext.Set<SampleProfile.StreetDetail>().Count() == 1,
+            "Expected SaveChangesAsync Phase 2 cleanup to remove nested StreetDetail rows.");
+        AssertCondition(verificationContext.Set<SampleProfile.TownDetail>().Count() == 1,
+            "Expected SaveChangesAsync Phase 2 cleanup to remove nested TownDetail rows.");
+    });
+}
+
+void VerifyCompoundlessEntityCleanup()
+{
+    WithFreshDatabase(connection =>
+    {
+        // Exercises the early-return path in the generated SaveChanges overrides:
+        // when CollectCompoundOrphans returns an empty list, the second SaveChanges
+        // is skipped and rows = base.SaveChanges() is returned directly.
+        using (var context = new SampleProfileDbContext(connection))
+        {
+            context.Add(new SampleProfile.Organisation
+            {
+                MRId = "org-compoundless-001",
+                NameValue = "No Compounds Utility"
+            });
+            context.SaveChanges();
+        }
+
+        using (var context = new SampleProfileDbContext(connection))
+        {
+            var loaded = context.Organisations.Single(x => x.MRId == "org-compoundless-001");
+            loaded.NameValue = "No Compounds Utility Updated";
+            context.SaveChanges();
+        }
+
+        using (var context = new SampleProfileDbContext(connection))
+        {
+            context.Remove(context.Organisations.Single(x => x.MRId == "org-compoundless-001"));
+            context.SaveChanges();
+        }
+
+        using var verificationContext = new SampleProfileDbContext(connection);
+        AssertCondition(!verificationContext.Organisations.Any(x => x.MRId == "org-compoundless-001"),
+            "Expected compoundless Organisation to be deleted cleanly.");
+        AssertCondition(!verificationContext.IdentifiedObjects.Any(x => x.MRId == "org-compoundless-001"),
+            "Expected compoundless Organisation deletion to remove its IdentifiedObject base row.");
+    });
+}
+
+async Task WithFreshDatabaseAsync(Func<SqliteConnection, Task> action)
+{
+    using var connection = new SqliteConnection("Data Source=:memory:");
+    connection.Open();
+
+    using (var setupContext = new SampleProfileDbContext(connection))
+    {
+        setupContext.Database.EnsureDeleted();
+        setupContext.Database.EnsureCreated();
+    }
+
+    await action(connection);
+}
+
 
 void WithFreshDatabase(Action<SqliteConnection> action)
 {
