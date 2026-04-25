@@ -246,14 +246,14 @@ void VerifyNameAssociationBehavior()
             var organisation = new SampleProfile.Organisation
             {
                 MRId = "org-name-001",
-                NameValue = "Todd Utility",
+                NameValue = "Acme Utility",
                 Phone1 = new SampleProfile.TelephoneNumber { ItuPhone = "+1-555-0100" }
             };
 
             var name = new SampleProfile.Name
             {
                 Id = "name-001",
-                NameValue = "Todd Utility Legal Name",
+                NameValue = "Acme Utility Legal Name",
                 IdentifiedObject = organisation
             };
 
@@ -270,7 +270,7 @@ void VerifyNameAssociationBehavior()
 
             AssertCondition(loaded.IdentifiedObject?.MRId == "org-name-001",
                 "Expected Name.IdentifiedObject to round-trip through EF Core.");
-            AssertCondition(loaded.NameValue == "Todd Utility Legal Name",
+            AssertCondition(loaded.NameValue == "Acme Utility Legal Name",
                 "Expected Name.NameValue to round-trip through EF Core.");
         }
 
