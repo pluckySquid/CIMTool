@@ -1,6 +1,0 @@
-D:\CIMug-GIT-REPOS\PluckySquid\CSharpEFTestProject\EfCoreSmokeTest\obj\Debug\net8.0\EfCoreSmokeTest.csproj.AssemblyReference.cache
-D:\CIMug-GIT-REPOS\PluckySquid\CSharpEFTestProject\EfCoreSmokeTest\obj\Debug\net8.0\EfCoreSmokeTest.GeneratedMSBuildEditorConfig.editorconfig
-D:\CIMug-GIT-REPOS\PluckySquid\CSharpEFTestProject\EfCoreSmokeTest\obj\Debug\net8.0\EfCoreSmokeTest.AssemblyInfoInputs.cache
-D:\CIMug-GIT-REPOS\PluckySquid\CSharpEFTestProject\EfCoreSmokeTest\obj\Debug\net8.0\EfCoreSmokeTest.AssemblyInfo.cs
-D:\CIMug-GIT-REPOS\PluckySquid\CSharpEFTestProject\EfCoreSmokeTest\obj\Debug\net8.0\EfCoreSmokeTest.csproj.CoreCompileInputs.cache
-D:\CIMug-GIT-REPOS\PluckySquid\CSharpEFTestProject\EfCoreSmokeTest\obj\Debug\net8.0\EfCoreSmokeTest.sourcelink.json
