@@ -1179,7 +1179,7 @@ public class SampleProfile {
      * General purpose street and postal address information.
      */
     @Entity
-    @Table(name="StreetAddress", indexes = {{ @Index(name="ix_StreetAddress_status", columnList="status"), @Index(name="ix_StreetAddress_streetDetail", columnList="streetDetail"), @Index(name="ix_StreetAddress_townDetail", columnList="townDetail") }})
+    @Table(name="StreetAddress", indexes = { @Index(name="ix_StreetAddress_status", columnList="status"), @Index(name="ix_StreetAddress_streetDetail", columnList="streetDetail"), @Index(name="ix_StreetAddress_townDetail", columnList="townDetail") })
     public static class StreetAddress {
         
         @Id
@@ -1350,7 +1350,7 @@ public class SampleProfile {
      * 'mRID'.
      */
     @Entity
-    @Table(name="Name", indexes = {{ @Index(name="ix_Name_IdentifiedObject", columnList="IdentifiedObject") }})
+    @Table(name="Name", indexes = { @Index(name="ix_Name_IdentifiedObject", columnList="IdentifiedObject") })
     public static class Name {
         @Id
         @GeneratedValue(strategy=GenerationType.UUID)
@@ -1428,7 +1428,7 @@ public class SampleProfile {
      * customer, etc.
      */
     @Entity
-    @Table(name="Organisation", indexes = {{ @Index(name="ix_Organisation_electronicAddress", columnList="electronicAddress"), @Index(name="ix_Organisation_ParentOrganisation", columnList="ParentOrganisation"), @Index(name="ix_Organisation_phone1", columnList="phone1"), @Index(name="ix_Organisation_phone2", columnList="phone2"), @Index(name="ix_Organisation_postalAddress", columnList="postalAddress"), @Index(name="ix_Organisation_streetAddress", columnList="streetAddress") }})
+    @Table(name="Organisation", indexes = { @Index(name="ix_Organisation_electronicAddress", columnList="electronicAddress"), @Index(name="ix_Organisation_ParentOrganisation", columnList="ParentOrganisation"), @Index(name="ix_Organisation_phone1", columnList="phone1"), @Index(name="ix_Organisation_phone2", columnList="phone2"), @Index(name="ix_Organisation_postalAddress", columnList="postalAddress"), @Index(name="ix_Organisation_streetAddress", columnList="streetAddress") })
     @PrimaryKeyJoinColumn(name="mRID")
     public static class Organisation extends IdentifiedObject {
         
