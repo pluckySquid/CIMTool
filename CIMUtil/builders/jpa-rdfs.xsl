@@ -1147,7 +1147,7 @@
                 <xsl:variable name="idxCols"   select="cimtool:index-columns(.)"/>
                 <xsl:choose>
                     <xsl:when test="exists($idxCols)">
-                        <item>@Table(name="<xsl:value-of select="$className"/>", indexes = {{ <xsl:for-each select="$idxCols">@Index(name="ix_<xsl:value-of select="$className"/>_<xsl:value-of select="."/>", columnList="<xsl:value-of select="."/>")<xsl:if test="position() != last()">, </xsl:if></xsl:for-each> }})</item>
+                        <item>@Table(name="<xsl:value-of select="$className"/>", indexes = { <xsl:for-each select="$idxCols">@Index(name="ix_<xsl:value-of select="$className"/>_<xsl:value-of select="."/>", columnList="<xsl:value-of select="."/>")<xsl:if test="position() != last()">, </xsl:if></xsl:for-each> })</item>
                     </xsl:when>
                     <xsl:otherwise>
                         <item>@Table(name="<xsl:value-of select="$className"/>")</item>
@@ -1210,13 +1210,13 @@
                 <xsl:variable name="idxCols"    select="cimtool:index-columns(.)"/>
                 <xsl:choose>
                     <xsl:when test="exists($uniqueCols) and exists($idxCols)">
-                        <item>@Table(name="<xsl:value-of select="$className"/>", uniqueConstraints = {{ @UniqueConstraint(columnNames = {{<xsl:for-each select="$uniqueCols">"<xsl:value-of select="."/>"<xsl:if test="position() != last()">, </xsl:if></xsl:for-each>}}) }}, indexes = {{ <xsl:for-each select="$idxCols">@Index(name="ix_<xsl:value-of select="$className"/>_<xsl:value-of select="."/>", columnList="<xsl:value-of select="."/>")<xsl:if test="position() != last()">, </xsl:if></xsl:for-each> }})</item>
+                        <item>@Table(name="<xsl:value-of select="$className"/>", uniqueConstraints = { @UniqueConstraint(columnNames = {<xsl:for-each select="$uniqueCols">"<xsl:value-of select="."/>"<xsl:if test="position() != last()">, </xsl:if></xsl:for-each>}) }, indexes = { <xsl:for-each select="$idxCols">@Index(name="ix_<xsl:value-of select="$className"/>_<xsl:value-of select="."/>", columnList="<xsl:value-of select="."/>")<xsl:if test="position() != last()">, </xsl:if></xsl:for-each> })</item>
                     </xsl:when>
                     <xsl:when test="exists($uniqueCols)">
-                        <item>@Table(name="<xsl:value-of select="$className"/>", uniqueConstraints = {{ @UniqueConstraint(columnNames = {{<xsl:for-each select="$uniqueCols">"<xsl:value-of select="."/>"<xsl:if test="position() != last()">, </xsl:if></xsl:for-each>}}) }})</item>
+                        <item>@Table(name="<xsl:value-of select="$className"/>", uniqueConstraints = { @UniqueConstraint(columnNames = {<xsl:for-each select="$uniqueCols">"<xsl:value-of select="."/>"<xsl:if test="position() != last()">, </xsl:if></xsl:for-each>}) })</item>
                     </xsl:when>
                     <xsl:when test="exists($idxCols)">
-                        <item>@Table(name="<xsl:value-of select="$className"/>", indexes = {{ <xsl:for-each select="$idxCols">@Index(name="ix_<xsl:value-of select="$className"/>_<xsl:value-of select="."/>", columnList="<xsl:value-of select="."/>")<xsl:if test="position() != last()">, </xsl:if></xsl:for-each> }})</item>
+                        <item>@Table(name="<xsl:value-of select="$className"/>", indexes = { <xsl:for-each select="$idxCols">@Index(name="ix_<xsl:value-of select="$className"/>_<xsl:value-of select="."/>", columnList="<xsl:value-of select="."/>")<xsl:if test="position() != last()">, </xsl:if></xsl:for-each> })</item>
                     </xsl:when>
                     <xsl:otherwise>
                         <item>@Table(name="<xsl:value-of select="$className"/>")</item>
@@ -1332,7 +1332,7 @@
         <item>@Entity</item>
         <xsl:choose>
             <xsl:when test="exists($idxCols)">
-                <item>@Table(name="<xsl:value-of select="$className"/>", indexes = {{ <xsl:for-each select="$idxCols">@Index(name="ix_<xsl:value-of select="$className"/>_<xsl:value-of select="."/>", columnList="<xsl:value-of select="."/>")<xsl:if test="position() != last()">, </xsl:if></xsl:for-each> }})</item>
+                <item>@Table(name="<xsl:value-of select="$className"/>", indexes = { <xsl:for-each select="$idxCols">@Index(name="ix_<xsl:value-of select="$className"/>_<xsl:value-of select="."/>", columnList="<xsl:value-of select="."/>")<xsl:if test="position() != last()">, </xsl:if></xsl:for-each> })</item>
             </xsl:when>
             <xsl:otherwise>
                 <item>@Table(name="<xsl:value-of select="$className"/>")</item>

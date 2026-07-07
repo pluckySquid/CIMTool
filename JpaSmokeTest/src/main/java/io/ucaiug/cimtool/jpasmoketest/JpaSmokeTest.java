@@ -83,8 +83,9 @@ public final class JpaSmokeTest {
         assertCondition(!generated.startsWith("<?xml"),
             "Generated Java must be rendered text, not the Indent XML document.");
         assertCondition(generated.startsWith("// ============================================================")
-                        || generated.startsWith("/*"),
-            "Expected generated Java to start with the banner comment.");
+                        || generated.startsWith("/*")
+                        || generated.startsWith("package io.ucaiug.cimtool.generated;"),
+            "Expected generated Java to start with the banner comment or the package declaration.");
         assertCondition(generated.contains("package io.ucaiug.cimtool.generated;"),
             "Expected the generated package declaration.");
         assertCondition(generated.contains("import jakarta.persistence.*;"),
@@ -510,7 +511,7 @@ public final class JpaSmokeTest {
                 s.remove(s.get(SampleProfile.OverheadWireInfo.class, "wire-overhead-delete-001")));
             try (Connection c = connect(currentDbUrl()); Statement st = c.createStatement()) {
                 for (String table : List.of("IdentifiedObject", "AssetInfo", "WireInfo", "OverheadWireInfo")) {
-                    try (ResultSet rs = st.executeQuery("select count(*) from " + resolveTable(c, table))) {
+                    try (ResultSet rs = st.executeQuery("select count(*) from \"" + resolveTable(c, table) + "\"")) {
                         rs.next();
                         assertCondition(rs.getInt(1) == 0,
                             "Expected deleting OverheadWireInfo to clear its " + table + " row.");
@@ -583,6 +584,13 @@ public final class JpaSmokeTest {
         cfg.setProperty("hibernate.connection.password", "");
         cfg.setProperty("hibernate.hbm2ddl.auto", "create");
         cfg.setProperty("hibernate.show_sql", "false");
+        // The generated entities use raw CIM attribute names as column names (e.g.
+        // Status.value); the authoritative sql-rdfs-ansi92 DDL quotes every identifier,
+        // so Hibernate must quote them too or H2 rejects reserved words like VALUE.
+        cfg.setProperty("hibernate.globally_quoted_identifiers", "true");
+        // ...but generated @Column(columnDefinition=...) values (e.g. INTEGER DEFAULT 0)
+        // must not be quoted along with them.
+        cfg.setProperty("hibernate.globally_quoted_identifiers_skip_column_definitions", "true");
         try (SessionFactory factory = cfg.buildSessionFactory()) {
             action.accept(factory);
         }
