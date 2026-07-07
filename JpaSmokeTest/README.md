@@ -62,7 +62,7 @@ Compilation itself is the first test — it proves the generated Java is valid.
 A successful run prints the list of passed sections followed by diagnostics:
 
 ```
-Comprehensive JPA regression test passed (12 sections).
+Comprehensive JPA regression test passed (15 sections).
 - Generated Java Text Integrity
 - Reflection Contract
 - ...
@@ -99,12 +99,28 @@ translate to JPA:
 11. **Inheritance Delete Cleanup** — leaf delete removes rows in every table of
     the chain.
 12. **Compoundless Entity Lifecycle** — plain insert/update/delete.
+13. **Authoritative DDL Entity Round-Trip** — runs the generated entities with
+    `hbm2ddl=none` against the schema created by executing the real
+    `sql-rdfs-ansi92` DDL (the deployment mode the generated file's header
+    prescribes), proving JOINED loads and the `UUID` ↔ `VARCHAR(100)` surrogate
+    binding work on the authoritative schema. Includes an insert-discipline
+    probe documenting that the paired forward/reverse compound FKs admit no
+    valid insert order under immediate FK checking.
+14. **Authoritative DDL Owner Delete Cascade** — pins down the DDL's
+    reverse-cascade compound cleanup story on a live database: either the owner
+    delete cascades the full compound chain, or (as on H2) the forward owner FK
+    blocks the cascade mid-flight and the delete is rejected atomically.
+    Reported as a `DDL FINDING` diagnostic.
+15. **Authoritative DDL Replacement Guard** — the schema counterpart of the C#
+    `DbContextBase` cleanup sections: repointing, detaching, and deleting a
+    referenced compound row are all rejected by the constraint pair, while
+    in-place attribute updates succeed.
 
 ## Intentional JPA ↔ SQL parity gaps
 
 | Behavior | SQL (`sql-rdfs-ansi92`) | JPA (`jpa-rdfs`) | Notes |
 |---|---|---|---|
-| Compound cleanup on owner delete | Reverse `ON DELETE CASCADE` constraints | Forward `@ManyToOne(cascade=REMOVE)` from the owner | Same intent, different mechanism; verified by the Compound Lifecycle section |
+| Compound cleanup on owner delete | Reverse `ON DELETE CASCADE` constraints | Forward `@ManyToOne(cascade=REMOVE)` from the owner | Same intent, different mechanism. Note: under immediate FK checking the SQL mechanism cannot execute — the forward owner FK blocks both compound inserts and the owner-delete cascade (sections 13/14 `DDL FINDING`s); the DDL's cleanup story effectively requires deferred constraints |
 | Compound cleanup on replace/detach | Handled by the reverse cascade when the old row's owner reference is dropped | No equivalent — replaced/detached compound rows remain (the generated C# adds a `DbContextBase` SaveChanges cleanup layer; no JPA analog exists yet) | Reported as `BASELINE OBSERVED` diagnostic |
 | Surrogate UUID assignment | `id` populated by the inserting application | `@GeneratedValue(strategy=UUID)` — assigned by the JPA provider on persist | The generated C# assigns `Guid.NewGuid()` in constructors instead |
 
