@@ -60,7 +60,7 @@
             <goals><goal>run</goal></goals>
             <configuration>
               <target>
-                <fail message="Missing generated fixture: ${profiles.dir}/SampleProfile.jpa-rdfs.java.${line.separator}Generate it with CIMTool (jpa-rdfs builder enabled on Profiles/SampleProfile.owl) or run ./regen-fixtures.sh — see JpaSmokeTest/README.md.">
+                <fail message="Missing generated fixture: ${profiles.dir}/SampleProfile.jpa-rdfs.java.${line.separator}Generate it with CIMTool (jpa-rdfs builder enabled on Profiles/SampleProfile.owl) — see JpaSmokeTest/README.md.">
                   <condition>
                     <not><available file="${profiles.dir}/SampleProfile.jpa-rdfs.java"/></not>
                   </condition>
@@ -94,6 +94,12 @@
         <version>3.5.0</version>
         <configuration>
           <mainClass>io.ucaiug.cimtool.jpasmoketest.JpaSmokeTest</mainClass>
+          <systemProperties>
+            <systemProperty>
+              <key>cimtool.profiles.dir</key>
+              <value>${profiles.dir}</value>
+            </systemProperty>
+          </systemProperties>
         </configuration>
       </plugin>
     </plugins>
