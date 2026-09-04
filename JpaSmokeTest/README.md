@@ -62,7 +62,7 @@ Compilation itself is the first test — it proves the generated Java is valid.
 A successful run prints the list of passed sections followed by diagnostics:
 
 ```
-Comprehensive JPA regression test passed (15 sections).
+Comprehensive JPA regression test passed (16 sections).
 - Generated Java Text Integrity
 - Reflection Contract
 - ...
@@ -81,37 +81,53 @@ translate to JPA:
 2. **Reflection Contract** — `@Entity`/`@Table` names; `@Id` placement (natural
    `mRID` at the IdentifiedObject root, `name` on enum lookup classes, generated
    UUID `id` on compounds); `@Inheritance(JOINED)`/`@PrimaryKeyJoinColumn`;
-   `allClasses[]` completeness and ordering.
+   `allClasses[]` completeness and ordering; cascade contract (compound
+   references cascade `REMOVE`, independent associations do not); whether
+   compound references declare uniqueness anywhere JPA allows it and String
+   key columns carry `length=100`, as the DDL and the generated C# do
+   (reported as `FINDING`s); column names of `name`/`id` properties.
 3. **JPA Metadata Contract** — JDBC metadata of the Hibernate-created schema:
-   primary keys, tables, foreign-key targets.
+   primary keys, tables, foreign-key targets, unique indexes on compound FK
+   columns, key column sizes and surrogate key column types (reported as
+   `FINDING`s where they differ from the DDL).
 4. **SQL Schema Parity** — textual assertions on the generated ANSI-92 DDL.
 5. **SQL DDL Cross-Check** — executes the generated DDL into a second H2
    database and diffs tables, columns, primary keys, and foreign-key edges
    against the Hibernate-generated schema.
 6. **Lookup Equality Semantics** — `equals()`/`hashCode()` for enum lookup,
-   compound, and IdentifiedObject-style entities; UUID assignment on persist.
+   compound, Name, and IdentifiedObject-style entities; UUID assignment on
+   persist, distinct ids per persisted compound type, transient inequality.
 7. **Name Association Behavior** — insert/load/delete round-trip and the
    foreign-key delete guard on the referenced Organisation.
 8. **Parent Organisation Delete Guard** — self-referential FK protection.
-9. **Compound Lifecycle** — owner delete cascade, replacement/detach baseline.
-10. **Inheritance Storage** — polymorphic materialization across the JOINED
+9. **Compound Lifecycle** — owner delete cascade; replacement baseline
+   (replaces phone1 and the StreetAddress graph, asserts the FKs moved and the
+   replaced rows are left orphaned, as the C# "Generated Mapping Baseline"
+   asserts for its generated-only context).
+10. **Null Detach Baseline** — the detach scenario of the C# "Generated Null
+    Detach Cleanup" section at the generated-only baseline: clearing compound
+    references updates the owner's FKs but leaves the detached compound graph
+    orphaned. (The C# cleanup section asserts deletion because it runs with the
+    `DbContextBase` cleanup layer, which generated JPA does not have.)
+11. **Inheritance Storage** — polymorphic materialization across the JOINED
     hierarchy (Organisation/ParentOrganization, WireInfo/OverheadWireInfo).
-11. **Inheritance Delete Cleanup** — leaf delete removes rows in every table of
-    the chain.
-12. **Compoundless Entity Lifecycle** — plain insert/update/delete.
-13. **Authoritative DDL Entity Round-Trip** — runs the generated entities with
+12. **Inheritance Delete Cleanup** — leaf delete removes rows in every table of
+    the three-level (ParentOrganization) and four-level (OverheadWireInfo)
+    chains.
+13. **Compoundless Entity Lifecycle** — plain insert/update/delete.
+14. **Authoritative DDL Entity Round-Trip** — runs the generated entities with
     `hbm2ddl=none` against the schema created by executing the real
     `sql-rdfs-ansi92` DDL (the deployment mode the generated file's header
     prescribes), proving JOINED loads and the `UUID` ↔ `VARCHAR(100)` surrogate
     binding work on the authoritative schema. Includes an insert-discipline
     probe documenting that the paired forward/reverse compound FKs admit no
     valid insert order under immediate FK checking.
-14. **Authoritative DDL Owner Delete Cascade** — pins down the DDL's
+15. **Authoritative DDL Owner Delete Cascade** — pins down the DDL's
     reverse-cascade compound cleanup story on a live database: either the owner
     delete cascades the full compound chain, or (as on H2) the forward owner FK
     blocks the cascade mid-flight and the delete is rejected atomically.
     Reported as a `DDL FINDING` diagnostic.
-15. **Authoritative DDL Replacement Guard** — the schema counterpart of the C#
+16. **Authoritative DDL Replacement Guard** — the schema counterpart of the C#
     `DbContextBase` cleanup sections: repointing, detaching, and deleting a
     referenced compound row are all rejected by the constraint pair, while
     in-place attribute updates succeed.
@@ -120,7 +136,7 @@ translate to JPA:
 
 | Behavior | SQL (`sql-rdfs-ansi92`) | JPA (`jpa-rdfs`) | Notes |
 |---|---|---|---|
-| Compound cleanup on owner delete | Reverse `ON DELETE CASCADE` constraints | Forward `@ManyToOne(cascade=REMOVE)` from the owner | Same intent, different mechanism. Note: under immediate FK checking the SQL mechanism cannot execute — the forward owner FK blocks both compound inserts and the owner-delete cascade (sections 13/14 `DDL FINDING`s); the DDL's cleanup story effectively requires deferred constraints |
+| Compound cleanup on owner delete | Reverse `ON DELETE CASCADE` constraints | Forward `@ManyToOne(cascade=REMOVE)` from the owner | Same intent, different mechanism. Note: under immediate FK checking the SQL mechanism cannot execute — the forward owner FK blocks both compound inserts and the owner-delete cascade (sections 14/15 `DDL FINDING`s); the DDL's cleanup story effectively requires deferred constraints |
 | Compound cleanup on replace/detach | Handled by the reverse cascade when the old row's owner reference is dropped | No equivalent — replaced/detached compound rows remain (the generated C# adds a `DbContextBase` SaveChanges cleanup layer; no JPA analog exists yet) | Reported as `BASELINE OBSERVED` diagnostic |
 | Surrogate UUID assignment | `id` populated by the inserting application | `@GeneratedValue(strategy=UUID)` — assigned by the JPA provider on persist | The generated C# assigns `Guid.NewGuid()` in constructors instead |
 
